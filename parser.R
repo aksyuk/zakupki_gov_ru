@@ -22,6 +22,7 @@
 library('RCurl')
 library('XML')
 library('RSelenium')
+library('wdman')
 
 
 # КОНСТАНТЫ --------------------------------------------------------------------
@@ -117,6 +118,21 @@ fileURL <- paste0(paste0(const.html, '=', var.html), collapse = '&')
 
 # ЗАГРУЗКА ---------------------------------------------------------------------
 #
+<<<<<<< Updated upstream
+=======
+## создаём эмулятор браузера, т.к. сайт госзакупок хитровывернутый
+selServ <- wdman::selenium(verbose = FALSE)
+rD <- RSelenium::rsDriver(browser = "chrome")
+remDr <- rD[["client"]]
+remDr$open(silent = T)
+remDr$navigate(fileURL)
+
+#!!!!!!
+# НУЖНО ЭТО ДЕЛАТЬ ЧЕРЕЗ Docker
+# https://stackoverflow.com/questions/45395849/cant-execute-rsdriver-connection-refused
+#!!!!!!
+
+>>>>>>> Stashed changes
 ## загружаем текст html-страницы
 html <- getURL(fileURL)
 ## разбираем как html
@@ -247,9 +263,13 @@ for (k in 1:1) {
     destFileURL <- gsub(destFileURL, pattern = '/notice/view/',
                         replacement = '/notice/ea44/view/')
     
+<<<<<<< Updated upstream
     # сведения о поставщиках: гиперссылки
     destFileURL2 <- paste0('http://zakupki.gov.ru/epz/order/notice/ea44/view/supplier-results.html?regNumber=', 
                            gsub('.*=', '', destFileURL))
+=======
+    getURL(destFileURL[i], .encoding = 'UTF-8')
+>>>>>>> Stashed changes
     
     ## парсим детали
     for (i in 1:length(details.URLs)) {
