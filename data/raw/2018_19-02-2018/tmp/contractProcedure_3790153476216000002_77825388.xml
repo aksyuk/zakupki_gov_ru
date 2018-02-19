@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>77825388</id>
+        <regNum>3790153476216000002</regNum>
+        <publishDate>2018-01-18T17:48:07.838+10:00</publishDate>
+        <versionNumber>2</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2016-12-31</endDate>
+            </stage>
+            <ordinalNumber>1</ordinalNumber>
+            <finalStageExecution>true</finalStageExecution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-02-11</documentDate>
+                    <documentNum>135799</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>539.61</paid>
+                <paidRUR>539.61</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-02-15</documentDate>
+                    <documentNum>140227</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>163383.49</paid>
+                <paidRUR>163383.49</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-02-18</documentDate>
+                    <documentNum>146394</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.08</paid>
+                <paidRUR>196.08</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-02-19</documentDate>
+                    <documentNum>148595</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.35</paid>
+                <paidRUR>0.35</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-03-18</documentDate>
+                    <documentNum>185199</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.08</paid>
+                <paidRUR>196.08</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-03-23</documentDate>
+                    <documentNum>191687</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>269.98</paid>
+                <paidRUR>269.98</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-03-30</documentDate>
+                    <documentNum>204111</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>157281.69</paid>
+                <paidRUR>157281.69</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-04-11</documentDate>
+                    <documentNum>221767</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>140673.36</paid>
+                <paidRUR>140673.36</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-04-12</documentDate>
+                    <documentNum>224425</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.08</paid>
+                <paidRUR>196.08</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-04-14</documentDate>
+                    <documentNum>227901</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>269.98</paid>
+                <paidRUR>269.98</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-05-16</documentDate>
+                    <documentNum>272787</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>269.98</paid>
+                <paidRUR>269.98</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-05-18</documentDate>
+                    <documentNum>277101</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>139484.75</paid>
+                <paidRUR>139484.75</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-05-19</documentDate>
+                    <documentNum>278894</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.92</paid>
+                <paidRUR>196.92</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-06-08</documentDate>
+                    <documentNum>309935</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>133167.27</paid>
+                <paidRUR>133167.27</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-06-27</documentDate>
+                    <documentNum>338609</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>90.30</paid>
+                <paidRUR>90.30</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-07-18</documentDate>
+                    <documentNum>374238</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>68403.72</paid>
+                <paidRUR>68403.72</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-07-18</documentDate>
+                    <documentNum>374243</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>105.99</paid>
+                <paidRUR>105.99</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-07-22</documentDate>
+                    <documentNum>384006</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.29</paid>
+                <paidRUR>196.29</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-08-10</documentDate>
+                    <documentNum>412891</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6765.02</paid>
+                <paidRUR>6765.02</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-08-30</documentDate>
+                    <documentNum>438351</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.29</paid>
+                <paidRUR>196.29</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-09-16</documentDate>
+                    <documentNum>466728</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>8109.38</paid>
+                <paidRUR>8109.38</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-09-26</documentDate>
+                    <documentNum>478660</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.29</paid>
+                <paidRUR>196.29</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-10-07</documentDate>
+                    <documentNum>498871</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>14105.31</paid>
+                <paidRUR>14105.31</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-10-26</documentDate>
+                    <documentNum>526550</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>196.29</paid>
+                <paidRUR>196.29</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-11-08</documentDate>
+                    <documentNum>545418</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>77640.16</paid>
+                <paidRUR>77640.16</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-11-14</documentDate>
+                    <documentNum>557115</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1022.07</paid>
+                <paidRUR>1022.07</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2016-12-21</documentDate>
+                    <documentNum>625835</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>241.60</paid>
+                <paidRUR>241.60</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2017-01-20</documentDate>
+                    <documentNum>667884</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>176311.66</paid>
+                <paidRUR>176311.66</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежный документ</documentName>
+                    <documentDate>2017-01-20</documentDate>
+                    <documentNum>667890</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>135629.71</paid>
+                <paidRUR>135629.71</paidRUR>
+                <paidVATRUR>0.00</paidVATRUR>
+            </execution>
+            <productsCountries>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>92221449</sid>
+                    <OKPD2>
+                        <code>37.00.11.110</code>
+                        <name>Услуги по водоотведению сточных вод</name>
+                    </OKPD2>
+                    <productName>Оказание услуг холодного водоснабжения и водоотведения для обеспечения нужд муниципального бюджетного общеобразовательного учреждения Средняя общеобразовательная школа № 23 с углубленным изучением отдельных предметов, языков и культуры еврейского народа в 2016 г.</productName>
+                </productsCountry>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>92221472</sid>
+                    <OKPD2>
+                        <code>36.00.20.130</code>
+                        <name>Услуги по транспортированию и распределению воды по водопроводам</name>
+                    </OKPD2>
+                    <productName>Оказание услуг холодного водоснабжения и водоотведения для обеспечения нужд муниципального бюджетного общеобразовательного учреждения Средняя общеобразовательная школа № 23 с углубленным изучением отдельных предметов, языков и культуры еврейского народа в 2016 г.</productName>
+                </productsCountry>
+            </productsCountries>
+        </executions>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=77825388</url>
+            <docRegNumber>37901534762160000020007</docRegNumber>
+            <signature>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</signature>
+            <signature>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</signature>
+        </printForm>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>6305E2D5DDBE0034E0530A86120DD689</publishedContentId>
+                <fileName>платежные поручения.zip</fileName>
+                <docDescription>платежные поручения</docDescription>
+                <docRegNumber>37901534762160000020008</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=6305E2D5DDBE0034E0530A86120DD689</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <receiptDocuments>
+            <attachment>
+                <publishedContentId>6305E2D5DDBF0034E0530A86120DD689</publishedContentId>
+                <fileName>акты.zip</fileName>
+                <docDescription>акты</docDescription>
+                <docRegNumber>37901534762160000020009</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=6305E2D5DDBF0034E0530A86120DD689</url>
+                <cryptoSigns>
+                    <signature>MIINPgYJKoZIhvcNAQcCoIINLzCCDSsCAQExDDAKBgYqhQMCAgkFADALBgkqhkiG9w0BBwGgggk0MIIJMDCCCN+gAwIBAgIUFaAIeq2FthlrnVuxC6WlnBrQbhMwCAYGKoUDAgIDMIIBOTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxGTAXBgNVBAgMENCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE4MDYGA1UEAwwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4wHhcNMTcxMDE2MDcyMzAwWhcNMTkwMTE2MDcyMzAwWjCCAioxGjAYBggqhQMDgQMBARIMNzkwMTAwMjI3MDI2MRYwFAYFKoUDZAMSCzAyOTI4MjkzMTcyMSAwHgYJKoZIhvcNAQkBFhEyMy1zY2hvb2xAbWFpbC5ydTELMAkGA1UEBhMCUlUxPzA9BgNVBAgMNtCV0LLRgNC10LnRgdC60LDRjyDQsNCy0YLQvtC90L7QvNC90LDRjyDQvtCx0LvQsNGB0YLRjDEdMBsGA1UEBwwU0JHQmNCg0J7QkdCY0JTQltCQ0J0xgdQwgdEGA1UECgyBydCc0KPQndCY0KbQmNCf0JDQm9Cs0J3QntCVINCR0K7QlNCW0JXQotCd0J7QlSDQntCR0KnQldCe0JHQoNCQ0JfQntCS0JDQotCV0JvQrNCd0J7QlSDQo9Cn0KDQldCW0JTQldCd0JjQlSAi0JvQmNCm0JXQmSDihJYgMjMg0KEg0K3QotCd0J7QmtCj0JvQrNCi0KPQoNCd0KvQnCAo0JXQktCg0JXQmdCh0JrQmNCcKSDQmtCe0JzQn9Ce0J3QldCd0KLQntCcIjEuMCwGA1UEKgwl0J3QuNC60L7Qu9Cw0Lkg0JDQvdCw0YLQvtC70YzQtdCy0LjRhzEbMBkGA1UEBAwS0J/QtdGC0YDRg9GI0LrQvtCyMUEwPwYDVQQDDDjQn9C10YLRgNGD0YjQutC+0LIg0J3QuNC60L7Qu9Cw0Lkg0JDQvdCw0YLQvtC70YzQtdCy0LjRhzBjMBwGBiqFAwICEzASBgcqhQMCAiQABgcqhQMCAh4BA0MABEBvBFEhtAWr8LlenJg8LW0J7Y28G63vPawwlvT/W1RqyH3AOo1D4jLOvLyilZWku7dBGD3yHH4a/hL3ZjGkoCWto4IExjCCBMIwDAYDVR0TAQH/BAIwADAdBgNVHSAEFjAUMAgGBiqFA2RxATAIBgYqhQNkcQIwPQYDVR0RBDYwNKASBgNVBAygCxMJOTI4MTY0NzM2oBsGCiqFAwM9ntc2AQWgDRMLMDM3ODMwMDAwNTKGATAwNgYFKoUDZG8ELQwrItCa0YDQuNC/0YLQvtCf0YDQviBDU1AiICjQstC10YDRgdC40Y8gMy42KTCCATEGBSqFA2RwBIIBJjCCASIMRCLQmtGA0LjQv9GC0L7Qn9GA0L4gQ1NQIiAo0LLQtdGA0YHQuNGPIDMuNikgKNC40YHQv9C+0LvQvdC10L3QuNC1IDIpDGgi0J/RgNC+0LPRgNCw0LzQvNC90L4t0LDQv9C/0LDRgNCw0YLQvdGL0Lkg0LrQvtC80L/Qu9C10LrRgSAi0K7QvdC40YHQtdGA0YIt0JPQntCh0KIiLiDQktC10YDRgdC40Y8gMi4xIgwf4oSWIDE0OS83LzYtMjkzINC+0YIgMjYuMDYuMjAxNwxP0KHQtdGA0YLQuNGE0LjQutCw0YIg0YHQvtC+0YLQstC10YLRgdGC0LLQuNGPIOKEliDQodCkLzEyOC0yODc4INC+0YIgMjAuMDYuMjAxNjAOBgNVHQ8BAf8EBAMCA+gwgaEGA1UdJQSBmTCBlgYIKwYBBQUHAwEGCCsGAQUFBwMCBg4qhQMDPZ7XNgEGAwQBAQYOKoUDAz2e1zYBBgMEAQIGDiqFAwM9ntc2AQYDBAEDBg4qhQMDPZ7XNgEGAwQBBAYJKoUDA4F7BQIBBgkqhQMDgXsFAgIGCSqFAwOBewUCAwYJKoUDA4F7BQIEBgkqhQMDgXsFAgUGCSqFAwOBewUCBjArBgNVHRAEJDAigA8yMDE3MTAxNjA3MjI1OVqBDzIwMTkwMTE2MDcyMjU5WjCCAYUGA1UdIwSCAXwwggF4gBQWVZGmUVjEiSxrUVvShRkKAURIIqGCAVKkggFOMIIBSjEeMBwGCSqGSIb3DQEJARYPZGl0QG1pbnN2eWF6LnJ1MQswCQYDVQQGEwJSVTEcMBoGA1UECAwTNzcg0LMuINCc0L7RgdC60LLQsDEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMT8wPQYDVQQJDDYxMjUzNzUg0LMuINCc0L7RgdC60LLQsCwg0YPQuy4g0KLQstC10YDRgdC60LDRjywg0LQuIDcxLDAqBgNVBAoMI9Cc0LjQvdC60L7QvNGB0LLRj9C30Ywg0KDQvtGB0YHQuNC4MRgwFgYFKoUDZAESDTEwNDc3MDIwMjY3MDExGjAYBggqhQMDgQMBARIMMDA3NzEwNDc0Mzc1MUEwPwYDVQQDDDjQk9C+0LvQvtCy0L3QvtC5INGD0LTQvtGB0YLQvtCy0LXRgNGP0Y7RidC40Lkg0YbQtdC90YLRgIIKNqzUVQAAAAABLzBeBgNVHR8EVzBVMCmgJ6AlhiNodHRwOi8vY3JsLnJvc2them5hLnJ1L2NybC91Y2ZrLmNybDAooCagJIYiaHR0cDovL2NybC5mc2ZrLmxvY2FsL2NybC91Y2ZrLmNybDAdBgNVHQ4EFgQU9xwlMdhli9+QocfjXPfby9FP3ZwwCAYGKoUDAgIDA0EAYMkjorF2mst75Y1N2qhKwdQlnZRZ2YLDktsMa0U+ZF+SsMVQVj+k/7cKoBhfRxDvqqRHFrZ3TY7Liqttx94QtzGCA9EwggPNAgEBMIIBUzCCATkxIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRkwFwYDVQQIDBDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xODA2BgNVBAMML9Ck0LXQtNC10YDQsNC70YzQvdC+0LUg0LrQsNC30L3QsNGH0LXQudGB0YLQstC+AhQVoAh6rYW2GWudW7ELpaWcGtBuEzAKBgYqhQMCAgkFAKCCAhUwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTgwMTE4MDc0ODA2WjAvBgkqhkiG9w0BCQQxIgQgLXW1vgSFGjXVbrErjso61ak/Bd/dO40O1FxYrjC1OYcwggGoBgsqhkiG9w0BCRACLzGCAZcwggGTMIIBjzCCAYswCAYGKoUDAgIJBCCNCRmW/u7oyIXxo2HciTyx5XFOXwOS2+7rxfa7/UVVBTCCAVswggFBpIIBPTCCATkxIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRkwFwYDVQQIDBDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xODA2BgNVBAMML9Ck0LXQtNC10YDQsNC70YzQvdC+0LUg0LrQsNC30L3QsNGH0LXQudGB0YLQstC+AhQVoAh6rYW2GWudW7ELpaWcGtBuEzAKBgYqhQMCAhMFAARATmoaFzajp5vKk+Cb9TrURN8A2k0ARBi5/L6x/Kh1P+qrtPWeFX5Shw2lll92Az00+F0Ax6e+3fZGxukiThTbGQ==</signature>
+                    <signature>MIIMzQYJKoZIhvcNAQcCoIIMvjCCDLoCAQQxDDAKBgYqhQMCAgkFADALBgkqhkiG9w0BBwGgggibMIIIlzCCCEagAwIBAgIDIrseMAgGBiqFAwICAzCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwMB4XDTE3MDUyNTEzMDkxMFoXDTE4MDYyODEzMDkzM1owggHwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMR0wGwYJKoZIhvcNAQkBFg43NzdAZnNmay5sb2NhbDELMAkGA1UEBhMCUlUxGTAXBgNVBAgMENCzLiDQnNC+0YHQutCy0LAxFTATBgNVBAcMDNCc0L7RgdC60LLQsDE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xczBxBgNVBAsMatCe0YLQtNC10Lsg0Y3QutGB0L/Qu9GD0LDRgtCw0YbQuNC4INC/0YDQuNC60LvQsNC00L3QvtCz0L4g0L/RgNC+0LPRgNCw0LzQvNC90L7Qs9C+INC+0LHQtdGB0L/QtdGH0LXQvdC40Y8xRzBFBgNVBAsMPtCj0L/RgNCw0LLQu9C10L3QuNC1INC40L3RhNC+0YDQvNCw0YbQuNC+0L3QvdGL0YUg0YHQuNGB0YLQtdC8MSgwJgYDVQQMDB/QndCw0YfQsNC70YzQvdC40Log0L7RgtC00LXQu9CwMTgwNgYDVQQDDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjBjMBwGBiqFAwICEzASBgcqhQMCAiQABgcqhQMCAh4BA0MABEAqiyit/O6B6DzobtOcGh+ixhTb20a9+I0wGOgukE9Ew5afKwXor4f6Tchj21S4/33uEtBi63OD2r8Wkyn990dyo4IEVDCCBFAwDAYDVR0TAQH/BAIwADAdBgNVHSAEFjAUMAgGBiqFA2RxATAIBgYqhQNkcQIwIAYDVR0RBBkwF6ASBgNVBAygCxMJNTI1MTU1OTIxhgEwMDYGBSqFA2RvBC0MKyLQmtGA0LjQv9GC0L7Qn9GA0L4gQ1NQIiAo0LLQtdGA0YHQuNGPIDMuNikwggFhBgUqhQNkcASCAVYwggFSDEQi0JrRgNC40L/RgtC+0J/RgNC+IENTUCIgKNCy0LXRgNGB0LjRjyAzLjYpICjQuNGB0L/QvtC70L3QtdC90LjQtSAyKQxoItCf0YDQvtCz0YDQsNC80LzQvdC+LdCw0L/Qv9Cw0YDQsNGC0L3Ri9C5INC60L7QvNC/0LvQtdC60YEgItCu0L3QuNGB0LXRgNGCLdCT0J7QodCiIi4g0JLQtdGA0YHQuNGPIDIuMSIMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjQtMjczOCDQvtGCIDAxLjA3LjIwMTUMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjgtMjg3OCDQvtGCIDIwLjA2LjIwMTYwDgYDVR0PAQH/BAQDAgPoMBMGA1UdJQQMMAoGCCsGAQUFBwMCMCsGA1UdEAQkMCKADzIwMTcwNTI1MTMwODU5WoEPMjAxODA2MjgxMzA5MzNaMIIBjwYDVR0jBIIBhjCCAYKAFJ5xDg/atAEoXz/iy49lFZcCR4yroYIBZaSCAWEwggFdMRgwFgYJKoZIhvcNAQkCEwlTZXJ2ZXIgQ0ExIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRwwGgYDVQQIDBM3NyDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xPzA9BgNVBAMMNtCj0KYg0KTQtdC00LXRgNCw0LvRjNC90L7Qs9C+INC60LDQt9C90LDRh9C10LnRgdGC0LLQsIIBATBeBgNVHR8EVzBVMCmgJ6AlhiNodHRwOi8vY3JsLnJvc2them5hLnJ1L2NybC9mazAxLmNybDAooCagJIYiaHR0cDovL2NybC5mc2ZrLmxvY2FsL2NybC9mazAxLmNybDAdBgNVHQ4EFgQUCrIvCK7qVs+lXSDBuk4naiCPRscwCAYGKoUDAgIDA0EAy4qWDXT7zB5HM8Wqw0j8YqrSUVMT0Tj3HiNuRlTCo/FIhKrYQCHscNeHM3E1/3mjlYclDJX/6ZG+Zb+HuTwgVjGCA/kwggP1AgEBMIIBZjCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgIJBQCgggIqMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE4MDExODA3NDgwN1owLwYJKoZIhvcNAQkEMSIEIC11tb4EhRo11W6xK47KOtWpPwXf3TuNDtRcWK4wtTmHMIIBvQYLKoZIhvcNAQkQAi8xggGsMIIBqDCCAaQwggGgMAoGBiqFAwICCQUABCA5798jccxDa8G/m3W3zSNrc7/Sfx3Onk1F0AMZjG0BfDCCAW4wggFlpIIBYTCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgITBQAEQI0OpNCPKyfDBMHiySFbCE0O69iA5TsKQGiXXbkO3Ajd3m2DCa26i3tEVlEEFDslYfdjZzIvUpkRsQ7QiUirb6A=</signature>
+                </cryptoSigns>
+            </attachment>
+        </receiptDocuments>
+        <modificationReason>ошибка</modificationReason>
+        <currentContractStage>EC</currentContractStage>
+        <okpd2okved2>true</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>

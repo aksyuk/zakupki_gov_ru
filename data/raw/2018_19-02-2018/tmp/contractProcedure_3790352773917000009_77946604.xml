@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>77946604</id>
+        <regNum>3790352773917000009</regNum>
+        <publishDate>2018-01-23T10:38:10.541+10:00</publishDate>
+        <versionNumber>0</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2018-01-31</endDate>
+            </stage>
+            <ordinalNumber>1</ordinalNumber>
+            <finalStageExecution>true</finalStageExecution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2018-01-19</documentDate>
+                    <documentNum>313900</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>22536.11</paid>
+                <paidRUR>22536.11</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,19 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.19</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-28</documentDate>
+                    <documentNum>295899</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16392.66</paid>
+                <paidRUR>16392.66</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,14 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.14</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-17</documentDate>
+                    <documentNum>212125</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>8728.56</paid>
+                <paidRUR>8728.56</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,08 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.08</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-06-21</documentDate>
+                    <documentNum>893283</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1637.62</paid>
+                <paidRUR>1637.62</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,01 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.01</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-24</documentDate>
+                    <documentNum>851306</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>9006.94</paid>
+                <paidRUR>9006.94</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,08 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.08</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-04-24</documentDate>
+                    <documentNum>806013</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>15849.87</paid>
+                <paidRUR>15849.87</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,14 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.14</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-22</documentDate>
+                    <documentNum>756859</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>18511.01</paid>
+                <paidRUR>18511.01</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,16 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.16</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-27</documentDate>
+                    <documentNum>718325</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>23277.67</paid>
+                <paidRUR>23277.67</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская (35.30.11.120): 0,20 УСЛ ЕД;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117806949</sid>
+                        <product>
+                            <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            <OKPD2>
+                                <code>35.30.11.120</code>
+                                <name>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>876</code>
+                                <nationalCode>УСЛ ЕД</nationalCode>
+                                <fullName>Условная единица</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.2</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <productsCountries>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>117806949</sid>
+                    <OKPD2>
+                        <code>35.30.11.120</code>
+                        <name>Энергия тепловая, отпущенная котельными</name>
+                    </OKPD2>
+                    <productName>Услуги по распределению пара и воды (тепловая энергия) отопление гаража по ул. Комсомольская</productName>
+                </productsCountry>
+            </productsCountries>
+        </executions>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=77946604</url>
+            <docRegNumber>37903527739170000090003</docRegNumber>
+            <signature>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</signature>
+            <signature>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</signature>
+        </printForm>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>6364E835A3EB00D0E0530A86120D9578</publishedContentId>
+                <fileName>пп.zip</fileName>
+                <docDescription>пп</docDescription>
+                <docRegNumber>37903527739170000090004</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=6364E835A3EB00D0E0530A86120D9578</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <receiptDocuments>
+            <attachment>
+                <publishedContentId>636444DFF25400C8E0530A86120D2CAB</publishedContentId>
+                <fileName>акты.zip</fileName>
+                <docDescription>акты</docDescription>
+                <docRegNumber>37903527739170000090005</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=636444DFF25400C8E0530A86120D2CAB</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </receiptDocuments>
+        <currentContractStage>EC</currentContractStage>
+        <okpd2okved2>true</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>

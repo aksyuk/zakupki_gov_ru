@@ -1,0 +1,1020 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>73961035</id>
+        <regNum>3790101375217000003</regNum>
+        <publishDate>2018-01-30T13:23:38.641+10:00</publishDate>
+        <versionNumber>0</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2017-12-31</endDate>
+            </stage>
+            <ordinalNumber>1</ordinalNumber>
+            <finalStageExecution>true</finalStageExecution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2018-01-25</documentDate>
+                    <documentNum>322625</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>8901.63</paid>
+                <paidRUR>8901.63</paidRUR>
+                <paidVAT>1357.88</paidVAT>
+                <paidVATRUR>1357.88</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2018-01-25</documentDate>
+                    <documentNum>322622</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>5175.84</paid>
+                <paidRUR>5175.84</paidRUR>
+                <paidVAT>789.53</paidVAT>
+                <paidVATRUR>789.53</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-05-31</documentDate>
+                    <documentNum>363963</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>3435.00</paid>
+                <paidRUR>3435.00</paidRUR>
+                <paidVAT>523.98</paidVAT>
+                <paidVATRUR>523.98</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-10</documentDate>
+                    <documentNum>700350 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16235.91</paid>
+                <paidRUR>16235.91</paidRUR>
+                <paidVAT>2476.66</paidVAT>
+                <paidVATRUR>2476.66</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-03-24</documentDate>
+                    <documentNum>762685</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>12151.14</paid>
+                <paidRUR>12151.14</paidRUR>
+                <paidVAT>1853.56</paidVAT>
+                <paidVATRUR>1853.56</paidVATRUR>
+                <improperExecutionText>
+
+
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-03-07</documentDate>
+                    <documentNum>732923 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>5211.00</paid>
+                <paidRUR>5211.00</paidRUR>
+                <paidVAT>794.90</paidVAT>
+                <paidVATRUR>794.90</paidVATRUR>
+                <improperExecutionText>
+
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-03-07</documentDate>
+                    <documentNum>732928</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>17369.29</paid>
+                <paidRUR>17369.29</paidRUR>
+                <paidVAT>2649.55</paidVAT>
+                <paidVATRUR>2649.55</paidVATRUR>
+                <improperExecutionText>
+
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-29</documentDate>
+                    <documentNum>768694 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>5208.64</paid>
+                <paidRUR>5208.64</paidRUR>
+                <paidVAT>794.54</paidVAT>
+                <paidVATRUR>794.54</paidVATRUR>
+                <improperExecutionText>
+
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-05-18</documentDate>
+                    <documentNum> 842604 	</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>14967.35</paid>
+                <paidRUR>14967.35</paidRUR>
+                <paidVAT>1853.56</paidVAT>
+                <paidVATRUR>1853.56</paidVATRUR>
+                <improperExecutionText>
+	№
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-05-31</documentDate>
+                    <documentNum>863967 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>12231.59</paid>
+                <paidRUR>12231.59</paidRUR>
+                <paidVAT>1865.84</paidVAT>
+                <paidVATRUR>1865.84</paidVATRUR>
+                <improperExecutionText>
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-07</documentDate>
+                    <documentNum>191888 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>5826.67</paid>
+                <paidRUR>5826.67</paidRUR>
+                <paidVAT>888.81</paidVAT>
+                <paidVATRUR>888.81</paidVATRUR>
+                <improperExecutionText>
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-11-07</documentDate>
+                    <documentNum>191889 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>13385.49</paid>
+                <paidRUR>13385.49</paidRUR>
+                <paidVAT>2041.85</paidVAT>
+                <paidVATRUR>2041.85</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-10-11</documentDate>
+                    <documentNum>343673 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>3436.73</paid>
+                <paidRUR>3436.73</paidRUR>
+                <paidVAT>524.25</paidVAT>
+                <paidVATRUR>524.25</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2018-01-18</documentDate>
+                    <documentNum>305456</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>15308.04</paid>
+                <paidRUR>15308.04</paidRUR>
+                <paidVAT>2335.12</paidVAT>
+                <paidVATRUR>2335.12</paidVATRUR>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-07-31</documentDate>
+                    <documentNum>55132</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>2908.06</paid>
+                <paidRUR>2908.06</paidRUR>
+                <paidVAT>199.21</paidVAT>
+                <paidVATRUR>199.21</paidVATRUR>
+                <improperExecutionText>
+
+
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-09-06</documentDate>
+                    <documentNum>97003 </documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>3298.58</paid>
+                <paidRUR>3298.58</paidRUR>
+                <paidVAT>503.17</paidVAT>
+                <paidVATRUR>503.17</paidVATRUR>
+                <improperExecutionText>
+
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-07-31</documentDate>
+                    <documentNum>55136</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>878.97</paid>
+                <paidRUR>878.97</paidRUR>
+                <paidVAT>134.08</paidVAT>
+                <paidVATRUR>134.08</paidVATRUR>
+                <improperExecutionText>
+
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-09-06</documentDate>
+                    <documentNum>97002</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1253.27</paid>
+                <paidRUR>1253.27</paidRUR>
+                <paidVAT>191.18</paidVAT>
+                <paidVATRUR>191.18</paidVATRUR>
+                <improperExecutionText>
+</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение </documentName>
+                    <documentDate>2017-10-11</documentDate>
+                    <documentNum>148561</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>10202.00</paid>
+                <paidRUR>10202.00</paidRUR>
+                <paidVAT>1556.31</paidVAT>
+                <paidVATRUR>1556.31</paidVATRUR>
+                <improperExecutionText>	</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-18</documentDate>
+                    <documentNum>842616</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6053.00</paid>
+                <paidRUR>6053.00</paidRUR>
+                <paidVAT>923.34</paidVAT>
+                <paidVATRUR>923.34</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-06-30</documentDate>
+                    <documentNum>5652</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоснабжение (36.00.20.130): 151,40 М3;Водоотведение (37.00.11.110): 151,40 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117153682</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>151.4</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117155321</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>151.4</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-10-31</documentDate>
+                    <documentNum>9616</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоснабжение (36.00.20.130): 459,76 М3;Водоотведение (37.00.11.110): 459,76 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117154875</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>459.76</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117155451</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>459.76</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-02-28</documentDate>
+                    <documentNum>1079</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоснабжение (36.00.20.130): 485,80 М3;Водоотведение (37.00.11.110): 485,80 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117153682</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>485.8</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117155321</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>485.8</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-08-31</documentDate>
+                    <documentNum>7674</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоотведение (37.00.11.110): 110,22 М3;Водоснабжение (36.00.20.130): 110,22 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117155451</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>110.221</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117154875</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>110.221</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-03-31</documentDate>
+                    <documentNum>2213</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоотведение (37.00.11.110): 485,60 М3;Водоснабжение (36.00.20.130): 485,60 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117155321</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>485.6</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117153682</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>485.6</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-11-30</documentDate>
+                    <documentNum>10690</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоснабжение (36.00.20.130): 405,23 М3;Водоотведение (37.00.11.110): 405,23 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117154875</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>405.23</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117155451</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>405.23</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-12-31</documentDate>
+                    <documentNum>11850</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоотведение (37.00.11.110): 455,20 М3;Водоснабжение (36.00.20.130): 455,20 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117155451</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>455.2</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117154875</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>455.2</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-09-30</documentDate>
+                    <documentNum>8789</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоотведение (37.00.11.110): 302,25 М3;Водоснабжение (36.00.20.130): 302,25 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117155451</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>302.25</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117154875</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>302.25</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-05-31</documentDate>
+                    <documentNum>4308</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоснабжение (36.00.20.130): 511,40 М3;Водоотведение (37.00.11.110): 511,40 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117153682</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>511.4</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117155321</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>511.4</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-07-31</documentDate>
+                    <documentNum>6500</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоотведение (37.00.11.110): 77,30 М3;Водоснабжение (36.00.20.130): 77,30 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117155451</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>77.303</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117154875</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>77.303</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>99</code>
+                    <name>Прочие документы о приемке, не указанные выше</name>
+                    <documentDate>2017-04-30</documentDate>
+                    <documentNum>3219</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Водоснабжение (36.00.20.130): 564,30 М3;Водоотведение (37.00.11.110): 564,30 М3;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117153682</sid>
+                        <product>
+                            <name>Водоснабжение</name>
+                            <OKPD2>
+                                <code>36.00.20.130</code>
+                                <name>Водоснабжение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>564.3</quantity>
+                    </quantityContractSubject>
+                    <quantityContractSubject>
+                        <sid>117155321</sid>
+                        <product>
+                            <name>Водоотведение</name>
+                            <OKPD2>
+                                <code>37.00.11.110</code>
+                                <name>Водоотведение</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>113</code>
+                                <nationalCode>М3</nationalCode>
+                                <fullName>Кубический метр</fullName>
+                            </OKEI>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>564.3</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <productsCountries>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>117153682</sid>
+                    <OKPD2>
+                        <code>36.00.20.130</code>
+                        <name>Услуги по транспортированию и распределению воды по водопроводам</name>
+                    </OKPD2>
+                    <productName>Водоснабжение</productName>
+                </productsCountry>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>117154875</sid>
+                    <OKPD2>
+                        <code>36.00.20.130</code>
+                        <name>Услуги по транспортированию и распределению воды по водопроводам</name>
+                    </OKPD2>
+                    <productName>Водоснабжение</productName>
+                </productsCountry>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>117155321</sid>
+                    <OKPD2>
+                        <code>37.00.11.110</code>
+                        <name>Услуги по водоотведению сточных вод</name>
+                    </OKPD2>
+                    <productName>Водоотведение</productName>
+                </productsCountry>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>117155451</sid>
+                    <OKPD2>
+                        <code>37.00.11.110</code>
+                        <name>Услуги по водоотведению сточных вод</name>
+                    </OKPD2>
+                    <productName>Водоотведение</productName>
+                </productsCountry>
+            </productsCountries>
+        </executions>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=73961035</url>
+            <docRegNumber>37901013752170000030006</docRegNumber>
+            <signature>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</signature>
+            <signature>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</signature>
+        </printForm>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>63F4C98BB2350066E0530A86120D800E</publishedContentId>
+                <fileName>ПП вода.rar</fileName>
+                <docDescription>ПП вода</docDescription>
+                <docRegNumber>37901013752170000030007</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=63F4C98BB2350066E0530A86120D800E</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <receiptDocuments>
+            <attachment>
+                <publishedContentId>63F5CEAE90A60036E0530A86120D8D3F</publishedContentId>
+                <fileName>Акты.rar</fileName>
+                <docDescription>Акты</docDescription>
+                <docRegNumber>37901013752170000030008</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=63F5CEAE90A60036E0530A86120D8D3F</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>MIIMzQYJKoZIhvcNAQcCoIIMvjCCDLoCAQQxDDAKBgYqhQMCAgkFADALBgkqhkiG9w0BBwGgggibMIIIlzCCCEagAwIBAgIDIrseMAgGBiqFAwICAzCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwMB4XDTE3MDUyNTEzMDkxMFoXDTE4MDYyODEzMDkzM1owggHwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMR0wGwYJKoZIhvcNAQkBFg43NzdAZnNmay5sb2NhbDELMAkGA1UEBhMCUlUxGTAXBgNVBAgMENCzLiDQnNC+0YHQutCy0LAxFTATBgNVBAcMDNCc0L7RgdC60LLQsDE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xczBxBgNVBAsMatCe0YLQtNC10Lsg0Y3QutGB0L/Qu9GD0LDRgtCw0YbQuNC4INC/0YDQuNC60LvQsNC00L3QvtCz0L4g0L/RgNC+0LPRgNCw0LzQvNC90L7Qs9C+INC+0LHQtdGB0L/QtdGH0LXQvdC40Y8xRzBFBgNVBAsMPtCj0L/RgNCw0LLQu9C10L3QuNC1INC40L3RhNC+0YDQvNCw0YbQuNC+0L3QvdGL0YUg0YHQuNGB0YLQtdC8MSgwJgYDVQQMDB/QndCw0YfQsNC70YzQvdC40Log0L7RgtC00LXQu9CwMTgwNgYDVQQDDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjBjMBwGBiqFAwICEzASBgcqhQMCAiQABgcqhQMCAh4BA0MABEAqiyit/O6B6DzobtOcGh+ixhTb20a9+I0wGOgukE9Ew5afKwXor4f6Tchj21S4/33uEtBi63OD2r8Wkyn990dyo4IEVDCCBFAwDAYDVR0TAQH/BAIwADAdBgNVHSAEFjAUMAgGBiqFA2RxATAIBgYqhQNkcQIwIAYDVR0RBBkwF6ASBgNVBAygCxMJNTI1MTU1OTIxhgEwMDYGBSqFA2RvBC0MKyLQmtGA0LjQv9GC0L7Qn9GA0L4gQ1NQIiAo0LLQtdGA0YHQuNGPIDMuNikwggFhBgUqhQNkcASCAVYwggFSDEQi0JrRgNC40L/RgtC+0J/RgNC+IENTUCIgKNCy0LXRgNGB0LjRjyAzLjYpICjQuNGB0L/QvtC70L3QtdC90LjQtSAyKQxoItCf0YDQvtCz0YDQsNC80LzQvdC+LdCw0L/Qv9Cw0YDQsNGC0L3Ri9C5INC60L7QvNC/0LvQtdC60YEgItCu0L3QuNGB0LXRgNGCLdCT0J7QodCiIi4g0JLQtdGA0YHQuNGPIDIuMSIMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjQtMjczOCDQvtGCIDAxLjA3LjIwMTUMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjgtMjg3OCDQvtGCIDIwLjA2LjIwMTYwDgYDVR0PAQH/BAQDAgPoMBMGA1UdJQQMMAoGCCsGAQUFBwMCMCsGA1UdEAQkMCKADzIwMTcwNTI1MTMwODU5WoEPMjAxODA2MjgxMzA5MzNaMIIBjwYDVR0jBIIBhjCCAYKAFJ5xDg/atAEoXz/iy49lFZcCR4yroYIBZaSCAWEwggFdMRgwFgYJKoZIhvcNAQkCEwlTZXJ2ZXIgQ0ExIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRwwGgYDVQQIDBM3NyDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xPzA9BgNVBAMMNtCj0KYg0KTQtdC00LXRgNCw0LvRjNC90L7Qs9C+INC60LDQt9C90LDRh9C10LnRgdGC0LLQsIIBATBeBgNVHR8EVzBVMCmgJ6AlhiNodHRwOi8vY3JsLnJvc2them5hLnJ1L2NybC9mazAxLmNybDAooCagJIYiaHR0cDovL2NybC5mc2ZrLmxvY2FsL2NybC9mazAxLmNybDAdBgNVHQ4EFgQUCrIvCK7qVs+lXSDBuk4naiCPRscwCAYGKoUDAgIDA0EAy4qWDXT7zB5HM8Wqw0j8YqrSUVMT0Tj3HiNuRlTCo/FIhKrYQCHscNeHM3E1/3mjlYclDJX/6ZG+Zb+HuTwgVjGCA/kwggP1AgEBMIIBZjCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgIJBQCgggIqMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE4MDEzMDAzMjMzOFowLwYJKoZIhvcNAQkEMSIEIKgp1ZBp2sMIPgrTe9y2Z1DpVFUoaYKRarcfz3fSDEg8MIIBvQYLKoZIhvcNAQkQAi8xggGsMIIBqDCCAaQwggGgMAoGBiqFAwICCQUABCA5798jccxDa8G/m3W3zSNrc7/Sfx3Onk1F0AMZjG0BfDCCAW4wggFlpIIBYTCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgITBQAEQKKm9mQuIuGpELDau2rLhNP9dBb0D2f1GaG41zm0ogcQRAN6k2a4VhWMk5JIjRYRLgj8n8VKYfcWpfk0addfgSE=</signature>
+                </cryptoSigns>
+            </attachment>
+        </receiptDocuments>
+        <currentContractStage>EC</currentContractStage>
+        <okpd2okved2>true</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>

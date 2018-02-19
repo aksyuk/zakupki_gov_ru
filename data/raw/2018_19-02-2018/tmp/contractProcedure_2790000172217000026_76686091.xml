@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>76686091</id>
+        <regNum>2790000172217000026</regNum>
+        <publishDate>2018-01-28T12:02:51.439+10:00</publishDate>
+        <versionNumber>0</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2017-12-31</endDate>
+            </stage>
+            <ordinalNumber>1</ordinalNumber>
+            <finalStageExecution>true</finalStageExecution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-12-20</documentDate>
+                    <documentNum>1895</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.69</paid>
+                <paidRUR>16464.69</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117411668</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-11-30</documentDate>
+                    <documentNum>1801</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-10-31</documentDate>
+                    <documentNum>1736</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-09-29</documentDate>
+                    <documentNum>1445</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-08-31</documentDate>
+                    <documentNum>1284</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-07-31</documentDate>
+                    <documentNum>1148</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-06-30</documentDate>
+                    <documentNum>978</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-05-31</documentDate>
+                    <documentNum>851</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-04-28</documentDate>
+                    <documentNum>553</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-03-31</documentDate>
+                    <documentNum>442</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-02-28</documentDate>
+                    <documentNum>239</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-01-31</documentDate>
+                    <documentNum>105</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16464.63</paid>
+                <paidRUR>16464.63</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по вывозу и утилизации твердых бытовых отходов (38.11.21.000): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>117269849</sid>
+                        <product>
+                            <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            <OKPD2>
+                                <code>38.11.21.000</code>
+                                <name>Оказание услуг по вывозу и утилизации твердых бытовых отходов</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>11.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <productsCountries>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>117269849</sid>
+                    <OKPD2>
+                        <code>38.11.21.000</code>
+                        <name>Услуги по сбору неопасных отходов городского хозяйства, непригодных для повторного использования</name>
+                    </OKPD2>
+                    <productName>Оказание услуг по вывозу и утилизации твердых бытовых отходов</productName>
+                </productsCountry>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>117411668</sid>
+                    <OKPD2>
+                        <code>38.11.21.000</code>
+                        <name>Услуги по сбору неопасных отходов городского хозяйства, непригодных для повторного использования</name>
+                    </OKPD2>
+                    <productName>Оказание услуг по вывозу и утилизации твердых бытовых отходов</productName>
+                </productsCountry>
+            </productsCountries>
+        </executions>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=76686091</url>
+            <docRegNumber>27900001722170000260003</docRegNumber>
+            <signature>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</signature>
+            <signature>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</signature>
+        </printForm>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>63C80CC4A6770058E0530A86120DD20F</publishedContentId>
+                <fileName>ПП.rar</fileName>
+                <docDescription>ПП</docDescription>
+                <docRegNumber>27900001722170000260005</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=63C80CC4A6770058E0530A86120DD20F</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>MIIMzQYJKoZIhvcNAQcCoIIMvjCCDLoCAQQxDDAKBgYqhQMCAgkFADALBgkqhkiG9w0BBwGgggibMIIIlzCCCEagAwIBAgIDIrseMAgGBiqFAwICAzCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwMB4XDTE3MDUyNTEzMDkxMFoXDTE4MDYyODEzMDkzM1owggHwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMR0wGwYJKoZIhvcNAQkBFg43NzdAZnNmay5sb2NhbDELMAkGA1UEBhMCUlUxGTAXBgNVBAgMENCzLiDQnNC+0YHQutCy0LAxFTATBgNVBAcMDNCc0L7RgdC60LLQsDE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xczBxBgNVBAsMatCe0YLQtNC10Lsg0Y3QutGB0L/Qu9GD0LDRgtCw0YbQuNC4INC/0YDQuNC60LvQsNC00L3QvtCz0L4g0L/RgNC+0LPRgNCw0LzQvNC90L7Qs9C+INC+0LHQtdGB0L/QtdGH0LXQvdC40Y8xRzBFBgNVBAsMPtCj0L/RgNCw0LLQu9C10L3QuNC1INC40L3RhNC+0YDQvNCw0YbQuNC+0L3QvdGL0YUg0YHQuNGB0YLQtdC8MSgwJgYDVQQMDB/QndCw0YfQsNC70YzQvdC40Log0L7RgtC00LXQu9CwMTgwNgYDVQQDDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjBjMBwGBiqFAwICEzASBgcqhQMCAiQABgcqhQMCAh4BA0MABEAqiyit/O6B6DzobtOcGh+ixhTb20a9+I0wGOgukE9Ew5afKwXor4f6Tchj21S4/33uEtBi63OD2r8Wkyn990dyo4IEVDCCBFAwDAYDVR0TAQH/BAIwADAdBgNVHSAEFjAUMAgGBiqFA2RxATAIBgYqhQNkcQIwIAYDVR0RBBkwF6ASBgNVBAygCxMJNTI1MTU1OTIxhgEwMDYGBSqFA2RvBC0MKyLQmtGA0LjQv9GC0L7Qn9GA0L4gQ1NQIiAo0LLQtdGA0YHQuNGPIDMuNikwggFhBgUqhQNkcASCAVYwggFSDEQi0JrRgNC40L/RgtC+0J/RgNC+IENTUCIgKNCy0LXRgNGB0LjRjyAzLjYpICjQuNGB0L/QvtC70L3QtdC90LjQtSAyKQxoItCf0YDQvtCz0YDQsNC80LzQvdC+LdCw0L/Qv9Cw0YDQsNGC0L3Ri9C5INC60L7QvNC/0LvQtdC60YEgItCu0L3QuNGB0LXRgNGCLdCT0J7QodCiIi4g0JLQtdGA0YHQuNGPIDIuMSIMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjQtMjczOCDQvtGCIDAxLjA3LjIwMTUMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjgtMjg3OCDQvtGCIDIwLjA2LjIwMTYwDgYDVR0PAQH/BAQDAgPoMBMGA1UdJQQMMAoGCCsGAQUFBwMCMCsGA1UdEAQkMCKADzIwMTcwNTI1MTMwODU5WoEPMjAxODA2MjgxMzA5MzNaMIIBjwYDVR0jBIIBhjCCAYKAFJ5xDg/atAEoXz/iy49lFZcCR4yroYIBZaSCAWEwggFdMRgwFgYJKoZIhvcNAQkCEwlTZXJ2ZXIgQ0ExIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRwwGgYDVQQIDBM3NyDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xPzA9BgNVBAMMNtCj0KYg0KTQtdC00LXRgNCw0LvRjNC90L7Qs9C+INC60LDQt9C90LDRh9C10LnRgdGC0LLQsIIBATBeBgNVHR8EVzBVMCmgJ6AlhiNodHRwOi8vY3JsLnJvc2them5hLnJ1L2NybC9mazAxLmNybDAooCagJIYiaHR0cDovL2NybC5mc2ZrLmxvY2FsL2NybC9mazAxLmNybDAdBgNVHQ4EFgQUCrIvCK7qVs+lXSDBuk4naiCPRscwCAYGKoUDAgIDA0EAy4qWDXT7zB5HM8Wqw0j8YqrSUVMT0Tj3HiNuRlTCo/FIhKrYQCHscNeHM3E1/3mjlYclDJX/6ZG+Zb+HuTwgVjGCA/kwggP1AgEBMIIBZjCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgIJBQCgggIqMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE4MDEyODAyMDI1MVowLwYJKoZIhvcNAQkEMSIEIHFcqprnnIklNIricSnBlDiQxWd4Gl9GKITKBHVQf70HMIIBvQYLKoZIhvcNAQkQAi8xggGsMIIBqDCCAaQwggGgMAoGBiqFAwICCQUABCA5798jccxDa8G/m3W3zSNrc7/Sfx3Onk1F0AMZjG0BfDCCAW4wggFlpIIBYTCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgITBQAEQJlI8qvQgFbgQErz/3qqWoCqBOjITHk7Dib1/qXV6bCSGKOTOM5vVZg2tCkhjucr8gRyQpH4bzF31/iXi558/5c=</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <receiptDocuments>
+            <attachment>
+                <publishedContentId>60E4114408270006E0530A86120D1305</publishedContentId>
+                <fileName>Акты.rar</fileName>
+                <docDescription>Акты</docDescription>
+                <docRegNumber>27900001722170000260004</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=60E4114408270006E0530A86120D1305</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </receiptDocuments>
+        <currentContractStage>EC</currentContractStage>
+        <okpd2okved2>true</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>

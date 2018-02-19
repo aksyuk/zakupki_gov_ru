@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>77778642</id>
+        <regNum>3790153476217000001</regNum>
+        <publishDate>2018-01-22T17:48:05.682+10:00</publishDate>
+        <versionNumber>0</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2017-12-31</endDate>
+            </stage>
+            <ordinalNumber>1</ordinalNumber>
+            <finalStageExecution>true</finalStageExecution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-01-26</documentDate>
+                    <documentNum>675282</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>46983.00</paid>
+                <paidRUR>46983.00</paidRUR>
+                <paidVAT>7166.90</paidVAT>
+                <paidVATRUR>7166.90</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-17</documentDate>
+                    <documentNum>708839</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1699.97</paid>
+                <paidRUR>1699.97</paidRUR>
+                <paidVAT>259.32</paidVAT>
+                <paidVATRUR>259.32</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-17</documentDate>
+                    <documentNum>708840</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-17</documentDate>
+                    <documentNum>708841</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>12351.82</paid>
+                <paidRUR>12351.82</paidRUR>
+                <paidVAT>1884.18</paidVAT>
+                <paidVATRUR>1884.18</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-17</documentDate>
+                    <documentNum>708842</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>42897.00</paid>
+                <paidRUR>42897.00</paidRUR>
+                <paidVAT>6543.61</paidVAT>
+                <paidVATRUR>6543.61</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-16</documentDate>
+                    <documentNum>749329</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1697.15</paid>
+                <paidRUR>1697.15</paidRUR>
+                <paidVAT>258.89</paidVAT>
+                <paidVATRUR>258.89</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-16</documentDate>
+                    <documentNum>749330</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>494.00</paid>
+                <paidRUR>494.00</paidRUR>
+                <paidVAT>75.36</paidVAT>
+                <paidVATRUR>75.36</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-21</documentDate>
+                    <documentNum>755720</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>42290.00</paid>
+                <paidRUR>42290.00</paidRUR>
+                <paidVAT>6451.02</paidVAT>
+                <paidVATRUR>6451.02</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-21</documentDate>
+                    <documentNum>755721</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>15326.29</paid>
+                <paidRUR>15326.29</paidRUR>
+                <paidVAT>2337.91</paidVAT>
+                <paidVATRUR>2337.91</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-30</documentDate>
+                    <documentNum>771707</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1907.44</paid>
+                <paidRUR>1907.44</paidRUR>
+                <paidVAT>290.97</paidVAT>
+                <paidVATRUR>290.97</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-04-10</documentDate>
+                    <documentNum>783644</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>494.00</paid>
+                <paidRUR>494.00</paidRUR>
+                <paidVAT>75.36</paidVAT>
+                <paidVATRUR>75.36</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-04-14</documentDate>
+                    <documentNum>793989</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-04-19</documentDate>
+                    <documentNum>800488</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>35563.00</paid>
+                <paidRUR>35563.00</paidRUR>
+                <paidVAT>5424.86</paidVAT>
+                <paidVATRUR>5424.86</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-04-19</documentDate>
+                    <documentNum>800489</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>5865.96</paid>
+                <paidRUR>5865.96</paidRUR>
+                <paidVAT>894.81</paidVAT>
+                <paidVATRUR>894.81</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-16</documentDate>
+                    <documentNum>837354</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1033.66</paid>
+                <paidRUR>1033.66</paidRUR>
+                <paidVAT>157.68</paidVAT>
+                <paidVATRUR>157.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-16</documentDate>
+                    <documentNum>837355</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1030.31</paid>
+                <paidRUR>1030.31</paidRUR>
+                <paidVAT>157.17</paidVAT>
+                <paidVATRUR>157.17</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-24</documentDate>
+                    <documentNum>852131</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>741.00</paid>
+                <paidRUR>741.00</paidRUR>
+                <paidVAT>113.03</paidVAT>
+                <paidVATRUR>113.03</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-24</documentDate>
+                    <documentNum>852133</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>23985.60</paid>
+                <paidRUR>23985.60</paidRUR>
+                <paidVAT>3658.82</paidVAT>
+                <paidVATRUR>3658.82</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-26</documentDate>
+                    <documentNum>855663</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>43129.00</paid>
+                <paidRUR>43129.00</paidRUR>
+                <paidVAT>6579.00</paidVAT>
+                <paidVATRUR>6579.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-06-05</documentDate>
+                    <documentNum>869232</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>466.01</paid>
+                <paidRUR>466.01</paidRUR>
+                <paidVAT>71.09</paidVAT>
+                <paidVATRUR>71.09</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-06-05</documentDate>
+                    <documentNum>869233</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1357.07</paid>
+                <paidRUR>1357.07</paidRUR>
+                <paidVAT>207.01</paidVAT>
+                <paidVATRUR>207.01</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-06-21</documentDate>
+                    <documentNum>893841</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>20502.08</paid>
+                <paidRUR>20502.08</paidRUR>
+                <paidVAT>3127.44</paidVAT>
+                <paidVATRUR>3127.44</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-06-21</documentDate>
+                    <documentNum>893842</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>46209.00</paid>
+                <paidRUR>46209.00</paidRUR>
+                <paidVAT>7048.83</paidVAT>
+                <paidVATRUR>7048.83</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-07-17</documentDate>
+                    <documentNum>34684</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-07-18</documentDate>
+                    <documentNum>37051</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>15500.00</paid>
+                <paidRUR>15500.00</paidRUR>
+                <paidVAT>2364.41</paidVAT>
+                <paidVATRUR>2364.41</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-08-07</documentDate>
+                    <documentNum>62809</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-08-17</documentDate>
+                    <documentNum>77379</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>20834.00</paid>
+                <paidRUR>20834.00</paidRUR>
+                <paidVAT>3178.07</paidVAT>
+                <paidVATRUR>3178.07</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-08-17</documentDate>
+                    <documentNum>77380</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>4004.65</paid>
+                <paidRUR>4004.65</paidRUR>
+                <paidVAT>610.88</paidVAT>
+                <paidVATRUR>610.88</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-09-14</documentDate>
+                    <documentNum>108380</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-09-27</documentDate>
+                    <documentNum>125274</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1541.32</paid>
+                <paidRUR>1541.32</paidRUR>
+                <paidVAT>235.12</paidVAT>
+                <paidVATRUR>235.12</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-10-20</documentDate>
+                    <documentNum>164804</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>494.00</paid>
+                <paidRUR>494.00</paidRUR>
+                <paidVAT>75.36</paidVAT>
+                <paidVATRUR>75.36</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-10-20</documentDate>
+                    <documentNum>164805</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>41159.00</paid>
+                <paidRUR>41159.00</paidRUR>
+                <paidVAT>6278.49</paidVAT>
+                <paidVATRUR>6278.49</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-10-20</documentDate>
+                    <documentNum>164806</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>41353.78</paid>
+                <paidRUR>41353.78</paidRUR>
+                <paidVAT>6308.20</paidVAT>
+                <paidVATRUR>6308.20</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-16</documentDate>
+                    <documentNum>210329</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1969.33</paid>
+                <paidRUR>1969.33</paidRUR>
+                <paidVAT>300.41</paidVAT>
+                <paidVATRUR>300.41</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-23</documentDate>
+                    <documentNum>221975</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-27</documentDate>
+                    <documentNum>225099</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-28</documentDate>
+                    <documentNum>227770</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>38908.51</paid>
+                <paidRUR>38908.51</paidRUR>
+                <paidVAT>5935.20</paidVAT>
+                <paidVATRUR>5935.20</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-01</documentDate>
+                    <documentNum>237156</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>28000.00</paid>
+                <paidRUR>28000.00</paidRUR>
+                <paidVAT>4271.19</paidVAT>
+                <paidVATRUR>4271.19</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-04</documentDate>
+                    <documentNum>240225</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>29772.00</paid>
+                <paidRUR>29772.00</paidRUR>
+                <paidVAT>4541.49</paidVAT>
+                <paidVATRUR>4541.49</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-12</documentDate>
+                    <documentNum>255741</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-12</documentDate>
+                    <documentNum>255746</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1872.11</paid>
+                <paidRUR>1872.11</paidRUR>
+                <paidVAT>285.58</paidVAT>
+                <paidVATRUR>285.58</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-21</documentDate>
+                    <documentNum>275170</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>247.00</paid>
+                <paidRUR>247.00</paidRUR>
+                <paidVAT>37.68</paidVAT>
+                <paidVATRUR>37.68</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2018-01-15</documentDate>
+                    <documentNum>305414</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>51258.00</paid>
+                <paidRUR>51258.00</paidRUR>
+                <paidVAT>7819.02</paidVAT>
+                <paidVATRUR>7819.02</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2018-01-15</documentDate>
+                    <documentNum>605416</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>9278.95</paid>
+                <paidRUR>9278.95</paidRUR>
+                <paidVAT>1415.43</paidVAT>
+                <paidVATRUR>1415.43</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2018-01-17</documentDate>
+                    <documentNum>308994</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>28520.00</paid>
+                <paidRUR>28520.00</paidRUR>
+                <paidVAT>4350.51</paidVAT>
+                <paidVATRUR>4350.51</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <productsCountries>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>114518825</sid>
+                    <OKPD2>
+                        <code>35.13.10.000</code>
+                        <name>Услуги по распределению электроэнергии</name>
+                    </OKPD2>
+                    <productName>Поставка электрической энергии для обеспечения нужд муниципального бюджетного общеобразовательного учреждения лицей № 23 с этнокультурным (еврейским) компонентом в 2017 г.</productName>
+                </productsCountry>
+            </productsCountries>
+        </executions>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=77778642</url>
+            <docRegNumber>37901534762170000010003</docRegNumber>
+            <signature>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</signature>
+            <signature>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</signature>
+        </printForm>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>6359598FD8A30062E0530A86120DADD6</publishedContentId>
+                <fileName>свет плат.rar</fileName>
+                <docDescription>свет плат</docDescription>
+                <docRegNumber>37901534762170000010004</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=6359598FD8A30062E0530A86120DADD6</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <currentContractStage>EC</currentContractStage>
+        <okpd2okved2>true</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>

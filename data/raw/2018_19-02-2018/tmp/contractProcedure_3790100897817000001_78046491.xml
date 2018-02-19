@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>78046491</id>
+        <regNum>3790100897817000001</regNum>
+        <publishDate>2018-01-25T17:28:28.369+10:00</publishDate>
+        <versionNumber>0</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2017-12-31</endDate>
+            </stage>
+            <ordinalNumber>0</ordinalNumber>
+            <finalStageExecution>false</finalStageExecution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-12-31</documentDate>
+                    <documentNum>040906</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 11,60 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618206</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>40.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>11.597</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-11-30</documentDate>
+                    <documentNum>033115</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 12,07 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618206</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>40.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>12.07</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-10-31</documentDate>
+                    <documentNum>031985</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 4,09 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618206</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>40.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>4.088</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-09-30</documentDate>
+                    <documentNum>028562</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 1,14 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618206</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>40.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.14</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-04-01</documentDate>
+                    <documentNum>001860</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 11,09 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618206</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>40.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>11.087</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-03-31</documentDate>
+                    <documentNum>007946</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 11,13 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618132</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>54.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>11.134</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-02-28</documentDate>
+                    <documentNum>003593</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 10,98 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618132</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>54.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>10.975</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-01-31</documentDate>
+                    <documentNum>001860</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 11,13 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618132</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>54.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>11.134</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-08-31</documentDate>
+                    <documentNum>026421</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 0,99 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618132</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>54.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.988</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-07-31</documentDate>
+                    <documentNum>023893</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 1,18 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618132</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>54.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.178</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-06-30</documentDate>
+                    <documentNum>022709</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 0,91 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618132</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>54.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>0.912</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-05-31</documentDate>
+                    <documentNum>021120</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по поставке тепловой энергии (35.30.11.111): 11,13 ГИГАКАЛ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115618132</sid>
+                        <product>
+                            <name>Оказание услуг по поставке тепловой энергии</name>
+                            <OKPD2>
+                                <code>35.30.11.111</code>
+                                <name>Оказание услуг по поставке тепловой энергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>233</code>
+                                <nationalCode>ГИГАКАЛ</nationalCode>
+                                <fullName>Гигакалория</fullName>
+                            </OKEI>
+                            <quantity>54.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>11.134</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2018-01-24</documentDate>
+                    <documentNum>319713</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>17118.48</paid>
+                <paidRUR>17118.48</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2018-01-18</documentDate>
+                    <documentNum>310535</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>7778.00</paid>
+                <paidRUR>7778.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2018-01-18</documentDate>
+                    <documentNum>310534</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>7815.00</paid>
+                <paidRUR>7815.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2018-01-12</documentDate>
+                    <documentNum>303226</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1280.89</paid>
+                <paidRUR>1280.89</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2018-01-12</documentDate>
+                    <documentNum>303328</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>18235.66</paid>
+                <paidRUR>18235.66</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-10-09</documentDate>
+                    <documentNum>143648</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>7815.00</paid>
+                <paidRUR>7815.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-10-09</documentDate>
+                    <documentNum>143649</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1867.31</paid>
+                <paidRUR>1867.31</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-10-09</documentDate>
+                    <documentNum>143650</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>689.29</paid>
+                <paidRUR>689.29</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-09-11</documentDate>
+                    <documentNum>101842</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1484.67</paid>
+                <paidRUR>1484.67</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-09-11</documentDate>
+                    <documentNum>101843</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>800.00</paid>
+                <paidRUR>800.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-08-11</documentDate>
+                    <documentNum>69227</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1929.21</paid>
+                <paidRUR>1929.21</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-08-11</documentDate>
+                    <documentNum>69230</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>827.00</paid>
+                <paidRUR>827.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-07-13</documentDate>
+                    <documentNum>28897</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>1279.64</paid>
+                <paidRUR>1279.64</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-07-13</documentDate>
+                    <documentNum>28899</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>827.00</paid>
+                <paidRUR>827.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-06-15</documentDate>
+                    <documentNum>884921</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>768.00</paid>
+                <paidRUR>768.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-06-14</documentDate>
+                    <documentNum>882105</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>24172.30</paid>
+                <paidRUR>24172.30</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-05-18</documentDate>
+                    <documentNum>841634</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>7154.12</paid>
+                <paidRUR>7154.12</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-04-19</documentDate>
+                    <documentNum>800530</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>16790.30</paid>
+                <paidRUR>16790.30</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-04-19</documentDate>
+                    <documentNum>800529</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>8174.00</paid>
+                <paidRUR>8174.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-03-15</documentDate>
+                    <documentNum>746499</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>18907.01</paid>
+                <paidRUR>18907.01</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-03-15</documentDate>
+                    <documentNum>746500</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>8208.00</paid>
+                <paidRUR>8208.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-02-08</documentDate>
+                    <documentNum>693658</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>19157.01</paid>
+                <paidRUR>19157.01</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-02-08</documentDate>
+                    <documentNum>693661</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>8103.00</paid>
+                <paidRUR>8103.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>Платежное поручение</documentName>
+                    <documentDate>2017-01-23</documentDate>
+                    <documentNum>669006</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>8210.00</paid>
+                <paidRUR>8210.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+            </execution>
+        </executions>
+        <termination>
+            <paid>189390.89</paid>
+            <terminationDate>2018-01-25</terminationDate>
+            <reasonInfo>по соглашению сторон</reasonInfo>
+            <reason>
+                <code>1</code>
+                <name>Соглашение сторон</name>
+            </reason>
+            <docTermination>
+                <code>11</code>
+                <name>Дополнительное соглашение к контракту</name>
+                <documentDate>2018-01-25</documentDate>
+                <documentNum>б/н</documentNum>
+            </docTermination>
+        </termination>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=78046491</url>
+            <docRegNumber>37901008978170000010004</docRegNumber>
+            <signature>MIIOdgYJKoZIhvcNAQcCoIIOZzCCDmMCAQExDDAKBgYqhQMCAgkFADALBgkqhkiG9w0BBwGgggpsMIIKaDCCChegAwIBAgIUfcV+CK2h4rbXN92YhLx4ZeoJdScwCAYGKoUDAgIDMIIBOTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxGTAXBgNVBAgMENCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE4MDYGA1UEAwwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4wHhcNMTcxMTE0MDcyMjE2WhcNMTkwMjE0MDcyMjE2WjCCAa8xGjAYBggqhQMDgQMBARIMNzkwMTAxMzQ5MjgxMRYwFAYFKoUDZAMSCzA2OTM5NTQzNDE0MSAwHgYJKoZIhvcNAQkBFhFidWsxMDUyQHlhbmRleC5ydTELMAkGA1UEBhMCUlUxPzA9BgNVBAgMNtCV0LLRgNC10LnRgdC60LDRjyDQsNCy0YLQvtC90L7QvNC90LDRjyDQvtCx0LvQsNGB0YLRjDEoMCYGA1UEBwwf0JPQvtGA0L7QtCDQkdC40YDQvtCx0LjQtNC20LDQvTEdMBsGA1UECgwU0JzQmtCjINCm0JEg0KjQktCe0KMxLjAsBgNVBCoMJdCi0LDRgtGM0Y/QvdCwINCQ0L3QsNGC0L7Qu9GM0LXQstC90LAxGzAZBgNVBAQMEtCT0LDQu9GD0YjQutC+0LLQsDEwMC4GCSqGSIb3DQEJAhMhMS4yLjY0My4zLjYxLjEuMS42LjUwMjcxMC4zLjQuMi4xMUEwPwYDVQQDDDjQk9Cw0LvRg9GI0LrQvtCy0LAg0KLQsNGC0YzRj9C90LAg0JDQvdCw0YLQvtC70YzQtdCy0L3QsDBjMBwGBiqFAwICEzASBgcqhQMCAiQABgcqhQMCAh4BA0MABECmWfezB8sCkqb+24s7mGUloTb/zC6nVdmvBHF+y+BLUBmilzcwUupN43lhqVJ0JODDvPsDI7p3cPWxDsTGgwgCo4IGeTCCBnUwDAYDVR0TAQH/BAIwADAdBgNVHSAEFjAUMAgGBiqFA2RxATAIBgYqhQNkcQIwXQYDVR0RBFYwVKATBgNVBAygDBMKMTEwMzE1MTEwOKAbBgoqhQMDPZ7XNgEFoA0TCzAzNzgzMDAwMDA3oB0GCiqFAwM9ntc2AQigDxMNMDM3ODMwMDAwMDAwNYYBMDA2BgUqhQNkbwQtDCsi0JrRgNC40L/RgtC+0J/RgNC+IENTUCIgKNCy0LXRgNGB0LjRjyAzLjYpMIIBMQYFKoUDZHAEggEmMIIBIgxEItCa0YDQuNC/0YLQvtCf0YDQviBDU1AiICjQstC10YDRgdC40Y8gMy42KSAo0LjRgdC/0L7Qu9C90LXQvdC40LUgMikMaCLQn9GA0L7Qs9GA0LDQvNC80L3Qvi3QsNC/0L/QsNGA0LDRgtC90YvQuSDQutC+0LzQv9C70LXQutGBICLQrtC90LjRgdC10YDRgi3Qk9Ce0KHQoiIuINCS0LXRgNGB0LjRjyAyLjEiDB/ihJYgMTQ5LzcvNi0yOTMg0L7RgiAyNi4wNi4yMDE3DE/QodC10YDRgtC40YTQuNC60LDRgiDRgdC+0L7RgtCy0LXRgtGB0YLQstC40Y8g4oSWINCh0KQvMTI4LTI4Nzgg0L7RgiAyMC4wNi4yMDE2MA4GA1UdDwEB/wQEAwID+DCCAjMGA1UdJQSCAiowggImBggrBgEFBQcDAQYIKwYBBQUHAwIGDyqFAwM9AQEGntc2AwQBAQYPKoUDAz0BAQae1zYDBAECBg8qhQMDPQEBBp7XNgMEAQMGDyqFAwM9AQEGntc2AwQBBAYPKoUDAz0BAQae1zYDBAEFBg8qhQMDPQEBBp7XNgMEAQYGDyqFAwM9AQEGntc2AwQBBwYPKoUDAz0BAQae1zYDBAEIBg8qhQMDPQEBBp7XNgMEAQkGDyqFAwM9AQEGntc2AwQBCgYPKoUDAz0BAQae1zYDBAELBg8qhQMDPQEBBp7XNgMEAQwGDyqFAwM9AQEGntc2AwQBDgYOKoUDAz2e1zYBBgMEAQEGDiqFAwM9ntc2AQYDBAECBg4qhQMDPZ7XNgEGAwQBAwYOKoUDAz2e1zYBBgMEAQQGDSqFAwM9ntc2AQYDBQEGDSqFAwM9ntc2AQYDBQIGByqFAwOBewEGCCqFAwOBewECBggqhQMDgXsBAwYIKoUDA4F7AQQGCCqFAwOBewEFBggqhQMDgXsBBgYIKoUDA4F7AQcGCCqFAwOBewEIBggqhQMDgXsBCQYIKoUDA4F7AQoGCCqFAwOBewELBggqhQMDgXsBDAYIKoUDA4F7AQ4GCSqFAwOBewUCAQYJKoUDA4F7BQICBgkqhQMDgXsFAgMGCSqFAwOBewUCBAYJKoUDA4F7BQIFBgkqhQMDgXsFAgYGCCqFAwOBewgBBggqhQMDgXsIAjArBgNVHRAEJDAigA8yMDE3MTExNDA3MjIxNVqBDzIwMTkwMjE0MDcyMjE1WjCCAYUGA1UdIwSCAXwwggF4gBQWVZGmUVjEiSxrUVvShRkKAURIIqGCAVKkggFOMIIBSjEeMBwGCSqGSIb3DQEJARYPZGl0QG1pbnN2eWF6LnJ1MQswCQYDVQQGEwJSVTEcMBoGA1UECAwTNzcg0LMuINCc0L7RgdC60LLQsDEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMT8wPQYDVQQJDDYxMjUzNzUg0LMuINCc0L7RgdC60LLQsCwg0YPQuy4g0KLQstC10YDRgdC60LDRjywg0LQuIDcxLDAqBgNVBAoMI9Cc0LjQvdC60L7QvNGB0LLRj9C30Ywg0KDQvtGB0YHQuNC4MRgwFgYFKoUDZAESDTEwNDc3MDIwMjY3MDExGjAYBggqhQMDgQMBARIMMDA3NzEwNDc0Mzc1MUEwPwYDVQQDDDjQk9C+0LvQvtCy0L3QvtC5INGD0LTQvtGB0YLQvtCy0LXRgNGP0Y7RidC40Lkg0YbQtdC90YLRgIIKNqzUVQAAAAABLzBeBgNVHR8EVzBVMCmgJ6AlhiNodHRwOi8vY3JsLnJvc2them5hLnJ1L2NybC91Y2ZrLmNybDAooCagJIYiaHR0cDovL2NybC5mc2ZrLmxvY2FsL2NybC91Y2ZrLmNybDAdBgNVHQ4EFgQUHp1/NJidWl+RTCpXbtldvbHkNwAwCAYGKoUDAgIDA0EA9X4rLxNPAjr8o/rnXUkkPxuPU2iZxRGCT9iXppklOploAYwgJlJtbtiC27P+xzgDalvLQrhr5uFJXH166NNL9DGCA9EwggPNAgEBMIIBUzCCATkxIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRkwFwYDVQQIDBDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xODA2BgNVBAMML9Ck0LXQtNC10YDQsNC70YzQvdC+0LUg0LrQsNC30L3QsNGH0LXQudGB0YLQstC+AhR9xX4IraHittc33ZiEvHhl6gl1JzAKBgYqhQMCAgkFAKCCAhUwGAYJKoZIhvcNAQkDMQsGCSqGSIb3DQEHATAcBgkqhkiG9w0BCQUxDxcNMTgwMTI1MDcyODI2WjAvBgkqhkiG9w0BCQQxIgQgu+NMfS88TQMEIHDikop5q0dp0c4Y8gS6g0xvj/D5fDEwggGoBgsqhkiG9w0BCRACLzGCAZcwggGTMIIBjzCCAYswCAYGKoUDAgIJBCA3gp2QkX+y06ghAoM4wS8hRlyWJxYMRHrzqSy8n5dzSjCCAVswggFBpIIBPTCCATkxIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRkwFwYDVQQIDBDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xODA2BgNVBAMML9Ck0LXQtNC10YDQsNC70YzQvdC+0LUg0LrQsNC30L3QsNGH0LXQudGB0YLQstC+AhR9xX4IraHittc33ZiEvHhl6gl1JzAKBgYqhQMCAhMFAARAHpme/fQYVetF++7TdlJVuhwN42WxDiGzhxhb5EZrg5dZBVvnk+wavmdqb8SeDthuden6Hi5iMyNnL+tN5RpA6A==</signature>
+            <signature>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</signature>
+        </printForm>
+        <terminationDocuments>
+            <attachment>
+                <publishedContentId>639031B963B700BCE0530A86120DB58A</publishedContentId>
+                <fileName>ТЕПЛОЭНЕРГИЯ (для Дениса) СОГЛАШЕНИЕ.pdf</fileName>
+                <docDescription>ТЕПЛОЭНЕРГИЯ (для Дениса) СОГЛАШЕНИЕ</docDescription>
+                <docRegNumber>37901008978170000010005</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=639031B963B700BCE0530A86120DB58A</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </terminationDocuments>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>6394CA0AF7AF0166E0530A86120D6506</publishedContentId>
+                <fileName>ТЕПЛОЭНЕРГИЯ )для Дениса) платежные.pdf</fileName>
+                <docDescription>ТЕПЛОЭНЕРГИЯ )для Дениса) платежные</docDescription>
+                <docRegNumber>37901008978170000010007</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=6394CA0AF7AF0166E0530A86120D6506</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <receiptDocuments>
+            <attachment>
+                <publishedContentId>63938F2F777B0146E0530A86120D9DC6</publishedContentId>
+                <fileName>тепло (для Дениса).pdf</fileName>
+                <docDescription>тепло (для Дениса)</docDescription>
+                <docRegNumber>37901008978170000010006</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=63938F2F777B0146E0530A86120D9DC6</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </receiptDocuments>
+        <currentContractStage>ET</currentContractStage>
+        <okpd2okved2>false</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>

@@ -1,0 +1,1135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>78036730</id>
+        <regNum>2790450539016000005</regNum>
+        <publishDate>2018-01-25T12:08:53.458+10:00</publishDate>
+        <versionNumber>0</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2017-12-31</endDate>
+            </stage>
+            <ordinalNumber>1</ordinalNumber>
+            <finalStageExecution>true</finalStageExecution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-12-31</documentDate>
+                    <documentNum>48727/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 107 791,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>107791.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-11-30</documentDate>
+                    <documentNum>45097/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 86 503,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>86503.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-10-31</documentDate>
+                    <documentNum>41366/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 64 408,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>64408.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-09-30</documentDate>
+                    <documentNum>37029/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 40 783,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>40783.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-08-31</documentDate>
+                    <documentNum>33976/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 38 709,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>38709.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-07-31</documentDate>
+                    <documentNum>29754/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 21 105,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>21105.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-06-30</documentDate>
+                    <documentNum>25984/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 25 790,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>25790.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-05-31</documentDate>
+                    <documentNum>21722/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 57 004,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>57004.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-04-30</documentDate>
+                    <documentNum>16616/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 50 559,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>50559.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-03-31</documentDate>
+                    <documentNum>12154/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 48 084,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>48084.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-02-28</documentDate>
+                    <documentNum>8325/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 55 868,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>55868.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>06</code>
+                    <name>Акт о приемке товаров</name>
+                    <documentDate>2017-01-31</documentDate>
+                    <documentNum>3624/4</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>0.00</paid>
+                <paidRUR>0.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 60 754,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>60754.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2018-01-23</documentDate>
+                    <documentNum>317851</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>209706.76</paid>
+                <paidRUR>209706.76</paidRUR>
+                <paidVAT>31989.17</paidVAT>
+                <paidVATRUR>31989.17</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 50 978,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>50978.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-19</documentDate>
+                    <documentNum>269493</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>233797.00</paid>
+                <paidRUR>233797.00</paidRUR>
+                <paidVAT>35663.95</paidVAT>
+                <paidVATRUR>35663.95</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 56 813,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>56813.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-19</documentDate>
+                    <documentNum>269492</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>13805.50</paid>
+                <paidRUR>13805.50</paidRUR>
+                <paidVAT>2105.92</paidVAT>
+                <paidVATRUR>2105.92</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 8 628,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>8628.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-12</documentDate>
+                    <documentNum>255511</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>25000.00</paid>
+                <paidRUR>25000.00</paidRUR>
+                <paidVAT>3813.56</paidVAT>
+                <paidVATRUR>3813.56</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 15 575,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>15575.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-12-06</documentDate>
+                    <documentNum>244539</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>100000.00</paid>
+                <paidRUR>100000.00</paidRUR>
+                <paidVAT>15254.24</paidVAT>
+                <paidVATRUR>15254.24</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 62 300,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>62300.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-21</documentDate>
+                    <documentNum>218482</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>24000.00</paid>
+                <paidRUR>24000.00</paidRUR>
+                <paidVAT>3661.02</paidVAT>
+                <paidVATRUR>3661.02</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 12 431,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>12431.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-11-14</documentDate>
+                    <documentNum>204640</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>100000.00</paid>
+                <paidRUR>100000.00</paidRUR>
+                <paidVAT>15254.24</paidVAT>
+                <paidVATRUR>15254.24</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 51 977,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>51977.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-10-16</documentDate>
+                    <documentNum>156670</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>140000.00</paid>
+                <paidRUR>140000.00</paidRUR>
+                <paidVAT>21355.93</paidVAT>
+                <paidVATRUR>21355.93</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 40 783,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>40783.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-09-11</documentDate>
+                    <documentNum>102601</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>350000.00</paid>
+                <paidRUR>350000.00</paidRUR>
+                <paidVAT>53389.83</paidVAT>
+                <paidVATRUR>53389.83</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 38 709,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>38709.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-07-13</documentDate>
+                    <documentNum>30766</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>121378.00</paid>
+                <paidRUR>121378.00</paidRUR>
+                <paidVAT>18515.29</paidVAT>
+                <paidVATRUR>18515.29</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 21 105,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>21105.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-06-16</documentDate>
+                    <documentNum>888218</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>40539.00</paid>
+                <paidRUR>40539.00</paidRUR>
+                <paidVAT>6183.92</paidVAT>
+                <paidVATRUR>6183.92</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 860,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>860.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-06-16</documentDate>
+                    <documentNum>888217</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>80839.00</paid>
+                <paidRUR>80839.00</paidRUR>
+                <paidVAT>12331.37</paidVAT>
+                <paidVATRUR>12331.37</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 24 930,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>24930.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-05-17</documentDate>
+                    <documentNum>840350</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>100000.00</paid>
+                <paidRUR>100000.00</paidRUR>
+                <paidVAT>15254.24</paidVAT>
+                <paidVATRUR>15254.24</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 57 004,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>57004.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-04-11</documentDate>
+                    <documentNum>786078</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>190000.00</paid>
+                <paidRUR>190000.00</paidRUR>
+                <paidVAT>28983.05</paidVAT>
+                <paidVATRUR>28983.05</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 50 559,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>50559.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-15</documentDate>
+                    <documentNum>747023</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>216024.00</paid>
+                <paidRUR>216024.00</paidRUR>
+                <paidVAT>32952.81</paidVAT>
+                <paidVATRUR>32952.81</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 48 084,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>48084.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-03-14</documentDate>
+                    <documentNum>743978</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>216024.00</paid>
+                <paidRUR>216024.00</paidRUR>
+                <paidVAT>32952.81</paidVAT>
+                <paidVATRUR>32952.81</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 55 868,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>55868.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <payDoc>
+                    <documentName>платежное поручение</documentName>
+                    <documentDate>2017-02-16</documentDate>
+                    <documentNum>707376</documentNum>
+                </payDoc>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>308605.74</paid>
+                <paidRUR>308605.74</paidRUR>
+                <paidVAT>47075.45</paidVAT>
+                <paidVATRUR>47075.45</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>услуги по передаче электроэнергии (35.12.10.110): 60 754,00 КВТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>113663578</sid>
+                        <product>
+                            <name>услуги по передаче электроэнергии</name>
+                            <OKPD2>
+                                <code>35.12.10.110</code>
+                                <name>услуги по передаче электроэнергии</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>214</code>
+                                <nationalCode>КВТ</nationalCode>
+                                <fullName>Киловатт</fullName>
+                            </OKEI>
+                            <quantity>1982376.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>60754.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+        </executions>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=78036730</url>
+            <docRegNumber>27904505390160000050003</docRegNumber>
+            <signature>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</signature>
+            <signature>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</signature>
+        </printForm>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>638792F7E2CD00D8E0530A86120D5712</publishedContentId>
+                <fileName>Плат.поручения по эл.энергии.zip</fileName>
+                <docDescription>Плат.поручения по эл.энергии</docDescription>
+                <docRegNumber>27904505390160000050005</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=638792F7E2CD00D8E0530A86120D5712</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <receiptDocuments>
+            <attachment>
+                <publishedContentId>638F0ED17E3D0054E0530A86120D0AD3</publishedContentId>
+                <fileName>Акты по эл.энергии.zip</fileName>
+                <docDescription>Акты по эл.энергии</docDescription>
+                <docRegNumber>27904505390160000050004</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=638F0ED17E3D0054E0530A86120D0AD3</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>MIIMzQYJKoZIhvcNAQcCoIIMvjCCDLoCAQQxDDAKBgYqhQMCAgkFADALBgkqhkiG9w0BBwGgggibMIIIlzCCCEagAwIBAgIDIrseMAgGBiqFAwICAzCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwMB4XDTE3MDUyNTEzMDkxMFoXDTE4MDYyODEzMDkzM1owggHwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMR0wGwYJKoZIhvcNAQkBFg43NzdAZnNmay5sb2NhbDELMAkGA1UEBhMCUlUxGTAXBgNVBAgMENCzLiDQnNC+0YHQutCy0LAxFTATBgNVBAcMDNCc0L7RgdC60LLQsDE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xczBxBgNVBAsMatCe0YLQtNC10Lsg0Y3QutGB0L/Qu9GD0LDRgtCw0YbQuNC4INC/0YDQuNC60LvQsNC00L3QvtCz0L4g0L/RgNC+0LPRgNCw0LzQvNC90L7Qs9C+INC+0LHQtdGB0L/QtdGH0LXQvdC40Y8xRzBFBgNVBAsMPtCj0L/RgNCw0LLQu9C10L3QuNC1INC40L3RhNC+0YDQvNCw0YbQuNC+0L3QvdGL0YUg0YHQuNGB0YLQtdC8MSgwJgYDVQQMDB/QndCw0YfQsNC70YzQvdC40Log0L7RgtC00LXQu9CwMTgwNgYDVQQDDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjBjMBwGBiqFAwICEzASBgcqhQMCAiQABgcqhQMCAh4BA0MABEAqiyit/O6B6DzobtOcGh+ixhTb20a9+I0wGOgukE9Ew5afKwXor4f6Tchj21S4/33uEtBi63OD2r8Wkyn990dyo4IEVDCCBFAwDAYDVR0TAQH/BAIwADAdBgNVHSAEFjAUMAgGBiqFA2RxATAIBgYqhQNkcQIwIAYDVR0RBBkwF6ASBgNVBAygCxMJNTI1MTU1OTIxhgEwMDYGBSqFA2RvBC0MKyLQmtGA0LjQv9GC0L7Qn9GA0L4gQ1NQIiAo0LLQtdGA0YHQuNGPIDMuNikwggFhBgUqhQNkcASCAVYwggFSDEQi0JrRgNC40L/RgtC+0J/RgNC+IENTUCIgKNCy0LXRgNGB0LjRjyAzLjYpICjQuNGB0L/QvtC70L3QtdC90LjQtSAyKQxoItCf0YDQvtCz0YDQsNC80LzQvdC+LdCw0L/Qv9Cw0YDQsNGC0L3Ri9C5INC60L7QvNC/0LvQtdC60YEgItCu0L3QuNGB0LXRgNGCLdCT0J7QodCiIi4g0JLQtdGA0YHQuNGPIDIuMSIMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjQtMjczOCDQvtGCIDAxLjA3LjIwMTUMT9Ch0LXRgNGC0LjRhNC40LrQsNGCINGB0L7QvtGC0LLQtdGC0YHRgtCy0LjRjyDihJYg0KHQpC8xMjgtMjg3OCDQvtGCIDIwLjA2LjIwMTYwDgYDVR0PAQH/BAQDAgPoMBMGA1UdJQQMMAoGCCsGAQUFBwMCMCsGA1UdEAQkMCKADzIwMTcwNTI1MTMwODU5WoEPMjAxODA2MjgxMzA5MzNaMIIBjwYDVR0jBIIBhjCCAYKAFJ5xDg/atAEoXz/iy49lFZcCR4yroYIBZaSCAWEwggFdMRgwFgYJKoZIhvcNAQkCEwlTZXJ2ZXIgQ0ExIDAeBgkqhkiG9w0BCQEWEXVjX2ZrQHJvc2them5hLnJ1MRwwGgYDVQQIDBM3NyDQsy4g0JzQvtGB0LrQstCwMRowGAYIKoUDA4EDAQESDDAwNzcxMDU2ODc2MDEYMBYGBSqFA2QBEg0xMDQ3Nzk3MDE5ODMwMSwwKgYDVQQJDCPRg9C70LjRhtCwINCY0LvRjNC40L3QutCwLCDQtNC+0LwgNzEVMBMGA1UEBwwM0JzQvtGB0LrQstCwMQswCQYDVQQGEwJSVTE4MDYGA1UECgwv0KTQtdC00LXRgNCw0LvRjNC90L7QtSDQutCw0LfQvdCw0YfQtdC50YHRgtCy0L4xPzA9BgNVBAMMNtCj0KYg0KTQtdC00LXRgNCw0LvRjNC90L7Qs9C+INC60LDQt9C90LDRh9C10LnRgdGC0LLQsIIBATBeBgNVHR8EVzBVMCmgJ6AlhiNodHRwOi8vY3JsLnJvc2them5hLnJ1L2NybC9mazAxLmNybDAooCagJIYiaHR0cDovL2NybC5mc2ZrLmxvY2FsL2NybC9mazAxLmNybDAdBgNVHQ4EFgQUCrIvCK7qVs+lXSDBuk4naiCPRscwCAYGKoUDAgIDA0EAy4qWDXT7zB5HM8Wqw0j8YqrSUVMT0Tj3HiNuRlTCo/FIhKrYQCHscNeHM3E1/3mjlYclDJX/6ZG+Zb+HuTwgVjGCA/kwggP1AgEBMIIBZjCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgIJBQCgggIqMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZIhvcNAQkFMQ8XDTE4MDEyNTAyMDcyOVowLwYJKoZIhvcNAQkEMSIEIE50VtZPLZ3c3+O0A2tTiUcXoxiKFWvGAwHZWKXnagjUMIIBvQYLKoZIhvcNAQkQAi8xggGsMIIBqDCCAaQwggGgMAoGBiqFAwICCQUABCA5798jccxDa8G/m3W3zSNrc7/Sfx3Onk1F0AMZjG0BfDCCAW4wggFlpIIBYTCCAV0xGDAWBgkqhkiG9w0BCQITCVNlcnZlciBDQTEgMB4GCSqGSIb3DQEJARYRdWNfZmtAcm9za2F6bmEucnUxHDAaBgNVBAgMEzc3INCzLiDQnNC+0YHQutCy0LAxGjAYBggqhQMDgQMBARIMMDA3NzEwNTY4NzYwMRgwFgYFKoUDZAESDTEwNDc3OTcwMTk4MzAxLDAqBgNVBAkMI9GD0LvQuNGG0LAg0JjQu9GM0LjQvdC60LAsINC00L7QvCA3MRUwEwYDVQQHDAzQnNC+0YHQutCy0LAxCzAJBgNVBAYTAlJVMTgwNgYDVQQKDC/QpNC10LTQtdGA0LDQu9GM0L3QvtC1INC60LDQt9C90LDRh9C10LnRgdGC0LLQvjE/MD0GA1UEAww20KPQpiDQpNC10LTQtdGA0LDQu9GM0L3QvtCz0L4g0LrQsNC30L3QsNGH0LXQudGB0YLQstCwAgMiux4wCgYGKoUDAgITBQAEQOAS4fEZPawLErgc1Dn9Wazs0k7/uaKa4YL73n5SwX/3RFMGU5R45lQMptvKKO0hCts3YlP5uGeqpPS9Fs4tOSM=</signature>
+                </cryptoSigns>
+            </attachment>
+        </receiptDocuments>
+        <currentContractStage>E</currentContractStage>
+        <okpd2okved2>false</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>

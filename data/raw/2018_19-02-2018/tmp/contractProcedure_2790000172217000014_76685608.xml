@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:contractProcedure schemeVersion="7.5">
+        <id>76685608</id>
+        <regNum>2790000172217000014</regNum>
+        <publishDate>2018-01-28T12:41:59.644+10:00</publishDate>
+        <versionNumber>0</versionNumber>
+        <executions>
+            <stage>
+                <endDate>2017-12-31</endDate>
+            </stage>
+            <ordinalNumber>1</ordinalNumber>
+            <finalStageExecution>true</finalStageExecution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-12-14</documentDate>
+                    <documentNum>О17-0896</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-10-17</documentDate>
+                    <documentNum>О17-0764</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-11-14</documentDate>
+                    <documentNum>О17-0822</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-09-18</documentDate>
+                    <documentNum>О17-0685</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-08-15</documentDate>
+                    <documentNum>О17-0611</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-07-14</documentDate>
+                    <documentNum>О17-0511</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-06-14</documentDate>
+                    <documentNum>О17-0455</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-05-16</documentDate>
+                    <documentNum>О17-0359</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-04-14</documentDate>
+                    <documentNum>О17-0281</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-03-17</documentDate>
+                    <documentNum>О17-0196</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-12-10</documentDate>
+                    <documentNum>О17-0092</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-01-25</documentDate>
+                    <documentNum>О17-0043</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>17112.00</paid>
+                <paidRUR>17112.00</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Информационно-технологическое сопровождение программы «1С:Предприятие» (62.03.12.130): 1,00 ГОД;^ЛЕТ;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283918</sid>
+                        <product>
+                            <name>Информационно-технологическое сопровождение программы «1С:Предприятие»</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Информационно-технологическое сопровождение программы «1С:Предприятие»</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>366</code>
+                                <nationalCode>ГОД;^ЛЕТ</nationalCode>
+                                <fullName>Год</fullName>
+                            </OKEI>
+                            <quantity>1.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <execution>
+                <docExecution>
+                    <code>12</code>
+                    <name>Акт о приемке выполненных работ</name>
+                    <documentDate>2017-01-16</documentDate>
+                    <documentNum>О17-0023</documentNum>
+                </docExecution>
+                <currency>
+                    <code>RUB</code>
+                    <name>Российский рубль</name>
+                </currency>
+                <paid>6733.33</paid>
+                <paidRUR>6733.33</paidRUR>
+                <paidVAT>0.00</paidVAT>
+                <paidVATRUR>0.00</paidVATRUR>
+                <improperExecutionText>Отсутствует</improperExecutionText>
+                <product>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год (62.03.12.130): 1,00 МЕС;</product>
+                <quantityContractSubjects>
+                    <quantityContractSubject>
+                        <sid>115283919</sid>
+                        <product>
+                            <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            <OKPD2>
+                                <code>62.03.12.130</code>
+                                <name>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</name>
+                            </OKPD2>
+                            <OKEI>
+                                <code>362</code>
+                                <nationalCode>МЕС</nationalCode>
+                                <fullName>Месяц</fullName>
+                            </OKEI>
+                            <quantity>12.0</quantity>
+                            <previouslySuppliedQuantity>0.0</previouslySuppliedQuantity>
+                        </product>
+                        <quantity>1.0</quantity>
+                    </quantityContractSubject>
+                </quantityContractSubjects>
+            </execution>
+            <productsCountries>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>115283918</sid>
+                    <OKPD2>
+                        <code>62.03.12.130</code>
+                        <name>Услуги по сопровождению компьютерных систем</name>
+                    </OKPD2>
+                    <productName>Информационно-технологическое сопровождение программы «1С:Предприятие»</productName>
+                </productsCountry>
+                <productsCountry>
+                    <country>
+                        <countryCode>643</countryCode>
+                        <countryFullName>Российская Федерация</countryFullName>
+                    </country>
+                    <sid>115283919</sid>
+                    <OKPD2>
+                        <code>62.03.12.130</code>
+                        <name>Услуги по сопровождению компьютерных систем</name>
+                    </OKPD2>
+                    <productName>Оказание услуг по информационному обслуживанию программ: "1С:Предприятие 8" и "Клерк:Расчет заработной платы" на 2017 год</productName>
+                </productsCountry>
+            </productsCountries>
+        </executions>
+        <printForm>
+            <url>http://zakupki.gov.ru/epz/contract/printForm/viewXml.html?contractProcedureId=76685608</url>
+            <docRegNumber>27900001722170000140003</docRegNumber>
+            <signature>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</signature>
+            <signature>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</signature>
+        </printForm>
+        <paymentDocuments>
+            <attachment>
+                <publishedContentId>63C584199ABB00E2E0530A86120D7CAD</publishedContentId>
+                <fileName>ПП.rar</fileName>
+                <docDescription>ПП</docDescription>
+                <docRegNumber>27900001722170000140004</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=63C584199ABB00E2E0530A86120D7CAD</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </paymentDocuments>
+        <receiptDocuments>
+            <attachment>
+                <publishedContentId>63CD258D86F40038E0530A86120D933C</publishedContentId>
+                <fileName>Акты.rar</fileName>
+                <docDescription>Акты</docDescription>
+                <docRegNumber>27900001722170000140005</docRegNumber>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/rgk2/file.html?uid=63CD258D86F40038E0530A86120D933C</url>
+                <cryptoSigns>
+                    <signature>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</signature>
+                    <signature>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</signature>
+                </cryptoSigns>
+            </attachment>
+        </receiptDocuments>
+        <currentContractStage>EC</currentContractStage>
+        <okpd2okved2>true</okpd2okved2>
+    </ns2:contractProcedure>
+</ns2:export>
