@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#\n# Парсинг содержимого необъятного ftp сервера, который находится по адресу\n#  http://ftp.zakupki.gov.ru/\n#  логин: free; пароль: free\n#\n\nlibrary('RCurl')\n\n# ## имя браузера для маскировки запроса по getURL()\n# userAgent <- 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'\n# \n# ## имя файла для экспорта\n# exportCsvFileName <- paste0('zakupki_gov_ru_', Sys.time(), '.csv')\n\nurl <- 'ftp://ftp.zakupki.gov.ru/'\nuserpwd <- 'free:free'\n\n# список директорий с регионами\nregion.folders.names <- unlist(strsplit(getURL(paste0(url, 'fcs_regions/'), \n                                               ftp.use.epsv = FALSE, \n                                               dirlistonly = TRUE, \n                                               userpwd = userpwd),\n                                        '\\r\\n'))\nregion.folders.names <- region.folders.names[grep('_Resp$|_kraj$|_.?obl$', \n                                                  region.folders.names)]\nlength(region.folders.names)\n\n# список файлов в папке\n#  регион: Московская область\nregion.folder.url <- paste0('ftp://ftp.zakupki.gov.ru/fcs_regions/',\n                            region.folders.names, '/contracts/')\n\ndf.summary.contracts <- data.frame(region = region.folders.names,\n                                   number_of_contracts_2017 = 0)\n\nfor (iRegion in 1:length(region.folder.url)){\n    zips <- unlist(strsplit(getURL(region.folder.url,  ftp.use.epsv = FALSE, \n                                   dirlistonly = TRUE, userpwd = userpwd),\n                            '\\r\\n'))\n    for (iContract in 1:length(zips)) {\n        # считаем количество контрактов, заключённых в 2017 году\n        \n    }\n}\n\n\n\n\n",
+    "created" : 1504860408155.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1113602909",
+    "id" : "327C77FB",
+    "lastKnownWriteTime" : 1504864604,
+    "last_content_update" : 1504864604920,
+    "path" : "~/GitHub/zakupki_gov_ru/parser_ftp.R",
+    "project_path" : "parser_ftp.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

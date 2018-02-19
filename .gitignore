@@ -1,40 +1,86 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-# Folder config file
-Desktop.ini
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-# Windows shortcuts
-*.lnk
-# =========================
-# Operating System Files
-# =========================
-# OSX
-# =========================
-.DS_Store
-.AppleDouble
-.LSOverride
-# Thumbnails
-._*
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-.Rproj.user
+#--------------------------------------------------------------------------
+# AUTHOR:    github.com/aksyuk
+# REPO:      project_scheme
+# FILE:      .gitignore
+# DATE:      09 Jan 2018
+#--------------------------------------------------------------------------
+# en: files to ignore are listed here
+# ru: здесь перечислены файлы, которые нужно игнорировать при синхронизации
+#--------------------------------------------------------------------------
+**/Lections/**/.md
+
+#==========================================================================
+# en: compiled source
+# ru: скомпилированные исходники
+#..........................................................................
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+
+#==========================================================================
+# en: packages
+# ru: архивы
+#..........................................................................
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+
+#==========================================================================
+# en: logs and databases
+# ru: логи и базы данных
+#..........................................................................
+*.log
+*.sql
+*.sqlite
 *.Rhistory
-.Rhistory
+
+
+#==========================================================================
+# en: OS generated files
+# ru: файлы, сгенерированные ОС
+#..........................................................................
+*.DS_Store
+*.DS_Store?
+*._*
+*.Spotlight-V100
+*.Trashes
+ehthumbs.db
+Thumbs.db
+
+
+#==========================================================================
+# en: generated reports
+# ru: сгенерированные отчёты
+#..........................................................................
+*.html
+*.htm
+*.pdf
+*.doc
+*.docx
+
+
+#==========================================================================
+# en: raw data directory
+# ru: директория с первоначальными исходными данными
+#..........................................................................
+*/data/raw/**
+
+
+#==========================================================================
+# en: plots, pictures and cache  
+# ru: графики, картинки, кэш   
+#..........................................................................
+*/plots/**
+*/pics/**
+**/*-figure/**
+**/*-cache/**

@@ -1,0 +1,7 @@
+{
+    "installOptions" : {
+        "installDependencies" : true,
+        "installFromRepository" : true,
+        "libraryPath" : "C:/Users/aksyuk-sa/Documents/R/R-3.4.1/library"
+    }
+}
