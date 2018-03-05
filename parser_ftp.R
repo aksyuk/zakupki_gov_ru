@@ -193,3 +193,10 @@ for (f in flnms) {
 df.all
 unique(df.all$customer.name)
 unique(df.all$OKPD2.name)
+
+# организации без казённых, муниципальных и государственных
+org <- unique(df.all$customer.name)
+org[!grepl('КАЗЕНН|ГОСУДАРСТВЕН|МИНИСТЕРСТВО|АДМИНИСТРАЦ|МУНИЦИПАЛ|БЮДЖЕТН|УПРАВЛЕНИЕ|ИНСПЕКЦИЯ', 
+           org)]
+
+
