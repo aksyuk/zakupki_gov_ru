@@ -16,8 +16,10 @@ library('dplyr')
 url <- 'ftp://ftp.zakupki.gov.ru/'
 userpwd <- 'free:free'
 
-# год, за который грузим документацию
-YEAR <- 2018
+# периоды, за которые грузим документацию: архивы лежат по месяцам, 
+#  начало периода -- первое число месяца. Указываем начала интересующих нас 
+#  периодов
+YEAR <- c('201710', '201711', '201712', '201801')
 
 # список директорий с регионами
 region.folders.names <- unlist(strsplit(getURL(paste0(url, 'fcs_regions/'), 
@@ -34,9 +36,6 @@ length(region.folders.names)
 region.folder.url <- paste0('ftp://ftp.zakupki.gov.ru/fcs_regions/',
                             region.folders.names, '/')
 
-df.summary.contracts <- data.frame(region = region.folders.names,
-                                   number_of_contracts_2017 = 0)
-
 if (!file.exists('./data/raw')) {
     dir.create('./data/raw')
 }
@@ -45,31 +44,35 @@ if (!file.exists('./data/raw')) {
 sSubfolders <- c('notifications/', 'protocols/', 'contracts/')
 
 # папка для загрузки в /data/raw
-# path <- paste0('./data/raw/', YEAR, '_',
-#                 format(Sys.time(), '%d-%m-%Y'), '/')
-path <- paste0('./data/raw/', YEAR, '_26-03-2018', '/')
+path <- paste0('./data/raw/', YEAR[1], '-', YEAR[length(YEAR)], '_',
+             format(Sys.time(), '%d-%m-%Y'), '/')
+# path <- paste0('./data/raw/', YEAR, '_26-03-2018', '/')
 if (!dir.exists(path)) {
     dir.create(path)
 }
 
 # выгрузка xml в архивах в папку './data/raw/' в рабочей директории
-for (sRegion in region.folder.url[1]) {
-    
-    for (sSubf in sSubfolders) {
-        zips <- unlist(strsplit(getURL(paste0(sRegion, sSubf),  
-                                       ftp.use.epsv = FALSE, 
-                                       dirlistonly = TRUE, userpwd = userpwd),
-                                '\r\n'))
-        # берём заявки, открытые в YEAR году
-        zips <- grep(zips, pattern = paste0('_', YEAR, '.*_.*_.*'), value = T)
-        
-        for (sZip in zips) {
-            download.file(paste0('ftp://', userpwd, '@',
-                                 gsub('^.*://', '', sRegion), sSubf, sZip),
-                          destfile = paste0(path, sZip))        
-        }
-    }
-}
+my.region <- grep(region.folder.url, pattern = 'Tatar', value = T)
+# for (sRegion in my.region) {
+#     
+#     for (sSubf in sSubfolders) {
+#         zips <- unlist(strsplit(getURL(paste0(sRegion, sSubf),  
+#                                        ftp.use.epsv = FALSE, 
+#                                        dirlistonly = TRUE, userpwd = userpwd),
+#                                 '\r\n'))
+#         # берём заявки, открытые в периодах, начинающихся с YEAR
+#         for (y in YEAR) {
+#             zips.y <- grep(zips, pattern = paste0('_', y, '.*_.*_.*'), value = T)
+#             # print(paste0(y, ': ', zips.y))
+#             
+#             for (sZip in zips.y) {
+#                 download.file(paste0('ftp://', userpwd, '@',
+#                                      gsub('^.*://', '', sRegion), sSubf, sZip),
+#                               destfile = paste0(path, sZip))
+#             }
+#         }
+#     }
+# }
 
 # залезаем в дебри архивов
 xmlzips <- dir(path)
@@ -78,30 +81,16 @@ if (!dir.exists(tmppath)) {
     dir.create(tmppath)
 }
 
-# набор xpath запросов для парсинга xml: архивы contracts
-xpath.patterns <- 
-    c('//xmlns:id', '//xmlns:publishDate', '//xmlns:notificationNumber', 
-      '//xmlns:currentContractStage', '//xmlns:customer//xmlns:fullName', 
-      '//xmlns:customer//xmlns:inn', '//xmlns:product/xmlns:OKPD2/xmlns:code',
-      '//xmlns:product/xmlns:OKPD2/xmlns:name', 
-      '//xmlns:product/xmlns:OKEI/xmlns:code', 
-      '//xmlns:product/xmlns:OKEI/xmlns:fullName',
-      '//xmlns:product/xmlns:quantity', '//xmlns:product/xmlns:sumRUR',
-      '//xmlns:suppliers//xmlns:fullName', '//xmlns:suppliers//xmlns:INN',
-      '//xmlns:suppliers//xmlns:OKTMO/xmlns:code', 
-      '//xmlns:suppliers//xmlns:OKTMO/xmlns:name')
-names(xpath.patterns) <- c('id', 'publishDate', 'notificationNumber',
-                           'currentContractStage', 'customer.name',
-                           'customer.inn', 'OKPD2.code', 'OKPD2.name',
-                           'OKEI.code', 'OKEI.fullName', 'quantity', 'sumRUR',
-                           'supplier.fullName', 'supplier.INN', 
-                           'supplier.OKTMO.code', 'supplier.OKTMO.name')
-
 # распаковываем архивы в tmp
-for (sXMLzip in xmlzips) {
-    # шаг 1: распаковать архив в tmp. там до кучи xml-файлов
-    unzip(paste0(path, sXMLzip), exdir = tmppath)
-}
+# length(xmlzips)
+# iCount <- 0
+# for (sXMLzip in xmlzips) {
+#     # шаг 1: распаковать архив в tmp. там до кучи xml-файлов
+#     unzip(paste0(path, sXMLzip), exdir = tmppath)
+#     iCount <- iCount + 1
+#     message(paste0('Распаковка...', round(iCount / length(xmlzips) * 100, 
+#                                           1), '%'))
+# }
 
 # индексация: считаем файлы, которые относятся к уникальным ID извещений
 all.xmls <- grep(dir(tmppath), pattern = 'xml$', value = T)
@@ -128,6 +117,9 @@ for (id in all.ids) {
     i <- i + 1
     message(paste0(id, ' ... ', round(i / n * 100, 1), '%'))
 }
+
+# записываем таблицу-индекс
+write.csv2(df.file.index, file = paste0(path, 'index.csv'), row.names = F)
 
 nrow(df.file.index)
 sapply(df.file.index[, -1], function(x){sum(x > 0)})
@@ -159,6 +151,27 @@ loop.ids <- c(loop.ids,
 loop.ids <- unique(loop.ids)
 length(loop.ids)
 
+
+# набор xpath запросов для парсинга xml: архивы contracts
+xpath.patterns <-
+    c('//xmlns:id', '//xmlns:publishDate', '//xmlns:notificationNumber',
+      '//xmlns:currentContractStage', '//xmlns:customer//xmlns:fullName',
+      '//xmlns:customer//xmlns:inn', '//xmlns:product/xmlns:OKPD2/xmlns:code',
+      '//xmlns:product/xmlns:OKPD2/xmlns:name',
+      '//xmlns:product/xmlns:OKEI/xmlns:code',
+      '//xmlns:product/xmlns:OKEI/xmlns:fullName',
+      '//xmlns:product/xmlns:quantity', '//xmlns:product/xmlns:sumRUR',
+      '//xmlns:suppliers//xmlns:fullName', '//xmlns:suppliers//xmlns:INN',
+      '//xmlns:suppliers//xmlns:OKTMO/xmlns:code',
+      '//xmlns:suppliers//xmlns:OKTMO/xmlns:name')
+names(xpath.patterns) <- c('id', 'publishDate', 'notificationNumber',
+                           'currentContractStage', 'customer.name',
+                           'customer.inn', 'OKPD2.code', 'OKPD2.name',
+                           'OKEI.code', 'OKEI.fullName', 'quantity', 'sumRUR',
+                           'supplier.fullName', 'supplier.INN',
+                           'supplier.OKTMO.code', 'supplier.OKTMO.name')
+
+
 # таблица со всеми контрагентами
 df.kon <- data.frame(inn = '', kpp = '', organizationName = '', 
                      stringsAsFactors = F)
@@ -172,6 +185,8 @@ df.zay <-
 for (id in loop.ids) {
     
 }
+
+
 
 
 
