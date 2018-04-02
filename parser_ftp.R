@@ -122,6 +122,7 @@ for (id in all.ids) {
 write.csv2(df.file.index, file = paste0(path, 'index.csv'), row.names = F)
 
 nrow(df.file.index)
+
 sapply(df.file.index[, -1], function(x){sum(x > 0)})
 nrow(df.file.index)
 round(sapply(df.file.index[, -1], 
@@ -140,6 +141,12 @@ loop.ids <- df.file.index[df.file.index$fcsNotificationEA44 > 0 &
                               df.file.index$fcsProtocolEF2 > 0 & 
                               df.file.index$fcsProtocolEF3 > 0, ]$noticeID
 length(loop.ids)
+
+# ПРОИНДЕКСИРОВАН ТАТАРСТАН С НОЯБРЯ ПО МАРТ, И СПИСОК ПО-ПРЕЖНЕМУ ПУСТОЙ!!!
+
+
+
+
 # добавляем к ним все завершённые открытые конкурсы
 loop.ids <- c(loop.ids, 
               df.file.index[df.file.index$fcsProtocolOK1 > 0 & df.file.index$fcsProtocolOK2 > 0, ]$noticeID)
