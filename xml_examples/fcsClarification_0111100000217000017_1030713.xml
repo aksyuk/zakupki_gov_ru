@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:fcsClarification schemeVersion="7.2">
+        <id>1030713</id>
+        <purchaseNumber>0111100000217000017</purchaseNumber>
+        <requestNumber>73477</requestNumber>
+        <docNumber>№РД1</docNumber>
+        <docPublishDate>2017-10-09T23:42:06.383+03:00</docPublishDate>
+        <href>http://zakupki.gov.ru/epz/order/notice/ea44/view/documents.html?regNumber=0111100000217000017</href>
+        <question>В части 4 «Техническое задание» описывается программно-аппаратный комплекс, со следующими техническими характеристиками:
+Расположение дисплея комплекса мониторинга на лицевой панели корпуса.
+Данные о контролируемых параметрах и пороговые значения должны храниться в энергонезависимой памяти устройства.
+Выведение информации о критических значениях измеряемых параметров на дисплей устройства.
+Наличие не более двух кнопок управления устройством.
+Осуществление аппаратного контроля над продолжительностью доступа к ресурсам компьютера.
+
+Насколько принципиальна характеристика: Наличие не более двух кнопок управления устройством? Просьба дать разъяснения.
+</question>
+        <topic>Тема запроса: разъяснить положения технического задания  документации об  электронном аукционе (извещение  № 0111100000217000017)
+Текст запроса: В части 4 «Техническое задание» описывается программно-аппаратный комплекс, со следующими техническими характеристиками:
+Расположение дисплея комплекса мониторинга на лицевой панели корпуса.
+Данные о контролируемых параметрах и пороговые значения должны храниться в энергонезависимой памяти устройства.
+Выведение информации о критических значениях измеряемых параметров на дисплей устройства.
+Наличие не более двух кнопок управления устройством.
+Осуществление аппаратного контроля над продолжительностью доступа к ресурсам компьютера.
+
+Насколько принципиальна характеристика: Наличие не более двух кнопок управления устройством? Просьба дать разъяснения.
+
+Ответ: Требование заказчика вызвано необходимостью минимизации движущихся элементов (в данном случае кнопки), которые со временем могут поломаться.</topic>
+        <attachments>
+            <attachment>
+                <publishedContentId>5B1C7E7AFA5A01CAE0530A86121FEBA8</publishedContentId>
+                <fileName>Разяъяснение документации.doc</fileName>
+                <fileSize>33.5 Кб</fileSize>
+                <docDescription>Разяъяснение документации</docDescription>
+                <url>http://zakupki.gov.ru/44fz/filestore/public/1.0/download/priz/file.html?uid=5B1C7E7AFA5A01CAE0530A86121FEBA8</url>
+                <cryptoSigns>
+                    <signature type="CAdES-BES">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</signature>
+                </cryptoSigns>
+            </attachment>
+        </attachments>
+    </ns2:fcsClarification>
+</ns2:export>

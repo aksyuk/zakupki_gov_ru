@@ -1,0 +1,69 @@
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/fcsNotificationEA44_0111100000217000017_13795992.xml
+
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/fcsProtocolEF1_0111100000217000017_15516465.xml
+
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/fcsProtocolEF2_0111100000217000017_15528232.xml
+
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/fcsProtocolEF3_0111100000217000017_15585361.xml
+
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/fcsContractSign_0111100000217000017_10907945.xml
+
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/fcsPlacementResult_0111100000217000017_7669755.xml
+
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/contract_1165802029417000020_37417208.xml
+
+file:///C:/Users/aksyuk-sa/Documents/GitHub/zakupki_gov_ru/data/raw/201710-201801_02-04-2018/tmp/fcsNotificationEA44_1411200000117000012_14017946.xml
+
+
+
+-------------------------------
+пример структуры fcsProtocolEFSingleApp:
+fcsProtocolEFSingleApp_0111100000217000018_15537445.xml
+
+
+
+-------------------------------
+пример структуры fcsClarification:
+fcsClarification_0111100000217000017_1030713.xml
+
+
+
+-------------------------------
+пример структуры fcsProtocolEFSinglePart:
+fcsProtocolEFSinglePart_0111100000217000028_15570374.xml
+
+
+
+-------------------------------
+пример структуры fcsProtocolEFInvalidation:
+fcsProtocolEFInvalidation_0111100001117000130_15172643.xml
+
+
+
+-------------------------------
+пример структуры fcsNotificationCancel:
+fcsNotificationCancel_0111100002417000043_212694.xml
+
+
+
+-------------------------------
+пример структуры fcsProtocolCancel:
+fcsProtocolCancel_0111100004218000004_342109.xml
+
+
+
+-------------------------------
+пример структуры fcsProtocolEvasion:
+fcsProtocolEvasion_0111300005118000098_18238618.xml
+
+
+
+-------------------------------
+пример структуры fcsNotificationCancelFailure:
+fcsNotificationCancelFailure_0111300010718000019_29291.xml
+
+
+
+-------------------------------
+пример структуры fcs_notificationEFDateChange:
+fcs_notificationEFDateChange_0111100008417000189_17485.xml
