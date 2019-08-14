@@ -327,7 +327,7 @@ sapply(dt.file.index[, -1], min)
 
 
 
-df.file.index <- df.file.index[, 1:4]
+dt.file.index <- dt.file.index[, 1:4]
 head(df.file.index)
 
 # почему-то количество уникальных id меньше, чем число строк в индексе
