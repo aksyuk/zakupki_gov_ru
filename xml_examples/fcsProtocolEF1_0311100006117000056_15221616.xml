@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:fcsProtocolEF1 schemeVersion="7.2">
+        <id>15221616</id>
+        <purchaseNumber>0311100006117000056</purchaseNumber>
+        <protocolNumber>0311100006117000056-1</protocolNumber>
+        <place>www.sberbank-ast.ru</place>
+        <protocolDate>2017-09-21T11:37:14+03:00</protocolDate>
+        <signDate>2017-09-21T11:37:14+03:00</signDate>
+        <publishDate>2017-09-21T11:37:22.911+03:00</publishDate>
+        <commission>
+            <commissionName>Единая комиссия по закупкам товаров, работ, услуг для нужд Нижне - Камского района гидротехнических сооружений и судоходства - филиала ФГУ "Администрация Камского бассейна внутренних водных путей"</commissionName>
+            <commissionMembers>
+                <commissionMember>
+                    <memberNumber>1</memberNumber>
+                    <lastName>Тучин</lastName>
+                    <firstName>Евгений</firstName>
+                    <middleName>Александрович</middleName>
+                    <role>
+                        <id>198</id>
+                        <name>Зам. председателя комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <commissionMember>
+                    <memberNumber>2</memberNumber>
+                    <lastName>Кабанов</lastName>
+                    <firstName>Виктор</firstName>
+                    <middleName>Александрович</middleName>
+                    <role>
+                        <id>28</id>
+                        <name>Член комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <commissionMember>
+                    <memberNumber>3</memberNumber>
+                    <lastName>Кобузев</lastName>
+                    <firstName>Александр</firstName>
+                    <middleName>Сергеевич</middleName>
+                    <role>
+                        <id>28</id>
+                        <name>Член комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <spelledMembersCount>три</spelledMembersCount>
+            </commissionMembers>
+            <competent>true</competent>
+        </commission>
+        <href>http://www.sberbank-ast.ru/ViewDocument.aspx?id=506164777</href>
+        <printForm>
+            <url>http://www.sberbank-ast.ru/ViewDocument.aspx?id=506164777</url>
+        </printForm>
+        <protocolPublisher>
+            <publisherOrg>
+                <regNum>03111000061</regNum>
+                <consRegistryNum>001X8698</consRegistryNum>
+                <fullName>НИЖНЕ-КАМСКИЙ РАЙОН ГИДРОТЕХНИЧЕСКИХ СООРУЖЕНИЙ И СУДОХОДСТВА-ФИЛИАЛ ФБУ "АДМИНИСТРАЦИЯ КАМСКОГО БАССЕЙНА ВНУТРЕННИХ ВОДНЫХ ПУТЕЙ"</fullName>
+            </publisherOrg>
+            <publisherRole>CU</publisherRole>
+        </protocolPublisher>
+        <protocolLot>
+            <applications>
+                <application>
+                    <journalNumber>1</journalNumber>
+                    <appDate>2017-09-08T16:42:37+03:00</appDate>
+                    <appRejectedReason>
+                        <nsiRejectReason>
+                            <id>8446065</id>
+                        </nsiRejectReason>
+                        <explanation>Заявка не соответствует требованиям извещения\документации</explanation>
+                    </appRejectedReason>
+                    <appRejectedReason>
+                        <nsiRejectReason>
+                            <id>8446065</id>
+                        </nsiRejectReason>
+                        <explanation>Заявка не соответствует требованиям извещения\документации</explanation>
+                    </appRejectedReason>
+                </application>
+                <application>
+                    <journalNumber>2</journalNumber>
+                    <appDate>2017-09-14T13:38:17+03:00</appDate>
+                    <admitted>true</admitted>
+                </application>
+                <application>
+                    <journalNumber>3</journalNumber>
+                    <appDate>2017-09-20T18:13:14+03:00</appDate>
+                    <admitted>true</admitted>
+                </application>
+                <application>
+                    <journalNumber>4</journalNumber>
+                    <appDate>2017-09-21T00:51:47+03:00</appDate>
+                    <appRejectedReason>
+                        <nsiRejectReason>
+                            <id>8446065</id>
+                        </nsiRejectReason>
+                        <explanation>Заявка не соответствует требованиям извещения\документации</explanation>
+                    </appRejectedReason>
+                    <appRejectedReason>
+                        <nsiRejectReason>
+                            <id>8446065</id>
+                        </nsiRejectReason>
+                        <explanation>Заявка не соответствует требованиям извещения\документации</explanation>
+                    </appRejectedReason>
+                </application>
+            </applications>
+        </protocolLot>
+    </ns2:fcsProtocolEF1>
+</ns2:export>

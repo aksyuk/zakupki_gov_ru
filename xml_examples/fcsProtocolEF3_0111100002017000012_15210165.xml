@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:export xmlns="http://zakupki.gov.ru/oos/types/1" xmlns:ns2="http://zakupki.gov.ru/oos/export/1" xmlns:ns3="http://zakupki.gov.ru/oos/printform/1" xmlns:ns4="http://zakupki.gov.ru/oos/control99/1">
+    <ns2:fcsProtocolEF3 schemeVersion="7.2">
+        <id>15210165</id>
+        <purchaseNumber>0111100002017000012</purchaseNumber>
+        <protocolNumber>0111100002017000012-3</protocolNumber>
+        <foundationProtocolNumber>0111100002017000012-1</foundationProtocolNumber>
+        <place>в соответствии с документацией</place>
+        <protocolDate>2017-09-20T12:16:57+03:00</protocolDate>
+        <signDate>2017-09-20T12:16:57+03:00</signDate>
+        <publishDate>2017-09-20T12:18:19.422+03:00</publishDate>
+        <commission>
+            <commissionName>Единая комиссия 6</commissionName>
+            <commissionMembers>
+                <commissionMember>
+                    <memberNumber>1</memberNumber>
+                    <lastName>Фассахутдинов</lastName>
+                    <firstName>Ленар</firstName>
+                    <role>
+                        <id>27</id>
+                        <name>Председатель комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <commissionMember>
+                    <memberNumber>2</memberNumber>
+                    <lastName>Ахметшина</lastName>
+                    <firstName>Алфия</firstName>
+                    <role>
+                        <id>198</id>
+                        <name>Зам. председателя комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <commissionMember>
+                    <memberNumber>3</memberNumber>
+                    <lastName>Хабреева</lastName>
+                    <firstName>Альбина</firstName>
+                    <role>
+                        <id>28</id>
+                        <name>Член комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <commissionMember>
+                    <memberNumber>4</memberNumber>
+                    <lastName>Хабутдинов</lastName>
+                    <firstName>Айрат</firstName>
+                    <role>
+                        <id>28</id>
+                        <name>Член комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <commissionMember>
+                    <memberNumber>5</memberNumber>
+                    <lastName>Батаршина</lastName>
+                    <firstName>Алия</firstName>
+                    <role>
+                        <id>29</id>
+                        <name>Секретарь комиссии</name>
+                        <rightVote>true</rightVote>
+                    </role>
+                </commissionMember>
+                <spelledMembersCount>пять</spelledMembersCount>
+            </commissionMembers>
+            <competent>true</competent>
+        </commission>
+        <href>http://etp.zakazrf.ru/DFile.ashx?guid=5802cd58-5abf-44ec-8c73-27e7c452c329</href>
+        <printForm>
+            <url>http://etp.zakazrf.ru/DFile.ashx?guid=5802cd58-5abf-44ec-8c73-27e7c452c329</url>
+        </printForm>
+        <protocolPublisher>
+            <publisherOrg>
+                <regNum>01111000020</regNum>
+                <consRegistryNum>00149800</consRegistryNum>
+                <fullName>МЕЖРАЙОННАЯ ИНСПЕКЦИЯ ФЕДЕРАЛЬНОЙ НАЛОГОВОЙ СЛУЖБЫ № 11 ПО РЕСПУБЛИКЕ ТАТАРСТАН</fullName>
+            </publisherOrg>
+            <publisherRole>CU</publisherRole>
+        </protocolPublisher>
+        <attachments>
+            <attachment>
+                <fileName>Протокол подведения итогов.doc</fileName>
+                <fileSize>0 байт</fileSize>
+                <docDescription>Протокол подведения итогов </docDescription>
+                <url>http://file.zakazrf.ru/File?path=etp.zakazrf.ru\2017\09\20\8a725a66-70ba-4eff-83dd-11f3459fa08d.3EC59CDC11EFBC3DB32483E7A419E4F9.doc&amp;name=%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%20%D0%BF%D0%BE%D0%B4%D0%B2%D0%B5%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B8%D1%82%D0%BE%D0%B3%D0%BE%D0%B2.doc</url>
+                <cryptoSigns>
+                    <signature type="CAdES-BES">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</signature>
+                </cryptoSigns>
+            </attachment>
+            <attachment>
+                <fileName>Протокол 2 частей.pdf</fileName>
+                <fileSize>0 байт</fileSize>
+                <docDescription>Протокол 2 частей </docDescription>
+                <url>http://file.zakazrf.ru/File?path=etp.zakazrf.ru\2017\09\20\42f42d70-aef7-4cdc-a045-dc8dd0831558.58B7369AEFA342BEEF4DC4B5E066DF37.pdf&amp;name=%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D0%BA%D0%BE%D0%BB%202%20%D1%87%D0%B0%D1%81%D1%82%D0%B5%D0%B9.pdf</url>
+                <cryptoSigns>
+                    <signature type="CAdES-BES">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</signature>
+                </cryptoSigns>
+            </attachment>
+        </attachments>
+        <protocolLot>
+            <applications>
+                <application>
+                    <journalNumber>4</journalNumber>
+                    <appParticipant>
+                        <participantType>U</participantType>
+                        <inn>1655234918</inn>
+                        <kpp>165501001</kpp>
+                        <organizationName>ООО «Компания «Стайл»</organizationName>
+                        <country>
+                            <countryCode>643</countryCode>
+                            <countryFullName>Российская Федерация</countryFullName>
+                        </country>
+                        <postAddress>Страна: Российская Федерация; ОКАТО: 92401367000; Почтовый индекс: 420108; Субъект РФ: Татарстан; Город: Казань; Улица: Мазита Гафури; Дом: 46, 1; </postAddress>
+                    </appParticipant>
+                    <admissionResults>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>2</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>3</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>4</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                    </admissionResults>
+                    <admitted>true</admitted>
+                    <appRating>1</appRating>
+                </application>
+                <application>
+                    <journalNumber>3</journalNumber>
+                    <appParticipant>
+                        <participantType>P</participantType>
+                        <inn>164703600874</inn>
+                        <organizationName>ИП Гончаров Вадим Александрович</organizationName>
+                        <country>
+                            <countryCode>643</countryCode>
+                            <countryFullName>Российская Федерация</countryFullName>
+                        </country>
+                        <postAddress>Страна: Российская Федерация; ОКАТО: 92430000000; Почтовый индекс: 423838; Субъект РФ: Татарстан; Город: Набережные Челны; Улица: Портовая; Дом: 51; Офис: 2; </postAddress>
+                        <contactInfo>
+                            <lastName>Гончаров Вадим Александрович</lastName>
+                            <firstName>-</firstName>
+                            <middleName>-</middleName>
+                        </contactInfo>
+                    </appParticipant>
+                    <admissionResults>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>2</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>3</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>4</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                    </admissionResults>
+                    <admitted>true</admitted>
+                    <appRating>2</appRating>
+                </application>
+                <application>
+                    <journalNumber>2</journalNumber>
+                    <appParticipant>
+                        <participantType>U</participantType>
+                        <inn>1655078874</inn>
+                        <kpp>165501001</kpp>
+                        <organizationName>ООО «Архивист»</organizationName>
+                        <country>
+                            <countryCode>643</countryCode>
+                            <countryFullName>Российская Федерация</countryFullName>
+                        </country>
+                        <postAddress>420111, г. Казань, а/я 177</postAddress>
+                    </appParticipant>
+                    <admissionResults>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>4</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>2</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>3</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>true</admitted>
+                        </admissionResult>
+                    </admissionResults>
+                    <admitted>true</admitted>
+                    <appRating>3</appRating>
+                </application>
+                <application>
+                    <journalNumber>1</journalNumber>
+                    <appParticipant>
+                        <participantType>U</participantType>
+                        <inn>1655369841</inn>
+                        <kpp>165501001</kpp>
+                        <organizationName>ГБУ «ГА РТ»</organizationName>
+                        <country>
+                            <countryCode>643</countryCode>
+                            <countryFullName>Российская Федерация</countryFullName>
+                        </country>
+                        <postAddress>Страна: Российская Федерация; ОКАТО: 92401367000; Почтовый индекс: 420111; Субъект РФ: Республика Татарстан; Город: Казань; Улица: Кремлёвская; Дом: 12/20; </postAddress>
+                    </appParticipant>
+                    <admissionResults>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>2</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>false</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>3</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>false</admitted>
+                        </admissionResult>
+                        <admissionResult>
+                            <protocolCommissionMember>
+                                <memberNumber>4</memberNumber>
+                            </protocolCommissionMember>
+                            <admitted>false</admitted>
+                        </admissionResult>
+                    </admissionResults>
+                    <appRejectedReason>
+                        <nsiRejectReason>
+                            <code>PNRD</code>
+                            <reason>Участник не соответствует требованиям извещения\документации</reason>
+                        </nsiRejectReason>
+                        <explanation>Участник не соответствует требованиям извещения\документации</explanation>
+                    </appRejectedReason>
+                    <appRejectedReason>
+                        <nsiRejectReason>
+                            <code>PNRD</code>
+                            <reason>Участник не соответствует требованиям извещения\документации</reason>
+                        </nsiRejectReason>
+                        <explanation>Участник не соответствует требованиям извещения\документации</explanation>
+                    </appRejectedReason>
+                    <appRejectedReason>
+                        <nsiRejectReason>
+                            <code>PNRD</code>
+                            <reason>Участник не соответствует требованиям извещения\документации</reason>
+                        </nsiRejectReason>
+                        <explanation>Участник не соответствует требованиям извещения\документации</explanation>
+                    </appRejectedReason>
+                </application>
+            </applications>
+        </protocolLot>
+    </ns2:fcsProtocolEF3>
+</ns2:export>
