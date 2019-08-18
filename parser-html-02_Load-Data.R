@@ -1,109 +1,49 @@
+
+# ..............................................................................
+# parser-html-02_Load-Data.R
+# 
+# Парсинг сайта госзакупок, 
+#  который находится по адресу
+#  http://zakupki.gov.ru/
+# Результаты -- таблица по госзакупкам -- записывается в .csv файл.
+# Параметры поиска в файле parser_html_URL_params.csv.
 #
+# Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
+#
+# Версия 0.9 (16.08.2019)
+#
+# Эта часть кода содержит непосрадственно загрузку и сохранение данных
+
+# ..............................................................................
 # ВНИМАНИЕ!!!!!!
-# ПРИ БОЛЬЩОМ КОЛИЧЕСТВЕ ОБРАЩЕНИЙ НА САЙТЕ ГОСЗАКУПОК МОГУТ ЗАБАНИТЬ ПО IP
+# ПРИ БОЛЬШОМ КОЛИЧЕСТВЕ ОБРАЩЕНИЙ НА САЙТЕ ГОСЗАКУПОК МОГУТ ЗАБАНИТЬ ПО IP
 #
-# В этом скрипте содержится код разбора выдачи сайта госзакупок zakupki.gov.ru
-# Начало работы: 29.08.2017
-# Автор: Светлана Суязова (Аксюк) (s.a.aksuk@gmail.com)
-#
-# Данные загружаются по запросу через URL.
-# Пример URL для разбора:
-# http://zakupki.gov.ru/epz/contract/quicksearch/search.html?searchString=&morphology=on&pageNumber=1&sortDirection=false&recordsPerPage=_50&sortBy=PO_DATE_OBNOVLENIJA&priceFrom=0&priceTo=1000000&budgetLevels=&budgetName=&nonBudgetCodesList=&placingWayForContractList_4=on&placingWayForContractList=4&contractStageList_1=on&contractStageList_2=on&contractStageList=1%2C2&regions=&contractDateFrom=&contractDateTo=&contractInputNameDefenseOrderNumber=&contractInputNameContractNumber=&publishDateFrom=01.01.2016&publishDateTo=29.08.2017&updateDateFrom=&updateDateTo=
-#
-# Результаты -- характеристики госзакупок из базы данных -- записыввются
-#  в .csv файл.
 # Ограничение API: 500 записей при выгрузке вручную с сайта.
 # Мы запрашиваем все записи с максимальным количеством на странице: 50,
 #  потом листаем в цикле. Внимание: заказы быстро добавляются, в конце
 #  стоит проверить таблицу на наличие дубликатов. Уникальный идентификатор --
 #  номер заказа (ContractID).
-#
-
-
-
-# ПАКЕТЫ -----------------------------------------------------------------------
-
-library('RCurl')
-library('XML')
-library('crayon')
-library('data.table')
-# library('RSelenium')
-# library('wdman')
-
-
-
-# КОНСТАНТЫ --------------------------------------------------------------------
-
-## постоянная часть запроса данных (URL)
-params.df <- read.csv2('./parser_html_URL_params.csv', stringsAsFactors = F)
-const.html <- params.df$ParamID
-
-## коды регионов из URL
-regions.df <- read.csv2('./regions_codes.csv', stringsAsFactors = F)
-
-## имя браузера для маскировки запроса по getURL()
-userAgent <- 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
-
-## имя файла для экспорта
-exportCsvFileName <- 'zakupki_gov_ru_html___.csv'
-
-## папка для записи 
-dir.path <- gsub(':', '_', paste0('./data/raw/', Sys.Date(), '/'))
-if (!dir.exists(dir.path)) {
-    dir.create(dir.path)
-}
-
-
-
-# ФУНКЦИИ ----------------------------------------------------------------------
-
-# Применить xpath запрос и почистить возвращаемый результат
-#  от хвостовых пробелов и спецсимволов
-#
-xpathApplyAndClean <- function(root.node, xpath.text, return.mode = 'value',
-                               attr.name = NULL) {
-    # сами теги
-    if (return.mode == 'value') {
-        result <- xpathSApply(root.node, xpath.text, xmlValue)
-    }
-    if (return.mode == 'attr') {
-        result <- xpathSApply(root.node, xpath.text, xmlGetAttr, attr.name)
-    }
-    # убираем перевод каретки
-    result <- gsub(result, pattern = '\r\n', replacement = '')
-    result <- gsub(result, pattern = '\n', replacement = '')
-    # убираем пробелы по краям
-    result <- gsub(result, pattern = "^\\s+|\\s+$", replacement = '')
-    # возвращаем значения
-    return(result)
-}
-
-# Вместо try-catch для результатов xpath запроса:
-#  если результат возвращается нулевой, меняем его на NA
-tryXpath <- function(xpath.result) {
-    if (length(xpath.result) == 0) {
-        xpath.result <- NA
-    }
-    return(xpath.result)
-}
 
 
 
 # ПЕРЕМЕННЫЕ -------------------------------------------------------------------
 
-## переменная часть запроса данных (URL)
-var.html <- params.df$Value
+## составляющие запроса данных (URL)
+df.params <- read.csv2('./parser_html_URL_params.csv', stringsAsFactors = F)
+const.html <- df.params$ParamID
+var.html <- df.params$Value
 
 file.URL <- paste0(paste0(const.html, '=', var.html), collapse = '&')
 
 curr.file.URL <- gsub('_MY_PAGE_NUMBER_', 1, file.URL)
 
 
+
 # ЗАГРУЗКА ---------------------------------------------------------------------
 
 ## загружаем текст html-страницы
 html <- getURL(curr.file.URL, .encoding = 'UTF-8', ssl.verifypeer = FALSE,
-               .opts = list(useragent = userAgent, followlocation = TRUE))
+               .opts = list(useragent = USER.AGENT, followlocation = TRUE))
 ## разбираем как html
 doc <- htmlTreeParse(html, useInternalNodes = T)
 ## корневой элемент
@@ -112,7 +52,9 @@ rootNode <- xmlRoot(doc)
 # saveXML(rootNode, file = 'test_XML.xml')
 
 
+
 # ПАРСИНГ ----------------------------------------------------------------------
+
 
 # РЕЕСТР КОНТРАКТОВ ============================================================
 
@@ -125,7 +67,7 @@ N <- N[!is.na(N)]
 N <- max(N)
 
 # количество записей на одной странице
-n.at.one.page <- params.df[params.df$ParamID == 'recordsPerPage', 2]
+n.at.one.page <- df.params[df.params$ParamID == 'recordsPerPage', 2]
 n.at.one.page <- as.numeric(gsub('[^0-9]', '', n.at.one.page))
 
 n.pages <- ceiling(N / n.at.one.page)
@@ -133,12 +75,17 @@ n.pages <- ceiling(N / n.at.one.page)
 ### цикл по номерам страниц выдачи
 for (curr.page.number in 1:n.pages) {
     
+    
+    
     # ПЕРЕЛИСТНУТЬ СТРАНИЦУ ----------------------------------------------------
     curr.file.URL <- gsub('_MY_PAGE_NUMBER_', curr.page.number, file.URL)
     
+    cat(yellow(paste0('page = ', curr.page.number, ' of ', n.pages,
+                      ': ', curr.file.URL, '\n')))
+    
     ## загружаем текст html-страницы
     html <- getURL(curr.file.URL, .encoding = 'UTF-8', ssl.verifypeer = FALSE,
-                   .opts = list(useragent = userAgent, followlocation = TRUE))
+                   .opts = list(useragent = USER.AGENT, followlocation = TRUE))
     ## разбираем как html
     doc <- htmlTreeParse(html, useInternalNodes = T)
     ## корневой элемент
@@ -243,7 +190,7 @@ for (curr.page.number in 1:n.pages) {
                           ': ', details.URLs[i], '\n')))
 
         destHtml <- getURL(details.URLs[i], .encoding = 'UTF-8', ssl.verifypeer = FALSE,
-                           .opts = list(useragent = userAgent, followlocation = TRUE))
+                           .opts = list(useragent = USER.AGENT, followlocation = TRUE))
 
         ## разбираем как html
         descDoc <- htmlTreeParse(destHtml, useInternalNodes = T)
@@ -294,60 +241,35 @@ for (curr.page.number in 1:n.pages) {
         }
     }
 
+    
 
     # ЗАПИСЬ РЕЗУЛЬТАТОВ -------------------------------------------------------
     
-    filePath <- gsub('___', paste0('_region_', 
-                                   params.df[params.df$ParamID == 'regions', 2],
-                                   '_', gsub('[.]', '-', params.df[params.df$ParamID == 'applSubmissionCloseDateFrom', 2]),
-                                   '_', gsub('[.]', '-', params.df[params.df$ParamID == 'applSubmissionCloseDateTo', 2]),
-                                   '_part_', curr.page.number),
-                     exportCsvFileName)
+    file.name <- 
+        gsub('___', paste0('_region_', 
+                           df.params[df.params$ParamID == 'regions', 2],
+                           '_', gsub('[.]', '-', df.params[df.params$ParamID == 'applSubmissionCloseDateFrom', 2]),
+                           '_', gsub('[.]', '-', df.params[df.params$ParamID == 'applSubmissionCloseDateTo', 2]),
+                           '_part_', curr.page.number), 
+             CSV.FILE.PREFIX)
     
-    region.dir.path <- 
-        paste0(dir.path, 'code-', 
-               params.df[params.df$ParamID == 'okpd2IdsCodes', 2],
-               '_', gsub('\\s', '-', regions.df[regions.df$ID == params.df[params.df$ParamID == 'regions', 2], 1]), '/')
-    if (!dir.exists(region.dir.path)) {
-        dir.create(region.dir.path)
+    region.csv.dir.path <- 
+        paste0(CSV.DIR.PATH, 'code-', 
+               df.params[df.params$ParamID == 'okpd2IdsCodes', 2],
+               '_', gsub('\\s', '-', DF.REGIONS[DF.REGIONS$ID == df.params[df.params$ParamID == 'regions', 2], 1]), '/')
+    if (!dir.exists(region.csv.dir.path)) {
+        dir.create(region.csv.dir.path)
     }
     
-    filePath <- paste0(dir.path, filePath)
-    write.csv2(df.part, filePath, row.names = F)
+    file.path <- paste0(region.csv.dir.path, file.name)
+    write.csv2(df.part, file.path, row.names = F)
 }
 
-# patt <- params.df[params.df$ParamID == 'regions', 2]
-# csv.names <- grep(patt, dir(dir.path), value = T)
-# 
-# df.all <- read.csv2(paste0(dir.path, csv.names[1]), stringsAsFactors = F)
-# 
-# for (flnum in 2:length(csv.names)) {
-#     df <- read.csv2(paste0(dir.path, csv.names[flnum]), stringsAsFactors = F)
-# 
-#     if (dim(df)[2] < dim(df.all)[2]) {
-#         clnms <- colnames(df.all)[!colnames(df.all) %in% colnames(df)]
-# 
-#         m <- dim(df.all)[2] - dim(df)[2]
-#         df <- cbind(df, matrix(rep(NA, m * dim(df)[1]), dim(df)[1], m))
-#         colnames(df)[(dim(df)[2] - m + 1):dim(df)[2]] <- clnms
-#     }
-# 
-#     if (dim(df)[2] > dim(df.all)[2]) {
-#         clnms <- colnames(df)[!colnames(df) %in% colnames(df.all)]
-#         
-#         m <- dim(df)[2] - dim(df.all)[2]
-#         df.all <- cbind(df.all, matrix(rep(NA, m * dim(df.all)[1]), 
-#                                        dim(df.all)[1], m))
-#         colnames(df.all)[(dim(df.all)[2] - m + 1):dim(df.all)[2]] <- clnms
-#     }
-#     
-#     
-#     df.all <- rbind(df.all, df)
-# }
-# 
-# df.all <- unique(data.table(df.all))
-# 
-# dim(df.all)
-# length(unique(df.all$ContractID))
-# sort(round(table(df.all$PlatformName) / nrow(df.all) * 100, 1),
-#      decreasing = T)
+
+
+# ЗАПИСЬ ПАРАМЕТРОВ ПОИСКА -----------------------------------------------------
+
+file.path <- paste0(region.csv.dir.path, 
+                    paste0('parser_html_URL_params_', gsub('\\s|:', '_', Sys.time()),
+                           '.csv'))
+write.csv2(df.params, file.path, row.names = F)
