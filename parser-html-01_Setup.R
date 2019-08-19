@@ -43,10 +43,13 @@ DF.REGIONS <- read.csv2('./data/reference/df_regions_codes.csv', stringsAsFactor
 ## имя браузера для маскировки запроса по getURL()
 USER.AGENT <- 'Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; rv:11.0) like Gecko'
 
+## папка для загрузки данных
+RAW.DATA.PATH <- './data/raw/'
+
 ## имя файла для экспорта
 CSV.FILE.PREFIX <- 'zakupki_gov_ru_html___.csv'
 
-## папка для записи 
+## папка для записи сырых данных
 CSV.DIR.PATH <- gsub(':', '_', paste0('./data/raw/', Sys.Date(), '/'))
 if (!dir.exists(CSV.DIR.PATH)) {
     dir.create(CSV.DIR.PATH)

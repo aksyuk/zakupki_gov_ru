@@ -27,38 +27,88 @@
 
 # ПЕРЕМЕННЫЕ -------------------------------------------------------------------
 
-patt <- df.params[df.params$ParamID == 'regions', 2]
-csv.names <- grep(patt, dir(dir.path), value = T)
+# папки для загрузки
+dir.load <- dir(RAW.DATA.PATH)[2:3]
+all.folders <- paste0(RAW.DATA.PATH, paste0(dir.load[1], '/',
+                                            dir(paste0(RAW.DATA.PATH, dir.load[1]))), '/')
+all.folders <- c(all.folders, 
+                 paste0(RAW.DATA.PATH, paste0(dir.load[2], '/',
+                                              dir(paste0(RAW.DATA.PATH, dir.load[2]))), '/'))
 
-df.all <- read.csv2(paste0(dir.path, csv.names[1]), stringsAsFactors = F)
+dt.all <- NULL
 
-for (flnum in 2:length(csv.names)) {
-    df <- read.csv2(paste0(dir.path, csv.names[flnum]), stringsAsFactors = F)
-
-    if (dim(df)[2] < dim(df.all)[2]) {
-        clnms <- colnames(df.all)[!colnames(df.all) %in% colnames(df)]
-
-        m <- dim(df.all)[2] - dim(df)[2]
-        df <- cbind(df, matrix(rep(NA, m * dim(df)[1]), dim(df)[1], m))
-        colnames(df)[(dim(df)[2] - m + 1):dim(df)[2]] <- clnms
+# теперь загружаем остальные таблицы
+for (fldr in all.folders) {
+    
+    reg.name <- gsub('-', ' ', gsub('(^.*_)|/', '', fldr))
+    cat(yellow(paste0('Регион: ', reg.name, '\n')))
+    
+    file.names <- dir(fldr)
+    file.names <- file.names[!grepl('^parser_', file.names)]
+    
+    file.count <- 0
+    dt.reg <- NULL
+    for (flnm in file.names) {
+    
+        file.count <- file.count + 1    
+        cat(green(paste0('Файл ', file.count, ' из ', length(file.names),
+                         ': ', flnm, '\n')))
+        
+        dt.curr <- data.table(read.csv2(paste0(fldr, flnm), 
+                                        stringsAsFactors = F,
+                                        fileEncoding = 'cp1251'))
+        dt.reg <- data.table(rbind(dt.reg, dt.curr, fill = T))
     }
-
-    if (dim(df)[2] > dim(df.all)[2]) {
-        clnms <- colnames(df)[!colnames(df) %in% colnames(df.all)]
-
-        m <- dim(df)[2] - dim(df.all)[2]
-        df.all <- cbind(df.all, matrix(rep(NA, m * dim(df.all)[1]),
-                                       dim(df.all)[1], m))
-        colnames(df.all)[(dim(df.all)[2] - m + 1):dim(df.all)[2]] <- clnms
-    }
-
-
-    df.all <- rbind(df.all, df)
+    # убрать столбцы нулевых ограничений
+    if (sum(colnames(dt.reg) == 'restr_NA')) dt.reg[, restr_NA := NULL]
+    if (sum(colnames(dt.reg) == 'restr_NULL')) dt.reg[, restr_NULL := NULL]
+    
+    # добавить столбец с названием региона
+    dt.reg[, region := reg.name]
+    
+    dt.all <- rbind(dt.all, dt.reg, fill = T)
+    
+    # почистить мусор из кодов лотов
+    dt.all$ObjectName <- gsub('[$(]document.*$', '', dt.all$ObjectName)
 }
 
-df.all <- unique(data.table(df.all))
+dim(dt.all)
+colnames(dt.all)
 
-dim(df.all)
-length(unique(df.all$ContractID))
-sort(round(table(df.all$PlatformName) / nrow(df.all) * 100, 1),
-     decreasing = T)
+table(dt.all$region)
+sort(table(dt.all$PlatformName), decreasing = T)
+
+# проверка на дублирование ContractID
+dim(dt.all)
+dim(unique(dt.all))
+length(unique(dt.all$ContractID))
+table(dt.all$ContractID)[table(dt.all$ContractID) > 1][1]
+
+dt.all[ContractID == "'0101100007319000051'", ]
+
+write.csv2(dt.all, './data/code_26_all_regions_16-17-08-2019.csv',
+           row.names = F)
+
+dt.all <- data.table(read.csv2('./data/code_26_all_regions_16-17-08-2019.csv',
+                               stringsAsFactors = F))
+
+
+dt.all[PlatformName == 'АО «ЕЭТП»', c(1:5, 17)]
+
+dt.count <- dt.all[PlatformName == 'АО «ЕЭТП»', .N, by = region]
+dt.count.all <- dt.all[, .N, by = region]
+
+dt.count <- merge(dt.count, dt.count.all, by = 'region')
+dt.count[, N.prc := round(N.x / N.y * 100, 1)]
+dt.count[order(-N.prc), ][1:10, ]
+
+dt.sum <- na.omit(dt.all[PlatformName == 'АО «ЕЭТП»', c(17, 5)])[, lapply(.SD, sum), by = region]
+dt.sum.all <- na.omit(dt.all[, c(17, 5)])[, lapply(.SD, sum), by = region]
+
+dt.sum <- merge(dt.sum, dt.sum.all, by = 'region')
+dt.sum[, S.prc := round(StartPrice.x / StartPrice.y * 100, 1)]
+dt.sum[order(-S.prc), ][1:10, ]
+
+sample.1 <- dt.all[region == 'Архангельская область' & PlatformName == 'АО «ЕЭТП»', ]
+write.csv2(sample.1, './data/sample_code-26_region-5277339.csv', row.names = F)
+
