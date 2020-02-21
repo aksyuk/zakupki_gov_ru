@@ -16,18 +16,8 @@
 # Создаёт / модифицирует файлы:
 #  * plot.filename (путь + имя) -- графический файл .png (статус)
 #
-uf.normalise.table <- function(DT, 
-                               plot.filename, plot.main,
-                               max.console.lines = iMaxConsoleStatusLines) {
+uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines) {
     
-    # # отладка
-    # DT <- protocols.EF3[8600:8700, c('purchaseNumber', 'fcsProtocolEF3.id',
-    #                              'protocolDate', 'applications.journalNumber',
-    #                              'applications.inn', 'application.appRating',
-    #                              'applications.countryFullName',
-    #                              'applications.postAddress'), with = F]
-    # str(DT)
-    # 
     # таблица с результатами
     DT.result <- NULL
     
@@ -58,6 +48,9 @@ uf.normalise.table <- function(DT,
     console.clean.count <- 0
     i <- 0
     
+    # копируем строки без склеянных ячеек
+    DT.result <- DT[!(rownames(DT) %in% rw.hashes), ]
+    
     # цикл по строкам с #
     for (i.row in rw.hashes) {
         
@@ -82,11 +75,7 @@ uf.normalise.table <- function(DT,
         rownames(dt) <- paste0(i.row, '.', 1:rw.hashes.add)
         
         # сбиваем с таблицей для этого столбца
-        if (i.row == 1) {
-            DT.result <- dt
-        } else {
-            DT.result <- rbind(DT.result, dt)
-        }
+        DT.result <- rbind(DT.result, dt)
         
         # статус в консоль
         i <- i + 1
@@ -98,28 +87,12 @@ uf.normalise.table <- function(DT,
             console.clean.count <- 0
         }
     }
-    
-    # # отладка
-    # DT[DT$purchaseNumber %in% c('0111100000217000017', '0111100000217000020'), ]
-    # DT.result[DT.result$purchaseNumber %in% c('0111100000217000017', '0111100000217000020'), ]
-    # dim(DT)
-    # dim(DT.result)
-    
+
     o.s.01 <- c(o.s.01, object.size(DT.result))
     
     message(paste0('Закончили нормализацию: ', Sys.time()))
     
-    if (!is.null(plot.filename)) {
-        png(plot.filename)
-        plot(o.s.01 / 1024 / 1024, ylab = 'Mb', xlab = 'Num. of columns with #',
-             main = paste0('DT size:', plot.main))
-        dev.off()
-    }
-    
-    plot(o.s.01 / 1024 / 1024, ylab = 'Mb', xlab = 'Num. of columns with #',
-         main = paste0('DT size:', plot.main))
-    
     rm(DT, dt)
     
-    return(DT.result)
+    return(list(data = DT.result, size.Mb = o.s.01))
 }

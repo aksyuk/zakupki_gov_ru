@@ -41,10 +41,8 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
         rownames(df) <- fst.row:lst.row
             
         # запускаем нормализацию
-        df <- uf.normalise.table(df, plot.filename = NULL,
-                                 paste0(sRawCSVPath, 'DF_curr_part_', 
-                                        formatC(file.count, width = 3,
-                                                format = 'd', flag = '0')))
+        df <- uf.normalise.table(df)
+        df <- df$data
             
         if (!is.null(df)) {
             # пишем результат на диск
@@ -57,7 +55,6 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
             console.clean.count <- console.clean.count + 1
             # непосредственно запись в файл
             write.csv2(df, out.file.name, row.names = F)
-            # write_delim(df, out.file.name, delim = ";")
                 
             # обновляем счётчики строк
             fst.row <- lst.row + 1
@@ -85,7 +82,7 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
         message(paste0('Reading file ', f, '... (', f.count, ' из ', n,')'))
         console.clean.count <- console.clean.count + 1
             
-        DT.part <- read.csv2(f, colClasses = rep('character', 3))
+        DT.part <- read.csv2(f, colClasses = 'character')
             
         if (f.count == 1) {
             DT.all <- copy(DT.part)
@@ -108,6 +105,9 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
         }
     }
         
+    # убираем полностью пустые строки
+    DT.all <- DT.all[!apply(DT.all, 1, function(x){sum(is.na(x))}) == ncol(DT.all), ]
+    
     # записываем общую таблицу
     out.file.name <- paste0(csvs.path, out.total.table.name)
     write.csv2(DT.all, out.file.name, row.names = F)

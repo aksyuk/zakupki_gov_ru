@@ -1,18 +1,19 @@
 
 # ..............................................................................
-# parser-ftp-02_Load-from-FTP.R
+# parser-ftp-02_Load-from-FTP-fz44.R
 # 
-# Парсинг содержимого необъятного ftp сервера госзакупок, 
-#  который находится по адресу
+# Парсинг содержимого ftp-сервера госзакупок, 
+#  который находится по адресу:
 #  http://ftp.zakupki.gov.ru/
-#  логин: free; пароль: free
+#    X  логин: free; пароль: free              - 44 ФЗ
+#       логин: fz223free; пароль: fz223free    - 223 ФЗ
 # 
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.1 (16.07.2019)
+# Версия 1.2 (20.02.2020)
 # 
 # Эта часть кода содержит загрузку архивов по региону за период с FTP
-# 
+#  и работает с сервером по 44 ФЗ
 
 
 
@@ -26,7 +27,7 @@ n.folders <- length(my.region) * length(sSubfolders) * length(sYEAR)
 i.folder <- 0
 
 # ВНИМАНИЕ: загрузка архивов занимает ВРЕМЯ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-# ЕЩЁ ВНИМАНИЕ: 
+# ЕЩЁ ВНИМАНИЕ:
 #  ЗАКАЧКУ ЛУЧШЕ ДЕЛАТЬ СРЕДСТВАМИ FTP-МЕНЕДЖЕРА, НАПРИМЕР, FILEZILLA
 
 # выгрузка xml в архивах в папку './data/raw/' в рабочей директории
@@ -34,49 +35,48 @@ for (sRegion in my.region) {
 
     # запись в лог
     uf.write.to.log(paste0(Sys.time(), ': starting ', sRegion), sLogFileName)
-    
+
     for (sSubf in sSubfolders) {
-        
+
         # запись в лог
         uf.write.to.log(paste0(Sys.time(), ': folder ', sSubf), sLogFileName)
-        
+
         # папка для сохранения
         if (!dir.exists(paste0(sRawArchPath, sSubf))) {
             dir.create(paste0(sRawArchPath, sSubf))
         }
-        
+
         # адреса архивов на сервере
         doc <- getURL(paste0(sRegion, sSubf),
                       ftp.use.epsv = FALSE, dirlistonly = TRUE,
-                      userpwd = sUserPwd)
+                      userpwd = sUserPwd44)
         zips <- unlist(strsplit(doc, '\n'))
 
         # берём заявки, открытые в периодах, начинающихся с sYEAR
         for (y in sYEAR) {
-            
+
             i.folder <- i.folder + 1
-            cat(red(paste0(i.folder, ' папка из ', n.folders, 
+            cat(red(paste0(i.folder, ' папка из ', n.folders,
                            ' (', round(i.folder / n.folders * 100, 1), '%)\n')))
             # запись в лог
             uf.write.to.log(paste0(Sys.time(), ': year ', y), sLogFileName)
-            
+
             zips.y <- grep(zips, pattern = paste0('_', y, '.*_.*_.*'), value = T)
-            
+
             for (sZip in zips.y) {
-                
+
                 dest.filename <- paste0(sRawArchPath, sSubf, sZip)
                 if (!file.exists(dest.filename)) {
-                    
+
                     # запись в лог
-                    uf.write.to.log(paste0(Sys.time(), ': download file ', sZip), 
+                    uf.write.to.log(paste0(Sys.time(), ': download file ', sZip),
                                     sLogFileName)
-                    
-                    download.file(paste0('ftp://', sUserPwd, '@',
+
+                    download.file(paste0('ftp://', sUserPwd44, '@',
                                          gsub('^.*://', '', sRegion), sSubf, sZip),
-                                  destfile = dest.filename)   
+                                  destfile = dest.filename)
                 }
             }
         }
     }
 }
-

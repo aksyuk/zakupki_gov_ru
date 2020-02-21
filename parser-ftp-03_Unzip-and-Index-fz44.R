@@ -1,18 +1,19 @@
 
 # 
-# parser-ftp-03_Unzip-and-Index.R
+# parser-ftp-03_Unzip-and-Index-fz44.R
 # 
-# Парсинг содержимого необъятного ftp сервера госзакупок, 
-#  который находится по адресу
+# Парсинг содержимого ftp-сервера госзакупок, 
+#  который находится по адресу:
 #  http://ftp.zakupki.gov.ru/
-#  логин: free; пароль: free
+#    X  логин: free; пароль: free              - 44 ФЗ
+#       логин: fz223free; пароль: fz223free    - 223 ФЗ
 # 
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.1 (16.07.2019)
+# Версия 1.2 (20.02.2020)
 # 
 # Эта часть кода распаковывает и индексирует xml-файлы, скачанные с FTP    
-# 
+#  и работает с сервером по 44 ФЗ
 
 
 
@@ -21,6 +22,8 @@
 # распаковывать надо средствами ОС в папку ./data/raw/xml
 #  распаковываем содержимое архивов из contracts, notifications, protocols
 
+# bash (cd в папку с архивами): 
+#  unzip \*.zip -d ../xmls
 
 
 # 2. ИНДЕКСАЦИЯ ----------------------------------------------------------------
@@ -50,8 +53,8 @@ length(all.ids)
 # все префиксы файлов
 prefixes <- table(gsub('_$', '', gsub(all.xmls, pattern = '(\\d{19}|\\d{18}).*$', 
                                       replacement = '')))
-prefixes
-length(prefixes)
+# проверка .....................................................................
+sum(prefixes) == length(all.xmls)
 
 
 # Индексируем имена всех файлов ================================================
@@ -98,20 +101,22 @@ for (pr_i in names(prefixes)) {
     }
 }
 
-# проверка
+# проверка .....................................................................
+#  число пропусков по столбцам
 sapply(DT.xml.files.index, function(x){sum(is.na(x))})
-summary(DT.xml.files.index)
+#  сравниваем суммы по столбцам с количеством префиксов
+cbind(sapply(DT.xml.files.index[, -1], sum), prefixes)
 table(nchar(DT.xml.files.index$noticeID ))
 
 # записываем таблицу-индекс
 write.csv2(DT.xml.files.index, paste0(sRawCSVPath, 'df_all_xml_files_index.csv'),
            row.names = F)
 
-# читаем весь индекс одним файлом
-DT.xml.files.index <- read.csv2(paste0(sRawCSVPath, 'df_all_xml_files_index.csv'),
-                           stringsAsFactors = F,
-                           colClasses = c('character', rep('numeric', 55)),
-                           encoding = 'CP-1251')
+# # читаем весь индекс одним файлом
+# DT.xml.files.index <- read.csv2(paste0(sRawCSVPath, 'df_all_xml_files_index.csv'),
+#                            stringsAsFactors = F,
+#                            colClasses = c('character', rep('numeric', 55)),
+#                            encoding = 'CP-1251')
 DT.xml.files.index <- data.table(DT.xml.files.index)
 dim(DT.xml.files.index)
 str(DT.xml.files.index)
@@ -134,8 +139,8 @@ message(paste0('Извещений об электронных аукциона�
                ' (', round(length(loop.ids) / n * 100, 1), '%)'))
 
 # как среди них распределяются протоколы
-sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], max)[
-    sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], max) > 0]
+sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], sum)[
+    sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], sum) > 0]
 
 all.contracts.ids <- grep(all.xmls, pattern = '^contract_', value = T)
 all.contracts.ids <- gsub(all.contracts.ids, pattern = 'contract_', 
@@ -147,18 +152,19 @@ length(all.contracts.ids)
 
 # парсим файлы с аукционами (цикл по номерам извещений)
 # выкидываем id без файлов contract -- это документы для заключенных ранее
-loop.ids <- DT.xml.files.index[contract != 0, ]$contract
+loop.ids <- DT.xml.files.index[contract != 0, ]$noticeID
+max(loop.ids)
 table(loop.ids)
 
-# теперь разбираемся: что за id со 169 контрактами?
-ids <- DT.xml.files.index[contract == 169, ]$noticeID
+# теперь разбираемся: что за id со 379 контрактами?
+ids <- arrange(DT.xml.files.index, -contract)[1:10, ]$noticeID
+ids
 
 files <- NULL
 for (id in ids) {
     tmp <- grep(all.xmls, pattern = id, value = T)
-    tmp <- gsub(tmp, pattern = 'contract_', replacement = '')
-    tmp <- grep(all.xmls, pattern = '^contract_', value = T)
-    files <- c(files, )
+    tmp <- grep(tmp, pattern = '^contract_', value = T)
+    files <- c(files, tmp)
     message(paste0(id, ': ', paste0(tmp, collapse = "; ")))
     
     if (length(tmp) > 0) {
