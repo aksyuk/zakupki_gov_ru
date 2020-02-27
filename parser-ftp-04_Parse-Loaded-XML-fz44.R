@@ -106,7 +106,9 @@ write.csv2(DT.EA44.index, paste0(sRawCSVPath, 'DT_index_EA44.csv'),
 DT.EA44.index
 
 # процент пропусков
-round(DT.EA44.index[, lapply(.SD, function(x){sum(is.na(x))})] / nrow(DT.EA44.index), 2)
+nas <- uf.count.nas.in.table(DT.EA44.index)
+round(nas$columns.na / nrow(DT.EA44.index), 2)
+
 # всего xml для обработки
 n <- sum(DT.EA44.index[, sapply(.SD, function(x){sum(!is.na(unique(x)))})][-1])
 message(paste0('Всего xml для обработки: ', n,  ' (',
@@ -126,6 +128,7 @@ df.patterns <- read.csv2(paste0(sRefPath, 'df_xml_patterns.csv'),
 patterns <- as.list(df.patterns)
 patterns <- c(list(ns = c('xmlns:', 'xmlns:', 'oos:', 'xmlns:',
                           'xmlns:', 'xmlns:')), patterns)
+patterns <- lapply(patterns, function(x){x[x != ""]})
 
 # делаем из шаблонов имена столбцов итоговой таблицы
 patterns[-1] <- lapply(patterns[-1], function(x) {
@@ -172,6 +175,11 @@ for (j in 2:dim(DT.EA44.index)[2]) {
 
     filePrefix <- gsub(colnames(DT)[2], pattern = '^.*[.]', replacement = '')
     n.cols <- length(patterns[[filePrefix]][, 1])
+    
+    if (n.cols == 0) {
+        message(paste0('Префикс имени файла не найден: ', filePrefix))
+        next
+    }
 
     msg <- paste0('Начинаю разбор файлов ', filePrefix, ': ', Sys.time())
     uf.write.to.log(msg, log.parse.XML.filename)

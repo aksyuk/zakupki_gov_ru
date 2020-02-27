@@ -28,19 +28,26 @@
 
 # 2. ИНДЕКСАЦИЯ ----------------------------------------------------------------
 
-# индексация: считаем файлы, которые относятся к уникальным ID извещений
-all.xmls <- grep(dir(sRawXMLPath), pattern = 'xml$', value = T)
-length(all.xmls)
-
-write.csv2(data.frame(flnms = all.xmls),
-           file = paste0(sRawArchPath, 'xlms_names_list.csv'), row.names = F)
- 
-# all.xmls <- read.csv2(paste0(sRawArchPath, 'xlms_names_list.csv'),
-#                       stringsAsFactors = F)[, 1]
+# # индексация: считаем файлы, которые относятся к уникальным ID извещений
+# all.xmls <- grep(dir(sRawXMLPath), pattern = 'xml$', value = T)
 # length(all.xmls)
 
+
+# # записываем имена всех xml-файлов в csv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# write.csv2(data.frame(flnms = all.xmls),
+#            file = paste0(sRawArchPath, 'xlms_names_list.csv'), row.names = F)
+# # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
+
+
+# читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+all.xmls <- read.csv2(paste0(sRawArchPath, 'xlms_names_list.csv'),
+                      stringsAsFactors = F)[, 1]
+length(all.xmls)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
 # все уникальные номера извещений
-#  сначала убираем 'fcs_'
+#  сначала меняем 'fcs_' на 'fcs'
 all.ids <- sub('^fcs_', '^fcs', all.xmls)
 # затем всё, что идёт до первого '_', включая его
 all.ids <- sub('^(.*?)_', '', all.ids)
@@ -53,7 +60,7 @@ length(all.ids)
 # все префиксы файлов
 prefixes <- table(gsub('_$', '', gsub(all.xmls, pattern = '(\\d{19}|\\d{18}).*$', 
                                       replacement = '')))
-# проверка .....................................................................
+# проверка 
 sum(prefixes) == length(all.xmls)
 
 
@@ -76,7 +83,7 @@ df.diff.IDs <- data.frame(fileID = NULL, tagID = NULL)
 for (pr_i in names(prefixes)) {
 
     # вытаскиваем все имена файлов с заданным префиксам
-    tmp.v <- grep(all.xmls, pattern = paste0('^', pr_i), value = T)
+    tmp.v <- grep(paste0('^', pr_i, '_'), all.xmls, value = T)
 
     # вытаскиваем noticeID из имени файла
     noticeID <- sub('^fcs_', '^fcs', tmp.v)
@@ -102,24 +109,39 @@ for (pr_i in names(prefixes)) {
 }
 
 # проверка .....................................................................
-#  число пропусков по столбцам
-sapply(DT.xml.files.index, function(x){sum(is.na(x))})
+#  число пропусков по столбцам и строкам
+uf.count.nas.in.table(DT.xml.files.index)
+
+# число файлов в таблице-индексе должно сходиться с количеством файлов в папке
+sum(DT.xml.files.index[, -1]) == length(all.xmls)
+
 #  сравниваем суммы по столбцам с количеством префиксов
-cbind(sapply(DT.xml.files.index[, -1], sum), prefixes)
-table(nchar(DT.xml.files.index$noticeID ))
+test.compare <- data.frame(num.files = sapply(DT.xml.files.index[, -1], sum), 
+                           num.prefixes = as.vector(prefixes))
+# префиксы, у которых количество файлов на noticeID, видимо, больше 1
+tmp <- test.compare$num.files - test.compare$num.prefixes
+names(tmp) <- rownames(test.compare)
+tmp <- tmp[tmp > 0]
+tmp
 
-# записываем таблицу-индекс
-write.csv2(DT.xml.files.index, paste0(sRawCSVPath, 'df_all_xml_files_index.csv'),
-           row.names = F)
 
-# # читаем весь индекс одним файлом
-# DT.xml.files.index <- read.csv2(paste0(sRawCSVPath, 'df_all_xml_files_index.csv'),
-#                            stringsAsFactors = F,
-#                            colClasses = c('character', rep('numeric', 55)),
-#                            encoding = 'CP-1251')
-DT.xml.files.index <- data.table(DT.xml.files.index)
+# записываем таблицу-индекс с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+uf.write.table.with.metadata(DT.xml.files.index, 
+                             paste0(sRawCSVPath, 'DT_all_xml_files_index.csv'))
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# читаем индекс из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+df.meta <- read.csv2(paste0(sRawCSVPath, 'DT_all_xml_files_index_META.csv'),
+                     stringsAsFactors = F)
+DT.xml.files.index <- data.table(read.csv2(paste0(sRawCSVPath,
+                                                  'DT_all_xml_files_index.csv'),
+                                           stringsAsFactors = F,
+                                           colClasses = df.meta$col.classes))
 dim(DT.xml.files.index)
 str(DT.xml.files.index)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 
 message(paste0('Уникальных номеров извещений в файле-индексе: ',
                length(unique(DT.xml.files.index$noticeID))))
@@ -142,34 +164,10 @@ message(paste0('Извещений об электронных аукциона�
 sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], sum)[
     sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], sum) > 0]
 
-all.contracts.ids <- grep(all.xmls, pattern = '^contract_', value = T)
-all.contracts.ids <- gsub(all.contracts.ids, pattern = 'contract_', 
-                          replacement = '')
-all.contracts.ids <- gsub(all.contracts.ids, pattern = '_.*$', 
-                          replacement = '')
+# контракты не пересекаются с электронными аукционами
+all.contracts.ids <- grep('^contract_', all.xmls, value = T)
+all.contracts.ids <- gsub('contract_', all.contracts.ids, replacement = '')
+all.contracts.ids <- gsub('_.*$', all.contracts.ids, replacement = '')
 all.contracts.ids <- unique(all.contracts.ids)
 length(all.contracts.ids)
-
-# парсим файлы с аукционами (цикл по номерам извещений)
-# выкидываем id без файлов contract -- это документы для заключенных ранее
-loop.ids <- DT.xml.files.index[contract != 0, ]$noticeID
-max(loop.ids)
-table(loop.ids)
-
-# теперь разбираемся: что за id со 379 контрактами?
-ids <- arrange(DT.xml.files.index, -contract)[1:10, ]$noticeID
-ids
-
-files <- NULL
-for (id in ids) {
-    tmp <- grep(all.xmls, pattern = id, value = T)
-    tmp <- grep(tmp, pattern = '^contract_', value = T)
-    files <- c(files, tmp)
-    message(paste0(id, ': ', paste0(tmp, collapse = "; ")))
-    
-    if (length(tmp) > 0) {
-        files <- c(files, tmp)
-    }
-}
-# ожидаемо отличаются второй группой цифр в названии файлов
-
+loop.ids[loop.ids %in% all.contracts.ids]
