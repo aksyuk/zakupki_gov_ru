@@ -1,5 +1,4 @@
-
-# 
+# ..............................................................................
 # parser-ftp-03_Unzip-and-Index-fz44.R
 # 
 # Парсинг содержимого ftp-сервера госзакупок, 
@@ -10,10 +9,20 @@
 # 
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.2 (20.02.2020)
+# Версия 1.3 (28.02.2020)
 # 
 # Эта часть кода распаковывает и индексирует xml-файлы, скачанные с FTP    
 #  и работает с сервером по 44 ФЗ
+# 
+# КЛЮЧЕВЫЕ ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
+#  * all.xmls           -- вектор с именами всех файлов из директории 
+#                          с распакованными xml
+#  * DT.xml.files.index -- data.table с индексом всех файлов xml: 
+#                          строки по noticeID, столбцы по префиксам файлов,
+#                          значение 1 показывает наличие файла, 0 отсутствие
+#  * loop.ids           -- вектор со всеми noticeIDs, которые соответствует
+#                          типу процедуры из lProcedureToScrap
+# ..............................................................................
 
 
 
@@ -36,7 +45,7 @@
 # # записываем имена всех xml-файлов в csv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 # write.csv2(data.frame(flnms = all.xmls),
 #            file = paste0(sRawArchPath, 'xlms_names_list.csv'), row.names = F)
-# # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 
+# # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -132,12 +141,8 @@ uf.write.table.with.metadata(DT.xml.files.index,
 
 
 # читаем индекс из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-df.meta <- read.csv2(paste0(sRawCSVPath, 'DT_all_xml_files_index_META.csv'),
-                     stringsAsFactors = F)
-DT.xml.files.index <- data.table(read.csv2(paste0(sRawCSVPath,
-                                                  'DT_all_xml_files_index.csv'),
-                                           stringsAsFactors = F,
-                                           colClasses = df.meta$col.classes))
+DT.xml.files.index <- uf.read.table.with.metadata(paste0(sRawCSVPath, 
+                                                'DT_all_xml_files_index.csv'))
 dim(DT.xml.files.index)
 str(DT.xml.files.index)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -146,28 +151,10 @@ str(DT.xml.files.index)
 message(paste0('Уникальных номеров извещений в файле-индексе: ',
                length(unique(DT.xml.files.index$noticeID))))
 
-# проверка: количество знаков в noticeID (не потерялись ли ведущие нули?)
-table(nchar(DT.xml.files.index$noticeID))
-DT.xml.files.index$noticeID[nchar(DT.xml.files.index$noticeID) == 18][1:10]
-
-
-# Анализ файла-индекса =========================================================
-n <- nrow(DT.xml.files.index)
-message(paste0('Всего уникальных id закупок за период: ', n))
-
-# аукционы
-loop.ids <- DT.xml.files.index[DT.xml.files.index$fcsNotificationEA44 > 0, ]$noticeID
-message(paste0('Извещений об электронных аукционах: ', length(loop.ids),
+# noticeID по типу процедуры 
+slct <- as.vector(select(DT.xml.files.index, lProcedureToScrap$noticeFileName) > 0)
+loop.ids <- DT.xml.files.index[slct, ]$noticeID
+n <- length(unique(DT.xml.files.index$noticeID))
+message(paste0('Извещений по типу процедур: ', lProcedureToScrap$procedureType, 
+               ' ', length(loop.ids),
                ' (', round(length(loop.ids) / n * 100, 1), '%)'))
-
-# как среди них распределяются протоколы
-sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], sum)[
-    sapply(DT.xml.files.index[noticeID %in% loop.ids, -1], sum) > 0]
-
-# контракты не пересекаются с электронными аукционами
-all.contracts.ids <- grep('^contract_', all.xmls, value = T)
-all.contracts.ids <- gsub('contract_', all.contracts.ids, replacement = '')
-all.contracts.ids <- gsub('_.*$', all.contracts.ids, replacement = '')
-all.contracts.ids <- unique(all.contracts.ids)
-length(all.contracts.ids)
-loop.ids[loop.ids %in% all.contracts.ids]

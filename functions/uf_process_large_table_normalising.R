@@ -1,4 +1,5 @@
-# uf.process.large.table.normalising() ..................................................
+# ..............................................................................
+# uf.process.large.table.normalising()
 #
 # Функция для нормализации большой таблицы по кускам. Разбиваем на много таблиц 
 #  поменьше, нормализуем по отдельности, пишем в директорию для csv-файлов.
@@ -16,13 +17,20 @@
 # Создаёт / модифицирует файлы: 
 #  * пишет нормализованные кусочки таблицы в папку csvs.path, 
 #    а после сборки итоговой таблицы стирает их
-#
+# ..............................................................................
+
 uf.process.large.table.normalising <- function(DT, out.total.table.name,
+                                               csvs.path,
                                                dt.step = 100, 
-                                               csvs.path = sRawCSVPath,
                                                max.console.lines = iMaxConsoleStatusLines) {
     # счётчик строк в консоли    
     console.clean.count <- 0    
+    
+    # папка для временных файлов
+    csvs.path.tmp <- paste0(csvs.path, 'tmp/')
+    if (!dir.exists(csvs.path.tmp)) {
+        dir.create(csvs.path.tmp)
+    }
         
     # общее количество табличек по dt.step строк
     dt.count <- nrow(DT) %/% dt.step
@@ -46,7 +54,7 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
             
         if (!is.null(df)) {
             # пишем результат на диск
-            out.file.name <- paste0(csvs.path, 'DF_curr_part_', 
+            out.file.name <- paste0(csvs.path.tmp, 'DF_curr_part_', 
                                     formatC(file.count, width = 3, 
                                             format = 'd', flag = '0'), '.csv')
             # сообщение в консоль
@@ -69,9 +77,8 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
     }
         
     # все имена табличек на диске
-    flnms <- paste0(csvs.path,
-                    grep(dir(csvs.path), pattern = 'DF_curr_part_.*[.]csv', 
-                         value = T))
+    flnms <- paste0(csvs.path.tmp, grep('DF_curr_part_.*[.]csv', 
+                                        dir(csvs.path.tmp), value = T))
         
     # сбить всё в один файл
     f.count <- 1
@@ -106,15 +113,16 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
     }
         
     # убираем полностью пустые строки
-    DT.all <- DT.all[!apply(DT.all, 1, function(x){sum(is.na(x))}) == ncol(DT.all), ]
+    DT.all <- DT.all[!apply(DT.all, 1, 
+                            function(x){sum(is.na(x))}) == ncol(DT.all), ]
     
     # записываем общую таблицу
     out.file.name <- paste0(csvs.path, out.total.table.name)
-    write.csv2(DT.all, out.file.name, row.names = F)
+    uf.write.table.with.metadata(DT.all, out.file.name)
         
     # удаляем временные файлы
     file.remove(flnms)
-    rm(DT, flnms)
+    rm(DT)
         
     return(DT.all)
 }

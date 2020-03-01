@@ -1,4 +1,5 @@
-# uf.normalise.table() ............................................................
+# ..............................................................................
+# uf.normalise.table()
 #
 # Функция для номализации таблицы: расклеивает ячейки с несколькими значениями,
 #  соединёнными символом #.
@@ -15,7 +16,8 @@
 # 
 # Создаёт / модифицирует файлы:
 #  * plot.filename (путь + имя) -- графический файл .png (статус)
-#
+# ..............................................................................
+
 uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines) {
     
     # таблица с результатами
@@ -76,6 +78,7 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines) {
         
         # сбиваем с таблицей для этого столбца
         DT.result <- rbind(DT.result, dt)
+        rm(dt)
         
         # статус в консоль
         i <- i + 1
@@ -92,7 +95,7 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines) {
     
     message(paste0('Закончили нормализацию: ', Sys.time()))
     
-    rm(DT, dt)
+    rm(DT)
     
     return(list(data = DT.result, size.Mb = o.s.01))
 }
