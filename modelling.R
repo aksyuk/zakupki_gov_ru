@@ -490,12 +490,6 @@ colnames(tbl)[colnames(tbl) == 'lot.maxPrice.x'] <- 'mean.lot.maxPrice'
 colnames(tbl)[colnames(tbl) == 'lot.maxPrice.y'] <- 'sd.lot.maxPrice'
 tbl[order(-mean.lot.maxPrice), ]
 
-# отрезаем первые 4 ОКПД, у них аномально высокие цены закупки
-plot(tbl$mean.lot.maxPrice)
-okpd.drop <- tbl[order(-mean.lot.maxPrice), ]$purchaseObject.OKPD2.code.2dig[1:4]
-
-DT.model <- filter(DT.model, !(purchaseObject.OKPD2.code.2dig %in% okpd.drop))
-
 # экономия
 DT.model$y <- DT.model$lot.maxPrice - DT.model$winner.price
 summary(DT.model$y)
@@ -506,12 +500,44 @@ boxplot(DT.model$y, horizontal = T)
 DT.model <- filter(DT.model, y > 0)
 summary(DT.model$y)
 
+tbl[N >= 20, ]
+t.test(select(filter(DT.model, purchaseObject.OKPD2.code.2dig == '01'), y),
+       select(filter(DT.model, purchaseObject.OKPD2.code.2dig == '10'), y))
+
 # делаем фактор из ограничения на СМП
 DT.model <- as.data.table(DT.model)
 DT.model[, SMP.only := 
              as.factor(ifelse(restriction.shortName == 'MB44330', 1, 0))]
 # вообще убираем закупки с другими ограничениями
 DT.model <- filter(DT.model, restriction.shortName %in% c('MB44330', 'no'))
+
+# сравниваем экономию по кодам товаров с / без ограничения на СМП
+okpd2.select <- tbl[N >= 20, ]$purchaseObject.OKPD2.code.2dig
+tbl.smp.economy <- select(data.table(filter(DT.model, 
+                       purchaseObject.OKPD2.code.2dig %in% okpd2.select)),
+                       purchaseObject.OKPD2.code.2dig, y, restriction.shortName)
+setkeyv(tbl.smp.economy, c('purchaseObject.OKPD2.code.2dig', 
+                           'restriction.shortName'))
+tbl.smp.economy <- tbl.smp.economy[, lapply(.SD, mean), by = key(tbl.smp.economy)]
+tbl.2 <- data.frame(OKPD2 = unique(tbl.smp.economy$purchaseObject.OKPD2.code.2dig),
+                    y.MB44330 = select(filter(tbl.smp.economy, 
+                                              restriction.shortName == 'MB44330'), y),
+                    y.no = select(filter(tbl.smp.economy,
+                                         restriction.shortName == 'no'), y))
+tbl.2
+
+
+tbl.smp.economy[, lapply(.SD, sum), 
+            by = c('restriction.shortName', 'purchaseObject.OKPD2.code.2dig')]
+
+
+
+
+# отрезаем первые 4 ОКПД, у них аномально высокие цены закупки
+plot(tbl$mean.lot.maxPrice)
+okpd.drop <- tbl[order(-mean.lot.maxPrice), ]$purchaseObject.OKPD2.code.2dig[1:4]
+
+DT.model <- filter(DT.model, !(purchaseObject.OKPD2.code.2dig %in% okpd.drop))
 
 
 dt <- select(DT.model, y, SMP.only, application.count.p01,
