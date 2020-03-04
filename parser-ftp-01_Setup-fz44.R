@@ -131,7 +131,7 @@ msg <- paste0(1:n.dirs, '. ', dirs.raw, '\n')
 message('Выберите выгрузку:\n', msg, n.dirs + 1, '. Создать новую выгрузку')
 # prompt.load.sample <- readline('Введите номер опции:')
 # быстрая опция
-prompt.load.sample <- 1
+prompt.load.sample <- 4
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
 if (prompt.load.sample == n.dirs + 1) {
@@ -196,6 +196,9 @@ drnm <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/')
 if (!dir.exists(drnm)) {
     dir.create(drnm)
 }
+
+# папка с csv-файлами по текущему типу процедур
+out.path <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/')
 
 message('ПОДГОТОВКА РАБОЧЕГО ПРОСТРАНСТВА ЗАВЕРШЕНА')
 

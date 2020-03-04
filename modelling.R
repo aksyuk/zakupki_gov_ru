@@ -519,12 +519,32 @@ tbl.smp.economy <- select(data.table(filter(DT.model,
 setkeyv(tbl.smp.economy, c('purchaseObject.OKPD2.code.2dig', 
                            'restriction.shortName'))
 tbl.smp.economy <- tbl.smp.economy[, lapply(.SD, mean), by = key(tbl.smp.economy)]
-tbl.2 <- data.frame(OKPD2 = unique(tbl.smp.economy$purchaseObject.OKPD2.code.2dig),
+tbl.2 <- data.table(OKPD2 = unique(tbl.smp.economy$purchaseObject.OKPD2.code.2dig),
                     y.MB44330 = select(filter(tbl.smp.economy, 
-                                              restriction.shortName == 'MB44330'), y),
+                                    restriction.shortName == 'MB44330'), y)[, 1],
                     y.no = select(filter(tbl.smp.economy,
-                                         restriction.shortName == 'no'), y))
-tbl.2
+                                         restriction.shortName == 'no'), y)[, 1])
+tmp <- data.table(filter(DT.model, restriction.shortName == 'MB44330'))[, .N, 
+                                          by = 'purchaseObject.OKPD2.code.2dig']
+colnames(tmp)[colnames(tmp) == 'N'] <- 'N.MB44330'
+tbl.2 <- merge(tbl.2, tmp, by.x = 'OKPD2', 
+               by.y = 'purchaseObject.OKPD2.code.2dig')
+tmp <- data.table(filter(DT.model, restriction.shortName == 'no'))[, .N,
+                                          by = 'purchaseObject.OKPD2.code.2dig']
+colnames(tmp)[colnames(tmp) == 'N'] <- 'N.no'
+tbl.2 <- merge(tbl.2, tmp, by.x = 'OKPD2', 
+               by.y = 'purchaseObject.OKPD2.code.2dig')
+
+tbl.2$t.test.p.val <- apply(tbl.2, 1, function(x) {
+    x.0 <- filter(DT.model, purchaseObject.OKPD2.code.2dig == x[1],
+                  restriction.shortName == 'MB44330')$y
+    x.1 <- filter(DT.model, purchaseObject.OKPD2.code.2dig == x[1],
+                  restriction.shortName == 'no')$y
+    t.t <- round(t.test(x.0, x.1)$p.value, 4)
+})
+tbl.2[t.test.p.val < 0.10, ]
+
+
 
 
 tbl.smp.economy[, lapply(.SD, sum), 
