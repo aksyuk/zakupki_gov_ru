@@ -1,5 +1,5 @@
 # ..............................................................................
-# parser-ftp-04_Parse-Loaded_XML-fz44.R
+# parser-ftp-03_Parse-Loaded_XML-fz44.R
 # 
 # Парсинг содержимого ftp-сервера госзакупок, 
 #  который находится по адресу:
@@ -9,7 +9,7 @@
 # 
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.3 (28.02.2020)
+# Версия 1.3.1 (05 Mar 2020)
 # 
 # Эта часть кода парсит xml-файлы, скачанные с FTP    
 #  и работает с сервером по 44 ФЗ
@@ -42,13 +42,14 @@ sapply(tmp[, -1], sum)
 DT.proc.index <- DT.proc.index[purchaseNum %in% loop.ids, ]
 dim(DT.proc.index)
 
-
 # записываем таблицу-индекс с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 flnm <- paste0(sRawCSVPath, 'DT_index_melt_', lProcedureToScrap$procedureCode, 
                '.csv')
 uf.write.table.with.metadata(DT.proc.index, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+# Читаем таблицу с шаблонами для разбора xml ===================================
 
 # читаем индекс из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 flnm <- paste0(sRawCSVPath, 'DT_index_melt_', lProcedureToScrap$procedureCode, 
@@ -58,21 +59,27 @@ dim(DT.proc.index)
 str(DT.proc.index)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
 # всего xml для обработки
 n <- nrow(DT.proc.index)
 message(paste0('Всего xml для обработки: ', n,  ' (', 
                round(n / length(all.xmls) * 100, 1),
                '% от общего числа файлов).'))
 
-
-# Парсим файлы с электронными аукционами =======================================
-
-# шаблоны для разбора хранятся в отдельном csv
+# читаем шаблоны для разбора xml из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 df.patterns <- read.csv2(paste0(sRefPath, 'df_xml_patterns.csv'),
                          stringsAsFactors = F)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
 # список префиксов файлов из индекса, для которых нет шаблона
-unique(DT.proc.index$prefix)[!(unique(DT.proc.index$prefix) %in% names(df.patterns))]
+pref.no.pattern <- unique(DT.proc.index$prefix)[!(unique(DT.proc.index$prefix) 
+                                                  %in% names(df.patterns))]
+if (length(pref.no.pattern) > 0) {
+    message(paste0('На эти префиксы нет шаблона: ', pref.no.pattern, 
+                   collapse = '\n'))
+    # полное имя файла, чтобы просмотреть в браузере
+    message(paste0(getwd(), gsub('^[.]', '', sRawXMLPath), 
+                   grep(pref.no.pattern, all.xmls, value = T)[1]))
+}
 
 # преобразуем фрейм с шаблонами в список
 patterns <- as.list(df.patterns)
@@ -85,8 +92,10 @@ patterns[-1] <- lapply(patterns[-1], function(x) {
     x <- x[x != '']
     tmp <- gsub(x, pattern = 'xmlns[:]|oos[:]', replacement = '')
     tmp <- gsub(tmp, pattern = '[//]|[/]', replacement = '.')
+    tmp <- gsub(tmp, pattern = '[|]', replacement = '.')
     tmp <- gsub(tmp, pattern = '^[.]*', replacement = '')
     tmp <- gsub(tmp, pattern = '[.]+', replacement = '.')
+    tmp <- gsub(tmp, pattern = '[[].*[]]', replacement = '')
     tmp <- gsub(tmp, pattern = '^.*:', replacement = '')
     tmp <- gsub(tmp, pattern = '/.*:', replacement = '/')
     tmp <- gsub(tmp, pattern = '[.]$', replacement = '')
@@ -100,23 +109,36 @@ patterns[-1] <- lapply(patterns[-1], function(x) {
     x <- x
 })
 
+# # отладка
+# patterns[-1][6]
+
 # лог
-log.parse.XML.filename <- paste0(sRawArchPath, 'log_xml_parse.txt')
+log.parse.XML.filename <- paste0(sDataSamplePath, 'log_xml_parse.txt')
 if (!file.exists(log.parse.XML.filename)) file.create(log.parse.XML.filename)
 
+
+# Парсим файлы с электронными аукционами =======================================
+
 # # для настройки частичного парсинга ............................................
-# loop.prefs <- 'fcsNotificationEA44'
+# # только те префиксы, файлы для которых не сохранены
+# loop.prefs <- loop.prefs[!(loop.prefs %in% gsub('[.]csv$', '',
+#                                             gsub('^.*_', '', dir(out.path))))]
+# loop.prefs <- 'fcsProtocolEF1'
+# только выборочные шаблоны
 # patterns[['fcsNotificationEA44']] <- 
 #     patterns[['fcsNotificationEA44']][c(1, 2, 28, 29), ]
 # # ..............................................................................
 
 # цикл по типам файлов
-# loop.prefs <- unique(DT.proc.index$prefix)
-filename.to.save.data <- paste0(out.path, 'DT_', pref, '.csv')
+loop.prefs <- unique(DT.proc.index$prefix)
+
 for (pref in loop.prefs) {
 
+    # файл для записи результатов
+    filename.to.save.data <- paste0(out.path, 'DT_', pref, '.csv')
+    
     # отладка
-    # pref <- loop.prefs[6]
+    # pref <- loop.prefs[1]
 
     # выборка с файлами текущего префикса
     DT <- filter(DT.proc.index, prefix == pref)
@@ -125,6 +147,7 @@ for (pref in loop.prefs) {
     if (is.null(patterns[[pref]])) {
         message(paste0('Не найдены теги для префикса файла: ', pref,
                        '\nПропускаю ', nrow(DT), ' файлов.\n'))
+        DT <- NULL
         rm(DT)
         next
     }
@@ -141,12 +164,17 @@ for (pref in loop.prefs) {
                     '.xml')
     
     # парсим файлы с текущим префиксом
-    res <- uf.parse.xmls.with.prefix(flnms, patterns[[pref]], 10000, 
+    #  запись в файл происходит внутри функции uf.parse.xmls.with.prefix
+    res <- uf.parse.xmls.with.prefix(flnms, patterns[[pref]], 5000, 
                                      filename.to.save.data,
                                      log.parse.XML.filename)
     if (is.null(res)) {
         break
     }
+    
+    # чистим память
+    res <- NULL
+    rm(res)
 }
 
 
@@ -155,7 +183,8 @@ for (pref in loop.prefs) {
 
 
 #  * Работаем с таблицей объявлений ============================================
-# грузим результаты парсинга XML (не нормализованную таблицу)
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
 DT.notif <- data.table(read.csv2(paste0(out.path, 'DT_fcsNotificationEA44.csv'), 
                                  stringsAsFactors = F,
                                 na.strings = c('NA', '<NA>'),
@@ -165,7 +194,7 @@ DT.notif <- data.table(read.csv2(paste0(out.path, 'DT_fcsNotificationEA44.csv'),
 dim(DT.notif)
 str(DT.notif)
 colnames(DT.notif)
-
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # # проверка .....................................................................
 # #  список 'id заявки -- id организации-заказчика
@@ -211,14 +240,13 @@ all.responsibleOrgs[, lot.maxPrice := as.numeric(lot.maxPrice)]
 # число пропусков
 sum(is.na(all.responsibleOrgs$lot.maxPrice))
 
-
 # записываем очищенную таблицу с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 flnm <- paste0(out.path, 'DT_responsibleOrgs_clean.csv')
 uf.write.table.with.metadata(all.responsibleOrgs, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
 # удаляем таблицы из рабочего пространства
+all.responsibleOrgs <- NULL
 rm(all.responsibleOrgs)
 
 
@@ -238,14 +266,13 @@ DT.restrictions <- uf.process.large.table.normalising(all.restrictions,
                                                       'DT_restrictions_clean.csv', 
                                                       out.path)
 
-
 # записываем очищенную таблицу с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 flnm <- paste0(out.path, 'DT_restrictions_clean.csv')
 uf.write.table.with.metadata(DT.restrictions, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
 # удаляем таблицы из рабочего пространства
+DT.restrictions <- NULL
 rm(DT.restrictions)
 
 
@@ -334,14 +361,16 @@ pid.n <- select(DT, purchaseNumber, fcsNotificationEF.id)[, .N,
 pid.n
 filter(DT, purchaseNumber == pid.n[2, ]$purchaseNumber)
 
-
 # записываем очищенную таблицу с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 flnm <- paste0(out.path, 'DT_TPY_codes_clean.csv')
 uf.write.table.with.metadata(DT, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
 # удаляем таблицы из рабочего пространства
+DT <- NULL
+DT.all.KTRU <- NULL
+DT.all.OKPD2 <- NULL
+DT.all.MNNName <- NULL
 rm(DT, DT.all.KTRU, DT.all.OKPD2, DT.all.MNNName)
 
 
@@ -351,12 +380,15 @@ rm(DT, DT.all.KTRU, DT.all.OKPD2, DT.all.MNNName)
 # ..............................................................................
 
 #  * Работаем с таблицей протоколов этапа 1 ====================================
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
 flnm <- paste0(out.path, 'DT_fcsProtocolEF1.csv')
 protocols.EF1 <- data.table(read.csv2(flnm, stringsAsFactors = F,
                                       colClasses = 'character'))
 colnames(protocols.EF1)[colnames(protocols.EF1) == 'fcsProtocolEF1.purchaseNumber'] <-
     'purchaseNumber'
 protocols.EF1
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # проверка .....................................................................
 #  строк (уникальных id) в файле должно быть столько же...
@@ -371,7 +403,8 @@ protocols.EF1 <- select(protocols.EF1, purchaseNumber, everything())
 DT.protocols01 <- uf.process.large.table.normalising(protocols.EF1,
                                                      'DT_fcsProtocolEF1_clean.csv',
                                                      out.path)
-
+colnames(DT.protocols01)[colnames(DT.protocols01) == 
+                             'application.admitted.explanation'] <- 'admitted'
 # логический столбец admitted содержит для непринятых заявок причины
 # перекидываем причины в новый столбец, делаем admitted логическим
 DT.protocols01[is.na(as.logical(admitted)), admitted.F.reason := admitted]
@@ -381,14 +414,8 @@ table(DT.protocols01$admitted)
 # число пропусков
 sum(is.na(DT.protocols01$admitted))
 
-# числовой столбец application.journalNumber содержит какой-то мусор
-#  сохраняем на всякий случай
-DT.protocols01[is.na(as.numeric(application.journalNumber)), 
-               application.journalNumber.comment := application.journalNumber]
-DT.protocols01[, application.journalNumber := as.numeric(application.journalNumber)]
+# в столбца application.journalNumber есть текстовые идентификаторы
 table(DT.protocols01$application.journalNumber)
-# число пропусков
-sum(is.na(DT.protocols01$application.journalNumber))
 
 # переименовываем столбцы для дальнейшего связывания таблиц
 colnames(DT.protocols01)[colnames(DT.protocols01) == 'applications.journalNumber'] <-
@@ -396,12 +423,10 @@ colnames(DT.protocols01)[colnames(DT.protocols01) == 'applications.journalNumber
 colnames(DT.protocols01)[colnames(DT.protocols01) == 'protocolDate'] <-
     'protocol01Date'
 
-
 # записываем очищенную таблицу с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 flnm <- paste0(out.path, 'DT_fcsProtocolEF1_clean.csv')
 uf.write.table.with.metadata(DT.protocols01, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
 
 # проверка .....................................................................
 length(unique(DT.protocols01$purchaseNumber))
@@ -418,12 +443,15 @@ length(missed.ids.01)
 
 
 #  * Работаем с таблицей протоколов этапа 2 ====================================
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
 flnm <- paste0(out.path, 'DT_fcsProtocolEF2.csv')
 protocols.EF2 <- data.table(read.csv2(flnm, stringsAsFactors = F,
                                       colClasses = 'character'))
 colnames(protocols.EF2)[colnames(protocols.EF2) == 'application.journalNumber.priceOffers'] <-
     'application.journalNumber'
 protocols.EF2
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # ставим столбец с номером заявки на первое место
 protocols.EF2 <- select(protocols.EF2, purchaseNumber, everything())
@@ -432,14 +460,8 @@ DT.protocols02 <- uf.process.large.table.normalising(protocols.EF2,
                                                      'DT_fcsProtocolEF2_clean.csv',
                                                      out.path)
 
-# числовой столбец application.journalNumber содержит какой-то мусор
-#  сохраняем на всякий случай
-DT.protocols02[is.na(as.numeric(application.journalNumber)), 
-               application.journalNumber.comment := application.journalNumber]
-DT.protocols02[, application.journalNumber := as.numeric(application.journalNumber)]
+# в столбце application.journalNumber есть текстовые идентификаторы
 table(DT.protocols02$application.journalNumber)
-# число пропусков
-sum(is.na(DT.protocols02$application.journalNumber))
 
 # первая цена
 DT.protocols02[, application.firstOffer.price := as.numeric(application.firstOffer.price)]
@@ -484,10 +506,13 @@ length(missed.ids.02)
 
 
 #  * Работаем с таблицей протоколов этапа 3 ====================================
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
 flnm <- paste0(out.path, 'DT_fcsProtocolEF3.csv')
 protocols.EF3 <- data.table(read.csv2(flnm, stringsAsFactors = F, 
                                       colClasses = 'character'))
 protocols.EF3
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # ставим столбец с номером заявки на первое место
 protocols.EF3 <- select(protocols.EF3, purchaseNumber, everything())
@@ -498,22 +523,12 @@ DT.protocols03 <- uf.process.large.table.normalising(protocols.EF3,
                                                      'DT_fcsProtocolEF3_clean.csv',
                                                      out.path)
 
-# числовой столбец application.journalNumber содержит какой-то мусор
-#  сохраняем на всякий случай
-DT.protocols03[is.na(as.numeric(applications.journalNumber)), 
-               applications.journalNumber.comment := applications.journalNumber]
-DT.protocols03[, applications.journalNumber := as.numeric(applications.journalNumber)]
-table(DT.protocols03$applications.journalNumber)
-# число пропусков
-sum(is.na(DT.protocols03$applications.journalNumber))
+# Делаем имя application.appRating.reason.application.notConsidered короче
+colnames(DT.protocols03)[colnames(DT.protocols03) == 'application.appRating.reason.application.notConsidered'] <- 
+    'application.appRating'
 
-# числовой столбец application.appRating содержит текстовые причины отказа
-DT.protocols03[is.na(as.numeric(application.appRating)), 
-               application.appRating.drop.reason := application.appRating]
-DT.protocols03[, application.appRating := as.numeric(application.appRating)]
-table(DT.protocols03$application.appRating)
-# число пропусков
-sum(is.na(DT.protocols03$application.appRating))
+# числовой столбец application.journalNumber содержит текстовые идентификаторы
+table(DT.protocols03$applications.journalNumber)
 
 # переименовываем столбцы для дальнейшего связывания таблиц
 colnames(DT.protocols03)[colnames(DT.protocols03) == 'applications.journalNumber'] <-
@@ -521,16 +536,31 @@ colnames(DT.protocols03)[colnames(DT.protocols03) == 'applications.journalNumber
 colnames(DT.protocols03)[colnames(DT.protocols03) == 'protocolDate'] <-
     'protocol03Date'
 
+# числовой столбец application.appRating содержит текстовые причины отказа
+#  выносим их в отдельный столбец
+DT.protocols03[is.na(as.numeric(application.appRating)), 
+               application.appRating.drop.reason := application.appRating]
+DT.protocols03[, application.appRating := as.numeric(application.appRating)]
+
+
+# # отладка
+# tmp[!is.na(application.appRating) & !is.na(application.appRating.drop.reason), ]
+# tmp[purchaseNumber == '0340200003319009253', ]
+# DT.protocols03[purchaseNumber == '0340200003319009253', ]
+
+table(DT.protocols03$application.appRating)
+# число пропусков
+sum(is.na(DT.protocols03$application.appRating))
 
 # записываем очищенную таблицу с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 flnm <- paste0(out.path, 'DT_fcsProtocolEF3_clean.csv')
 uf.write.table.with.metadata(DT.protocols03, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
 # проверка .....................................................................
 length(unique(DT.protocols03$purchaseNumber))
 length(na.omit(unique(DT.protocols03$purchaseNumber)))
 nrow(filter(DT.proc.index, prefix == 'fcsProtocolEF3'))
-# здесь надо смотреть ещё протоколы с единственной заявкой и с единственным
-#  участником аукциона
+
+# TODO здесь надо смотреть ещё протоколы с единственной заявкой 
+#  с единственным участником аукциона

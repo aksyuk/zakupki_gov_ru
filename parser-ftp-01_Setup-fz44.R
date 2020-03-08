@@ -9,7 +9,7 @@
 #
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.3 (28.02.2020)
+# Версия 1.3.1 (05 Mar 2020)
 # 
 # Эта часть скрипта содержит все предварительные настройки
 #  и работает с сервером по 44 ФЗ
@@ -63,6 +63,36 @@ sUserPwd44 <- 'free:free'
 sYEAR <- paste0(rep(2019, 12), formatC(1:12, width = 2, flag = '0'))
 # sYEAR <- paste0(rep(2020, 2), formatC(1:2, width = 2, flag = '0'))
 
+# часть названия региона для поиска
+# 01
+# srch.reg <- 'Bashk'
+# 03 /это не ошибка/
+# srch.reg <- 'Udmu'
+# 04
+# srch.reg <- 'Permsk'
+# 05
+# srch.reg <- 'Kirov'
+# 06
+# srch.reg <- 'Marij'
+# 07
+# srch.reg <- 'Mordo'
+# 08
+# srch.reg <- 'Nizhegorod'
+
+# 09
+# srch.reg <- 'Orenb'
+# 10
+# srch.reg <- 'Penz'
+# 11
+# srch.reg <- 'Samars'
+# 12
+# srch.reg <- 'Saratov'
+# 13
+# srch.reg <- 'Tatar'
+# 14
+# srch.reg <- 'Uljan'
+# 15
+# srch.reg <- 'Chuvash'
 
 # Список директорий с регионами ================================================
 
@@ -109,8 +139,10 @@ message(paste0('Regions: ', length(sRegionFoldersNames), ' folders.'))
 sRegionFolderURLs <- paste0('ftp://ftp.zakupki.gov.ru/fcs_regions/',
                             sRegionFoldersNames, '/')
 
-#  регион: Башкирия
-sRegionFolderURLs[7]
+# #  регион: Башкирия
+# sRegionFolderURLs[7]
+# #  регион: Удмуртия
+# sRegionFolderURLs[72]
 
 # имена папок с архивами
 sSubfolders <- c('notifications/', 'protocols/', 'contracts/')
@@ -130,28 +162,43 @@ msg <- paste0(1:n.dirs, '. ', dirs.raw, '\n')
 # /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
 message('Выберите выгрузку:\n', msg, n.dirs + 1, '. Создать новую выгрузку')
 # prompt.load.sample <- readline('Введите номер опции:')
-# быстрая опция
-prompt.load.sample <- 4
+# быстрая опция: новая выгрузка
+# prompt.load.sample <- n.dirs + 1
+prompt.load.sample <- 8
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
 if (prompt.load.sample == n.dirs + 1) {
-    sRawArchPath <- paste0('./data/raw/', sYEAR[1], '-', sYEAR[length(sYEAR)], 
-                           '_', Sys.Date(), '/')
-    if (!dir.exists(sRawArchPath)) dir.create(sRawArchPath)    
+    # определяем порядковый номер для папки новой выгрузки
+    new.count <- as.numeric(gsub('^([[:digit:]]{2})(_.*)', '\\1', dirs.raw))
+    new.count <- formatC(new.count[length(new.count)] + 1, width = 2, flag = '0')
+    
+    # формат пути к папке с новой выгрузкой: <директория с равками>/ 
+    #  <порядковый номер выгрузки>_from<начало периода выгрузки в формате 
+    #  YYYYMM>to<конец периода выгрузки в формате YYYYMM>_loaded<дата загрузки 
+    #  данных в формате YYYY-MM-DD>/
+    sDataSamplePath <- paste0('./data/raw/', new.count, '_from',
+                           sYEAR[1], 'to', sYEAR[length(sYEAR)], '_loaded', 
+                           format(Sys.Date(), format = "%Y-%m-%d"), '/')
+    if (!dir.exists(sDataSamplePath)) dir.create(sDataSamplePath)    
 } else {
-    sRawArchPath <- paste0('./data/raw/', 
+    # выбираем выгрузку, сделанную ранее
+    sDataSamplePath <- paste0('./data/raw/', 
                            dirs.raw[as.numeric(prompt.load.sample)], '/')
 }
 
-cat(yellow(paste0('Выбрано: ', prompt.load.sample, ';\nsRawArchPath = ', 
-                  sRawArchPath, '\n')))
+cat(yellow(paste0('Выбрано: ', prompt.load.sample, ';\nsDataSamplePath = ', 
+                  sDataSamplePath, '\n')))
+
+# исходные данные в архивах ....................................................
+sRawArchPath <- paste0(sDataSamplePath, 'archives/')
+if (!dir.exists(sRawArchPath)) dir.create(sRawArchPath)
 
 # исходные данные в xml (распакованные архивы) .................................
-sRawXMLPath <- paste0(sRawArchPath, 'xmls/')
+sRawXMLPath <- paste0(sDataSamplePath, 'xmls/')
 if (!dir.exists(sRawXMLPath)) dir.create(sRawXMLPath)
 
 # исходные данные в csv (разобранные xml) ......................................
-sRawCSVPath <- paste0(sRawArchPath, 'csv/')
+sRawCSVPath <- paste0(sDataSamplePath, 'csv/')
 if (!dir.exists(sRawCSVPath)) dir.create(sRawCSVPath)
 
 # таблицы-справочники ..........................................................
@@ -170,8 +217,9 @@ if (!dir.exists(sLogPath)) dir.create(sLogPath)
 # Переменные -------------------------------------------------------------------
 
 #  регион (регионы)
-my.region <- grep(sRegionFolderURLs, pattern = 'Bashk', value = T)
-message(paste0('Работаем с регионом: ', my.region))
+my.region <- list(url = grep(sRegionFolderURLs, pattern = srch.reg, value = T))
+my.region$name <- gsub('.*[/]', '', gsub('[/]$', '', my.region$url))
+message(paste0('Работаем с регионом: ', my.region$name))
 
 # все типы процедур
 all.proc.types <- read.csv2(paste0(sRefPath, 'dt_procedure_types.csv'),
@@ -197,8 +245,18 @@ if (!dir.exists(drnm)) {
     dir.create(drnm)
 }
 
+# # пишем параметры данных в README.txt
+# flnm <- paste0(sDataSamplePath, 'README.txt')
+# msg <- paste0('Регион: ', my.region$name, '\n',
+#               'Период: с ', sYEAR[1], ' по ', sYEAR[length(sYEAR)], '\n',
+#               'Тип процедуры: ', all.proc.types[prompt.proc.type, 2], '\n',
+#               'Дата загрузки: ', format(Sys.Date(), format = "%Y-%m-%d"))
+# uf.write.to.log(msg, out.file.name = flnm, silent = T)
+
 # папка с csv-файлами по текущему типу процедур
 out.path <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/')
 
 message('ПОДГОТОВКА РАБОЧЕГО ПРОСТРАНСТВА ЗАВЕРШЕНА')
 
+# URL для загрузки архивов:
+my.region$url

@@ -19,10 +19,17 @@
 #    а после сборки итоговой таблицы стирает их
 # ..............................................................................
 
-uf.process.large.table.normalising <- function(DT, out.total.table.name,
+uf.process.large.table.normalising <- function(DT.large, out.total.table.name,
                                                csvs.path,
                                                dt.step = 100, 
                                                max.console.lines = iMaxConsoleStatusLines) {
+    # # отладка
+    # DT.large <- DT.all.MNNName
+    # out.total.table.name <- 'DT_all_MNNName_clean.csv'
+    # csvs.path <- out.path
+    # dt.step <- 100
+    # max.console.lines <- iMaxConsoleStatusLines
+    
     # счётчик строк в консоли    
     console.clean.count <- 0    
     
@@ -33,8 +40,8 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
     }
         
     # общее количество табличек по dt.step строк
-    dt.count <- nrow(DT) %/% dt.step
-    if (nrow(DT) / dt.step != nrow(DT) %/% dt.step) {
+    dt.count <- nrow(DT.large) %/% dt.step
+    if (nrow(DT.large) / dt.step != nrow(DT.large) %/% dt.step) {
         dt.count <- dt.count + 1
     }
     # первая и последняя строки первого кусочка большой таблицы
@@ -44,14 +51,17 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
     # цикл по номеру таблички
     for (file.count in 1:dt.count) {
             
+        # отладка
+        # file.count <- 763
+        
         # берём кусочек исходной таблицы
-        df <- data.frame(DT[fst.row:lst.row, ])
+        df <- data.frame(DT.large[fst.row:lst.row, ])
         rownames(df) <- fst.row:lst.row
             
         # запускаем нормализацию
         df <- uf.normalise.table(df)
         df <- df$data
-            
+        
         if (!is.null(df)) {
             # пишем результат на диск
             out.file.name <- paste0(csvs.path.tmp, 'DF_curr_part_', 
@@ -122,7 +132,8 @@ uf.process.large.table.normalising <- function(DT, out.total.table.name,
         
     # удаляем временные файлы
     file.remove(flnms)
-    rm(DT)
+    DT.large <- NULL
+    rm(DT.large)
         
     return(DT.all)
 }

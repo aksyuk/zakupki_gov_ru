@@ -12,13 +12,18 @@
 #  * plot.filename -- файл, в который рисуем график изменение размера 
 #  * plot.main     -- заголовок для графика
 #
-# Возвращаемое значение: нет.
+# Возвращаемое значение: список из таблицы ($data) и её размера ($size.Mb)
 # 
-# Создаёт / модифицирует файлы:
-#  * plot.filename (путь + имя) -- графический файл .png (статус)
+# Создаёт / модифицирует файлы: нет
 # ..............................................................................
 
-uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines) {
+uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines,
+                               log.errors.flnm = paste0(sDataSamplePath,
+                                                    'log_normalise_err.log')) {
+    
+    # # отладка
+    # DT <- protocols.EF3
+    # DT <- df
     
     # таблица с результатами
     DT.result <- NULL
@@ -40,10 +45,13 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines) {
     })), pattern = '#')
     rw.hashes <- rownames(DT)[rw.hashes]
     
-    message(paste0('Начинаю цикл по строкам.', Sys.time()))
+    # на случай если попался кусок таблицы без склеек
+    if (length(rw.hashes) == 0) {
+        message(paste0('Таблица не содержит склеек'))
+        return(list(data = DT, size.Mb = object.size(DT)))
+    }
     
-    # размер таблицы для графика
-    o.s.01 <- NULL
+    message(paste0('Начинаю цикл по строкам.', Sys.time()))
     
     # счётчики
     n <- length(rw.hashes)
@@ -56,46 +64,81 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines) {
     # цикл по строкам с #
     for (i.row in rw.hashes) {
         
-        # выбираем строку, расклеиваем в список
-        new.line <- unlist(DT[rownames(DT) == i.row, ])
-        new.line <- gsub(new.line, pattern = '(http://|https://)[^;]*', 
-                         replacement = '')
-        lst <- lapply(new.line, function(x) {unlist(strsplit(x, '#'))})
-        lst.length <- sapply(lst, length)
+        # # отладка
+        # i.row <- 9681
+        # i.row <- rw.hashes[1]
         
-        # сколько строк добавить
-        rw.hashes.add <- unique(lst.length[lst.length > 1])
-        
-        # повторяем значения остальных ячеек в строке столько раз,
-        #  сколько повторов в ячейке с #
-        lst <- lapply(lst, function(x) {
-            x <- rep(x, rw.hashes.add / length(x))
+        res <- tryCatch({
+            # выбираем строку, расклеиваем в список
+            new.line <- unlist(DT[rownames(DT) == i.row, ])
+            new.line <- gsub(new.line, pattern = '(http://|https://)[^;]*', 
+                             replacement = '')
+            lst <- lapply(new.line, function(x) {unlist(strsplit(x, '#'))})
+            lst.length <- sapply(lst, length)
+            
+            # сколько строк добавить
+            rw.hashes.add <- unique(lst.length[lst.length > 1])
+            
+            # повторяем значения остальных ячеек в строке столько раз,
+            #  сколько повторов в ячейке с #
+            lst <- lapply(lst, function(x) {
+                x <- rep(x, rw.hashes.add / length(x))
+            })
+            
+            # превращаем список во фрейм, меняем номера строк
+            dt <- data.frame(lst, stringsAsFactors = F)
+            rownames(dt) <- paste0(i.row, '.', 1:rw.hashes.add)
+            
+            # сбиваем с таблицей для этого столбца
+            DT.result <- rbind(DT.result, dt)
+            dt <- NULL
+            rm(dt)
+            
+            list(no.err = T, data = DT.result)
+        },
+        error = function(cond) {
+            message("Запись файла не удалась")
+            message("Сообщение об ошибке:")
+            message(paste0(cond, '\n'))
+            uf.write.to.log(paste0('Таблица: ', paste0(colnames(DT), 
+                                                       collapse = ';'), 
+                                   '\n i.row = ', i.row, '\n', cond), 
+                            log.errors.flnm, T)
+            list(no.err = F, data = NULL)
+        },
+        warning = function(cond) {
+            message("Запись файла вызвала предупреждение")
+            message("Текст сообщения:")
+            message(paste0(cond, '\n'))
+            uf.write.to.log(paste0('Таблица: ', paste0(colnames(DT), 
+                                                       collapse = ';'), 
+                                   '\n i.row = ', i.row, '\n', cond), 
+                            log.errors.flnm, T)
+            list(no.err = F, data = DT.result)
+        },
+        finally = {
+            # статус в консоль
+            i <- i + 1
+            message(paste0('Строка ', i.row, ': ', 
+                           round(i / n * 100, 1), '%... '))
+            console.clean.count <- console.clean.count + 1
+            if (console.clean.count == max.console.lines) {
+                cat("\014")
+                console.clean.count <- 0
+            }
         })
         
-        # превращаем список во фрейм, меняем номера строк
-        dt <- data.frame(lst, stringsAsFactors = F)
-        rownames(dt) <- paste0(i.row, '.', 1:rw.hashes.add)
-        
-        # сбиваем с таблицей для этого столбца
-        DT.result <- rbind(DT.result, dt)
-        rm(dt)
-        
-        # статус в консоль
-        i <- i + 1
-        message(paste0('Строка ', i.row, ': ', 
-                       round(i / n * 100, 1), '%... '))
-        console.clean.count <- console.clean.count + 1
-        if (console.clean.count == max.console.lines) {
-            cat("\014")
-            console.clean.count <- 0
+        if (res$no.err == F) {
+            cat(red(paste0('Аварийная остановка: произошла ошибка.',
+                           '\nСм. файл лога: ', log.errors.flnm)))
+            return(res$no.err)
         }
     }
-
-    o.s.01 <- c(o.s.01, object.size(DT.result))
     
     message(paste0('Закончили нормализацию: ', Sys.time()))
     
+    DT <- NULL
     rm(DT)
     
-    return(list(data = DT.result, size.Mb = o.s.01))
+    return(list(data = res$data, size.Mb = object.size(res$data)))
 }

@@ -6,6 +6,15 @@ uf.convert.char.to.date <- function(dates.char.vector) {
     
     # # отладка
     # dates.char.vector <- DT.protocols02$protocol02Date
+    # dates.char.vector <- DT.protocols02$application.firstOffer.date
+    
+    # заготовка под вектор с датами в часовом поясе Москвы
+    date.MSK <- rep(as.POSIXct('1900-01-01 00:00:01', tz = 'Europe/Moscow'), 
+                    length(dates.char.vector))
+    date.MSK[is.na(dates.char.vector)] <- NA
+    # убираем пропуски
+    dates.char.vector <- na.omit(dates.char.vector)
+    date.MSK.wo.NA <- na.omit(date.MSK)
     
     # костыль, т.к. я не могу нормально составить рег. выражение для +- перед
     #  часовым поясом
@@ -41,25 +50,28 @@ uf.convert.char.to.date <- function(dates.char.vector) {
     # отрезаем зону от исходной строки
     dates.wo.tz <- gsub('(.*)[+|-](.*)$', '\\1', dates.char.vector)
     
-    # заготовка под вектор с датами в часовом поясе Москвы
-    date.MSK <- rep(as.POSIXct('1900-01-01 00:00:01', tz = 'Europe/Moscow'), 
-                    length(dates.char.vector))
+    # цикл по timezones
     tz.loop <- unique(tz)
     
     for (tz.curr in tz.loop) {
         
         # # отладка
-        # tz.curr <- tz.loop[3]
+        # tz.curr <- tz.loop[1]
         
         date.orig.tz <- as.POSIXct(dates.wo.tz[tz == tz.curr], 
                                    format = '%Y-%m-%dT%H:%M:%S', tz = tz.curr)
-        date.MSK[tz == tz.curr] <- with_tz(date.orig.tz, 'Europe/Moscow')
+        date.MSK.wo.NA[tz == tz.curr] <- with_tz(date.orig.tz, 'Europe/Moscow')
     }
+    
+    date.MSK[!is.na(date.MSK)] <- date.MSK.wo.NA
     
     # # отладка
     # dates.char.vector[1:10]
     # dates.wo.tz[1:10]
     # date.MSK[1:10]
+    # dates.char.vector[is.na(dates.char.vector)]
+    # dates.wo.tz[is.na(dates.char.vector)]
+    # date.MSK[is.na(dates.char.vector)]
     
     return(date.MSK)
 }

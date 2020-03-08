@@ -5,7 +5,7 @@
 #  который находится по адресу
 #  http://zakupki.gov.ru/
 # Результаты -- таблица по госзакупкам -- записывается в .csv файл.
-# Параметры поиска в файле parser_html_URL_params.csv.
+# Параметры поиска в файле ./data/reference/parser_html_URL_params.csv.
 #
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 #

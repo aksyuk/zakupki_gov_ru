@@ -28,7 +28,8 @@
 # ПЕРЕМЕННЫЕ -------------------------------------------------------------------
 
 ## составляющие запроса данных (URL)
-df.params <- read.csv2('./parser_html_URL_params.csv', stringsAsFactors = F)
+df.params <- read.csv2('./data/parser_html_URL_params.csv', 
+                       stringsAsFactors = F)
 const.html <- df.params$ParamID
 var.html <- df.params$Value
 

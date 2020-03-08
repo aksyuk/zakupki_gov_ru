@@ -8,8 +8,6 @@
 # Аргументы:
 #  * msg           -- текст сообщения
 #  * out.file.name -- файл, в который пишем результаты
-#  * bom           -- писать ли спецсимволы в начало такстового файла 
-#                     (T, если Windows)
 #  * silent        -- если T, то не выводить сообщение в консоль
 #
 # Возвращаемое значение: нет.
@@ -19,12 +17,12 @@
 #                                  строки добавляются в конец.
 # ..............................................................................
 
-uf.write.to.log <- function(msg, out.file.name, bom = F, silent = F) {
+uf.write.to.log <- function(msg, out.file.name, silent = F) {
     # соединение с файлом
     con <- file(out.file.name, 'ab')
     # спецсимволы начала файла в Windows 
     BOM <- charToRaw('\xEF\xBB\xBF')
-    if (bom) writeBin(BOM, con, endian = 'little')
+    if (uf.get.os() == 'windows') writeBin(BOM, con, endian = 'little')
     # пишем в файл
     writeBin(charToRaw(paste0(msg, '\r\n')), con, endian = 'little')
     # закрываем соединение
