@@ -2,7 +2,7 @@
 # Скрипты для загрузки данных с ftp госзакупок   
 
 Автор: Суязова (Аксюк) Светлана [s.a.aksuk@gmail.com](mailto:s.a.aksuk@gmail.com)   
-Последнее большое обновление: 08 Mar 2020 :bouquet: :ice_cream: :coffee:    
+Последнее большое обновление: 08 Mar 2020 :bouquet: :ice_cream: :coffee:     
 
 # Справочник по скриптам   
 
