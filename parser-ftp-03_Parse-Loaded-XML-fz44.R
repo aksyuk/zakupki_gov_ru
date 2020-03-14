@@ -81,40 +81,10 @@ if (length(pref.no.pattern) > 0) {
                    grep(pref.no.pattern, all.xmls, value = T)[1]))
 }
 
-# преобразуем фрейм с шаблонами в список
-patterns <- as.list(df.patterns)
-patterns <- c(list(ns = c('xmlns:', 'xmlns:', 'oos:', 'xmlns:',
-                          'xmlns:', 'xmlns:')), patterns)
-patterns <- lapply(patterns, function(x){x[x != ""]})
+# paste0(getwd(), gsub('[.]', '', sRawXMLPath), 
+#        grep(pref.no.pattern[2], all.xmls, value = T)[1:2])
 
-# делаем из шаблонов имена столбцов итоговой таблицы
-patterns[-1] <- lapply(patterns[-1], function(x) {
-    x <- x[x != '']
-    tmp <- gsub(x, pattern = 'xmlns[:]|oos[:]', replacement = '')
-    tmp <- gsub(tmp, pattern = '[//]|[/]', replacement = '.')
-    tmp <- gsub(tmp, pattern = '[|]', replacement = '.')
-    tmp <- gsub(tmp, pattern = '^[.]*', replacement = '')
-    tmp <- gsub(tmp, pattern = '[.]+', replacement = '.')
-    tmp <- gsub(tmp, pattern = '[[].*[]]', replacement = '')
-    tmp <- gsub(tmp, pattern = '^.*:', replacement = '')
-    tmp <- gsub(tmp, pattern = '/.*:', replacement = '/')
-    tmp <- gsub(tmp, pattern = '[.]$', replacement = '')
-    tmp <- gsub(tmp, pattern = '[][]', replacement = '')
-    tmp <- gsub(tmp, pattern = '\\)|\\(', replacement = '')
-    tmp <- gsub(tmp, pattern = '([^\\|]*)\\|.*', replacement = '\\1')
 
-    x <- data.frame(xml.pattern = x, stringsAsFactors = F)
-    x$xpath.names <- as.character(tmp)
-
-    x <- x
-})
-
-# # отладка
-# patterns[-1][6]
-
-# лог
-log.parse.XML.filename <- paste0(sDataSamplePath, 'log_xml_parse.txt')
-if (!file.exists(log.parse.XML.filename)) file.create(log.parse.XML.filename)
 
 
 # Парсим файлы с электронными аукционами =======================================
@@ -122,8 +92,8 @@ if (!file.exists(log.parse.XML.filename)) file.create(log.parse.XML.filename)
 # # для настройки частичного парсинга ............................................
 # # только те префиксы, файлы для которых не сохранены
 # loop.prefs <- loop.prefs[!(loop.prefs %in% gsub('[.]csv$', '',
-#                                             gsub('^.*_', '', dir(out.path))))]
-# loop.prefs <- 'fcsProtocolEF1'
+#                                             gsub('^[^_]*_', '', dir(out.path))))]
+# loop.prefs <- 'fcsNotificationEA44'
 # только выборочные шаблоны
 # patterns[['fcsNotificationEA44']] <- 
 #     patterns[['fcsNotificationEA44']][c(1, 2, 28, 29), ]
@@ -283,8 +253,11 @@ rm(DT.restrictions)
 
 # ПЕРВЫЙ КЛАССИФИКАТОР ТОВАРОВ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 columns.to.search <- c('purchaseNumber', 'fcsNotificationEF.id',
-                       'purchaseObject.OKPD2.code', 'purchaseObject.OKPD2.name')
-DT.all.OKPD2 <- unique(data.table(DT.notif[, columns.to.search, with = F]))
+                       'purchaseObject.OKPD2.code')
+# 'purchaseObject.OKPD2.name' выдаёт ошибку в некоторых случаях (падает сессия)
+#   поэтому разбиваем на два шага
+DT.all.OKPD2 <- DT.notif %>% select(one_of(columns.to.search))
+DT.all.OKPD2$purchaseObject.OKPD2.name <- DT.notif$purchaseObject.OKPD2.name
 dim(DT.all.OKPD2)
 
 DT.all.OKPD2 <- uf.process.large.table.normalising(DT.all.OKPD2,
@@ -304,7 +277,7 @@ colnames(DT.all.OKPD2)[colnames(DT.all.OKPD2) == 'fcsNotificationEF.purchaseNumb
 # ВТОРОЙ КЛАССИФИКАТОР ТОВАРОВ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 columns.to.search <- c('purchaseNumber', 'fcsNotificationEF.id',
                        'purchaseObject.KTRU.code', 'purchaseObject.KTRU.name')
-DT.all.KTRU <- unique(data.table(DT.notif[, columns.to.search, with = F]))
+DT.all.KTRU <- DT.notif %>% select(one_of(columns.to.search))
 dim(DT.all.KTRU)
 
 DT.all.KTRU <- uf.process.large.table.normalising(DT.all.KTRU,
@@ -324,7 +297,7 @@ colnames(DT.all.KTRU)[colnames(DT.all.KTRU) == 'fcsNotificationEF.purchaseNumber
 # ТРЕТИЙ КЛАССИФИКАТОР ТОВАРОВ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 columns.to.search <- c('purchaseNumber', 'fcsNotificationEF.id',
                        'drugPurchaseObjectInfo.MNNName')
-DT.all.MNNName <- unique(data.table(DT.notif[, columns.to.search, with = F]))
+DT.all.MNNName <- DT.notif %>% select(one_of(columns.to.search))
 dim(DT.all.MNNName)
 
 DT.all.MNNName <- uf.process.large.table.normalising(DT.all.MNNName,
@@ -524,7 +497,7 @@ DT.protocols03 <- uf.process.large.table.normalising(protocols.EF3,
                                                      out.path)
 
 # Делаем имя application.appRating.reason.application.notConsidered короче
-colnames(DT.protocols03)[colnames(DT.protocols03) == 'application.appRating.reason.application.notConsidered'] <- 
+colnames(DT.protocols03)[grepl('application.appRating', colnames(DT.protocols03))] <- 
     'application.appRating'
 
 # числовой столбец application.journalNumber содержит текстовые идентификаторы

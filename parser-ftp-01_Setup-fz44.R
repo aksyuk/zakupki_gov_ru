@@ -78,7 +78,6 @@ sYEAR <- paste0(rep(2019, 12), formatC(1:12, width = 2, flag = '0'))
 # srch.reg <- 'Mordo'
 # 08
 # srch.reg <- 'Nizhegorod'
-
 # 09
 # srch.reg <- 'Orenb'
 # 10
@@ -92,7 +91,7 @@ sYEAR <- paste0(rep(2019, 12), formatC(1:12, width = 2, flag = '0'))
 # 14
 # srch.reg <- 'Uljan'
 # 15
-# srch.reg <- 'Chuvash'
+srch.reg <- 'Chuvash'
 
 # Список директорий с регионами ================================================
 
@@ -139,11 +138,6 @@ message(paste0('Regions: ', length(sRegionFoldersNames), ' folders.'))
 sRegionFolderURLs <- paste0('ftp://ftp.zakupki.gov.ru/fcs_regions/',
                             sRegionFoldersNames, '/')
 
-# #  регион: Башкирия
-# sRegionFolderURLs[7]
-# #  регион: Удмуртия
-# sRegionFolderURLs[72]
-
 # имена папок с архивами
 sSubfolders <- c('notifications/', 'protocols/', 'contracts/')
 
@@ -164,7 +158,7 @@ message('Выберите выгрузку:\n', msg, n.dirs + 1, '. Создат
 # prompt.load.sample <- readline('Введите номер опции:')
 # быстрая опция: новая выгрузка
 # prompt.load.sample <- n.dirs + 1
-prompt.load.sample <- 8
+prompt.load.sample <- 15
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
 if (prompt.load.sample == n.dirs + 1) {

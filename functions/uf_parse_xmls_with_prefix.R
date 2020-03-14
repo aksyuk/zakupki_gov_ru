@@ -57,7 +57,7 @@ uf.parse.xmls.with.prefix <- function(file.names, xml.patterns, rows.temp.tbl,
     #  с префиксом fcsContractSign есть проблемы: 
     #  в новой версии изменился namespace
     if (prefix == 'fcsContractSign') {
-        ptt.new <- gsub('oos:', '', xml.patterns[, 1])
+        ptt.new <- gsub('oos:', 'xmlns:', xml.patterns[, 1])
         ptt.old <- xml.patterns[, 1]
     }
     # ..........................................................................
@@ -83,7 +83,7 @@ uf.parse.xmls.with.prefix <- function(file.names, xml.patterns, rows.temp.tbl,
                                        xmlGetAttr, 'schemeVersion', namespaces = ns)
             }
             
-            if (as.numeric(sch.ver) >= 9) {
+            if (as.numeric(sch.ver) >= 8.3) {
                 xml.patterns[, 1] <- ptt.new
             } else {
                 xml.patterns[, 1] <- ptt.old

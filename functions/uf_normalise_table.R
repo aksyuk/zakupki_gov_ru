@@ -71,8 +71,7 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines,
         res <- tryCatch({
             # выбираем строку, расклеиваем в список
             new.line <- unlist(DT[rownames(DT) == i.row, ])
-            new.line <- gsub(new.line, pattern = '(http://|https://)[^;]*', 
-                             replacement = '')
+            new.line <- gsub('(http:[//]|https:[//]).*[.][a-z]+', '', new.line)
             lst <- lapply(new.line, function(x) {unlist(strsplit(x, '#'))})
             lst.length <- sapply(lst, length)
             
@@ -130,7 +129,7 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines,
         
         if (res$no.err == F) {
             cat(red(paste0('Аварийная остановка: произошла ошибка.',
-                           '\nСм. файл лога: ', log.errors.flnm)))
+                           '\nСм. файл лога: ', log.errors.flnm, '\n')))
             return(res$no.err)
         }
     }
