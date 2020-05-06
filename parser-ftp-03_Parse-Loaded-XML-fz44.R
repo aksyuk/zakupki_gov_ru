@@ -19,34 +19,13 @@
 
 # 3. РАЗБОР XML-ФАЙЛОВ ---------------------------------------------------------
 
+log.parse.XML.filename <- paste0(gsub('csv/$', '', sRawCSVPath), 
+                                 'log_xml_parse.txt')
+
 
 # Делаем индекс файлов с аукционами, включая номера документов =================
 
-DT.proc.index <- all.xmls
-DT.proc.index <- gsub('[.]xml', '', DT.proc.index)
-DT.proc.index <- data.table(do.call(rbind, strsplit(gsub('fcs_', 'fcs', 
-                                                         DT.proc.index), '_')))
-colnames(DT.proc.index) <- c('prefix', 'purchaseNum', 'id')
-# противный префикс fcs_notificationEFDateChange портит всю обедню,
-#  но переименовывать исходники плохая идея
-DT.proc.index$prefix[DT.proc.index$prefix == 'fcsnotificationEFDateChange'] <- 
-    'fcs_notificationEFDateChange'
-head(DT.proc.index)
-
-# проверка количества файлов
-tmp <- cbind(DT.proc.index[, -2][, .N, by = prefix][order(-N), ], 
-             sort(sapply(DT.xml.files.index[, -1], sum), decreasing = T))
-sapply(tmp[, -1], sum)
-
-# оставялем только id для электронных аукционов
-DT.proc.index <- DT.proc.index[purchaseNum %in% loop.ids, ]
-dim(DT.proc.index)
-
-# записываем таблицу-индекс с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-flnm <- paste0(sRawCSVPath, 'DT_index_melt_', lProcedureToScrap$procedureCode, 
-               '.csv')
-uf.write.table.with.metadata(DT.proc.index, flnm)
-# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# DT.proc.index <- uf.make.file.index.for.proc(all.xmls)
 
 
 # Читаем таблицу с шаблонами для разбора xml ===================================
@@ -70,21 +49,19 @@ df.patterns <- read.csv2(paste0(sRefPath, 'df_xml_patterns.csv'),
                          stringsAsFactors = F)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+# делаем список с шаблонами для парсинга
+patterns <- uf.make.colnames.from.xpath(df.patterns)
+
 # список префиксов файлов из индекса, для которых нет шаблона
 pref.no.pattern <- unique(DT.proc.index$prefix)[!(unique(DT.proc.index$prefix) 
                                                   %in% names(df.patterns))]
 if (length(pref.no.pattern) > 0) {
-    message(paste0('На эти префиксы нет шаблона: ', pref.no.pattern, 
-                   collapse = '\n'))
+    cat(red((paste0('На эти префиксы нет шаблона: ', pref.no.pattern, 
+                   collapse = '\n'))))
     # полное имя файла, чтобы просмотреть в браузере
     message(paste0(getwd(), gsub('^[.]', '', sRawXMLPath), 
                    grep(pref.no.pattern, all.xmls, value = T)[1]))
 }
-
-# paste0(getwd(), gsub('[.]', '', sRawXMLPath), 
-#        grep(pref.no.pattern[2], all.xmls, value = T)[1:2])
-
-
 
 
 # Парсим файлы с электронными аукционами =======================================
@@ -93,14 +70,16 @@ if (length(pref.no.pattern) > 0) {
 # # только те префиксы, файлы для которых не сохранены
 # loop.prefs <- loop.prefs[!(loop.prefs %in% gsub('[.]csv$', '',
 #                                             gsub('^[^_]*_', '', dir(out.path))))]
-# loop.prefs <- 'fcsNotificationEA44'
+# только файлы заданного типа
+loop.prefs <- 'fcsProtocolEFSingleApp'
+# loop.prefs <- 'fcsProtocolEF1'
 # только выборочные шаблоны
 # patterns[['fcsNotificationEA44']] <- 
 #     patterns[['fcsNotificationEA44']][c(1, 2, 28, 29), ]
 # # ..............................................................................
 
-# цикл по типам файлов
-loop.prefs <- unique(DT.proc.index$prefix)
+# # цикл по типам файлов
+# loop.prefs <- unique(DT.proc.index$prefix)
 
 for (pref in loop.prefs) {
 
@@ -535,5 +514,230 @@ length(unique(DT.protocols03$purchaseNumber))
 length(na.omit(unique(DT.protocols03$purchaseNumber)))
 nrow(filter(DT.proc.index, prefix == 'fcsProtocolEF3'))
 
-# TODO здесь надо смотреть ещё протоколы с единственной заявкой 
-#  с единственным участником аукциона
+
+#  * Работаем с таблицей протоколов аукционов с единственной заявкой ===========
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
+singleApp <- data.table(read.csv2(paste0(out.path, 
+                                         'DT_fcsProtocolEFSingleApp.csv'), 
+                                  stringsAsFactors = F,
+                                  na.strings = c('NA', '<NA>'),
+                                  # encoding = 'UTF-8',
+                                  colClasses = 'character'))
+# проверка
+dim(singleApp)
+str(singleApp)
+colnames(singleApp)
+
+# ставим столбец с номером заявки на первое место
+singleApp <- select(singleApp, purchaseNumber, everything())
+# переименовываем столбцы для дальнейшего связывания таблиц
+colnames(singleApp)[colnames(singleApp) == 'protocolDate'] <- 'protocolSingleAppDate'
+
+# нормализуем таблицу (расклеиваем значения в столбцах)
+DT.singleApp <- uf.process.large.table.normalising(singleApp,
+                                                   'DT_fcsProtocolEFSingleApp_clean.csv',
+                                                   out.path)
+
+# столбец с ценой числовой
+DT.singleApp$winnerPrice <- as.numeric(DT.singleApp$winnerPrice)
+
+# если по любой причине единственный участник отклонён, 
+#  то контракт не будет заключён
+DT.singleApp[!is.na(application.appRejectedReason.code), proc.success := F]
+DT.singleApp[is.na(application.appRejectedReason.code), proc.success := T]
+
+# выносим коды причин отклонения заявок в дамми
+rej.codes <- names(table(DT.singleApp$application.appRejectedReason.code))
+for (i in 1:length(rej.codes)) {
+    
+    DT.singleApp$VAR <- 0
+    
+    # закупки, у которых стоит код отклонения заявки
+    p.loop <- DT.singleApp[DT.singleApp$application.appRejectedReason.code == rej.codes[i], ]$purchaseNumber
+    DT.singleApp[purchaseNumber %in% p.loop, VAR := 1]
+    
+    # закупки, у которых код отклонения заявки NA
+    p.loop <- DT.singleApp[is.na(application.appRejectedReason.code), ]$purchaseNumber
+    DT.singleApp[purchaseNumber %in% p.loop, VAR := 0]
+    
+    # переименовываем столбец в соответствии с кодом отказа
+    colnames(DT.singleApp)[colnames(DT.singleApp) == 'VAR'] <- 
+        paste0('rejected.', rej.codes[i])
+}
+
+# оставляем только столбцы для модели
+col.keep <- grep('^rejected[.]', colnames(DT.singleApp), value = T)
+DT.singleApp <- select(DT.singleApp, purchaseNumber, protocolSingleAppDate,
+                       application.inn, application.countryFullName,
+                       proc.success, winnerPrice, proc.success,
+                       all_of(col.keep))
+DT.singleApp <- unique(DT.singleApp)
+
+# записываем очищенную таблицу с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+flnm <- paste0(out.path, 'DT_fcsProtocolEFSingleApp_clean.csv')
+uf.write.table.with.metadata(DT.singleApp, flnm)
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+#  * Работаем с таблицей протоколов аукционов с единственным участником ========
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
+singlePart <- data.table(read.csv2(paste0(out.path, 
+                                         'DT_fcsProtocolEFSinglePart.csv'), 
+                                  stringsAsFactors = F,
+                                  na.strings = c('NA', '<NA>'),
+                                  # encoding = 'UTF-8',
+                                  colClasses = 'character'))
+# проверка
+dim(singlePart)
+str(singlePart)
+colnames(singlePart)
+
+# ставим столбец с номером заявки на первое место
+singlePart <- select(singlePart, purchaseNumber, everything())
+# переименовываем столбцы для дальнейшего связывания таблиц
+colnames(singlePart)[colnames(singlePart) == 'protocolDate'] <- 'protocolSinglePartDate'
+
+# нормализуем таблицу (расклеиваем значения в столбцах)
+DT.singlePart <- uf.process.large.table.normalising(singlePart,
+                                                   'DT_fcsProtocolEFSinglePart_clean.csv',
+                                                   out.path)
+
+# столбец с ценой числовой
+DT.singlePart$winnerPrice <- as.numeric(DT.singlePart$winnerPrice)
+
+# преобразуем явно в таблицу
+DT.singlePart <- data.table(DT.singlePart)
+
+# если по любой причине единственный участник отклонён, 
+#  то контракт не будет заключён
+DT.singlePart[!is.na(application.appRejectedReason.code), proc.success := F]
+DT.singlePart[is.na(application.appRejectedReason.code), proc.success := T]
+
+# выносим коды причин отклонения заявок в дамми
+rej.codes <- names(table(DT.singlePart$application.appRejectedReason.code))
+if (length(rej.codes) > 0) {
+    for (i in 1:length(rej.codes)) {
+        
+        DT.singlePart$VAR <- 0
+        
+        # закупки, у которых стоит код отклонения заявки
+        p.loop <- DT.singlePart[DT.singlePart$application.appRejectedReason.code == rej.codes[i], ]$purchaseNumber
+        DT.singlePart[purchaseNumber %in% p.loop, VAR := 1]
+        
+        # закупки, у которых код отклонения заявки NA
+        p.loop <- DT.singlePart[is.na(application.appRejectedReason.code), ]$purchaseNumber
+        DT.singlePart[purchaseNumber %in% p.loop, VAR := 0]
+        
+        # переименовываем столбец в соответствии с кодом отказа
+        colnames(DT.singlePart)[colnames(DT.singlePart) == 'VAR'] <- 
+            paste0('rejected.', rej.codes[i])
+    } 
+    
+    col.keep <- grep('^rejected[.]', colnames(DT.singlePart), value = T)
+} else {
+    col.keep <- NULL
+}
+
+
+# TODO перепарсить нормально (теги ИНН, КПП поехали, в df.patterns исправлено)
+# TODO добавить ИНН в очищенную таблицу
+
+# оставляем только столбцы для модели
+DT.singlePart <- select(DT.singlePart, purchaseNumber, protocolSinglePartDate,
+                        application.countryFullName, proc.success, winnerPrice, 
+                        proc.success,
+                        all_of(col.keep))
+DT.singlePart <- unique(DT.singlePart)
+
+# записываем очищенную таблицу с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+flnm <- paste0(out.path, 'DT_fcsProtocolEFSinglePart_clean.csv')
+uf.write.table.with.metadata(DT.singlePart, flnm)
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+#  * Работаем с таблицей результатов ===========================================
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
+placementResult <- data.table(read.csv2(paste0(out.path, 
+                                          'DT_fcsPlacementResult.csv'), 
+                                   stringsAsFactors = F,
+                                   na.strings = c('NA', '<NA>'),
+                                   # encoding = 'UTF-8',
+                                   colClasses = 'character'))
+# проверка
+dim(placementResult)
+str(placementResult)
+colnames(placementResult)
+
+# типы столбцов
+placementResult$application.journalNumber <- 
+    as.numeric(placementResult$application.journalNumber)
+placementResult$application.appRating <- 
+    as.numeric(placementResult$application.appRating)
+placementResult$application.price <- 
+    as.numeric(placementResult$application.price)
+placementResult$procedurelFailed <- 
+    as.logical(toupper(placementResult$procedurelFailed))
+
+# нормализуем таблицу (расклеиваем значения в столбцах)
+DT.placementResult <- 
+    uf.process.large.table.normalising(placementResult,
+                                       'DT_fcsPlacementResult_clean.csv',
+                                       out.path)
+
+
+
+#  * Работаем с отменами =======================================================
+
+# отмена протокола #############################################################
+
+# грузим результаты парсинга XML (не нормализованную таблицу) <<<<<<<<<<<<<<<<<<
+protocolCancel <- data.table(read.csv2(paste0(out.path, 
+                                               'DT_fcsProtocolCancel.csv'), 
+                                        stringsAsFactors = F,
+                                        na.strings = c('NA', '<NA>'),
+                                        # encoding = 'UTF-8',
+                                        colClasses = 'character'))
+# проверка
+dim(protocolCancel)
+str(protocolCancel)
+colnames(protocolCancel)
+
+# проверка на склейки
+sapply(protocolCancel, function(x) {sum(grepl('#', x))})
+
+grep('#', protocolCancel$fcsProtocolCancel.docDate, value = T)
+
+# нормализуем таблицу (расклеиваем значения в столбцах)
+DT.protocolCancel <- 
+    uf.process.large.table.normalising(protocolCancel,
+                                       'DT_fcsProtocolCancel_clean.csv',
+                                       out.path)
+
+
+# отмена объявления ############################################################
+
+notificationCancel <- data.table(read.csv2(paste0(out.path, 
+                                              'DT_fcsNotificationCancel.csv'), 
+                                       stringsAsFactors = F,
+                                       na.strings = c('NA', '<NA>'),
+                                       # encoding = 'UTF-8',
+                                       colClasses = 'character'))
+# проверка
+dim(notificationCancel)
+str(notificationCancel)
+colnames(notificationCancel)
+
+# проверка на склейки
+sapply(notificationCancel, function(x) {sum(grepl('#', x))})
+
+grep('#', notificationCancel$fcsNotificationCancel.docDate, value = T)
+
+# нормализуем таблицу (расклеиваем значения в столбцах)
+DT.notificationCancel <- 
+    uf.process.large.table.normalising(notificationCancel[, 1:3],
+                                       'DT_fcsNotificationCancel_clean.csv',
+                                       out.path)
+

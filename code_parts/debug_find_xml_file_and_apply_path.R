@@ -1,4 +1,11 @@
 
+
+pID.search <- '0353100016619000065'
+grep(pID.search, all.xmls, value = T)
+paste0('/home/light/git-repos/zakupki_gov_ru',
+       gsub('^[.]', '', paste0(sRawXMLPath, grep(pID.search, all.xmls, value = T))))
+
+
 25420229
 paste0(getwd(), gsub('[.]', '', sRawXMLPath),
        grep('25420229', all.xmls, value = T)[1])

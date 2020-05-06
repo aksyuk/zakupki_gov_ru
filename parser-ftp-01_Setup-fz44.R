@@ -36,8 +36,7 @@ library('lubridate')
 
 # Настройки системы ------------------------------------------------------------
 # отображение больших цифр в обычном формате, а не в экспоненциальном
-options("scipen" = 100, "digits" = 4)
-
+options("scipen" = 100, "digits" = 9)
 
 
 # Функции ----------------------------------------------------------------------
@@ -87,11 +86,11 @@ sYEAR <- paste0(rep(2019, 12), formatC(1:12, width = 2, flag = '0'))
 # 12
 # srch.reg <- 'Saratov'
 # 13
-# srch.reg <- 'Tatar'
+srch.reg <- 'Tatar'
 # 14
 # srch.reg <- 'Uljan'
 # 15
-srch.reg <- 'Chuvash'
+# srch.reg <- 'Chuvash'
 
 # Список директорий с регионами ================================================
 
@@ -103,7 +102,7 @@ message(paste0('Загрузка списка регионов:\n',
                       collapse = '\n')))
 # prompt.load.reg.list <- readline('Введите номер опции:')
 # быстрая опция 
-prompt.load.reg.list <- 2
+prompt.load.reg.list <- 3
 cat(yellow(paste0('Выбрано: ', vars[prompt.load.reg.list, 2], '\n')))
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
@@ -151,14 +150,32 @@ if (!file.exists(sRawDataPath)) dir.create(sRawDataPath)
 # исходные данные в архивах, выгрузка за период ................................
 dirs.raw <- dir('./data/raw')
 n.dirs <- length(dirs.raw)
-msg <- paste0(1:n.dirs, '. ', dirs.raw, '\n')
+regs.by.readme <- rep('', n.dirs)
+msg <- paste0(1:n.dirs, '. ', dirs.raw)
+
+# Найти директорию по заданной в srch.reg части названия региона ###############
+#  используем информацию из README.txt в директориях загрузки
+
+# ищем в README наш регион
+for (d in dirs.raw) {
+    rdm <- read_lines(paste0(sRawDataPath, '/', d, '/README.txt'))
+    regs.by.readme[dirs.raw == d] <- gsub('Регион: ', '', rdm[1])
+} 
+
+msg <- paste(msg, 'регион:', regs.by.readme, '\n')
+msg <- c(msg, paste0(n.dirs + 1, '. Создать новую выгрузку\n'),
+         paste0(n.dirs + 2, '. Выбрать автоматически по названию региона и периоду: ', 
+                srch.reg, ' ', sYEAR[1], '-', sYEAR[length(sYEAR)], '\n'))
+
+# Выбрать директорию вручную или создать новую #################################
 
 # /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
-message('Выберите выгрузку:\n', msg, n.dirs + 1, '. Создать новую выгрузку')
+message('Выберите выгрузку:\n', msg)
 # prompt.load.sample <- readline('Введите номер опции:')
 # быстрая опция: новая выгрузка
 # prompt.load.sample <- n.dirs + 1
-prompt.load.sample <- 15
+# быстрая опция: выбрать по названию региона
+prompt.load.sample <- n.dirs + 2
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
 if (prompt.load.sample == n.dirs + 1) {
@@ -173,15 +190,30 @@ if (prompt.load.sample == n.dirs + 1) {
     sDataSamplePath <- paste0('./data/raw/', new.count, '_from',
                            sYEAR[1], 'to', sYEAR[length(sYEAR)], '_loaded', 
                            format(Sys.Date(), format = "%Y-%m-%d"), '/')
-    if (!dir.exists(sDataSamplePath)) dir.create(sDataSamplePath)    
+    if (!dir.exists(sDataSamplePath)) dir.create(sDataSamplePath) 
+    
+} else if (prompt.load.sample == n.dirs + 2) {
+    # ищем в README наш регион
+    for (d in dirs.raw) {
+        rdm <- read_lines(paste0(sRawDataPath, '/', d, '/README.txt'))
+        
+        if (length(grep(srch.reg, rdm[1])) > 0 & 
+                length(grep(sYEAR[1], rdm[2])) & 
+                length(grep(sYEAR[length(sYEAR)], rdm[2]))) {
+            
+            sDataSamplePath <- paste0('./data/raw/', d, '/')
+            break
+        }
+    } 
+    
 } else {
     # выбираем выгрузку, сделанную ранее
     sDataSamplePath <- paste0('./data/raw/', 
                            dirs.raw[as.numeric(prompt.load.sample)], '/')
 }
 
-cat(yellow(paste0('Выбрано: ', prompt.load.sample, ';\nsDataSamplePath = ', 
-                  sDataSamplePath, '\n')))
+cat(yellow(paste0('Выбрано: ', prompt.load.sample, ';\n',
+                  'sDataSamplePath = ', sDataSamplePath, '\n')))
 
 # исходные данные в архивах ....................................................
 sRawArchPath <- paste0(sDataSamplePath, 'archives/')
@@ -213,7 +245,7 @@ if (!dir.exists(sLogPath)) dir.create(sLogPath)
 #  регион (регионы)
 my.region <- list(url = grep(sRegionFolderURLs, pattern = srch.reg, value = T))
 my.region$name <- gsub('.*[/]', '', gsub('[/]$', '', my.region$url))
-message(paste0('Работаем с регионом: ', my.region$name))
+cat(yellow(paste0('Работаем с регионом: ', my.region$name, '\n')))
 
 # все типы процедур
 all.proc.types <- read.csv2(paste0(sRefPath, 'dt_procedure_types.csv'),

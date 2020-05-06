@@ -32,15 +32,21 @@ uf.write.table.with.metadata <- function(DT, out.table.filename,
     res <- tryCatch({
         # таблица данных
         write.csv2(DT, out.table.filename, row.names = F)
+        cat(green(paste0('Записан файл: ', out.table.filename, '\n')))
+        
         # таблица метаданных
         if (write.metadata) {
             cls <- unlist(lapply(DT, function(x) {class(x)[1]}))
             nms <- names(cls)
             df.meta <- data.frame(col.names = nms, col.classes = cls)
             rownames(df.meta) <- 1:nrow(df.meta)
-            write.csv2(df.meta, paste0(gsub('[.]csv$', '', out.table.filename), 
-                                       '_META.csv'), row.names = F)            
+            out.metadata.filename <- paste0(gsub('[.]csv$', '', 
+                                                 out.table.filename), '_META.csv')
+            write.csv2(df.meta, out.metadata.filename, row.names = F)            
         }
+        
+        cat(green(paste0('Записан файл метаданных: ', out.metadata.filename, '\n')))
+        
         TRUE
     },
     error = function(cond) {
