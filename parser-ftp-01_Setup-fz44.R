@@ -64,7 +64,7 @@ sYEAR <- paste0(rep(2019, 12), formatC(1:12, width = 2, flag = '0'))
 
 # часть названия региона для поиска
 # 01
-# srch.reg <- 'Bashk'
+srch.reg <- 'Bashk'
 # 03 /это не ошибка/
 # srch.reg <- 'Udmu'
 # 04
@@ -86,7 +86,7 @@ sYEAR <- paste0(rep(2019, 12), formatC(1:12, width = 2, flag = '0'))
 # 12
 # srch.reg <- 'Saratov'
 # 13
-srch.reg <- 'Tatar'
+# srch.reg <- 'Tatar'
 # 14
 # srch.reg <- 'Uljan'
 # 15

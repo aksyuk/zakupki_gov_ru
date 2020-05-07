@@ -1,9 +1,14 @@
 
 
-pID.search <- '0353100016619000065'
+pID.search <- '0301300208018000066'
 grep(pID.search, all.xmls, value = T)
-paste0('/home/light/git-repos/zakupki_gov_ru',
-       gsub('^[.]', '', paste0(sRawXMLPath, grep(pID.search, all.xmls, value = T))))
+
+flnm.with.path <- paste0('/home/light/git-repos/zakupki_gov_ru',
+                         gsub('^[.]', '', paste0(sRawXMLPath, grep(pID.search, 
+                                                                   all.xmls, value = T))))
+flnm.with.path
+write_lines(paste0('cp ', flnm.with.path, ' ./data/xml_examples'), 
+            './data/xml_examples/bash.txt')
 
 
 25420229

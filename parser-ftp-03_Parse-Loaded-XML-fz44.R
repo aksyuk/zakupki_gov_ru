@@ -145,6 +145,22 @@ str(DT.notif)
 colnames(DT.notif)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+# повторы номеров извещений с разными датами и/или ценами
+select(DT.notif, fcsNotificationEF.purchaseNumber, docPublishDate, 
+       lot.maxPrice)[, lapply(.SD, function(x) {
+           length(unique(x))
+       }), by = fcsNotificationEF.purchaseNumber][docPublishDate > 1 &
+                                                      lot.maxPrice > 1, ][order(-docPublishDate), ]
+# повторы номеров извещений с разными датами и кодами ОКПД
+select(DT.notif, fcsNotificationEF.purchaseNumber, docPublishDate, 
+       purchaseObject.OKPD2.code, lot.maxPrice)[, lapply(.SD, function(x) {
+           length(unique(x))
+       }), by = fcsNotificationEF.purchaseNumber][docPublishDate > 1 &
+                                                      purchaseObject.OKPD2.code > 1 & lot.maxPrice > 1 ][order(-docPublishDate), ]
+
+table(DT.notif[fcsNotificationEF.purchaseNumber == '0301300208018000066', ]$purchaseObject.OKPD2.code)
+
+
 # # проверка .....................................................................
 # #  список 'id заявки -- id организации-заказчика
 # DT.notif.with.orgs <- unique(DT.notif[, c('fcsNotificationEF.purchaseNumber',
