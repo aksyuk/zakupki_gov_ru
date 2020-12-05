@@ -19,13 +19,16 @@
 
 # 3. РАЗБОР XML-ФАЙЛОВ ---------------------------------------------------------
 
+# файл с текстовым лог для записи происходящего (если не существует,
+#  будет создан)
 log.parse.XML.filename <- paste0(gsub('csv/$', '', sRawCSVPath), 
                                  'log_xml_parse.txt')
 
 
 # Делаем индекс файлов с аукционами, включая номера документов =================
 
-# DT.proc.index <- uf.make.file.index.for.proc(all.xmls)
+# это таблица с префиксом, уникальным омером закупки (purchaseNum) и id xml-файла
+DT.proc.index <- uf.make.file.index.for.proc(all.xmls)
 
 
 # Читаем таблицу с шаблонами для разбора xml ===================================
@@ -52,34 +55,41 @@ df.patterns <- read.csv2(paste0(sRefPath, 'df_xml_patterns.csv'),
 # делаем список с шаблонами для парсинга
 patterns <- uf.make.colnames.from.xpath(df.patterns)
 
-# список префиксов файлов из индекса, для которых нет шаблона
+# выводим в консоль список префиксов файлов из индекса, для которых нет шаблона
 pref.no.pattern <- unique(DT.proc.index$prefix)[!(unique(DT.proc.index$prefix) 
                                                   %in% names(df.patterns))]
 if (length(pref.no.pattern) > 0) {
     cat(red((paste0('На эти префиксы нет шаблона: ', pref.no.pattern, 
                    collapse = '\n'))))
+    cat(red('\nНиже примеры файлов\n'))
     # полное имя файла, чтобы просмотреть в браузере
-    message(paste0(getwd(), gsub('^[.]', '', sRawXMLPath), 
-                   grep(pref.no.pattern, all.xmls, value = T)[1]))
+    tmp <- sapply(pref.no.pattern, function(x) {
+        message(paste0(getwd(), gsub('^[.]', '', sRawXMLPath), 
+                       grep(x, all.xmls, value = T)[1]))
+    })
 }
 
 
 # Парсим файлы с электронными аукционами =======================================
 
 # # для настройки частичного парсинга ............................................
+
 # # только те префиксы, файлы для которых не сохранены
 # loop.prefs <- loop.prefs[!(loop.prefs %in% gsub('[.]csv$', '',
 #                                             gsub('^[^_]*_', '', dir(out.path))))]
-# только файлы заданного типа
-loop.prefs <- 'fcsProtocolEFSingleApp'
+
+# # только файлы заданного типа
+# loop.prefs <- 'fcsProtocolEFSingleApp'
 # loop.prefs <- 'fcsProtocolEF1'
-# только выборочные шаблоны
+
+# # только выборочные шаблоны
 # patterns[['fcsNotificationEA44']] <- 
 #     patterns[['fcsNotificationEA44']][c(1, 2, 28, 29), ]
+
 # # ..............................................................................
 
-# # цикл по типам файлов
-# loop.prefs <- unique(DT.proc.index$prefix)
+# цикл по типам файлов
+loop.prefs <- unique(DT.proc.index$prefix)
 
 for (pref in loop.prefs) {
 
@@ -145,20 +155,22 @@ str(DT.notif)
 colnames(DT.notif)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-# повторы номеров извещений с разными датами и/или ценами
-select(DT.notif, fcsNotificationEF.purchaseNumber, docPublishDate, 
-       lot.maxPrice)[, lapply(.SD, function(x) {
-           length(unique(x))
-       }), by = fcsNotificationEF.purchaseNumber][docPublishDate > 1 &
+# # проверка .....................................................................
+# # повторы номеров извещений с разными датами и/или ценами
+# select(DT.notif, fcsNotificationEF.purchaseNumber, docPublishDate, 
+#        lot.maxPrice)[, lapply(.SD, function(x) {
+#            length(unique(x))
+#        }), by = fcsNotificationEF.purchaseNumber][docPublishDate > 1 &
                                                       lot.maxPrice > 1, ][order(-docPublishDate), ]
-# повторы номеров извещений с разными датами и кодами ОКПД
-select(DT.notif, fcsNotificationEF.purchaseNumber, docPublishDate, 
-       purchaseObject.OKPD2.code, lot.maxPrice)[, lapply(.SD, function(x) {
-           length(unique(x))
-       }), by = fcsNotificationEF.purchaseNumber][docPublishDate > 1 &
-                                                      purchaseObject.OKPD2.code > 1 & lot.maxPrice > 1 ][order(-docPublishDate), ]
+# # повторы номеров извещений с разными датами и кодами ОКПД
+# select(DT.notif, fcsNotificationEF.purchaseNumber, docPublishDate, 
+#        purchaseObject.OKPD2.code, lot.maxPrice)[, lapply(.SD, function(x) {
+#            length(unique(x))
+#        }), by = fcsNotificationEF.purchaseNumber][docPublishDate > 1 &
+#                                                       purchaseObject.OKPD2.code > 1 & lot.maxPrice > 1 ][order(-docPublishDate), ]
 
-table(DT.notif[fcsNotificationEF.purchaseNumber == '0301300208018000066', ]$purchaseObject.OKPD2.code)
+# table(DT.notif[fcsNotificationEF.purchaseNumber == '0301300208018000066', ]$purchaseObject.OKPD2.code)
+# # проверка .....................................................................
 
 
 # # проверка .....................................................................

@@ -39,10 +39,58 @@ library('lubridate')
 options("scipen" = 100, "digits" = 9)
 
 
+
 # Функции ----------------------------------------------------------------------
 
-files.sources <- dir('./functions/')
-sapply(paste0('./functions/', files.sources), source)
+# функция преобразования строковых дат в формат даты, с часовыми поясами
+eval(parse('./functions/uf_convert_char_to_date.R', encoding = 'UTF-8'))
+
+# функция подсчёта пропусков в столбцах таблицы
+eval(parse('./functions/uf_count_nas_in_table.R', encoding = 'UTF-8'))
+
+# # функция формата адреса поставщика, сейчас не используется
+# eval(parse('./functions/uf_format_address_for_OSM.R', encoding = 'UTF-8'))
+
+# # функция для работы с адресами, сейчас не используется
+# eval(parse('./functions/uf_nominatim_OSM.R', encoding = 'UTF-8'))
+
+# # функция загрузки координат по адресу черех Яндекс карты, 
+# #  сейчас не используется
+# eval(parse('./functions/uf_get_coords_Yandex.R', encoding = 'UTF-8'))
+
+# # функция преобразования адреса в координаты, сейчас не используется 
+# eval(parse('./functions/uf_process_addresses_to_coords.R', encoding = 'UTF-8'))
+
+# функция определения операционной системы
+eval(parse('./functions/uf_get_os.R', encoding = 'UTF-8'))
+
+# функция, которая преобразовывает xpath-запросы для отбора xml-тегов
+#  в заголовки таблицы с данными
+eval(parse('./functions/uf_make_colnames_from_xpath.R', encoding = 'UTF-8'))
+
+# функция создания индекса xml-файлов для типа процедуры 
+#  (электронные аукционы)
+eval(parse('./functions/uf_make_file_index_for_proc.R', encoding = 'UTF-8'))
+
+# функция нормализация таблицы: расклеивает несколько значений в одной 
+#  "ячейке", соединённые символом решётки (#)
+eval(parse('./functions/uf_normalise_table.R', encoding = 'UTF-8'))
+
+# функция, которая разбирает xml-файлы, опираясь на префикс в названии
+#  файла и на список xpath-запросов для разбора файлов с таким префиксом
+eval(parse('./functions/uf_parse_xmls_with_prefix.R', encoding = 'UTF-8'))
+
+# функция нормализации большой таблицы (режет на куски, разбирает по частям)
+eval(parse('./functions/uf_process_large_table_normalising.R', encoding = 'UTF-8'))
+
+# функция чтения таблицы данных и таблицы метаданных к ней
+eval(parse('./functions/uf_read_table_with_metadata.R', encoding = 'UTF-8'))
+
+# функция записи таблицы данных и таблицы метаданных к ней
+eval(parse('./functions/uf_write_table_with_metadata.R', encoding = 'UTF-8'))
+
+# функция записи в текстовый лог
+eval(parse('./functions/uf_write_to_log.R', encoding = 'UTF-8'))
 
 
 
@@ -91,6 +139,7 @@ srch.reg <- 'Bashk'
 # srch.reg <- 'Uljan'
 # 15
 # srch.reg <- 'Chuvash'
+
 
 # Список директорий с регионами ================================================
 
@@ -181,17 +230,17 @@ if (n.dirs > 0) {
 msg <- c(msg, paste0(n.dirs + 1, '. Создать новую выгрузку\n'))
 if (n.dirs > 0) {
     # ToDo: сделать нормальную проверку, если ли такая папка в выгрузках
-    msg <- c(paste0(n.dirs + 2, '. Выбрать автоматически по названию региона и периоду: ', 
-                srch.reg, ' ', sYEAR[1], '-', sYEAR[length(sYEAR)], '\n'))
+    msg <- c(msg, paste0(n.dirs + 2, '. Выбрать автоматически по названию региона и периоду: ', 
+                         srch.reg, ' ', sYEAR[1], '-', sYEAR[length(sYEAR)], '\n'))
 }
     
 # Выбрать директорию вручную или создать новую #################################
 
 # /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
 message('Выберите выгрузку:\n', msg)
-# prompt.load.sample <- readline('Введите номер опции:')
+prompt.load.sample <- readline('Введите номер опции:')
 # быстрая опция: новая выгрузка
-prompt.load.sample <- n.dirs + 1
+# prompt.load.sample <- n.dirs + 1
 # быстрая опция: выбрать по названию региона
 # prompt.load.sample <- n.dirs + 2
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
@@ -213,6 +262,15 @@ if (prompt.load.sample == n.dirs + 1) {
                            sYEAR[1], 'to', sYEAR[length(sYEAR)], '_loaded', 
                            format(Sys.Date(), format = "%Y-%m-%d"), '/')
     if (!dir.exists(sDataSamplePath)) dir.create(sDataSamplePath) 
+    
+    # пишем параметры данных в README.txt
+    flnm <- paste0(sDataSamplePath, 'README.txt')
+    msg <- paste0('Регион: ', my.region$name, '\n',
+                  'Период: с ', sYEAR[1], ' по ', sYEAR[length(sYEAR)], '\n',
+                  'Тип процедуры: ', all.proc.types[prompt.proc.type, 2], '\n',
+                  'Дата загрузки: ', format(Sys.Date(), format = "%Y-%m-%d"))
+    # Encoding(msg) <- 'windows-1251'
+    uf.write.to.log(msg, out.file.name = flnm, silent = T)
     
 } else if (prompt.load.sample == n.dirs + 2) {
     # ищем в README наш регион
@@ -262,6 +320,7 @@ sLogPath <- './logs/'
 if (!dir.exists(sLogPath)) dir.create(sLogPath)
 
 
+
 # Переменные -------------------------------------------------------------------
 
 #  регион (регионы)
@@ -293,15 +352,6 @@ drnm <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/')
 if (!dir.exists(drnm)) {
     dir.create(drnm)
 }
-
-# пишем параметры данных в README.txt
-flnm <- paste0(sDataSamplePath, 'README.txt')
-msg <- paste0('Регион: ', my.region$name, '\n',
-           'Период: с ', sYEAR[1], ' по ', sYEAR[length(sYEAR)], '\n',
-           'Тип процедуры: ', all.proc.types[prompt.proc.type, 2], '\n',
-           'Дата загрузки: ', format(Sys.Date(), format = "%Y-%m-%d"))
-# Encoding(msg) <- 'windows-1251'
-uf.write.to.log(msg, out.file.name = flnm, silent = T)
 
 # папка с csv-файлами по текущему типу процедур
 out.path <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/')

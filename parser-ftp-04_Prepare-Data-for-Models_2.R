@@ -1,5 +1,5 @@
 # ..............................................................................
-# parser-ftp-04_Prepare-Data-for-Models.R
+# parser-ftp-04_Prepare-Data-for-Models_2.R
 # 
 # Построение моделей на данных по 44ФЗ
 # 
@@ -151,7 +151,7 @@ dt.tst[V1 == 3, ]
 # закупка с несколькими нотисами
 DT.restrictions[purchaseNumber == '0501300004618000044', ]
 
-# делаем дамии по связке номер закупки + номер нотиса
+# делаем дамми по связке номер закупки + номер нотиса
 DT.restrictions[, SMP.only := ifelse(restriction.shortName == 'MB44330', 1, 0)]
 DT.restrictions[, Nat.Regime := ifelse(restriction.shortName == 'JB2149', 1, 0)]
 
@@ -621,7 +621,7 @@ n.msg <- nrow(DT.model[(last.notice.date - frst.notice.date) / 60 / 60 / 24 > 1,
 cat(yellow(paste0('извещений с расхождением между первой и последней датой ',
                   ' размещения более, чем сутки: ', 
                   round(n.msg / nrow(DT.model) * 100, 1), '% (', n.msg, ')\n')))
-# выкидываем эту хрень
+# выкидываем эту чушь
 DT.model <- DT.model[(last.notice.date - frst.notice.date) / 60 / 60 / 24 < 1, ]
 DT.model[, frst.notice.date := NULL]
 

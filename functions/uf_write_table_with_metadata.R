@@ -43,9 +43,9 @@ uf.write.table.with.metadata <- function(DT, out.table.filename,
             out.metadata.filename <- paste0(gsub('[.]csv$', '', 
                                                  out.table.filename), '_META.csv')
             write.csv2(df.meta, out.metadata.filename, row.names = F)            
+            
+            cat(green(paste0('Записан файл метаданных: ', out.metadata.filename, '\n')))
         }
-        
-        cat(green(paste0('Записан файл метаданных: ', out.metadata.filename, '\n')))
         
         TRUE
     },
