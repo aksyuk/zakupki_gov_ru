@@ -1,6 +1,11 @@
 ---
 title: "Руководство по загрузке данных"
-output: word_document
+output: 
+    pdf_document:
+        latex_engine: xelatex
+        includes:
+            in_header: "preamble.tex"
+lang: 'ru-RU'
 ---
 
 ```{r setup, include = FALSE}
@@ -148,7 +153,7 @@ knitr::include_graphics('./pic/pic-01.png')
 2. В поле "Локальный сайт" выбрать папку из переменной `sDataSamplePath`, и внутри неё `archives`. В поле "Удалённый сайт" ввести кусок url из переменной `my.region$url`, начиная с "/fcs_regions/" и дальше. Для Башкортостана будет "/fcs_regions/Bashkortostan_Resp/".    
 
 ```{r, out.width = '7in', eval = T, echo = F}
-knitr::include_graphics('./pic/pic-02.png')
+knitr::include_graphics('./pic/pic-02.PNG')
 
 ```
 
