@@ -22,9 +22,15 @@ uf.write.to.log <- function(msg, out.file.name, silent = F) {
     con <- file(out.file.name, 'ab')
     # спецсимволы начала файла в Windows 
     BOM <- charToRaw('\xEF\xBB\xBF')
-    if (uf.get.os() == 'windows') writeBin(BOM, con, endian = 'little')
+    if (uf.get.os() == 'windows') {
+        # в Windows всё непросто: если надо написать байт начала файла...
+        writeBin(BOM, con, endian = 'little')
+        # ... и преобразовать кодировку
+        msg <- iconv(msg, from = 'CP1251', to = 'UTF8')
+    }
     # пишем в файл
     writeBin(charToRaw(paste0(msg, '\r\n')), con, endian = 'little')
+    # write(paste0(msg, '\r\n'), con)
     # закрываем соединение
     close(con)
     # пишем сообщение в консоль

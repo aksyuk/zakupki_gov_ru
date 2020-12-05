@@ -95,14 +95,21 @@ srch.reg <- 'Bashk'
 # Список директорий с регионами ================================================
 
 # /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
+# создаём список вариантов для выбора
 vars <- data.frame(n = 1:2, txt = c('Перезагрузить с ftp', 
                                     'Прочитать сохранённый'))
+# показываем варианты пользователю
 message(paste0('Загрузка списка регионов:\n',
                paste0(apply(vars, 1, function(x){paste0(x, collapse = '. ')}),
                       collapse = '\n')))
+
+# в этой строке читаем выбор пользователя
 # prompt.load.reg.list <- readline('Введите номер опции:')
+
 # быстрая опция 
-prompt.load.reg.list <- 3
+prompt.load.reg.list <- 2
+
+# показываем результат выбора в консоли
 cat(yellow(paste0('Выбрано: ', vars[prompt.load.reg.list, 2], '\n')))
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
@@ -116,7 +123,7 @@ if (prompt.load.reg.list == 1) {
     #  поэтому его надо отрезать
     doc <- gsub(pattern = '_logs.*$', replacement = '', doc)
     
-    sRegionFoldersNames <- unlist(strsplit(doc, '\n'))
+    sRegionFoldersNames <- unlist(strsplit(doc, '\r\n'))
     # убираем папки, не относящиеся к регионам
     sRegionFoldersNames <- sRegionFoldersNames[grep('_Resp$|_kraj$|_.?obl$', 
                                                     sRegionFoldersNames)]
@@ -141,47 +148,62 @@ sRegionFolderURLs <- paste0('ftp://ftp.zakupki.gov.ru/fcs_regions/',
 sSubfolders <- c('notifications/', 'protocols/', 'contracts/')
 
 
-# * Структура директорий рабочей папки #########################################
+# Структура директорий папки с данными =========================================
 
-# все равки исходных данных ....................................................
+# все равки исходных данных ####################################################
 sRawDataPath <- './data/raw'
 if (!file.exists(sRawDataPath)) dir.create(sRawDataPath)
 
-# исходные данные в архивах, выгрузка за период ................................
+# исходные данные в архивах, выгрузка за период ################################
 dirs.raw <- dir('./data/raw')
 n.dirs <- length(dirs.raw)
 regs.by.readme <- rep('', n.dirs)
-msg <- paste0(1:n.dirs, '. ', dirs.raw)
+if (n.dirs > 0) {
+    # если папка './data/raw' не пуста, считаем папки внутри
+    msg <- paste0(1:n.dirs, '. ', dirs.raw)
+    
+    # Найти директорию по заданной в srch.reg части названия региона ###############
+    #  используем информацию из README.txt в директориях загрузки
+    
+    # ищем в README наш регион
+    for (d in dirs.raw) {
+        rdm <- read_lines(paste0(sRawDataPath, '/', d, '/README.txt'))
+        regs.by.readme[dirs.raw == d] <- gsub('Регион: ', '', rdm[1])
+    } 
+    
+    # добавляем в список опций для выбора
+    msg <- paste(msg, 'регион:', regs.by.readme, '\n')
+    
+} else {
+    msg <- NULL
+}
 
-# Найти директорию по заданной в srch.reg части названия региона ###############
-#  используем информацию из README.txt в директориях загрузки
-
-# ищем в README наш регион
-for (d in dirs.raw) {
-    rdm <- read_lines(paste0(sRawDataPath, '/', d, '/README.txt'))
-    regs.by.readme[dirs.raw == d] <- gsub('Регион: ', '', rdm[1])
-} 
-
-msg <- paste(msg, 'регион:', regs.by.readme, '\n')
-msg <- c(msg, paste0(n.dirs + 1, '. Создать новую выгрузку\n'),
-         paste0(n.dirs + 2, '. Выбрать автоматически по названию региона и периоду: ', 
+msg <- c(msg, paste0(n.dirs + 1, '. Создать новую выгрузку\n'))
+if (n.dirs > 0) {
+    # ToDo: сделать нормальную проверку, если ли такая папка в выгрузках
+    msg <- c(paste0(n.dirs + 2, '. Выбрать автоматически по названию региона и периоду: ', 
                 srch.reg, ' ', sYEAR[1], '-', sYEAR[length(sYEAR)], '\n'))
-
+}
+    
 # Выбрать директорию вручную или создать новую #################################
 
 # /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
 message('Выберите выгрузку:\n', msg)
 # prompt.load.sample <- readline('Введите номер опции:')
 # быстрая опция: новая выгрузка
-# prompt.load.sample <- n.dirs + 1
+prompt.load.sample <- n.dirs + 1
 # быстрая опция: выбрать по названию региона
-prompt.load.sample <- n.dirs + 2
+# prompt.load.sample <- n.dirs + 2
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
 if (prompt.load.sample == n.dirs + 1) {
     # определяем порядковый номер для папки новой выгрузки
-    new.count <- as.numeric(gsub('^([[:digit:]]{2})(_.*)', '\\1', dirs.raw))
-    new.count <- formatC(new.count[length(new.count)] + 1, width = 2, flag = '0')
+    if (n.dirs == 0) {
+        new.count <- formatC(1, width = 2, flag = '0')
+    } else {
+        new.count <- as.numeric(gsub('^([[:digit:]]{2})(_.*)', '\\1', dirs.raw))
+        new.count <- formatC(new.count[length(new.count)] + 1, width = 2, flag = '0')
+    }
     
     # формат пути к папке с новой выгрузкой: <директория с равками>/ 
     #  <порядковый номер выгрузки>_from<начало периода выгрузки в формате 
@@ -248,6 +270,7 @@ my.region$name <- gsub('.*[/]', '', gsub('[/]$', '', my.region$url))
 cat(yellow(paste0('Работаем с регионом: ', my.region$name, '\n')))
 
 # все типы процедур
+#  на самом деле там пока только электронные аукционы
 all.proc.types <- read.csv2(paste0(sRefPath, 'dt_procedure_types.csv'),
                             stringsAsFactors = F, fileEncoding = 'cp1251')
 
@@ -271,13 +294,14 @@ if (!dir.exists(drnm)) {
     dir.create(drnm)
 }
 
-# # пишем параметры данных в README.txt
-# flnm <- paste0(sDataSamplePath, 'README.txt')
-# msg <- paste0('Регион: ', my.region$name, '\n',
-#               'Период: с ', sYEAR[1], ' по ', sYEAR[length(sYEAR)], '\n',
-#               'Тип процедуры: ', all.proc.types[prompt.proc.type, 2], '\n',
-#               'Дата загрузки: ', format(Sys.Date(), format = "%Y-%m-%d"))
-# uf.write.to.log(msg, out.file.name = flnm, silent = T)
+# пишем параметры данных в README.txt
+flnm <- paste0(sDataSamplePath, 'README.txt')
+msg <- paste0('Регион: ', my.region$name, '\n',
+           'Период: с ', sYEAR[1], ' по ', sYEAR[length(sYEAR)], '\n',
+           'Тип процедуры: ', all.proc.types[prompt.proc.type, 2], '\n',
+           'Дата загрузки: ', format(Sys.Date(), format = "%Y-%m-%d"))
+# Encoding(msg) <- 'windows-1251'
+uf.write.to.log(msg, out.file.name = flnm, silent = T)
 
 # папка с csv-файлами по текущему типу процедур
 out.path <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/')

@@ -124,7 +124,7 @@ if (file.exists(file.name)) {
         all.xmls <- grep(dir(sRawXMLPath), pattern = 'xml$', value = T)
         
         # записываем имена всех xml-файлов в csv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        write.csv2(data.frame(flnms = all.xmls), file = , row.names = F)
+        write.csv2(data.frame(flnms = all.xmls), file = file.name, row.names = F)
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         
         message('Готово')
