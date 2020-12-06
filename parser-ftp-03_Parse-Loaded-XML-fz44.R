@@ -27,7 +27,7 @@ log.parse.XML.filename <- paste0(gsub('csv/$', '', sRawCSVPath),
 
 # Делаем индекс файлов с аукционами, включая номера документов =================
 
-# это таблица с префиксом, уникальным омером закупки (purchaseNum) и id xml-файла
+# это таблица с префиксом, уникальным номером закупки (purchaseNum) и id xml-файла
 DT.proc.index <- uf.make.file.index.for.proc(all.xmls)
 
 
@@ -161,7 +161,7 @@ colnames(DT.notif)
 #        lot.maxPrice)[, lapply(.SD, function(x) {
 #            length(unique(x))
 #        }), by = fcsNotificationEF.purchaseNumber][docPublishDate > 1 &
-                                                      lot.maxPrice > 1, ][order(-docPublishDate), ]
+#                                                       lot.maxPrice > 1, ][order(-docPublishDate), ]
 # # повторы номеров извещений с разными датами и кодами ОКПД
 # select(DT.notif, fcsNotificationEF.purchaseNumber, docPublishDate, 
 #        purchaseObject.OKPD2.code, lot.maxPrice)[, lapply(.SD, function(x) {

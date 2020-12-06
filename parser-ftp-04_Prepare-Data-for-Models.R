@@ -507,3 +507,4 @@ flnm <- paste0(sRawCSVPath, 'DT_model_', lProcedureToScrap$procedureCode,
                '_', my.region$name, '.csv')
 uf.write.table.with.metadata(DT.model, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+

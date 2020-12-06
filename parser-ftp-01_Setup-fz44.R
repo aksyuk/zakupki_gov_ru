@@ -107,37 +107,37 @@ sUserPwd44 <- 'free:free'
 # периоды, за которые грузим документацию: архивы лежат по месяцам, 
 #  начало периода -- первое число месяца. Указываем начала интересующих нас 
 #  периодов
-sYEAR <- paste0(rep(2019, 12), formatC(1:12, width = 2, flag = '0'))
+sYEAR <- paste0(rep(2020, 3), formatC(1:3, width = 2, flag = '0'))
 # sYEAR <- paste0(rep(2020, 2), formatC(1:2, width = 2, flag = '0'))
 
 # часть названия региона для поиска
-# 01
+# номер папки загрузки: 01
 srch.reg <- 'Bashk'
-# 03 /это не ошибка/
+# 02
 # srch.reg <- 'Udmu'
-# 04
+# 03
 # srch.reg <- 'Permsk'
-# 05
+# 04
 # srch.reg <- 'Kirov'
-# 06
+# 05
 # srch.reg <- 'Marij'
-# 07
+# 06
 # srch.reg <- 'Mordo'
-# 08
+# 07
 # srch.reg <- 'Nizhegorod'
-# 09
+# 08
 # srch.reg <- 'Orenb'
-# 10
+# 09
 # srch.reg <- 'Penz'
-# 11
+# 10
 # srch.reg <- 'Samars'
-# 12
+# 11
 # srch.reg <- 'Saratov'
-# 13
+# 12
 # srch.reg <- 'Tatar'
-# 14
+# 13
 # srch.reg <- 'Uljan'
-# 15
+# 14
 # srch.reg <- 'Chuvash'
 
 
@@ -357,6 +357,3 @@ if (!dir.exists(drnm)) {
 out.path <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/')
 
 message('ПОДГОТОВКА РАБОЧЕГО ПРОСТРАНСТВА ЗАВЕРШЕНА')
-
-# URL для загрузки архивов:
-my.region$url

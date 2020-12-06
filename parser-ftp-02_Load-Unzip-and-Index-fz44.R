@@ -79,15 +79,42 @@ if (uf.get.os() != 'windows') {
     
 } else {
     # TODO написать кусок под Windows
+    #  должен быть установлен 7zip и добавлен в path
+    #  чтобы добавить его в path, запустить в cmd:
+    #     set PATH=%PATH%;C:\Program Files\7-Zip\
+    #     echo %PATH%
+    #     7z
     
     # создаём файл
+    fn.bash.unzip <- paste0(sDataSamplePath, 'bash_unzip.bat')
+    file.create(fn.bash.unzip)
     
-    # # открыть соединение
-    # con <- con <- file(fn.bash.unzip, 'ab')
+    # открыть соединение
+    con <- con <- file(fn.bash.unzip, 'ab')
     
-    # # спецсимволы начала файла в Windows 
-    # BOM <- charToRaw('\xEF\xBB\xBF')
-    # writeBin(BOM, con, endian = 'little')
+    # пишем в файл
+    # спецсимволы начала файла в Windows 
+    BOM <- charToRaw('\xEF\xBB\xBF')
+    writeBin(BOM, con, endian = 'little')
+    
+    # пишем в файл
+    #  первая строка файла
+    txt.line <- '@ECHO OFF'
+    writeBin(charToRaw(paste0(txt.line, '\r\n')), con, endian = 'little')
+    
+    # пишем в файл
+    #  cd в папку с архивами
+    txt.line <- paste0('cd /d "', getwd(), gsub('^[.]', '', sRawArchPath), '"')
+    writeBin(charToRaw(paste0(txt.line, '\r\n')), con, endian = 'little')
+    
+    # пишем в файл
+    #  распаковать архивы в папку xmls 
+    txt.line <- paste0('7z x "./*.zip" -o"', getwd(), 
+                       gsub('^[.]', '', sRawXMLPath), '" -y')
+    writeBin(charToRaw(paste0(txt.line, '\r\n')), con, endian = 'little')
+    
+    # закрываем соединение
+    close(con)
 }
 
 
@@ -112,9 +139,9 @@ if (file.exists(file.name)) {
     message('Есть список xml-файлов, сохранённый ранее. Что сделать?\n', 
             paste(apply(df.msg, 1, function(x) {paste(x, collapse = '. ')}),
                   collapse = '\n'))
-    # prompt.proc.type <- readline('Введите номер опции:')
+    prompt.proc.type <- readline('Введите номер опции:')
     # быстрая опция
-    prompt.proc.type <- 2
+    # prompt.proc.type <- 2
     # //////////////////////////////////////////////////////////////////////////
     
     cat(yellow(paste0('Выбрано: ', prompt.proc.type, '. ', 
@@ -199,13 +226,19 @@ for (pr_i in names(prefixes)) {
     noticeID <- sub('^(.*?)_', '', noticeID)
     noticeID <- sub('_.*$', '', noticeID)
 
+    # считаем частоты каждого noticeID по префиксу
     DT <- data.table(table(noticeID))
 
+    # совмещаем по ключу noticeID, т.е. каждый раз добавляем по столбцу
     DT.xml.files.index <-
         merge(DT.xml.files.index, DT, by = 'noticeID', all.x = T)
+    # там где получились пропуски, должны быть нули (этих noticeID 
+    #  у предыдущих префиксов не было)
     DT.xml.files.index[is.na(N), N := 0]
+    # название столбца -- это текущий префикс файла
     colnames(DT.xml.files.index)[colnames(DT.xml.files.index) == 'N'] <- pr_i
 
+    # счётчик файлов и статус в консоль
     i.files.сount <- i.files.сount + 1
     message(paste0(pr_i, ', ', round(i.files.сount / n * 100, 1), '%'))
     console.clean.count <- console.clean.count + 1
@@ -218,7 +251,7 @@ for (pr_i in names(prefixes)) {
 }
 
 # проверка .....................................................................
-#  число пропусков по столбцам 
+#  число пропусков по столбцам файла-индекса
 check.na <- uf.count.nas.in.table(DT.xml.files.index)
 check.na
 
