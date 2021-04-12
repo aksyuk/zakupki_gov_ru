@@ -48,8 +48,8 @@ message(paste0('Всего xml для обработки: ', n,  ' (',
                '% от общего числа файлов).'))
 
 # читаем шаблоны для разбора xml из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-df.patterns <- read.csv2(paste0(sRefPath, 'df_xml_patterns.csv'),
-                         stringsAsFactors = F)
+df.patterns <- read.csv(paste0(sRefPath, 'df_xml_patterns.csv'),
+                        stringsAsFactors = F)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 # делаем список с шаблонами для парсинга

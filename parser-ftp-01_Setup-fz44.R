@@ -3,7 +3,7 @@
 # 
 # Парсинг содержимого ftp-сервера госзакупок, 
 #  который находится по адресу:
-#  http://ftp.zakupki.gov.ru/
+#  ftp.zakupki.gov.ru/
 #    X  логин: free; пароль: free              - 44 ФЗ
 #       логин: fz223free; пароль: fz223free    - 223 ФЗ
 #
@@ -94,7 +94,29 @@ eval(parse('./functions/uf_write_to_log.R', encoding = 'UTF-8'))
 
 
 
-# Константы --------------------------------------------------------------------
+# Переменные -------------------------------------------------------------------
+
+
+# Директории, которые не зависят от выгрузки ===================================
+
+# таблицы-справочники ..........................................................
+sRefPath <- './data/reference/'
+if (!dir.exists(sRefPath)) dir.create(sRefPath)
+
+# все сырые исходные данные ....................................................
+sRawDataPath <- './data/raw'
+if (!file.exists(sRawDataPath)) dir.create(sRawDataPath)
+
+# графики ......................................................................
+sPlotPath <- './plots/'
+if (!dir.exists(sPlotPath)) dir.create(sPlotPath)
+
+# логи .........................................................................
+sLogPath <- './logs/'
+if (!dir.exists(sLogPath)) dir.create(sLogPath)
+
+
+# Настройки выгрузки данных ====================================================
 
 # максимальное количество строк в консоли для сообщений статуса 
 #  (для автоматической очистки)
@@ -107,12 +129,12 @@ sUserPwd44 <- 'free:free'
 # периоды, за которые грузим документацию: архивы лежат по месяцам, 
 #  начало периода -- первое число месяца. Указываем начала интересующих нас 
 #  периодов
-sYEAR <- paste0(rep(2020, 3), formatC(1:3, width = 2, flag = '0'))
+sYEAR <- paste0(rep(2020, 12), formatC(1:12, width = 2, flag = '0'))
 # sYEAR <- paste0(rep(2020, 2), formatC(1:2, width = 2, flag = '0'))
 
 # часть названия региона для поиска
 # номер папки загрузки: 01
-srch.reg <- 'Bashk'
+# srch.reg <- 'Bashk'
 # 02
 # srch.reg <- 'Udmu'
 # 03
@@ -184,7 +206,7 @@ if (file.exists('./data/reference/regions_list.txt')) {
                                 character())
     } else {
         message(paste0('Файл', '"regions_list.txt"', 'не найден в ', 
-                       './data/reference/', '. Повторите загрузку с сервера.'))
+                       sRefPath, '. Повторите загрузку с сервера.'))
 }
 
 message(paste0('Regions: ', length(sRegionFoldersNames), ' folders.'))
@@ -193,15 +215,36 @@ message(paste0('Regions: ', length(sRegionFoldersNames), ' folders.'))
 sRegionFolderURLs <- paste0('ftp://ftp.zakupki.gov.ru/fcs_regions/',
                             sRegionFoldersNames, '/')
 
-# имена папок с архивами
-sSubfolders <- c('notifications/', 'protocols/', 'contracts/')
+# # имена папок с архивами
+# sSubfolders <- c('notifications/', 'protocols/', 'contracts/')
+
+#  регион (регионы)
+my.region <- list(url = grep(sRegionFolderURLs, pattern = srch.reg, value = T))
+my.region$name <- gsub('.*[/]', '', gsub('[/]$', '', my.region$url))
+cat(yellow(paste0('Работаем с регионом: ', my.region$name, '\n')))
+
+
+# Типы процедур ================================================================
+#  на самом деле там пока только электронные аукционы
+all.proc.types <- read.csv2(paste0(sRefPath, 'dt_procedure_types.csv'),
+                            stringsAsFactors = F, fileEncoding = 'cp1251')
+
+msg <- paste0(1:nrow(all.proc.types), '. ', all.proc.types$procedureType)
+
+# /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
+message('Выберите процедуры:\n', msg)
+# prompt.proc.type <- readline('Введите номер опции:')
+# быстрая опция
+prompt.proc.type <- 1
+# /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
+
+cat(yellow(paste0('Выбрано: ', prompt.proc.type, '. ', 
+                  all.proc.types[prompt.proc.type, 2], '\n')))
 
 
 # Структура директорий папки с данными =========================================
 
-# все равки исходных данных ####################################################
-sRawDataPath <- './data/raw'
-if (!file.exists(sRawDataPath)) dir.create(sRawDataPath)
+# Выбрать директорию вручную или создать новую #################################
 
 # исходные данные в архивах, выгрузка за период ################################
 dirs.raw <- dir('./data/raw')
@@ -233,14 +276,12 @@ if (n.dirs > 0) {
     msg <- c(msg, paste0(n.dirs + 2, '. Выбрать автоматически по названию региона и периоду: ', 
                          srch.reg, ' ', sYEAR[1], '-', sYEAR[length(sYEAR)], '\n'))
 }
-    
-# Выбрать директорию вручную или создать новую #################################
 
 # /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
 message('Выберите выгрузку:\n', msg)
 prompt.load.sample <- readline('Введите номер опции:')
 # быстрая опция: новая выгрузка
-# prompt.load.sample <- n.dirs + 1
+prompt.load.sample <- n.dirs + 1
 # быстрая опция: выбрать по названию региона
 # prompt.load.sample <- n.dirs + 2
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
@@ -295,6 +336,9 @@ if (prompt.load.sample == n.dirs + 1) {
 cat(yellow(paste0('Выбрано: ', prompt.load.sample, ';\n',
                   'sDataSamplePath = ', sDataSamplePath, '\n')))
 
+
+# Директории, которые зависят от выгрузки ======================================
+
 # исходные данные в архивах ....................................................
 sRawArchPath <- paste0(sDataSamplePath, 'archives/')
 if (!dir.exists(sRawArchPath)) dir.create(sRawArchPath)
@@ -306,44 +350,6 @@ if (!dir.exists(sRawXMLPath)) dir.create(sRawXMLPath)
 # исходные данные в csv (разобранные xml) ......................................
 sRawCSVPath <- paste0(sDataSamplePath, 'csv/')
 if (!dir.exists(sRawCSVPath)) dir.create(sRawCSVPath)
-
-# таблицы-справочники ..........................................................
-sRefPath <- './data/reference/'
-if (!dir.exists(sRefPath)) dir.create(sRefPath)
-
-# графики ......................................................................
-sPlotPath <- './plots/'
-if (!dir.exists(sPlotPath)) dir.create(sPlotPath)
-
-# логи
-sLogPath <- './logs/'
-if (!dir.exists(sLogPath)) dir.create(sLogPath)
-
-
-
-# Переменные -------------------------------------------------------------------
-
-#  регион (регионы)
-my.region <- list(url = grep(sRegionFolderURLs, pattern = srch.reg, value = T))
-my.region$name <- gsub('.*[/]', '', gsub('[/]$', '', my.region$url))
-cat(yellow(paste0('Работаем с регионом: ', my.region$name, '\n')))
-
-# все типы процедур
-#  на самом деле там пока только электронные аукционы
-all.proc.types <- read.csv2(paste0(sRefPath, 'dt_procedure_types.csv'),
-                            stringsAsFactors = F, fileEncoding = 'cp1251')
-
-msg <- paste0(1:nrow(all.proc.types), '. ', all.proc.types$procedureType)
-
-# /////////////////////////ВВОД ДАННЫХ В КОНСОЛЬ////////////////////////////////
-message('Выберите процедуры:\n', msg)
-# prompt.proc.type <- readline('Введите номер опции:')
-# быстрая опция
-prompt.proc.type <- 1
-# /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
-
-cat(yellow(paste0('Выбрано: ', prompt.proc.type, '. ', 
-                  all.proc.types[prompt.proc.type, 2], '\n')))
 
 # процедура, с которой будем работать
 lProcedureToScrap <- as.list(all.proc.types[prompt.proc.type, ])

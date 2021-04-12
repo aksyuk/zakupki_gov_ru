@@ -74,11 +74,13 @@ if (uf.get.os() != 'windows') {
     txt.line <- 'unzip -o "*.zip" -d ../xmls'
     writeBin(charToRaw(paste0(txt.line, '\r\n')), con, endian = 'little')
     
+    # удалить файлы с подписями (здорово экономит место)
+    txt.line <- 'find ../xmls -name "*.sig" -print0 | xargs -0 rm'
+    
     # закрываем соединение
     close(con)
     
 } else {
-    # TODO написать кусок под Windows
     #  должен быть установлен 7zip и добавлен в path
     #  чтобы добавить его в path, запустить в cmd:
     #     set PATH=%PATH%;C:\Program Files\7-Zip\
@@ -290,3 +292,4 @@ n <- length(unique(DT.xml.files.index$noticeID))
 message(paste0('Извещений по типу процедур: ', lProcedureToScrap$procedureType, 
                ' ', length(loop.ids),
                ' (', round(length(loop.ids) / n * 100, 1), '%)'))
+
