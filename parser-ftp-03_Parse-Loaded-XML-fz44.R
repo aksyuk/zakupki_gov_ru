@@ -89,7 +89,8 @@ if (length(pref.no.pattern) > 0) {
 # # ..............................................................................
 
 # цикл по типам файлов
-loop.prefs <- unique(DT.proc.index$prefix)
+# loop.prefs <- unique(DT.proc.index$prefix)
+loop.prefs <- 'fcsProtocolEFSingleApp'
 
 for (pref in loop.prefs) {
 

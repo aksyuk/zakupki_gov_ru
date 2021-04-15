@@ -31,6 +31,7 @@ library('jsonlite')
 library('RJSONIO')
 library('crayon')
 library('lubridate')
+library('dplyr')
 
 
 
@@ -134,7 +135,7 @@ sYEAR <- paste0(rep(2020, 12), formatC(1:12, width = 2, flag = '0'))
 
 # часть названия региона для поиска
 # номер папки загрузки: 01
-# srch.reg <- 'Bashk'
+srch.reg <- 'Bashk'
 # 02
 # srch.reg <- 'Udmu'
 # 03
@@ -281,9 +282,9 @@ if (n.dirs > 0) {
 message('Выберите выгрузку:\n', msg)
 prompt.load.sample <- readline('Введите номер опции:')
 # быстрая опция: новая выгрузка
-prompt.load.sample <- n.dirs + 1
-# быстрая опция: выбрать по названию региона
-# prompt.load.sample <- n.dirs + 2
+# prompt.load.sample <- n.dirs + 1
+# быстрая опция: выбрать по названию региона и периоду
+prompt.load.sample <- n.dirs + 2
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
 if (prompt.load.sample == n.dirs + 1) {

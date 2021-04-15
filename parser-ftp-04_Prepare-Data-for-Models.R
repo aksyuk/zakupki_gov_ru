@@ -49,6 +49,10 @@
 #  * y                              numeric     зависимая переменная: 
 # ..............................................................................
 
+
+
+# ПОДСЧЁТ ЦЕПОЧЕК ФАЙЛОВ ПО ИНДЕКСУ --------------------------------------------
+
 # читаем сохранённый список имён xml-файлов из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 file.name <- paste0(sDataSamplePath, 'xlms_names_list.csv')
 all.xmls <- read.csv2(file.name, stringsAsFactors = F)[, 1]
@@ -61,6 +65,147 @@ DT.proc.index <- uf.read.table.with.metadata(flnm)
 dim(DT.proc.index)
 str(DT.proc.index)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# читаем индекс типов файлов из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(sRawCSVPath, 'DT_all_xml_files_index.csv')
+DT.flnms.index <- uf.read.table.with.metadata(flnm)
+dim(DT.flnms.index)
+head(DT.flnms.index)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# # уникальные последовательности файлов в виде цепочек 0 и 1
+# index.file.names.binary <- unique(apply(DT.flnms.index[, -1], 1, function(x) {
+#     x[x > 0] <- 1
+#     paste0(x, collapse = '')
+# }))
+
+
+# Таблица со сводкой по цепочкам успешных аукционов ============================
+
+# строки таблицы с подсчётом наличия файлов в цепочках
+notices.to.check <- c('fksNotificationEA44', 'fcsNotificationEA44',
+                      'fksNotificationEA615', 
+                      'fksNotificationINM111', 'fksNotificationOK504',
+                      'fksNotificationOKU504', 'fksNotificationPO615', 
+                      'fksNotificationZK504', 'fksNotificationZP504',
+                      'contract', 'contractProcedure')
+
+# столбцы таблицы с подсчётом наличия файлов в цепочках
+stage.to.find <- c('fcsPlacementResult', 'epNotificationCancel', 
+                   'fcsProtocolEF1', 'fcsProtocolEF2', 'fcsProtocolEF3', 
+                   'fcsProtocolP615', 'fcsProtocolEvasion',
+                   'fcsProtocolEFSingleApp', 'fcsProtocolEFSinglePart',
+                   'contractProcedureCancel', 'epNotificationCancel',
+                   'fcsNotificationCancel', 'fcsProtocolCancel',
+                   'fcsProtocolEOKOUSingleApp', 'fcsProtocolEOKOUSinglePart',
+                   'fcsProtocolOKSingleApp')
+
+# считаем файлы
+df.check <- as.data.frame(lapply(stage.to.find, function(stage){
+    
+    df.tmp.01 <- DT.flnms.index[as.data.frame(DT.flnms.index[, stage, with = F])[, 1] == 1, ]
+    
+    stage.check <- unlist(lapply(notices.to.check, function(notice) {
+        
+        df.tmp.02 <- df.tmp.01[as.data.frame(df.tmp.01[, notice, with = F])[, 1] == 1, ]
+        nrow(df.tmp.02)
+        
+        # flnm.pos <- grep(paste0('^', x, '$'), colnames(DT.flnms.index))
+        # # print(flnm.pos)
+        # if (flnm.pos == length(colnames(DT.flnms.index))) {
+        #     pttrn <- '1'
+        # } else {
+        #     pttrn <- paste0('1.{', length(colnames(DT.flnms.index)) - flnm.pos - 1, '}', 
+        #                     collapse = '')
+        # }
+        # chains.sample <- lapply(lapply(
+        #     gregexpr('1', index.file.names.binary[grepl(paste0('.*', pttrn, '$'), 
+        #                                                 index.file.names.binary)]), as.vector),
+        #     function(x) {
+        #         colnames(DT.flnms.index)[x]
+        #     })
+        # 
+        # # считаем завершёнными те цепочки, в которых есть `fcsPlacementResult` 
+        # sum(unlist(lapply(chains.sample, function(x) {
+        #     if (length(grep(stage, x)) > 0) {1} else {0}
+        # })))
+    }))
+}))
+
+# дополняем таблицу-сводку заголовками и метаданными
+colnames(df.check) <- stage.to.find
+df.check <- cbind(notice.type = notices.to.check, 
+                  Регион = my.region$name,
+                  Период = paste0(sYEAR[1], '-', sYEAR[length(sYEAR)]),
+                  df.check)
+rownames(df.check) <- 1:nrow(df.check)
+
+# записываем сводку по цепочкам файлов >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+out.file.name <- paste0(sDataSamplePath, 'df_file_chains_check.csv')
+uf.write.table.with.metadata(df.check, out.file.name)
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+# Таблица с подсчётом извещений и результатов ==================================
+
+proc.cat <- c('Запрос котировок или предложений в электронной форме',
+              'Предварительный отбор квалифицированных подрядных организаций',
+              'Конкурс с ограниченным участием в электронной форме',
+              'Открытый конкурс в электронной форме',
+              'Конкурс или запрос котировок с учетом положений ст.111 44-ФЗ',
+              'Электронный аукцион на оказание услуг или выполнение работ по капитальному ремонту общего имущества в многоквартирном доме',
+              'Электронный аукцион')
+proc.flnms <- c('fksNotificationZK504 | fksNotificationZP504',
+                'fksNotificationPO615', 'fksNotificationOKU504',
+                'fksNotificationOK504', 'fksNotificationINM111',
+                'fksNotificationEA615', 'fksNotificationEA44')
+dt.summary <- data.table(Регион = my.region$name, 
+                         Период = paste0(sYEAR[1], '-', sYEAR[length(sYEAR)]),
+                         Категория = proc.cat, 
+                         Файлы = proc.flnms,
+                         Число.записей = rep(0, length(proc.cat)),
+                         Число.уникальных.записей = rep(0, length(proc.cat)))
+
+dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationZK504, 
+                           fksNotificationZP504),
+                    (fksNotificationZK504 > 0) | (fksNotificationZP504 > 0))
+dt.summary[1, 5] <- nrow(dt.sample)
+dt.summary[1, 6] <- nrow(unique(dt.sample))
+
+dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationPO615),
+                    fksNotificationPO615 > 0)
+dt.summary[2, 5] <- nrow(dt.sample)
+dt.summary[2, 6] <- nrow(unique(dt.sample))
+
+dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationOKU504),
+                    fksNotificationOKU504 > 0)
+dt.summary[3, 5] <- nrow(dt.sample)
+dt.summary[3, 6] <- nrow(unique(dt.sample))
+
+dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationOK504),
+                    fksNotificationOK504 > 0)
+dt.summary[4, 5] <- nrow(dt.sample)
+dt.summary[4, 6] <- nrow(unique(dt.sample))
+
+dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationINM111),
+                    fksNotificationINM111 > 0)
+dt.summary[5, 5] <- nrow(dt.sample)
+dt.summary[5, 6] <- nrow(unique(dt.sample))
+
+dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationEA615),
+                    fksNotificationEA615 > 0)
+dt.summary[6, 5] <- nrow(dt.sample)
+dt.summary[6, 6] <- nrow(unique(dt.sample))
+
+dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationEA44),
+                    fksNotificationEA44 > 0)
+dt.summary[7, 5] <- nrow(dt.sample)
+dt.summary[7, 6] <- nrow(unique(dt.sample))
+
+# записываем сводку по цепочкам файлов >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+out.file.name <- paste0(sDataSamplePath, 'df_notices_count.csv')
+uf.write.table.with.metadata(dt.summary, out.file.name)
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 

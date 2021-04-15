@@ -78,6 +78,17 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines,
             # сколько строк добавить
             rw.hashes.add <- unique(lst.length[lst.length > 1])
             
+            while (length(rw.hashes.add) > 1) {
+                n.min <- min(lst.length[lst.length > 1])
+                n.max <- max(lst.length[lst.length > 1])
+                indx <- names(lst.length[lst.length == n.min])
+                lst[[indx]] <- 
+                    c(lst[[indx]], rep(NA, n.max - n.min))
+                
+                lst.length <- sapply(lst, length)
+                rw.hashes.add <- unique(lst.length[lst.length > 1])
+            }
+            
             # повторяем значения остальных ячеек в строке столько раз,
             #  сколько повторов в ячейке с #
             lst <- lapply(lst, function(x) {

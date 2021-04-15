@@ -28,7 +28,10 @@ ui <- fluidPage(
                htmlOutput('HeadReadme'),
                wellPanel(style = "height: 200px; background: wheat",
                          htmlOutput('dirPath'),
-                         verbatimTextOutput('folderReadme')))
+                         verbatimTextOutput('folderReadme')),
+               actionButton('buttonSetNamespace',
+                            'Установить выборку рабочей'),
+               htmlOutput('SetupVars'))
         )
     )
 
@@ -36,6 +39,10 @@ ui <- fluidPage(
 # серверная часть ==============================================================
 server <- function(input, output) {
 
+    observeEvent(input$buttonSetNamespace, {
+        eval(parse('./setup_namespace.R', encoding = 'UTF-8'))
+    })
+    
     # статичный список регионов из файлов README в папках
     reg.list <- dir(sRawDataPath)
     reg.list <- sapply(reg.list, function(x){
@@ -94,6 +101,11 @@ server <- function(input, output) {
     
     output$HeadReadme <- renderText({
         paste0('<b>Папка: </b>')
+    })
+    
+    output$SetupVars <- renderText({
+        paste0('sRawDataPath = ', sRawDataPath,
+               '\n sDataSamplePath = ', sDataSamplePath())
     })
 }
 
