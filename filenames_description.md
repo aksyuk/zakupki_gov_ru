@@ -22,8 +22,8 @@
 * `contractProcedure` -- сведения об исполнении государственного или муниципального контракта;   
 * `contractProcedureCancel` -- сведения об отмене исполнения контракта;   
 * `contractCancel` -- сведения об аннулировании контракта;   
-* `fcsClarification` -- запрос на разъяснение заказа ?????????????;   
-* `fcsContractSign` --  сведения о лоте и об условиях контракта с электронной подписью заказчика ?????????????;    
+* `fcsClarification` -- запрос на разъяснение заказа;   
+* `fcsContractSign` -- информация  о подписании государственного/муниципального контракта;    
 
 **Каталог `notifications`:**   
 
@@ -33,7 +33,7 @@
 * `fcsNotificationEA615` -- извещение о проведении закупки способом электронного аукциона по 615(185)ФЗ;     
 * `fcsnotificationEFDateChange` -- уведомление об изменении даты и времени проведения электронного аукциона;    
 * `fcsNotificationEP44` -- извещение о проведении закупки способом закупки у единственного поставщика по 44-ФЗ;    
-* `fcsNotificationINM111` -- извещение о ????????????? по статье 111 44-ФЗ;    
+* `fcsNotificationINM111` -- извещение о закрытом конкурсе с ограниченным участием с учетом положений ст. 111 Закона № 44-ФЗ ([www.pro-goszakaz.ru](https://www.pro-goszakaz.ru/article/103146-qqq-20-m09-zakrytyy-auktsion-s-uchetom-polojeniy-st-111-zakona-44-fz));    
 * `fcsNotificationLotCancel` -- извещение об отмене определения поставщика (подрядчика, исполнителя) в части лота;   
 * `fcsNotificationOK44` -- извещение о проведении OK (открытый конкурс) по 44-ФЗ; внесение изменений;    
 * `fcsNotificationOKD44` -- извещение о проведении OK-Д (двухэтапный конкурс) по 44-ФЗ; внесение изменений;    
@@ -42,14 +42,14 @@
 * `fcsNotificationPO615` -- извещение о проведении ПО (предварительный отбор квалифицированных подрядных организаций) по 615(185)ФЗ; внесение изменений;   
 * `fcsNotificationZA44` -- извещение о проведении закупки способом закрытого аукциона по 44-ФЗ;     
 * `fcsNotificationZK44` -- извещение о запросе котировок по 44-ФЗ;  
-* `fcsNotificationZKK44` -- idk чем отличается от предыдущего ?????????????;   
+* `fcsNotificationZKK44` --  закрытый конкурс по 44-ФЗ;   
 * `fcsNotificationZP44` -- извещение о проведении ЗП (запрос предложений) по 44-ФЗ; внесение изменений;     
-* `fcsPlacementResult` -- похоже на результаты размещения закупки: в случае успешного завершения аукциона содержит конечную цену и какие-то непереводимые статусы ?????????????.   
+* `fcsPlacementResult` -- результат процедуры определения поставщика.   
 
 
 **Каталог `protocols`:**
 
-* `fcsProtocolCancel` -- отмена протокола ?????????????;   
+* `fcsProtocolCancel`, `epProtocolCancel` -- отмена протокола;   
 * `fcsProtocolEF1` -- протокол рассмотрения заявок на участие в электронном аукционе;    
 * `fcsProtocolEF2` -- протокол проведения электронного аукциона;    
 * `fcsProtocolEF3` -- протокол подведения итогов электронного аукциона;    
@@ -94,3 +94,7 @@
 1. [Интеграция ООС. Описание версии 4.4](http://www.google.ru/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwjnmKr2tIfcAhVSh6YKHVF3AEgQFggpMAA&url=http%3A%2F%2Fzakupki.gov.ru%2Fepz%2Fmain%2Fpublic%2Fdownload%2FdownloadDocument.html%3Fid%3D10567&usg=AOvVaw0o5gaLl4hUTWkIMnrzjwje)   
 
 1. [«Комплексная система автоматизации деятельности контрольно-ревизионных органов субъекта РФ (муниципального образования) - Автоматизированный центр контроля» («АЦК-Бюджетный контроль»)](https://www.google.ru/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiB8o3qtYfcAhUE_ywKHXJUCagQFggrMAA&url=https%3A%2F%2Fbftcom.com%2Fupload%2Fiblock%2F311%2F31115ad86c2459815fe7b71992a3f84c.pdf&usg=AOvVaw2c-o07Z2F7pL1NaI8iHStb)     
+
+1. [Все+справочники+по+ЭП_v42+(10.3)+(Добавлен+ЭОК).xlsx](https://zakupki.gov.ru/epz/main/public/download/downloadDocument.html?id=33287)    
+
+1. [_ЭП_Все+справочники+по+ЭП_v9.xlsx](https://zakupki.gov.ru/epz/main/public/download/downloadDocument.html?id=26035)

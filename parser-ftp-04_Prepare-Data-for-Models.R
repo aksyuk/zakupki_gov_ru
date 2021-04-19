@@ -5,7 +5,7 @@
 # 
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.3.1 (05 Mar 2020)
+# Версия 1.4.1 (19 Apr 2021)
 # ******************************************************************************
 # Объединение таблиц и предобработка данных.
 # На основе таблиц с разобранными XML по электронным аукционам 
@@ -46,8 +46,10 @@
 #  * time.stage.02.days	            numeric     продолжительность второго 
 #                                               этапа аукциона, дней
 #  * region             	        character   регион
-#  * y                              numeric     зависимая переменная: 
+#  * period                         character   период 
 # ..............................................................................
+
+log.errors.flnm = paste0(sDataSamplePath, 'log_make_model_table_err.log')
 
 
 
@@ -103,33 +105,21 @@ stage.to.find <- c('fcsPlacementResult', 'epNotificationCancel',
 # считаем файлы
 df.check <- as.data.frame(lapply(stage.to.find, function(stage){
     
-    df.tmp.01 <- DT.flnms.index[as.data.frame(DT.flnms.index[, stage, with = F])[, 1] == 1, ]
+    if (length(grep(stage, colnames(DT.flnms.index))) > 0) {
+        df.tmp.01 <- DT.flnms.index[as.data.frame(DT.flnms.index[, stage, with = F])[, 1] == 1, ]
     
-    stage.check <- unlist(lapply(notices.to.check, function(notice) {
-        
-        df.tmp.02 <- df.tmp.01[as.data.frame(df.tmp.01[, notice, with = F])[, 1] == 1, ]
-        nrow(df.tmp.02)
-        
-        # flnm.pos <- grep(paste0('^', x, '$'), colnames(DT.flnms.index))
-        # # print(flnm.pos)
-        # if (flnm.pos == length(colnames(DT.flnms.index))) {
-        #     pttrn <- '1'
-        # } else {
-        #     pttrn <- paste0('1.{', length(colnames(DT.flnms.index)) - flnm.pos - 1, '}', 
-        #                     collapse = '')
-        # }
-        # chains.sample <- lapply(lapply(
-        #     gregexpr('1', index.file.names.binary[grepl(paste0('.*', pttrn, '$'), 
-        #                                                 index.file.names.binary)]), as.vector),
-        #     function(x) {
-        #         colnames(DT.flnms.index)[x]
-        #     })
-        # 
-        # # считаем завершёнными те цепочки, в которых есть `fcsPlacementResult` 
-        # sum(unlist(lapply(chains.sample, function(x) {
-        #     if (length(grep(stage, x)) > 0) {1} else {0}
-        # })))
-    }))
+        stage.check <- unlist(lapply(notices.to.check, function(notice) {
+            
+            if (length(grep(notice, colnames(DT.flnms.index))) > 0) {
+                df.tmp.02 <- df.tmp.01[as.data.frame(df.tmp.01[, notice, with = F])[, 1] == 1, ]
+                nrow(df.tmp.02)
+            } else {
+                0
+            }
+        }))
+    } else {
+        rep(0, length(notices.to.check))
+    }
 }))
 
 # дополняем таблицу-сводку заголовками и метаданными
@@ -148,61 +138,55 @@ uf.write.table.with.metadata(df.check, out.file.name)
 
 # Таблица с подсчётом извещений и результатов ==================================
 
-proc.cat <- c('Запрос котировок или предложений в электронной форме',
+proc.cat <- c('Запрос котировок в электронной форме',
+              'Запрос предложений в электронной форме',
               'Предварительный отбор квалифицированных подрядных организаций',
               'Конкурс с ограниченным участием в электронной форме',
               'Открытый конкурс в электронной форме',
               'Конкурс или запрос котировок с учетом положений ст.111 44-ФЗ',
               'Электронный аукцион на оказание услуг или выполнение работ по капитальному ремонту общего имущества в многоквартирном доме',
               'Электронный аукцион')
-proc.flnms <- c('fksNotificationZK504 | fksNotificationZP504',
-                'fksNotificationPO615', 'fksNotificationOKU504',
-                'fksNotificationOK504', 'fksNotificationINM111',
-                'fksNotificationEA615', 'fksNotificationEA44')
+proc.flnms.01 <- c('fksNotificationZK504', 'fksNotificationZP504',
+                   'fksNotificationPO615', 'fksNotificationOKU504',
+                   'fksNotificationOK504', 'fksNotificationINM111',
+                   'fksNotificationEA615', 'fksNotificationEA44')
+proc.flnms.02 <- c('fcsNotificationZK504', 'fcsNotificationZP504',
+                   'fcsNotificationPO615', 'fcsNotificationOKU504',
+                   'fcsNotificationOK504', 'fcsNotificationINM111',
+                   'fcsNotificationEA615', 'fcsNotificationEA44')
 dt.summary <- data.table(Регион = my.region$name, 
                          Период = paste0(sYEAR[1], '-', sYEAR[length(sYEAR)]),
                          Категория = proc.cat, 
-                         Файлы = proc.flnms,
+                         Файлы = paste0(proc.flnms.01, ' | ', proc.flnms.02),
                          Число.записей = rep(0, length(proc.cat)),
                          Число.уникальных.записей = rep(0, length(proc.cat)))
 
-dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationZK504, 
-                           fksNotificationZP504),
-                    (fksNotificationZK504 > 0) | (fksNotificationZP504 > 0))
-dt.summary[1, 5] <- nrow(dt.sample)
-dt.summary[1, 6] <- nrow(unique(dt.sample))
+count.01 <- sapply(proc.flnms.01, function(flnm) {
+    if (length(grep(flnm, colnames(DT.flnms.index))) > 0) {
+        dt <- DT.flnms.index[, colnames(DT.flnms.index) %in% c('noticeID', flnm), 
+                             with = F]
+        c(sum(dt[, 2] > 0), sum(unique(dt)[, 2] > 0))
+    } else {
+        c(0, 0)
+    }
+})
 
-dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationPO615),
-                    fksNotificationPO615 > 0)
-dt.summary[2, 5] <- nrow(dt.sample)
-dt.summary[2, 6] <- nrow(unique(dt.sample))
+count.02 <- sapply(proc.flnms.02, function(flnm) {
+    if (length(grep(flnm, colnames(DT.flnms.index))) > 0) {
+        dt <- DT.flnms.index[, colnames(DT.flnms.index) %in% c('noticeID', flnm), 
+                             with = F]
+        c(sum(dt[, 2] > 0), sum(unique(dt)[, 2] > 0))
+    } else {
+        c(0, 0)
+    }
+})
 
-dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationOKU504),
-                    fksNotificationOKU504 > 0)
-dt.summary[3, 5] <- nrow(dt.sample)
-dt.summary[3, 6] <- nrow(unique(dt.sample))
+dt.tmp <- t(count.01) + t(count.02)
 
-dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationOK504),
-                    fksNotificationOK504 > 0)
-dt.summary[4, 5] <- nrow(dt.sample)
-dt.summary[4, 6] <- nrow(unique(dt.sample))
+dt.summary[, 5] <- dt.tmp[, 1]
+dt.summary[, 6] <- dt.tmp[, 2]
 
-dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationINM111),
-                    fksNotificationINM111 > 0)
-dt.summary[5, 5] <- nrow(dt.sample)
-dt.summary[5, 6] <- nrow(unique(dt.sample))
-
-dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationEA615),
-                    fksNotificationEA615 > 0)
-dt.summary[6, 5] <- nrow(dt.sample)
-dt.summary[6, 6] <- nrow(unique(dt.sample))
-
-dt.sample <- filter(select(DT.flnms.index, noticeID, fksNotificationEA44),
-                    fksNotificationEA44 > 0)
-dt.summary[7, 5] <- nrow(dt.sample)
-dt.summary[7, 6] <- nrow(unique(dt.sample))
-
-# записываем сводку по цепочкам файлов >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# записываем сводку по цепочкам файлов >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 out.file.name <- paste0(sDataSamplePath, 'df_notices_count.csv')
 uf.write.table.with.metadata(dt.summary, out.file.name)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -235,10 +219,26 @@ DT.responsibleOrgs[, responsibleOrg.fullName := NULL]
 DT.responsibleOrgs[, responsibleOrg.postAddress := NULL]
 DT.responsibleOrgs[, responsibleOrg.INN := NULL]
 DT.responsibleOrgs[, responsibleOrg.KPP := NULL]
+# DT.responsibleOrgs[, responsibleRole := NULL]
 colnames(DT.responsibleOrgs)[colnames(DT.responsibleOrgs) == 
                             'docPublishDate'] <- 'docPublishDate_notice'
 DT.responsibleOrgs[, docPublishDate_notice := 
                        uf.convert.char.to.date(docPublishDate_notice)]
+
+
+# боремся с дублированием извещений с одинаковыми номерами #####################
+
+# вычисляем дату самой последней публикации для каждого извещения
+#  если начальная цена одна и та же, это одна и та же закупка
+DT.responsibleOrgs[, last.notice.date := max(docPublishDate_notice), 
+                   by = list(purchaseNumber, lot.maxPrice)]
+# дата самой первой публикации извещения
+DT.responsibleOrgs[, frst.notice.date := min(docPublishDate_notice), 
+                   by = list(purchaseNumber, lot.maxPrice)]
+# заменяем столбец с последними датами на дату публикации заявки
+# DT.responsibleOrgs[, docPublishDate_notice := NULL]
+# оставляем только уникальные
+DT.responsibleOrgs <- unique(DT.responsibleOrgs)
 
 
 # ..............................................................................
@@ -262,19 +262,82 @@ table(DT.restrictions$restriction.shortName)
 DT.restrictions[is.na(DT.restrictions$restriction.shortName), 
                 restriction.shortName := 'no']
 
-# * убираем дату
-DT.restrictions[, docPublishDate := NULL]
+# # виды ограничений
+# table(DT.restrictions$restriction.name)
+# table(DT.restrictions$restriction.shortName)
+
+# # * убираем дату
+# DT.restrictions[, docPublishDate := NULL]
 # * убираем название ограничения
 DT.restrictions[, restriction.name := NULL]
 
 
+# механизм расклеивания таблицы с ограничениями таков, что если у закупки 
+#  два ограничения появляется две строки в таблице
+#  делаем дамми по связке номер закупки + номер нотиса
+dt.restr.tmp <- unique(select(DT.restrictions, -restriction.shortName))
+# DT.restrictions[, SMP.only := ifelse(restriction.shortName == 'MB44330', 1, 0)]
+# DT.restrictions[, Nat.Regime := ifelse(restriction.shortName == 'JB2149', 1, 0)]
+dt.restr.tmp <- merge(dt.restr.tmp, filter(select(DT.restrictions, 
+                                                  purchaseNumber, 
+                                                  fcsNotificationEF.id, 
+                                                  restriction.shortName),
+                                           restriction.shortName == 'MB44330'), 
+                      by = c('purchaseNumber', 'fcsNotificationEF.id'), 
+                      all.x = T)
+dt.restr.tmp[, SMP.only := ifelse(restriction.shortName == 'MB44330', 1, 0)]
+dt.restr.tmp[is.na(SMP.only), SMP.only := 0]
+dt.restr.tmp[, restriction.shortName := NULL]
+dt.restr.tmp <- merge(dt.restr.tmp, filter(select(DT.restrictions, 
+                                                  purchaseNumber, 
+                                                  fcsNotificationEF.id, 
+                                                  restriction.shortName),
+                                           restriction.shortName == 'JB2149'), 
+                      by = c('purchaseNumber', 'fcsNotificationEF.id'), 
+                      all.x = T)
+dt.restr.tmp[, Nat.Regime := ifelse(restriction.shortName == 'JB2149', 1, 0)]
+dt.restr.tmp[is.na(Nat.Regime), Nat.Regime := 0]
+dt.restr.tmp[, restriction.shortName := NULL]
+
+
 # набор данных для модели: создание ////////////////////////////////////////////
+cat(blue('Создаём набор данных из таблиц организаторов закупки и ограничений\n'))
 DT.model <- merge(DT.responsibleOrgs, DT.restrictions, 
                   by = c('purchaseNumber', 'fcsNotificationEF.id'))
 dim(DT.model)
 nas <- uf.count.nas.in.table(DT.model)
 nas$columns.na
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# ID извещений, по которым несколько строк с одинаковыми ценами
+#  из них оставляем самые свежие строки
+dt.check.doubles <- DT.model %>% group_by(purchaseNumber) %>% 
+    summarise(N = n(), maxPrice.var = var(lot.maxPrice),
+              last.notice.date = last.notice.date) %>% 
+    filter(N > 1, maxPrice.var == 0) %>% arrange(-N)
+nrow(dt.check.doubles)
+dt.check.doubles
+
+
+# набор данных для модели: удаление строк //////////////////////////////////////
+# оставляем последнее по дате извещение
+DT.model <- rbind(filter(filter(DT.model, purchaseNumber %in% dt.check.doubles$purchaseNumber),
+                         docPublishDate_notice == last.notice.date),
+                  filter(DT.model, !(purchaseNumber %in% dt.check.doubles$purchaseNumber)))
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# набор данных для модели: удаление строк //////////////////////////////////////
+# убираем их все, т.к. пока хз что с ними делать
+DT.model <- DT.model[!(purchaseNumber %in% dt.check.doubles$purchaseNumber), ]
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# проверка: 1 строка = 1 извещение
+cat(yellow(paste0('ПРОВЕРКА DT.model: 1 строка = 1 извещение: ', 
+                  length(unique(DT.model$purchaseNumber)) == nrow(DT.model),
+                  '\n')))
 
 
 # ТОВАРЫ =======================================================================
@@ -338,17 +401,43 @@ DT.TPY.codes[, purchaseObject.OKPD2.name := NULL]
 DT.TPY.codes <- unique(DT.TPY.codes)
 dim(DT.TPY.codes)
 
+dt.count.rows <- DT.TPY.codes %>% select(purchaseNumber, 
+                                         purchaseObject.OKPD2.code.2dig) %>%
+    unique() %>% group_by(purchaseNumber) %>% summarise(N = n())
+dt.count.rows <- data.table(filter(dt.count.rows, N > 1))
+dt.count.rows[order(-N), ]
+n.msg <- nrow(dt.count.rows)
+cat(yellow(paste0('закупок с более чем одним товарным кодом: ', 
+                  round(n.msg / length(unique(DT.model$purchaseNumber)) * 100, 1),
+                  '% (', n.msg, ')\n')))
+ids.to.drop <- unique(dt.count.rows$purchaseNumber)
+
+length(unique(dt.count.rows$purchaseNumber))
+length(unique(DT.model$purchaseNumber))
+
+
+# набор данных для модели: удаление строк //////////////////////////////////////
+# убираем закупки с несколькими кодами
+DT.model <- DT.model[!(DT.model$purchaseNumber %in% ids.to.drop), ]
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 # набор данных для модели: добавление столбцов /////////////////////////////////
+cat(blue('Добавляем сведения о товарах закупки\n'))
 DT.model <- merge(DT.model, DT.TPY.codes, 
                   by = c('purchaseNumber', 'fcsNotificationEF.id'))
 # дальше работаем с таблицами по протоколам, 
 #  fcsNotificationEF.id больше не нужен (он с самого начала был перестраховкой)
-DT.model <- DT.model[, fcsNotificationEF.id := NULL]
+DT.model <- unique(DT.model[, fcsNotificationEF.id := NULL])
 dim(DT.model)
 nas <- uf.count.nas.in.table(DT.model)
 nas$columns.na
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# проверка: 1 строка = 1 извещение
+cat(yellow(paste0('ПРОВЕРКА DT.model: 1 строка = 1 извещение: ', 
+                  length(unique(DT.model$purchaseNumber)) == nrow(DT.model),
+                  '\n')))
 
 
 # УЧАСТНИКИ АУКЦИОНОВ ==========================================================
@@ -362,17 +451,47 @@ summary(DT.protocols01)
 # преобразование дат
 DT.protocols01[, protocol01Date := uf.convert.char.to.date(protocol01Date)]
 
-# оставляем тех участников аукционов, заявления которых были приняты
-DT.protocols01 <- DT.protocols01[admitted == T, ]
-tmp <- select(DT.protocols01, purchaseNumber, application.journalNumber)[, .N,
-                                                          by = 'purchaseNumber']
-DT.protocols01 <- merge(DT.protocols01, tmp, by = 'purchaseNumber')
-colnames(DT.protocols01)[colnames(DT.protocols01) == 'N'] <- 
+# если несколько протоколов на одну закупку, оставляем последний
+DT.protocols01[, max.p01.date := max(protocol01Date), by = 'purchaseNumber']
+DT.protocols01[, difftime.days := difftime(max.p01.date, protocol01Date, 
+                                           units = 'days')]
+DT.protocols01 <- DT.protocols01[protocol01Date == max.p01.date, ]
+DT.protocols01[, difftime.days := NULL]
+
+# считаем количество допущенных участников
+if ('admitted' %in% colnames(DT.protocols01)) {
+    dt.adm.count <- select(DT.protocols01[admitted == T, ], purchaseNumber, 
+                           application.journalNumber)[, .N, by = 'purchaseNumber']    
+} else {
+    dt.adm.count <- select(DT.protocols01[application.admitted.explanation == 'true', ], purchaseNumber, 
+                           application.journalNumber)[, .N, by = 'purchaseNumber']
+}
+colnames(dt.adm.count)[colnames(dt.adm.count) == 'N'] <- 
     'application.count.p01'
+# считаем количество не допущенных участников
+if ('admitted' %in% colnames(DT.protocols01)) {
+    dt.non.adm.count <- select(DT.protocols01[admitted == F, ], purchaseNumber, 
+                               application.journalNumber)[, .N, by = 'purchaseNumber']
+} else {
+    dt.non.adm.count <- select(DT.protocols01[application.admitted.explanation != 'true', ], purchaseNumber, 
+                               application.journalNumber)[, .N, by = 'purchaseNumber']
+}
+
+colnames(dt.non.adm.count)[colnames(dt.non.adm.count) == 'N'] <- 
+    'application.reject.count.p01'
+
+DT.protocols01 <- merge(DT.protocols01, dt.adm.count, by = 'purchaseNumber')
+DT.protocols01 <- merge(DT.protocols01, dt.non.adm.count, by = 'purchaseNumber',
+                        all.x = T)
+DT.protocols01[is.na(application.reject.count.p01), 
+               application.reject.count.p01 := 0]
+
 # * оставляем только столбцы для модели: количество принятых заявок + дата
 DT.protocols01 <- select(DT.protocols01, purchaseNumber, fcsProtocolEF1.id,
                          application.journalNumber, application.count.p01, 
-                         protocol01Date)
+                         application.reject.count.p01, protocol01Date,
+                         abandonedReason.code, abandonedReason.name,
+                         application.reject.count.p01)
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 flnm <- paste0(out.path, 'DT_fcsProtocolEF2_clean.csv')
@@ -386,6 +505,14 @@ DT.protocols02[, application.firstOffer.date :=
                    uf.convert.char.to.date(application.firstOffer.date)]
 DT.protocols02[, application.lastOffer.date := 
                    uf.convert.char.to.date(application.lastOffer.date)]
+
+# если несколько протоколов на одну закупку, оставляем последний
+DT.protocols02[, max.p02.date := max(protocol02Date), by = 'purchaseNumber']
+DT.protocols02[, difftime.days := difftime(max.p02.date, protocol02Date, 
+                                           units = 'days')]
+summary(as.numeric(DT.protocols02$difftime.days))
+DT.protocols02 <- DT.protocols02[protocol02Date == max.p02.date, ]
+DT.protocols02[, difftime.days := NULL]
 
 # считаем max количество предложений цен
 tmp.1 <- select(DT.protocols02, purchaseNumber, fcsProtocolEF2.id, 
@@ -436,148 +563,191 @@ summary(DT.protocols03)
 # преобразование дат
 DT.protocols03[, protocol03Date := uf.convert.char.to.date(protocol03Date)]
 
-
-# сколько извещений с одинаковыми номерами #####################################
-dt.dbl.notice <- data.table(filter(unique(select(DT.responsibleOrgs,
-                                                 purchaseNumber,
-    docPublishDate_notice))[, .N, by = 'purchaseNumber'][order(-N), ], N > 1))
-
-if (nrow(dt.dbl.notice) > 0) {
-    # вычисляем дату самого последнего для каждого извещения
-    last.dates <- sapply(dt.dbl.notice$purchaseNumber, function(x) {
-        max(DT.responsibleOrgs[purchaseNumber == x, ]$docPublishDate_notice)
-    })
-    last.dates <- data.table(purchaseNumber = names(last.dates),
-                             last.dates = last.dates)
-    last.dates$last.dates <- as.POSIXct(last.dates$last.dates,
-                                        origin = lubridate::origin,
-                                        tz = 'Europe/Moscow')
-    dt.dbl.notice <- merge(dt.dbl.notice, last.dates)
-    # результат
-    print(dt.dbl.notice[order(-N), ])
-    length(dt.dbl.notice$purchaseNumber)
-}
+# если несколько протоколов на одну закупку, оставляем последний
+DT.protocols03[, max.p03.date := max(protocol03Date), by = 'purchaseNumber']
+DT.protocols03[, difftime.days := difftime(max.p03.date, protocol03Date, 
+                                           units = 'days')]
+summary(as.numeric(DT.protocols03$difftime.days))
+DT.protocols03 <- DT.protocols03[protocol03Date == max.p03.date, ]
+DT.protocols03[, difftime.days := NULL]
 
 
-# сколько протоколов 1 этапа с одинаковыми номерами ############################
-dt.dbl.p01 <- data.table(filter(unique(select(DT.protocols01, purchaseNumber, 
-            protocol01Date))[, .N, by = 'purchaseNumber'][order(-N), ], N > 1))
+# АУКЦИОНЫ С ОДНОЙ ЗАЯВКОЙ =====================================================
 
-if (nrow(dt.dbl.p01) > 0) {
-    # вычисляем дату самого последнего для каждого протокола
-    last.dates <- sapply(dt.dbl.p01$purchaseNumber, function(x) {
-        max(DT.protocols01[purchaseNumber == x, ]$protocol01Date)
-    })
-    last.dates <- data.table(purchaseNumber = names(last.dates),
-                             last.dates = last.dates)
-    last.dates$last.dates <- as.POSIXct(last.dates$last.dates, 
-                                        origin = lubridate::origin, 
-                                        tz = 'Europe/Moscow')
-    dt.dbl.p01 <- merge(dt.dbl.p01, last.dates)
-    # результат
-    print(dt.dbl.p01[order(-N), ])
-    length(dt.dbl.p01$purchaseNumber)
-}
+# читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(out.path, 'DT_fcsProtocolEFSingleApp_clean.csv')
+DT.protocolsSingleApp <- uf.read.table.with.metadata(flnm)
+summary(DT.protocolsSingleApp)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+# преобразование дат
+DT.protocolsSingleApp[, protocolSingleAppDate := 
+                          uf.convert.char.to.date(protocolSingleAppDate)]
 
-# сколько протоколов 2 этапа с одинаковыми номерами ############################
-dt.dbl.p02 <- data.table(filter(unique(select(DT.protocols02, purchaseNumber, 
-            protocol02Date))[, .N, by = 'purchaseNumber'][order(-N), ], N > 1))
+# если несколько протоколов на одну закупку, оставляем последний
+DT.protocolsSingleApp[, max.single.app.date := max(protocolSingleAppDate), 
+                      by = 'purchaseNumber']
+DT.protocolsSingleApp[, difftime.days := difftime(max.single.app.date, 
+                                                  protocolSingleAppDate, 
+                                                  units = 'days')]
+summary(as.numeric(DT.protocolsSingleApp$difftime.days))
+DT.protocolsSingleApp <- 
+    DT.protocolsSingleApp[protocolSingleAppDate == max.single.app.date, ]
 
-if (nrow(dt.dbl.p02) > 0) {
-    # вычисляем дату самого последнего для каждого извещения
-    last.dates <- sapply(dt.dbl.p02$purchaseNumber, function(x) {
-        max(DT.protocols02[purchaseNumber == x, ]$protocol02Date)
-    })
-    last.dates <- data.table(purchaseNumber = names(last.dates),
-                             last.dates = last.dates)
-    last.dates$last.dates <- as.POSIXct(last.dates$last.dates, 
-                                        origin = lubridate::origin, 
-                                        tz = 'Europe/Moscow')
-    dt.dbl.p02 <- merge(dt.dbl.p02, last.dates)
-    # результат
-    print(dt.dbl.p02[order(-N), ])
-    length(dt.dbl.p02$purchaseNumber)
-}
+DT.protocolsSingleApp[, difftime.days := NULL]
+
+# убираем ИНН 
+DT.protocolsSingleApp[, application.inn := NULL]
 
 
-# сколько протоколов 3 этапа с одинаковыми номерами ############################
-dt.dbl.p03 <- data.table(filter(unique(select(DT.protocols03, purchaseNumber, 
-            protocol03Date))[, .N, by = 'purchaseNumber'][order(-N), ], N > 1))
+# АУКЦИОНЫ С ОДНИМ УЧАСТНИКОМ ==================================================
 
-if (nrow(dt.dbl.p03) > 0) {
-    # вычисляем дату самого последнего для каждого извещения
-    last.dates <- sapply(dt.dbl.p03$purchaseNumber, function(x) {
-        max(DT.protocols03[purchaseNumber == x, ]$protocol03Date)
-    })
-    last.dates <- data.table(purchaseNumber = names(last.dates),
-                             last.dates = last.dates)
-    last.dates$last.dates <- as.POSIXct(last.dates$last.dates, 
-                                        origin = lubridate::origin, 
-                                        tz = 'Europe/Moscow')
-    dt.dbl.p03 <- merge(dt.dbl.p03, last.dates)
-    # результат
-    print(dt.dbl.p03[order(-N), ])
-    length(dt.dbl.p03$purchaseNumber)
-}
+# читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(out.path, 'DT_fcsProtocolEFSinglePart_clean.csv')
+DT.protocolsSinglePart <- uf.read.table.with.metadata(flnm)
+summary(DT.protocolsSinglePart)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-# по протоколам выпадает вот такая доля извещений
-pID.doubles <- unique(c(dt.dbl.p01$purchaseNumber, dt.dbl.p02$purchaseNumber, 
-                        dt.dbl.p03$purchaseNumber))
-length(pID.doubles) / length(unique(DT.responsibleOrgs$purchaseNumber))
+# преобразование дат
+DT.protocolsSinglePart[, protocolSinglePartDate := 
+                           uf.convert.char.to.date(protocolSinglePartDate)]
 
+# если несколько протоколов на одну закупку, оставляем последний
+DT.protocolsSinglePart[, max.single.part.date := max(protocolSinglePartDate),
+                       by = 'purchaseNumber']
+DT.protocolsSinglePart[, difftime.days := difftime(max.single.part.date, 
+                                                   protocolSinglePartDate, 
+                                                   units = 'days')]
+summary(as.numeric(DT.protocolsSinglePart$difftime.days))
+DT.protocolsSinglePart <- 
+    DT.protocolsSinglePart[protocolSinglePartDate == max.single.part.date, ]
+DT.protocolsSinglePart[, difftime.days := NULL]
 
-# вариант 1: оставляем только самые свежие #####################################
-if (nrow(dt.dbl.notice) > 0) {
-    notice.wo.doubles.01 <- unique(merge(DT.responsibleOrgs, 
-                                         select(dt.dbl.notice, -N), 
-                                         by.x = c('purchaseNumber', 
-                                                  'docPublishDate_notice'),
-                                         by.y = c('purchaseNumber', 
-                                                  'last.dates')))
-    notice.wo.doubles.02 <- unique(data.table(filter(DT.responsibleOrgs, 
-                          !(purchaseNumber %in% dt.dbl.notice$purchaseNumber))))
-    DT.responsibleOrgs <- rbind(notice.wo.doubles.01, notice.wo.doubles.02)    
-}
-
-if (nrow(dt.dbl.p01) > 0) {
-    p.01.wo.doubles.01 <- unique(merge(DT.protocols01, select(dt.dbl.p01, -N), 
-                                by.x = c('purchaseNumber', 'protocol01Date'),
-                                by.y = c('purchaseNumber', 'last.dates')))
-    p.01.wo.doubles.02 <- unique(data.table(filter(DT.protocols01, 
-                            !(purchaseNumber %in% dt.dbl.p01$purchaseNumber))))
-    DT.protocols01 <- rbind(p.01.wo.doubles.01, p.01.wo.doubles.02)    
-}
-
-if (nrow(dt.dbl.p02) > 0) {
-    p.02.wo.doubles.01 <- unique(merge(DT.protocols02, select(dt.dbl.p02, -N),
-                                by.x = c('purchaseNumber', 'protocol02Date'),
-                                by.y = c('purchaseNumber', 'last.dates')))
-    p.02.wo.doubles.02 <- unique(data.table(filter(DT.protocols02, 
-                            !(purchaseNumber %in% dt.dbl.p02$purchaseNumber))))
-    DT.protocols02 <- rbind(p.02.wo.doubles.01, p.02.wo.doubles.02)
-}
-
-if (nrow(dt.dbl.p03) > 0) {
-    p.03.wo.doubles.01 <- unique(merge(DT.protocols03, select(dt.dbl.p03, -N), 
-                                by.x = c('purchaseNumber', 'protocol03Date'),
-                                by.y = c('purchaseNumber', 'last.dates')))
-    p.03.wo.doubles.02 <- unique(data.table(filter(DT.protocols03, 
-                            !(purchaseNumber %in% dt.dbl.p03$purchaseNumber))))
-    DT.protocols03 <- rbind(p.03.wo.doubles.01, p.03.wo.doubles.02)
-}
+# убираем ИНН, КПП и прочее
+DT.protocolsSinglePart[, application.inn := NULL]
+DT.protocolsSinglePart[, application.kpp := NULL]
+# DT.protocolsSinglePart[, application.organizationName := NULL]
+# DT.protocolsSinglePart[, publisherOrg.regNum := NULL]
+# DT.protocolsSinglePart[, publisherOrg.fullName := NULL]
+# DT.protocolsSinglePart[, fcsProtocolEFSinglePart.id := NULL]
+# DT.protocolsSinglePart[, externalId := NULL]
+# DT.protocolsSinglePart[, protocolNumber := NULL]
+# DT.protocolsSinglePart[, foundationProtocolNumber := NULL]
 
 
-# # вариант 2: просто удаляем все повторы ########################################
-# DT.protocols01 <- 
-#     DT.protocols01[!(purchaseNumber %in% dt.dbl.p01$purchaseNumber), ]
-# DT.protocols02 <- 
-#     DT.protocols02[!(purchaseNumber %in% dt.dbl.p02$purchaseNumber), ]
-# DT.protocols03 <- 
-#     DT.protocols03[!(purchaseNumber %in% dt.dbl.p03$purchaseNumber), ]
+# РЕЗУЛЬТАТЫ РАЗМЕЩЕНИЯ ========================================================
+
+# читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(out.path, 'DT_fcsPlacementResult_clean.csv')
+DT.PlacementResult <- uf.read.table.with.metadata(flnm)
+summary(DT.PlacementResult)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# типы столбцов
+DT.PlacementResult$procedurelFailed <- 
+    as.logical(DT.PlacementResult$procedurelFailed)
+DT.PlacementResult$application.journalNumber <- 
+    as.numeric(DT.PlacementResult$application.journalNumber)
+DT.PlacementResult$application.appRating <- 
+    as.numeric(DT.PlacementResult$application.appRating)
+DT.PlacementResult$application.price <- 
+    as.numeric(DT.PlacementResult$application.price)
+
+
+# ОТМЕНА ПРОТОКОЛА =============================================================
+
+# читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(out.path, 'DT_fcsProtocolCancel_clean.csv')
+DT.protocolCancel <- uf.read.table.with.metadata(flnm)
+summary(DT.protocolCancel)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# преобразование дат
+DT.protocolCancel$fcsProtocolCancel.docDate <- 
+    uf.convert.char.to.date(DT.protocolCancel$fcsProtocolCancel.docDate)
+DT.protocolCancel$cancelReason.docDate <- 
+    uf.convert.char.to.date(DT.protocolCancel$cancelReason.docDate)
+
+# если несколько протоколов на одну закупку, оставляем последний
+DT.protocolCancel[, max.proc.cancel.date := max(fcsProtocolCancel.docDate),
+                  by = 'purchaseNumber']
+DT.protocolCancel[, difftime.days := difftime(max.proc.cancel.date, 
+                                              fcsProtocolCancel.docDate,
+                                              units = 'days')]
+summary(as.numeric(DT.protocolCancel$difftime.days))
+DT.protocolCancel <- 
+    DT.protocolCancel[fcsProtocolCancel.docDate == max.proc.cancel.date, ]
+DT.protocolCancel[, difftime.days := NULL]
+
+
+# ОТМЕНА ИЗВЕЩЕНИЯ =============================================================
+
+# читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(out.path, 'DT_fcsNotificationCancel_clean.csv')
+DT.notificationCancel <- uf.read.table.with.metadata(flnm)
+summary(DT.notificationCancel)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+# преобразование дат
+DT.notificationCancel$fcsNotificationCancel.docDate <- 
+    uf.convert.char.to.date(DT.notificationCancel$fcsNotificationCancel.docDate)
+
+# если несколько протоколов на одну закупку, оставляем последний
+DT.notificationCancel[, max.notice.cancel.date := max(fcsNotificationCancel.docDate),
+                      by = 'purchaseNumber']
+DT.notificationCancel[, difftime.days := difftime(max.notice.cancel.date, 
+                                                  fcsNotificationCancel.docDate,
+                                                  units = 'days')]
+summary(as.numeric(DT.notificationCancel$difftime.days))
+DT.notificationCancel <- 
+    DT.notificationCancel[fcsNotificationCancel.docDate == max.notice.cancel.date, ]
+DT.notificationCancel[, difftime.days := NULL]
+
+
+# ПРИЗНАНИЕ ПРОТОКОЛА НЕДЕЙСТВИТЕЛЬНЫМ =========================================
+
+# читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(out.path, 'DT_fcsProtocolEFInvalidation.csv')
+DT.ProtocolInval <- read.csv2(flnm, stringsAsFactors = F, 
+                              colClasses = rep('character', 5))
+summary(DT.ProtocolInval)
+# <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+# # КОНТРАКТ =====================================================================
+# 
+# # читаем таблицу из напрямую, без очистки <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# flnm <- paste0(out.path, 'DT_fcsContractSign.csv')
+# if (file.exists(flnm)) {
+#     DT.ContractSign <- read.csv2(flnm, stringsAsFactors = F, 
+#                                  colClasses = rep('character', 5))
+#     summary(DT.ContractSign)
+# } else {
+#     cat(red(paste0('Файл ', flnm, ' не найден')))
+#     uf.write.to.log(paste0('Ошибка при выполнении скрипта ', 
+#                            'parser-ftp-04_Prepare-Data-for-Models_2.R : файл ', 
+#                            flnm, ' не найден.\n'), 
+#                     log.errors.flnm, T)
+# }
+# # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+# 
+# # проверка на наличие склеенных значений
+# grep('#', DT.ContractSign$supplier.inn)
+# 
+# # числовые столбцы
+# DT.ContractSign$priceRUR <- as.numeric(DT.ContractSign$priceRUR)
+# 
+# # имена столбцов
+# colnames(DT.ContractSign)[colnames(DT.ContractSign) == 'foundation.order.purchaseNumber'] <- 'purchaseNumber'
 
 
 # определяем цену победителя аукциона ##########################################
+# обнаружены чудесные извещения, по которым нет протокола 1 стадии, но есть
+#  2 и 3, и заказчик определён
+nrow(DT.flnms.index[fcsProtocolEF1 == 0 & fcsProtocolEF2 == 1 & 
+                        fcsProtocolEF3 == 1 & fcsPlacementResult == 1, ])
+DT.protocols01[purchaseNumber == '0101100000220000006', ]
+# поэтому химичим
 tmp.1 <- select(DT.protocols01, purchaseNumber, application.journalNumber,
                 protocol01Date)
 tmp.2 <- select(DT.protocols02, purchaseNumber, application.journalNumber,
@@ -586,50 +756,240 @@ tmp.3 <- select(DT.protocols03, purchaseNumber, application.journalNumber,
                 protocol03Date, application.appRating)
 
 tmp <- select(filter(merge(merge(tmp.1, tmp.2, 
-                        by = c('purchaseNumber', 'application.journalNumber')),
-                        tmp.3, 
-                        by = c('purchaseNumber', 'application.journalNumber')),
+                                 by = c('purchaseNumber', 'application.journalNumber'),
+                                 all.y = T),
+                           tmp.3, 
+                           by = c('purchaseNumber', 'application.journalNumber')),
                      application.appRating == 1), purchaseNumber, 
               application.lastOffer.price)
 tmp <- data.table(unique(tmp))
+# tmp[purchaseNumber == '0101100000220000006', ]
+
+# ищем дубликаты ID извещений
+dt.check.doubles <- tmp %>% group_by(purchaseNumber) %>% 
+    summarise(N = n()) %>% filter(N > 1) %>% arrange(-N)
+nrow(dt.check.doubles)
+dt.check.doubles
+
+# tmp[purchaseNumber == '0301100035120000036', ]
+# tmp.1[purchaseNumber == '0301100035120000036', ]
+# tmp.2[purchaseNumber == '0301100035120000036', ]
+# tmp.3[purchaseNumber == '0301100035120000036', ]
+
+# так и не придумала как отличить друг от друга 2 одинаковых по purchaseNumber
+#  и дате протокола с разными победителями, поэтому выкидываем
+tmp <- tmp[!(purchaseNumber %in% dt.check.doubles$purchaseNumber), ]
+
 # добавляем цену победителя к данным по протоколам
 DT.protocols03 <- merge(DT.protocols03, tmp, by = 'purchaseNumber')
 colnames(DT.protocols03)[colnames(DT.protocols03) == 
                              'application.lastOffer.price'] <- 'winner.price'
 
 # протоколы 1: оставляем только столбцы для модели
-DT.protocols01 <- select(DT.protocols01, fcsProtocolEF1.id, purchaseNumber, 
-                         application.count.p01, protocol01Date)
+DT.protocols01 <- select(DT.protocols01, purchaseNumber, application.count.p01, 
+                         protocol01Date, application.reject.count.p01)
 DT.protocols01 <- unique(DT.protocols01)
+DT.protocols01[, .N, by = 'purchaseNumber'][N > 1, ]
+
 # протоколы 2: оставляем только столбцы для модели
-DT.protocols02 <- select(DT.protocols02, fcsProtocolEF2.id, purchaseNumber, 
+DT.protocols02 <- select(DT.protocols02, purchaseNumber, 
                          max.price.offers.quantity, application.count.p02,
                          time.stage02.hours, protocol02Date)
 DT.protocols02 <- unique(DT.protocols02)
+DT.protocols02[, .N, by = 'purchaseNumber'][N > 1, ]
+
 # протоколы 3: оставляем только столбцы для модели
-DT.protocols03 <- select(DT.protocols03, fcsProtocolEF3.id,
-                         purchaseNumber, winner.price, protocol03Date)
+DT.protocols03 <- select(DT.protocols03, purchaseNumber, winner.price, 
+                         protocol03Date)
 DT.protocols03 <- unique(DT.protocols03)
+DT.protocols03[, .N, by = 'purchaseNumber'][N > 1, ]
 
 # объединяем данные по протоколам этапов аукциона
-DT.protocols <- merge(DT.protocols01, DT.protocols02, 'purchaseNumber')
+DT.protocols <- merge(DT.protocols01, DT.protocols02, by = 'purchaseNumber',
+                      all.y = T)
 DT.protocols <- merge(DT.protocols, DT.protocols03, by = 'purchaseNumber')
 DT.protocols <- unique(DT.protocols)
 dim(DT.protocols)
-DT.protocols[, fcsProtocolEF1.id := NULL]
-DT.protocols[, fcsProtocolEF2.id := NULL]
-DT.protocols[, fcsProtocolEF3.id := NULL]
-DT.protocols <- unique(DT.protocols)
-dim(DT.protocols)
+
+cat(yellow(paste0('ПРОВЕРКА DT.protocols: 1 строка = 1 извещение: ', 
+                  length(unique(DT.protocols$purchaseNumber)) == nrow(DT.protocols),
+                  '\n')))
 
 
 # набор данных для модели: добавление столбцов /////////////////////////////////
-# убираем ID протоколов
-DT.model <- merge(DT.model, DT.protocols, by = 'purchaseNumber')
-dim(DT.model)
-nas <- uf.count.nas.in.table(DT.model)
-nas$columns.na
+# добавляем протоколы
+DT.model <- merge(DT.model, DT.protocols, by = 'purchaseNumber',
+                  all.x = T)
+DT.model[, .N, by = 'purchaseNumber'][N > 1, ]
 
+# добавляем флажок с отслеживанием прогресса процедуры 'auc.type'
+# все 3 стадии завершены
+DT.model$auc.type <- rep('', nrow(DT.model))
+DT.model[is.na(winner.price), auc.type := '3 stages fail']
+
+# окончен после стадии 2 (не состоялся)
+sel.pID <- unique(DT.protocols02$purchaseNumber)
+sel.pID <- sel.pID[!(sel.pID %in% unique(DT.protocols03$purchaseNumber))]
+DT.model[purchaseNumber %in% sel.pID, auc.type := '2 stages fail']
+
+# окончен после стадии 1 (не состоялся)
+sel.pID <- unique(DT.protocols01$purchaseNumber)
+sel.pID <- sel.pID[!(sel.pID %in% unique(DT.protocols02$purchaseNumber))]
+DT.model[purchaseNumber %in% sel.pID, auc.type := '1 stage fail']
+
+# добавляем процедуры с единственной заявкой
+DT.model <- merge(DT.model, DT.protocolsSingleApp, by = 'purchaseNumber',
+                  all.x = T)
+sel.pID <- unique(DT.protocolsSingleApp$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID & is.na(winner.price), 
+         winner.price := as.numeric(winnerPrice)]
+DT.model[, winnerPrice := NULL]
+colnames(DT.model)[grepl('rejected', colnames(DT.model))] <- 
+    paste0('single.app.', colnames(DT.model)[grepl('rejected', colnames(DT.model))])
+colnames(DT.model)[colnames(DT.model) == 'proc.success'] <- 
+    'single.app.proc.success'
+
+# проставляем статус: аукцион с единственной заявкой
+sel.pID <- unique(DT.protocolsSingleApp$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID, auc.type := 'single app']
+
+# добавляем аукционы с единственным участником
+DT.model <- merge(DT.model, unique(DT.protocolsSinglePart), 
+                  by = 'purchaseNumber', all.x = T)
+sel.pID <- unique(DT.protocolsSinglePart$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID & is.na(winner.price), 
+         winner.price := winnerPrice]
+DT.model[, winnerPrice := NULL]
+colnames(DT.model)[colnames(DT.model) == 'proc.success'] <- 
+    'single.part.proc.success'
+DT.model[is.na(application.countryFullName.x) & !is.na(application.countryFullName.y), 
+         application.countryFullName.x := application.countryFullName.y]
+DT.model[, application.countryFullName.y := NULL]
+colnames(DT.model)[colnames(DT.model) == 'application.countryFullName.x'] <- 
+    'application.countryFullName'
+
+# проставляем статус: аукцион с единственным участником
+sel.pID <- unique(DT.protocolsSinglePart$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID, auc.type := 'single part']
+
+# добавляем placementResults
+DT.model <- merge(DT.model, DT.PlacementResult, by = 'purchaseNumber',
+                  all.x = T)
+
+if (length(grep('abandonedReason.code.x', colnames(DT.model)))) {
+    DT.model[is.na(abandonedReason.code.x) & !is.na(abandonedReason.code.y), 
+             abandonedReason.code.x := abandonedReason.code.y]
+    DT.model[, abandonedReason.code.y := NULL]
+    colnames(DT.model)[colnames(DT.model) == 'abandonedReason.code.x'] <- 
+        'abandonedReason.code'
+    DT.model[is.na(abandonedReason.name.x) & !is.na(abandonedReason.name.y), 
+             abandonedReason.name.x := abandonedReason.name.y]
+    DT.model[, abandonedReason.name.y := NULL]
+    colnames(DT.model)[colnames(DT.model) == 'abandonedReason.name.x'] <- 
+        'abandonedReason.name'
+}
+
+# проставляем статус: победитель уклонился от заключения договора
+DT.model$winner.evades <- rep('', nrow(DT.model))
+DT.model[application.result == 'RC', winner.evades := 'yes']
+DT.model[application.result != 'RC', winner.evades := 'no']
+DT.model[winner.evades == '', winner.evades := NA]
+
+# правим цену победителя по placement results
+DT.model[!is.na(winner.price) & application.result == 'CC', 
+         winner.price := application.price]
+# удаляем столбцы, которые больше не понадобятся
+DT.model[, application.journalNumber := NULL]
+DT.model[, application.appRating := NULL]
+DT.model[, application.result := NULL]
+DT.model[, application.price := NULL]
+DT.model <- unique(DT.model)
+
+# столбец с результатами определения поставщика (пересекается с auc.type,
+#  поэтому показываем отдельно)
+DT.model[, placement.result := '']
+sel.pID <- unique(DT.PlacementResult[procedurelFailed == F, ]$purchaseNumber)
+DT.model[(purchaseNumber %in% sel.pID), placement.result := 'success']
+sel.pID <- unique(DT.PlacementResult[procedurelFailed == T, ]$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID, placement.result := 'failed']
+
+# столбцы с флажками на отмены (пересекается с auc.type,
+#  поэтому показываем отдельно)
+DT.model[, stage.cancel := '']
+sel.pID <- unique(DT.protocolCancel$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID, stage.cancel := 'protocol']
+sel.pID <- unique(DT.notificationCancel$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID, stage.cancel := 'notification']
+sel.pID <- unique(DT.ProtocolInval$purchaseNumber)
+DT.model[purchaseNumber %in% sel.pID, stage.cancel := 'protocol invalidation']
+
+DT.model[(auc.type == '') & (placement.result == 'success'), 
+         auc.type := 'success']
+
+table(DT.model$auc.type)
+table(DT.model$placement.result)
+table(DT.model$stage.cancel)
+
+table(DT.model$auc.type, DT.model$placement.result)
+table(DT.model$auc.type, DT.model$stage.cancel)
+
+cat(yellow(paste0('Изменяем статус ', 
+                  nrow(DT.model[placement.result == 'success' & auc.type != 'success', ]),
+                  ' аукционов на "success" \n')))
+
+DT.model[placement.result == 'success' & auc.type != 'success', 
+         auc.type := 'success']
+
+# все остальные тоже считаем отменами
+DT.model[auc.type == '', auc.type := 'cancel']
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# считаем переменные на основе дат
+DT.model[, total.time.days := as.numeric(difftime(protocol03Date, 
+                                                  last.notice.date,
+                                                  units = 'days'))]
+DT.model[, time.stage.01.days := as.numeric(difftime(protocol01Date, 
+                                                     last.notice.date,
+                                                     units = 'days'))]
+
+# сколько объявлений с расхождением между первой и последней датой 
+#  размещения более, чем сутки
+DT.model[, difftime.days := as.numeric(difftime(last.notice.date, frst.notice.date, units = 'days'))]
+DT.model[, difftime.days.int := cut(difftime.days, 
+                                    breaks = c(min(difftime.days) - 0.01, 7, 14, 21, 30, 60, 90, max(difftime.days)))]
+DT.model %>% group_by(difftime.days.int) %>% summarise(N = n())
+
+ID.count <- DT.model %>% group_by(purchaseNumber) %>% summarise(N = n(),
+                                                                mean.difftime.days = mean(difftime.days))
+filter(ID.count[order(-ID.count$N), ], N > 1)
+
+n.msg <- nrow(DT.model[difftime.days > 14, ])
+summary(DT.model$difftime.days)
+
+nrow(DT.model[difftime.days == max(difftime.days), ])
+unique(DT.model[difftime.days == max(difftime.days), ]$purchaseNumber)
+
+unique(select(DT.model[difftime.days < max(difftime.days), ][order(difftime.days), ],
+              purchaseNumber))
+# от ID с максимальной разницей до минимальной, только уникальные
+unique(select(DT.model[order(-difftime.days), ], purchaseNumber))
+DT.model[purchaseNumber == '0301100012720000026', ]
+
+cat(yellow(paste0('извещений с расхождением между первой и последней датой ',
+                  ' размещения более, чем две недели: ', 
+                  round(n.msg / nrow(DT.model) * 100, 1), '% (', n.msg, ')\n')))
+# выкидываем их
+DT.model <- DT.model[as.numeric(difftime(DT.model$last.notice.date, DT.model$frst.notice.date, units = 'days')) <= 14, ]
+DT.model[, frst.notice.date := NULL]
+
+colnames(DT.model)
+
+
+# набор данных для модели: добавление столбцов /////////////////////////////////
+# добавляем регион и регион
+DT.model[, region := my.region$name]
+DT.model[, period := paste0(sYEAR[1], '-', sYEAR[length(sYEAR)])]
 # считаем переменные на основе дат
 DT.model[, total.time.days := as.numeric(difftime(protocol03Date, 
                                                   docPublishDate_notice,
@@ -643,7 +1003,28 @@ DT.model[, time.stage.02.days := as.numeric(difftime(protocol02Date,
 DT.model[, time.stage.03.hours := as.numeric(difftime(protocol03Date, 
                                                       protocol02Date, 
                                                       units = 'hours'))]
-str(DT.model)
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# набор данных для модели: оставляем только закупки с протоколами трёх стадий //
+sel.pID <- unique(DT.protocols$purchaseNumber)
+DT.model <- filter(DT.model, purchaseNumber %in% sel.pID)
+DT.model <- select(DT.model, purchaseNumber, docPublishDate_notice, 
+                   responsibleRole, lot.maxPrice, restriction.shortName, 
+                   purchaseObject.OKPD2.code.2dig, application.count.p01, 
+                   protocol01Date, max.price.offers.quantity, 
+                   application.count.p02, time.stage02.hours,
+                   protocol02Date, winner.price, protocol03Date, 
+                   total.time.days, time.stage.01.days, time.stage.02.days,
+                   region, period)
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# набор данных для модели: убираем пропуски ////////////////////////////////////
+nas <- uf.count.nas.in.table(DT.model)
+nas$columns.na
+DT.model <- na.omit(DT.model)
+dim(DT.model)
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
@@ -652,4 +1033,3 @@ flnm <- paste0(sRawCSVPath, 'DT_model_', lProcedureToScrap$procedureCode,
                '_', my.region$name, '.csv')
 uf.write.table.with.metadata(DT.model, flnm)
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
