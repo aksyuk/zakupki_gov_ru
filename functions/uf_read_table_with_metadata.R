@@ -32,8 +32,15 @@ uf.read.table.with.metadata <- function(file.name) {
         meta.file.name <- paste0(gsub(paste0(ext, '$'), '', file.name),
                                  '_META', ext)
         df.meta <- read.csv2(meta.file.name, stringsAsFactors = F)
-        DT <- data.table(read.csv2(file.name, stringsAsFactors = F,
-                                   colClasses = df.meta$col.classes))
+        
+        if (uf.get.os() == 'windows') {
+            DT <- data.table(read.csv2(file.name, stringsAsFactors = F,
+                                       colClasses = df.meta$col.classes,
+                                       fileEncoding = 'UTF-8'))
+        } else {
+            DT <- data.table(read.csv2(file.name, stringsAsFactors = F,
+                                       colClasses = df.meta$col.classes))
+        }
         DT
     },
     
