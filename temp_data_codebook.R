@@ -18,6 +18,9 @@ fileName <- './data/raw/01_from201901to201912_loaded2020-02-20/csv/EA44/DT_fcsPr
 fileName <- './data/raw/01_from201901to201912_loaded2020-02-20/csv/EA44/DT_fcsProtocolEF2_clean.csv'
 fileName <- './data/raw/01_from201901to201912_loaded2020-02-20/csv/EA44/DT_fcsProtocolEF3_clean.csv'
 fileName <- './data/raw/01_from201901to201912_loaded2020-02-20/csv/EA44/DT_fcsPlacementResult_clean.csv'
+fileName <- './data/raw/01_from201901to201912_loaded2020-02-20/csv/EA44/DT_fcsProtocolCancel_clean.csv'
+fileName <- './data/raw/01_from201901to201912_loaded2020-02-20/csv/EA44/DT_fcsProtocolEFSingleApp_clean.csv'
+fileName <- './data/raw/01_from201901to201912_loaded2020-02-20/csv/EA44/DT_fcsProtocolEFSinglePart_clean.csv'
 DT <- uf.read.table.with.metadata(fileName)
 
 DT
