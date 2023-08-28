@@ -5,48 +5,68 @@
 # 
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.4.1 (19 Apr 2021)
+# Версия 1.4.2 (28 Aug 2023)
+# 
 # ******************************************************************************
 # Объединение таблиц и предобработка данных.
 # На основе таблиц с разобранными XML по электронным аукционам 
 #  делаем таблицу с переменными:
 #
 #  * purchaseNumber                 character   номер заявки 
+#
 #  * docPublishDate_notice	        POSIXct     дата публикации заявки
+#
 #  * responsibleRole	            character   роль ответственной организации
+#
 #  * lot.maxPrice	                numeric     начальная максимальная цена 
 #                                               закупки, рублей
+#
 #  * restriction.shortName	        character   кодовое название ограничения 
 #                                               процедуры закупки
+#
 #  * purchaseObject.OKPD2.code.2dig	character   первые 2 цифры кода товара 
 #                                               закупки по ОКПД2
+#
 #  * application.count.p01	        integer     количество заявок, поданных на 
 #                                               первый этап электронного 
 #                                               аукциона
+#
 #  * protocol01Date	                POSIXct     дата протокола первого этапа 
 #                                               аукциона
+#
 #  * max.price.offers.quantity	    numeric     максимальное количество ценовых
 #                                               предложений от одного участника
 #                                               аукциона 
+#
 #  * application.count.p02	        integer     количество заявок, допущенных ко 
 #                                               второму этапу аукциона
-#  * time.stage02.hours	            numeric     продолжительность второго этапа
+#
+#  * time.stage.02.hours	        numeric     продолжительность второго этапа
 #                                               аукциона, в часах
+#
 #  * protocol02Date	                POSIXct     дата протокола первого этапа 
 #                                               аукциона
+#
 #  * winner.price	                numeric     цена победителя аукциона, рублей
+#
 #  * protocol03Date	                POSIXct     дата протокола третьего этапа 
 #                                               аукциона
+#
 #  * total.time.days	            numeric     продолжительность процедуры от 
 #                                               даты публикации заявки до 
 #                                               публикации протокола третьего 
 #                                               этапа аукциона, дней
+#
 #  * time.stage.01.days	            numeric     продолжительность первого 
 #                                               этапа аукциона, дней
+#
 #  * time.stage.02.days	            numeric     продолжительность второго 
 #                                               этапа аукциона, дней
+#
 #  * region             	        character   регион
+#
 #  * period                         character   период 
+#
 # ..............................................................................
 
 log.errors.flnm = paste0(sDataSamplePath, 'log_make_model_table_err.log')
@@ -537,21 +557,21 @@ DT.protocols02[!is.na(application.lastOffer.date),
                max.lastOffer.date := max(application.lastOffer.date), 
                by = c('purchaseNumber', 'fcsProtocolEF2.id')]
 DT.protocols02[!is.na(application.firstOffer.date), 
-               min.firstOffer.date := max(application.firstOffer.date), 
+               min.firstOffer.date := min(application.firstOffer.date), 
                by = c('purchaseNumber', 'fcsProtocolEF2.id')]
 DT.protocols02[!is.na(max.lastOffer.date) & !is.na(min.firstOffer.date), 
-               time.stage02.hours := max(as.numeric(difftime(max.lastOffer.date,
+               time.stage.02.hours := max(as.numeric(difftime(max.lastOffer.date,
                              min.firstOffer.date, 'hours')), round(5/60/60, 3)), 
                by = c('purchaseNumber', 'fcsProtocolEF2.id')]
-DT.protocols02[, time.stage02.hours := unclass(time.stage02.hours)]
-summary(DT.protocols02$time.stage02.hours)
+DT.protocols02[, time.stage.02.hours := unclass(time.stage.02.hours)]
+summary(DT.protocols02$time.stage.02.hours)
 
 # * оставляем только столбцы для модели: максимальное количество предложений
 #    цен на аукционе; число участников аукциона
 DT.protocols02 <- select(DT.protocols02, purchaseNumber, fcsProtocolEF2.id,
                          application.journalNumber, application.lastOffer.price,
                          max.price.offers.quantity, application.count.p02,
-                         time.stage02.hours, protocol02Date)
+                         time.stage.02.hours, protocol02Date)
 DT.protocols02 <- unique(DT.protocols02)
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -794,7 +814,7 @@ DT.protocols01[, .N, by = 'purchaseNumber'][N > 1, ]
 # протоколы 2: оставляем только столбцы для модели
 DT.protocols02 <- select(DT.protocols02, purchaseNumber, 
                          max.price.offers.quantity, application.count.p02,
-                         time.stage02.hours, protocol02Date)
+                         time.stage.02.hours, protocol02Date)
 DT.protocols02 <- unique(DT.protocols02)
 DT.protocols02[, .N, by = 'purchaseNumber'][N > 1, ]
 
@@ -1000,9 +1020,9 @@ DT.model[, time.stage.01.days := as.numeric(difftime(protocol01Date,
 DT.model[, time.stage.02.days := as.numeric(difftime(protocol02Date, 
                                                      protocol01Date,
                                                      units = 'days'))]
-DT.model[, time.stage.03.hours := as.numeric(difftime(protocol03Date, 
+DT.model[, time.stage.03.days := as.numeric(difftime(protocol03Date, 
                                                       protocol02Date, 
-                                                      units = 'hours'))]
+                                                      units = 'days'))]
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
@@ -1013,9 +1033,9 @@ DT.model <- select(DT.model, purchaseNumber, docPublishDate_notice,
                    responsibleRole, lot.maxPrice, restriction.shortName, 
                    purchaseObject.OKPD2.code.2dig, application.count.p01, 
                    protocol01Date, max.price.offers.quantity, 
-                   application.count.p02, time.stage02.hours,
+                   application.count.p02, time.stage.02.hours,
                    protocol02Date, winner.price, protocol03Date, 
-                   total.time.days, time.stage.01.days, time.stage.02.days,
+                   total.time.days, time.stage.01.days, time.stage.03.days,
                    region, period)
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
