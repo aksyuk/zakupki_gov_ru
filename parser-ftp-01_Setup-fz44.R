@@ -31,13 +31,12 @@ library('jsonlite')
 library('RJSONIO')
 library('crayon')
 library('lubridate')
-library('dplyr')
 
 
 
 # Настройки системы ------------------------------------------------------------
 # отображение больших цифр в обычном формате, а не в экспоненциальном
-options("scipen" = 100, "digits" = 9)
+options('scipen' = 100, 'digits' = 9)
 
 
 
@@ -48,19 +47,6 @@ eval(parse('./functions/uf_convert_char_to_date.R', encoding = 'UTF-8'))
 
 # функция подсчёта пропусков в столбцах таблицы
 eval(parse('./functions/uf_count_nas_in_table.R', encoding = 'UTF-8'))
-
-# # функция формата адреса поставщика, сейчас не используется
-# eval(parse('./functions/uf_format_address_for_OSM.R', encoding = 'UTF-8'))
-
-# # функция для работы с адресами, сейчас не используется
-# eval(parse('./functions/uf_nominatim_OSM.R', encoding = 'UTF-8'))
-
-# # функция загрузки координат по адресу черех Яндекс карты, 
-# #  сейчас не используется
-# eval(parse('./functions/uf_get_coords_Yandex.R', encoding = 'UTF-8'))
-
-# # функция преобразования адреса в координаты, сейчас не используется 
-# eval(parse('./functions/uf_process_addresses_to_coords.R', encoding = 'UTF-8'))
 
 # функция определения операционной системы
 eval(parse('./functions/uf_get_os.R', encoding = 'UTF-8'))

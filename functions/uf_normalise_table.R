@@ -58,7 +58,7 @@ uf.normalise.table <- function(DT, max.console.lines = iMaxConsoleStatusLines,
     console.clean.count <- 0
     i <- 0
     
-    # копируем строки без склеянных ячеек
+    # копируем строки без склеенных ячеек
     DT.result <- DT[!(rownames(DT) %in% rw.hashes), ]
     
     # цикл по строкам с #
