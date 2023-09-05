@@ -1,9 +1,13 @@
 # ..............................................................................
-# uf.make.file.index.for.proc()
+# uf_make_file_index_for_proc.R
 #
 # Функция для создания файла-индекса по процедуре с типами файлов, 
 #  номерами заявок и номерами документов.
 #
+# Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
+# 
+# Версия: 1.0 (08 Mar 2020)
+# ******************************************************************************
 # Аргументы:
 #  * all.xmls      -- символьный вектор с именами всех файлов в sRawXMLPath
 #  * key.col.names -- названия ключевых столбцов таблицы
@@ -14,13 +18,20 @@
 # Возвращаемое значение: таблица с индексом файлов
 # 
 # Создаёт / модифицирует файлы: 
-#  * создаёт DT_index_melt_<КОД ПРОЦЕДУРЫ>.csv в папке sRawCSVPath
-#  * создаёт DT_index_melt_<КОД ПРОЦЕДУРЫ>_META.csv в папке sRawCSVPath
+#  нет
+# ******************************************************************************
+# Зависимости:
+#  data.table
 # ..............................................................................
 
 uf.make.file.index.for.proc <- function(all.xmls.names, 
                                         path.to.raw.csvs = sRawCSVPath,
-                                        proc.descr = lProcedureToScrap) {
+                                        proc.descr = lstProcedureType) {
+    
+    # # отладка
+    # all.xmls.names = vAllXML
+    # path.to.raw.csvs = sRawCSVPath
+    # proc.descr = lstProcedureType
     
     DT <- all.xmls.names
     DT <- gsub('[.]xml', '', DT)
@@ -35,12 +46,14 @@ uf.make.file.index.for.proc <- function(all.xmls.names,
     # # отладка
     # head(DT)
     # # проверка количества файлов
-    # tmp <- cbind(DT[, -2][, .N, by = prefix][order(-N), ], 
-    #              sort(sapply(DT.xml.files.index[, -1], sum), decreasing = T))
+    # tmp <- cbind(DT[, -2][, .N, by = prefix][order(-N), ],
+    #              sort(sapply(DT_XML_INDEX[, -1], sum), decreasing = T))
     # sapply(tmp[, -1], sum)
     
     # оставялем только id для электронных аукционов
-    loop.ids <- grep(lProcedureToScrap$procedureCode, all.xmls.names, value = T)
+    loop.ids <- c(unname(unlist(sapply(proc.descr$prefix, function(x) {
+        grep(x, all.xmls.names, value = T)
+    }))))
     loop.ids <- sub('^fcs_', '^fcs', loop.ids)
     # затем всё, что идёт до первого '_', включая его
     loop.ids <- sub('^(.*?)_', '', loop.ids)
@@ -53,8 +66,8 @@ uf.make.file.index.for.proc <- function(all.xmls.names,
     # dim(DT)
     
     # записываем таблицу-индекс с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    flnm <- paste0(path.to.raw.csvs, 'DT_index_melt_', proc.descr$procedureCode, 
-                   '.csv')
+    flnm <- paste0(path.to.raw.csvs, 'DT_index_melt_', 
+                   proc.descr$name, '.csv')
     uf.write.table.with.metadata(DT, flnm)
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     

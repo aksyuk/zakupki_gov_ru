@@ -1,30 +1,40 @@
 # ..............................................................................
-# uf.get.os()
+# uf_get_os.R
 #
 # Функция определения ОС. Нужна при записи строк в текстовый файл.
 #
 # Source: source: https://www.r-bloggers.com/identifying-the-os-from-r/
 #
+# Версия: 1.0 (08 Mar 2020)
+# ******************************************************************************
 # Аргументы: нет
 #
 # Возвращаемое значение: именованный вектор единичной длины в возможными 
 #  значениями osx, linux или windows и именем элемента sysname
 # 
-# Создаёт / модифицирует файлы: нет
+# Создаёт / модифицирует файлы: 
+#  нет
+# ******************************************************************************
+# Зависимости:
+#  нет
 # ..............................................................................
 
-uf.get.os <- function(){
+uf.get.os <- function() {
     sysinf <- Sys.info()
-    if (!is.null(sysinf)){
+    if (!is.null(sysinf)) {
         os <- sysinf['sysname']
-        if (os == 'Darwin')
-            os <- "osx"
-    } else { ## mystery machine
+        if (os == 'Darwin') {
+            os <- 'osx'
+        }
+    } else {
+        ## mystery machine
         os <- .Platform$OS.type
-        if (grepl("^darwin", R.version$os))
-            os <- "osx"
-        if (grepl("linux-gnu", R.version$os))
-            os <- "linux"
+        if (grepl('^darwin', R.version$os)) {
+            os <- 'osx'
+        }
+        if (grepl('linux-gnu', R.version$os)) {
+            os <- 'linux'
+        }
     }
     tolower(os)
 }

@@ -146,7 +146,7 @@ df.check <- as.data.frame(lapply(stage.to.find, function(stage){
 colnames(df.check) <- stage.to.find
 df.check <- cbind(notice.type = notices.to.check, 
                   Регион = my.region$name,
-                  Период = paste0(sYEAR[1], '-', sYEAR[length(sYEAR)]),
+                  Период = paste0(s.YEAR.MON[1], '-', s.YEAR.MON[length(s.YEAR.MON)]),
                   df.check)
 rownames(df.check) <- 1:nrow(df.check)
 
@@ -175,7 +175,7 @@ proc.flnms.02 <- c('fcsNotificationZK504', 'fcsNotificationZP504',
                    'fcsNotificationOK504', 'fcsNotificationINM111',
                    'fcsNotificationEA615', 'fcsNotificationEA44')
 dt.summary <- data.table(Регион = my.region$name, 
-                         Период = paste0(sYEAR[1], '-', sYEAR[length(sYEAR)]),
+                         Период = paste0(s.YEAR.MON[1], '-', s.YEAR.MON[length(s.YEAR.MON)]),
                          Категория = proc.cat, 
                          Файлы = paste0(proc.flnms.01, ' | ', proc.flnms.02),
                          Число.записей = rep(0, length(proc.cat)),
@@ -220,7 +220,7 @@ uf.write.table.with.metadata(dt.summary, out.file.name)
 
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_responsibleOrgs_clean.csv')
+flnm <- paste0(sOutPath, 'DT_responsibleOrgs_clean.csv')
 DT.responsibleOrgs <- uf.read.table.with.metadata(flnm)
 summary(DT.responsibleOrgs)
 dim(DT.responsibleOrgs)
@@ -268,7 +268,7 @@ DT.responsibleOrgs <- unique(DT.responsibleOrgs)
 
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_restrictions_clean.csv')
+flnm <- paste0(sOutPath, 'DT_restrictions_clean.csv')
 DT.restrictions <- uf.read.table.with.metadata(flnm)
 summary(DT.restrictions)
 dim(DT.restrictions)
@@ -363,7 +363,7 @@ cat(yellow(paste0('ПРОВЕРКА DT.model: 1 строка = 1 извещен�
 # ТОВАРЫ =======================================================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_TPY_codes_clean.csv')
+flnm <- paste0(sOutPath, 'DT_TPY_codes_clean.csv')
 DT.TPY.codes <- uf.read.table.with.metadata(flnm)
 summary(DT.TPY.codes)
 dim(DT.TPY.codes)
@@ -463,7 +463,7 @@ cat(yellow(paste0('ПРОВЕРКА DT.model: 1 строка = 1 извещен�
 # УЧАСТНИКИ АУКЦИОНОВ ==========================================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsProtocolEF1_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsProtocolEF1_clean.csv')
 DT.protocols01 <- uf.read.table.with.metadata(flnm)
 summary(DT.protocols01)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -514,7 +514,7 @@ DT.protocols01 <- select(DT.protocols01, purchaseNumber, fcsProtocolEF1.id,
                          application.reject.count.p01)
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsProtocolEF2_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsProtocolEF2_clean.csv')
 DT.protocols02 <- uf.read.table.with.metadata(flnm)
 summary(DT.protocols02)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -575,7 +575,7 @@ DT.protocols02 <- select(DT.protocols02, purchaseNumber, fcsProtocolEF2.id,
 DT.protocols02 <- unique(DT.protocols02)
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsProtocolEF3_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsProtocolEF3_clean.csv')
 DT.protocols03 <- uf.read.table.with.metadata(flnm)
 summary(DT.protocols03)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -595,7 +595,7 @@ DT.protocols03[, difftime.days := NULL]
 # АУКЦИОНЫ С ОДНОЙ ЗАЯВКОЙ =====================================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsProtocolEFSingleApp_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsProtocolEFSingleApp_clean.csv')
 DT.protocolsSingleApp <- uf.read.table.with.metadata(flnm)
 summary(DT.protocolsSingleApp)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -623,7 +623,7 @@ DT.protocolsSingleApp[, application.inn := NULL]
 # АУКЦИОНЫ С ОДНИМ УЧАСТНИКОМ ==================================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsProtocolEFSinglePart_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsProtocolEFSinglePart_clean.csv')
 DT.protocolsSinglePart <- uf.read.table.with.metadata(flnm)
 summary(DT.protocolsSinglePart)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -658,7 +658,7 @@ DT.protocolsSinglePart[, application.kpp := NULL]
 # РЕЗУЛЬТАТЫ РАЗМЕЩЕНИЯ ========================================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsPlacementResult_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsPlacementResult_clean.csv')
 DT.PlacementResult <- uf.read.table.with.metadata(flnm)
 summary(DT.PlacementResult)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -677,7 +677,7 @@ DT.PlacementResult$application.price <-
 # ОТМЕНА ПРОТОКОЛА =============================================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsProtocolCancel_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsProtocolCancel_clean.csv')
 DT.protocolCancel <- uf.read.table.with.metadata(flnm)
 summary(DT.protocolCancel)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -703,7 +703,7 @@ DT.protocolCancel[, difftime.days := NULL]
 # ОТМЕНА ИЗВЕЩЕНИЯ =============================================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsNotificationCancel_clean.csv')
+flnm <- paste0(sOutPath, 'DT_fcsNotificationCancel_clean.csv')
 DT.notificationCancel <- uf.read.table.with.metadata(flnm)
 summary(DT.notificationCancel)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -727,7 +727,7 @@ DT.notificationCancel[, difftime.days := NULL]
 # ПРИЗНАНИЕ ПРОТОКОЛА НЕДЕЙСТВИТЕЛЬНЫМ =========================================
 
 # читаем таблицу из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-flnm <- paste0(out.path, 'DT_fcsProtocolEFInvalidation.csv')
+flnm <- paste0(sOutPath, 'DT_fcsProtocolEFInvalidation.csv')
 DT.ProtocolInval <- read.csv2(flnm, stringsAsFactors = F, 
                               colClasses = rep('character', 5))
 summary(DT.ProtocolInval)
@@ -737,7 +737,7 @@ summary(DT.ProtocolInval)
 # # КОНТРАКТ =====================================================================
 # 
 # # читаем таблицу из напрямую, без очистки <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-# flnm <- paste0(out.path, 'DT_fcsContractSign.csv')
+# flnm <- paste0(sOutPath, 'DT_fcsContractSign.csv')
 # if (file.exists(flnm)) {
 #     DT.ContractSign <- read.csv2(flnm, stringsAsFactors = F, 
 #                                  colClasses = rep('character', 5))
@@ -1007,9 +1007,9 @@ colnames(DT.model)
 
 
 # набор данных для модели: добавление столбцов /////////////////////////////////
-# добавляем регион и регион
-DT.model[, region := my.region$name]
-DT.model[, period := paste0(sYEAR[1], '-', sYEAR[length(sYEAR)])]
+# добавляем регион
+DT.model[, region := lst_REGION$name]
+
 # считаем переменные на основе дат
 DT.model[, total.time.days := as.numeric(difftime(protocol03Date, 
                                                   docPublishDate_notice,

@@ -1,9 +1,13 @@
 # ..............................................................................
-# uf.parse.xmls.with.prefix()
+# uf_parse_xmls_with_prefix.R
 #
 # Функция парсит xml-файлы с одним и тем же префиксом по шаблонам и записывает 
 #  результаты в таблицу с метаданными
 #
+# Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
+# 
+# Версия: 1.0 (08 Mar 2020)
+# ******************************************************************************
 # Аргументы:
 #  * file.names             -- вектор имён xml-файлов (с путями) для разбора
 #  * xml.patterns           -- фрейм с названиями столбцов итоговой таблицы 
@@ -22,6 +26,9 @@
 #     в итоговую таблицу и удаляет временные
 #  * сохраняет csv-файл с данными 
 #  * сохраняет csv-файл с метаданными
+# ******************************************************************************
+# Зависимости:
+#  data.table
 # ..............................................................................
 
 uf.parse.xmls.with.prefix <- function(file.names, xml.patterns, rows.temp.tbl,
@@ -31,7 +38,7 @@ uf.parse.xmls.with.prefix <- function(file.names, xml.patterns, rows.temp.tbl,
     # file.names <- flnms
     # xml.patterns <- patterns[[pref]]
     # rows.temp.tbl <- 5000
-    # out.file <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/DT_',
+    # out.file <- paste0(sRawCSVPath, lstProcedureType$name, '/DT_',
     #                    pref, '.csv')
     # log.filename <- log.parse.XML.filename
     # prefix = pref
@@ -40,7 +47,7 @@ uf.parse.xmls.with.prefix <- function(file.names, xml.patterns, rows.temp.tbl,
     # счётчик для временных таблиц
     tmp.files.count <- 0
     # путь для временных таблиц
-    out.path <- gsub(paste0('(.*', lProcedureToScrap$procedureCode, '/)(.*)'), 
+    out.path <- gsub(paste0('(.*', lstProcedureType$name, '/)(.*)'), 
                      '\\1', out.file)
     
     # счётчики для статуса
@@ -191,7 +198,7 @@ uf.parse.xmls.with.prefix <- function(file.names, xml.patterns, rows.temp.tbl,
     uf.write.to.log(msg, log.parse.XML.filename)
     
     # имена временных файлов
-    tmp.files <- paste0(sRawCSVPath, lProcedureToScrap$procedureCode, '/',
+    tmp.files <- paste0(sRawCSVPath, lstProcedureType$name, '/',
                         'DF_lines_', formatC(1:tmp.files.count, width = 3, 
                                              format = 'd', flag = '0'), '.csv')
     

@@ -9,19 +9,18 @@
 # 
 # Автор: Суязова (Аксюк) Светлана s.a.aksuk@gmail.com
 # 
-# Версия 1.3.1 (05 Mar 2020)
+# Версия 1.8.0 (02 Sep 2023)
 # 
 # Эта часть кода распаковывает и индексирует xml-файлы, скачанные с FTP    
 #  и работает с сервером по 44 ФЗ
 # 
-# КЛЮЧЕВЫЕ ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ
-#  * all.xmls           -- вектор с именами всех файлов из директории 
+# КЛЮЧЕВЫЕ ПЕРЕМЕННЫЕ
+#  * vAllXML            -- вектор с именами всех файлов из директории 
 #                          с распакованными xml
-#  * DT.xml.files.index -- data.table с индексом всех файлов xml: 
+#  * DT_XML_INDEX       -- data.table с индексом всех файлов xml: 
 #                          строки по noticeID, столбцы по префиксам файлов,
 #                          значение 1 показывает наличие файла, 0 отсутствие
-#  * loop.ids           -- вектор со всеми noticeIDs, которые соответствует
-#                          типу процедуры из lProcedureToScrap
+#
 # ..............................................................................
 
 
@@ -30,14 +29,87 @@
 
 # ..............................................................................
 # ВНИМАНИЕ: загрузка архивов занимает ВРЕМЯ
-# ЕЩЁ ВНИМАНИЕ:
-#  Закачку надо делать средствами FTP-менеджера, который поддерживает 
-#   докачку файлов, например, FileZilla. Массовая загрузка с ftp с помощью R 
-#   это долго и чревато ошибками, особенно при плохом интернет-соединении.
-# С адреса:
-my.region$url
-# -- грузим содержимое подпапок contracts, notifications, protocols
-#     в папку archives
+#  и происходит с помощью запуска bash скрипта
+#  Пока версия только для Ubuntu Linux
+#
+# Генерим bash-файл с командами для поиска и скачивания файлов с ftp-сервера
+
+
+# Генерируем файл с командами для ОС ===========================================
+
+sSubFolders <- c('contracts', 'protocols', 'notifications')
+flnm.bash.download <- paste0(sDataSamplePath, 'load_from_ftp.sh')
+
+if (uf.get.os() != 'windows') {
+    
+    txt.line <- paste0('#!/bin/bash \n# рабочая директория -- папка с выгрузкой по региону за период \n',
+                       'cd ', getwd(), gsub('^[.]', '', sDataSamplePath))
+    write_lines(txt.line, flnm.bash.download)
+    
+    txt.line <- paste0('# создаём текстовые файлы со списками содержимого ftp-сервера \n',
+                       'touch ls.txt ls_by_period.txt load_archives.sh \n', 
+                       ' > ls.txt > ls_by_period.txt > load_archives.sh')
+    write_lines(txt.line, flnm.bash.download, append = T)
+    
+    txt.line <- paste0('# стучимся в ftp, перемещаемся в директорию региона \n', 
+                       'lftp -u ', gsub(':', ',', s.USER.PWD.44), ' ', s.FTP.URL, ' << EOF \n',
+                       'cd ./fcs_regions/', lst.REGION$name, '/')
+    write_lines(txt.line, flnm.bash.download, append = T)
+    
+    for (sbf in sSubFolders) {
+        txt.line <- paste0('# cкачиваем имена архивов из директории ', sbf, 
+                           ' в файл ls.txt \n',
+                           'cd ./', sbf, '\n',
+                           'ls -lh >> ls.txt \n',
+                           'cd ../')
+        write_lines(txt.line, flnm.bash.download, append = T)
+    }
+    
+    txt.line <- paste0('# закрываем соединение с ftp сервером \nexit \nEOF')
+    write_lines(txt.line, flnm.bash.download, append = T)
+    
+    txt.line <- paste0('# фильтруем все имена архивов по s_YEAR_MON \n',
+                       'grep "', uf.make.regex.from.year.mon(), '"',
+                       ' ./ls.txt > ls_by_period.txt')
+    write_lines(txt.line, flnm.bash.download, append = T)
+    
+    txt.line <- paste0("# пишем скрипт для поимённого скачивания только нужных файлов \n",
+                       "echo -e '#!/bin/bash' > load_archives.sh\n",
+                       "echo -e 'lftp -u", gsub(':', ',', s.USER.PWD.44), " ", 
+                       s.FTP.URL, "<< EOF \ncd ./fcs_regions/", lst.REGION$name)
+    for (sbf in sSubFolders) {
+        txt.line <- paste0(txt.line, "\ncd ./", sbf, 
+                           " \nset xfer:clobber on' >> load_archives.sh \n",
+                           "awk -F'.*", gsub('s$', '', sbf), 
+                           "' '{print $2}' ls_by_period.txt | awk '!/^$/' | sed -e 's/^/get ", 
+                           gsub('s$', '', sbf), "/' >> load_archives.sh \n",
+                           "echo -e 'cd ../")
+    }
+    txt.line <- paste0(txt.line, "' >> load_archives.sh \n",
+                       "echo -e 'exit \nEOF' >> load_archives.sh \n")
+    write_lines(txt.line, flnm.bash.download, append = T)
+    
+    txt.line <- paste0('# качаем \n', '#cd ./archives \n', 
+                       '#../load_archives.sh \n')
+    write_lines(txt.line, flnm.bash.download, append = T)
+    
+} else {
+    # ToDo дописать под винду
+}
+
+# считаем суммарный объём архивов
+count.size <- read_lines(paste0(sDataSamplePath, 'ls_by_period.txt'))
+count.size <- round(sum(as.numeric(unname(sapply(count.size, function(x) {
+    tmp <- strsplit(x, ' ')[[1]]
+    tmp <- tmp[tmp != '']
+    tmp[5]
+})))) / 10^6, 1)
+
+# дальше надо запустить скрипт
+cat(yellow(paste0('Чтобы скачать архивы, запустите файл ',
+                  flnm.bash.download, '\n',
+                  'ВНИМАНИЕ: суммарный размер архивов ', count.size, ' Мбайт')))
+
 # ..............................................................................
 
 
@@ -51,34 +123,30 @@ my.region$url
 
 
 # Генерируем файл с командами для ОС ===========================================
+
+# создаём файл
+flnm.bash.unzip <- paste0(sDataSamplePath, 'unzip_archives.sh')
+
 if (uf.get.os() != 'windows') {
-    # создаём файл
-    fn.bash.unzip <- paste0(sDataSamplePath, 'bash_unzip')
-    file.create(fn.bash.unzip)
-    
-    # открыть соединение
-    con <- con <- file(fn.bash.unzip, 'ab')
     
     # пишем в файл
     #  первая строка файла
     txt.line <- '#!/bin/bash'
-    writeBin(charToRaw(paste0(txt.line, '\r\n')), con, endian = 'little')
+    write_lines(txt.line, flnm.bash.unzip)
     
     # пишем в файл
     #  cd в папку с архивами
     txt.line <- paste0('cd ', getwd(), gsub('^[.]', '', sRawArchPath))
-    writeBin(charToRaw(paste0(txt.line, '\r\n')), con, endian = 'little')
+    write_lines(txt.line, flnm.bash.unzip, append = T)
     
     # пишем в файл
     #  распаковать архивы в папку xmls
     txt.line <- 'unzip -o "*.zip" -d ../xmls'
-    writeBin(charToRaw(paste0(txt.line, '\r\n')), con, endian = 'little')
+    write_lines(txt.line, flnm.bash.unzip, append = T)
     
     # удалить файлы с подписями (здорово экономит место)
     txt.line <- 'find ../xmls -name "*.sig" -print0 | xargs -0 rm'
-    
-    # закрываем соединение
-    close(con)
+    write_lines(txt.line, flnm.bash.unzip, append = T)
     
 } else {
     #  должен быть установлен 7zip и добавлен в path
@@ -87,12 +155,8 @@ if (uf.get.os() != 'windows') {
     #     echo %PATH%
     #     7z
     
-    # создаём файл
-    fn.bash.unzip <- paste0(sDataSamplePath, 'bash_unzip.bat')
-    file.create(fn.bash.unzip)
-    
     # открыть соединение
-    con <- con <- file(fn.bash.unzip, 'ab')
+    con <- con <- file(flnm.bash.unzip, 'ab')
     
     # пишем в файл
     # спецсимволы начала файла в Windows 
@@ -120,10 +184,10 @@ if (uf.get.os() != 'windows') {
 }
 
 
-# Непосредственно распаковка ===================================================
+# Собственно распаковка ========================================================
 
 # теперь сгенерированный файл надо запустить
-cat(yellow('Для распаковки запустите файл ', fn.bash.unzip))
+cat(yellow('Для распаковки запустите файл ', flnm.bash.unzip))
 
 
 
@@ -141,9 +205,9 @@ if (file.exists(file.name)) {
     message('Есть список xml-файлов, сохранённый ранее. Что сделать?\n', 
             paste(apply(df.msg, 1, function(x) {paste(x, collapse = '. ')}),
                   collapse = '\n'))
-    prompt.proc.type <- readline('Введите номер опции:')
+    # prompt.proc.type <- readline('Введите номер опции:')
     # быстрая опция
-    # prompt.proc.type <- 2
+    prompt.proc.type <- 2
     # //////////////////////////////////////////////////////////////////////////
     
     cat(yellow(paste0('Выбрано: ', prompt.proc.type, '. ', 
@@ -152,17 +216,17 @@ if (file.exists(file.name)) {
     if (prompt.proc.type == 1) {
         # получаем имена всех файлов
         message('Получаю имена xml-файлов...')
-        all.xmls <- grep(dir(sRawXMLPath), pattern = 'xml$', value = T)
+        vAllXML <- grep(dir(sRawXMLPath), pattern = 'xml$', value = T)
         
         # записываем имена всех xml-файлов в csv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        write.csv2(data.frame(flnms = all.xmls), file = file.name, row.names = F)
+        write.csv2(data.frame(flnms = vAllXML), file = file.name, row.names = F)
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         
         message('Готово')
         
     } else {
         # читаем сохранённый список имён xml-файлов из csv <<<<<<<<<<<<<<<<<<<<<
-        all.xmls <- read.csv2(file.name, stringsAsFactors = F)[, 1]
+        vAllXML <- read.csv2(file.name, stringsAsFactors = F)[, 1]
         # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
     
@@ -171,22 +235,22 @@ if (file.exists(file.name)) {
 } else {
     # получаем имена всех файлов
     message('Получаю имена xml-файлов...')
-    all.xmls <- grep(dir(sRawXMLPath), pattern = 'xml$', value = T)
+    vAllXML <- grep(dir(sRawXMLPath), pattern = 'xml$', value = T)
     
     # записываем имена всех xml-файлов в csv >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    write.csv2(data.frame(flnms = all.xmls), file = file.name, row.names = F)
+    write.csv2(data.frame(flnms = vAllXML), file = file.name, row.names = F)
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     
     message('Готово')
 }
 
-n <- length(all.xmls)
+n <- length(vAllXML)
 cat(yellow(paste0('В директории ', n, ' xml-файлов')))
 
 
 # все уникальные номера извещений
 #  сначала меняем 'fcs_' на 'fcs'
-all.ids <- sub('^fcs_', '^fcs', all.xmls)
+all.ids <- sub('^fcs_', '^fcs', vAllXML)
 # затем всё, что идёт до первого '_', включая его
 all.ids <- sub('^(.*?)_', '', all.ids)
 # теперь всё, что идёт от '_' и до конца
@@ -196,10 +260,10 @@ table(nchar(all.ids))
 length(all.ids)
 
 # все префиксы файлов
-prefixes <- table(gsub('_$', '', gsub(all.xmls, pattern = '(\\d{19}|\\d{18}).*$', 
+prefixes <- table(gsub('_$', '', gsub(vAllXML, pattern = '(\\d{19}|\\d{18}).*$', 
                                       replacement = '')))
 # проверка (д.б. TRUE)
-sum(prefixes) == length(all.xmls)
+sum(prefixes) == length(vAllXML)
 
 
 # Индексируем имена всех файлов ================================================
@@ -207,7 +271,7 @@ sum(prefixes) == length(all.xmls)
 #  номера измещений, значения в остальных столбцах -- кол-во файлов
 #  по связке (ID + префикс)
 #
-DT.xml.files.index <- data.table(noticeID = all.ids)
+DT_XML_INDEX <- data.table(noticeID = all.ids)
 
 # счётчик для очистки консоли
 console.clean.count <- 0
@@ -221,7 +285,7 @@ df.diff.IDs <- data.frame(fileID = NULL, tagID = NULL)
 for (pr_i in names(prefixes)) {
 
     # вытаскиваем все имена файлов с заданным префиксам
-    tmp.v <- grep(paste0('^', pr_i, '_'), all.xmls, value = T)
+    tmp.v <- grep(paste0('^', pr_i, '_'), vAllXML, value = T)
 
     # вытаскиваем noticeID из имени файла
     noticeID <- sub('^fcs_', '^fcs', tmp.v)
@@ -232,13 +296,13 @@ for (pr_i in names(prefixes)) {
     DT <- data.table(table(noticeID))
 
     # совмещаем по ключу noticeID, т.е. каждый раз добавляем по столбцу
-    DT.xml.files.index <-
-        merge(DT.xml.files.index, DT, by = 'noticeID', all.x = T)
+    DT_XML_INDEX <-
+        merge(DT_XML_INDEX, DT, by = 'noticeID', all.x = T)
     # там где получились пропуски, должны быть нули (этих noticeID 
     #  у предыдущих префиксов не было)
-    DT.xml.files.index[is.na(N), N := 0]
+    DT_XML_INDEX[is.na(N), N := 0]
     # название столбца -- это текущий префикс файла
-    colnames(DT.xml.files.index)[colnames(DT.xml.files.index) == 'N'] <- pr_i
+    colnames(DT_XML_INDEX)[colnames(DT_XML_INDEX) == 'N'] <- pr_i
 
     # счётчик файлов и статус в консоль
     i.files.сount <- i.files.сount + 1
@@ -254,14 +318,14 @@ for (pr_i in names(prefixes)) {
 
 # проверка .....................................................................
 #  число пропусков по столбцам файла-индекса
-check.na <- uf.count.nas.in.table(DT.xml.files.index)
+check.na <- uf.count.nas.in.table(DT_XML_INDEX)
 check.na
 
 # число файлов в таблице-индексе должно сходиться с количеством файлов в папке
-sum(DT.xml.files.index[, -1]) == length(all.xmls)
+sum(DT_XML_INDEX[, -1]) == length(vAllXML)
 
 #  сравниваем суммы по столбцам с количеством префиксов
-test.compare <- data.frame(num.files = sapply(DT.xml.files.index[, -1], sum), 
+test.compare <- data.frame(num.files = sapply(DT_XML_INDEX[, -1], sum), 
                            num.prefixes = as.vector(prefixes))
 # префиксы, у которых количество файлов на noticeID, видимо, больше 1
 tmp <- test.compare$num.files - test.compare$num.prefixes
@@ -270,26 +334,26 @@ tmp <- tmp[tmp > 0]
 tmp
 
 # записываем таблицу-индекс с метаданными >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-uf.write.table.with.metadata(DT.xml.files.index, 
+uf.write.table.with.metadata(DT_XML_INDEX, 
                              paste0(sRawCSVPath, 'DT_all_xml_files_index.csv'))
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-
-# читаем индекс из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-DT.xml.files.index <- uf.read.table.with.metadata(paste0(sRawCSVPath, 
-                                                'DT_all_xml_files_index.csv'))
-dim(DT.xml.files.index)
-str(DT.xml.files.index)
+# читаем таблицу-индекс из csv <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+flnm <- paste0(sRawCSVPath, 'DT_all_xml_files_index.csv')
+DT_XML_INDEX <- uf.read.table.with.metadata(flnm)
+dim(DT_XML_INDEX)
+str(DT_XML_INDEX)
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 message(paste0('Уникальных номеров извещений в файле-индексе: ',
-               length(unique(DT.xml.files.index$noticeID))))
+               length(unique(DT_XML_INDEX$noticeID))))
 
-# noticeID по типу процедуры 
-slct <- as.vector(select(DT.xml.files.index, lProcedureToScrap$noticeFileName) > 0)
-loop.ids <- DT.xml.files.index[slct, ]$noticeID
-n <- length(unique(DT.xml.files.index$noticeID))
-message(paste0('Извещений по типу процедур: ', lProcedureToScrap$procedureType, 
-               ' ', length(loop.ids),
+# вектор со всеми noticeIDs, которые соответствует типу процедуры
+#  из lProcedureToScrap
+slct <- DT_XML_INDEX %>% select(any_of(lstProcedureType$prefix))
+slct <- as.vector(slct > 0)
+loop.ids <- DT_XML_INDEX[slct, ]$noticeID
+n <- length(unique(DT_XML_INDEX$noticeID))
+message(paste0('Извещений по типу процедур "', lstProcedureType$label, 
+               '": \n', length(loop.ids),
                ' (', round(length(loop.ids) / n * 100, 1), '%)'))
-
