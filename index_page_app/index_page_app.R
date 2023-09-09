@@ -103,9 +103,9 @@ server <- function(input, output) {
         paste0('<b>Папка: </b>')
     })
     
-    output$SetupVars <- renderText({
-        paste0('sRawDataPath = ', sRawDataPath,
-               '\n sDataSamplePath = ', sDataSamplePath())
+    output$SetupVars <- renderUI({
+        HTML(paste0('sRawDataPath = ', sRawDataPath,
+                    '</br> sDataSamplePath = ', sDataSamplePath))
     })
 }
 

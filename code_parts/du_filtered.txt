@@ -1,0 +1,9 @@
+21M	./contracts/currMonth
+83M	./contracts/prevMonth
+5.6G	./contracts
+1.7M	./notifications/currMonth
+7.9M	./notifications/prevMonth
+1.1G	./notifications
+2.8M	./protocols/currMonth
+12M	./protocols/prevMonth
+781M	./protocols

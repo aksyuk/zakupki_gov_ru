@@ -27,7 +27,7 @@
 #
 # прочие переменные, используемые глобально, записаны верблюжьим регистром,
 #  также с указанием типа в начале:
-#    * sRegionFoldersNames
+#    * lstRegionFoldersNames
 #    * sRawArchPath
 #
 # локальные переменные записаны строчными через точку:
@@ -209,22 +209,23 @@ if (prompt.load.reg.list == 1) {
                   userpwd = s.USER.PWD.44)
     
     # расклеиваем позиции списка по символу перевода строки
-    sRegionFoldersNames <- unlist(strsplit(doc, '\n'))
+    tmp <- unlist(strsplit(doc, '\n'))
     
     # оставляем только адреса папок, относящиеся к регионам
     patt <- '_Resp$|_kraj$|_.?obl$|_AO$|Peterburg$|Moskva$|_NR$|_Aobl$|_g$'
-    sRegionFoldersNames <- sRegionFoldersNames[grep(patt, sRegionFoldersNames)]
+    tmp <- tmp[grep(patt, tmp)]
     
     # записываем список регионов в файл >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    write(sRegionFoldersNames, './data/reference/regions_list.txt')
+    write(tmp, './data/reference/regions_list.txt')
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
 
 if (file.exists('./data/reference/regions_list.txt')) {
     
     # читаем список папок с регионами из файла <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    sRegionFoldersNames <- scan('./data/reference/regions_list.txt',
-                                character())
+    lstRegionFoldersNames <- list(regions = scan('./data/reference/regions_list.txt',
+                                                 character()),
+                                  url.prefix = 'ftp://ftp.zakupki.gov.ru/fcs_regions/')
     # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     
     } else {
@@ -232,14 +233,14 @@ if (file.exists('./data/reference/regions_list.txt')) {
                        s.REF.PATH, '. Повторите загрузку с сервера.'))
 }
 # выводим количество папок с регионами на сервере
-message(paste0('Всего папок по регионам: ', length(sRegionFoldersNames)))
-
-# преобразуем папки регионов в URL-адреса
-sRegionFolderURLs <- paste0('ftp://ftp.zakupki.gov.ru/fcs_regions/',
-                            sRegionFoldersNames, '/')
+message(paste0('Всего папок по регионам: ', 
+               length(lstRegionFoldersNames$regions)))
 
 #  регион, по которому требуются данные: URL и наименование
-lst.REGION <- list(url = grep(sRegionFolderURLs, pattern = srch.reg, value = T))
+lst.REGION <- list(name = grep(lstRegionFoldersNames$regions, 
+                               pattern = srch.reg, value = T))
+lst.REGION$url <- paste0(lstRegionFoldersNames$url.prefix,
+                         lst.REGION$name)
 lst.REGION$name <- gsub('.*[/]', '', gsub('[/]$', '', lst.REGION$url))
 cat(yellow(paste0('Работаем с регионом: ', lst.REGION$name, '\n')))
 
@@ -405,7 +406,7 @@ if (!dir.exists(drnm)) {
 sOutPath <- paste0(sRawCSVPath, lstProcedureType$name, '/')
 
 rm(tmp.selected, srch.reg, msg, dirs, drnm, all.proc.types, indx.region,
-   lst.dirs.raw, n.all.dirs, n.dirs.reg, patt, vars, 
-   prompt.load.reg.list, prompt.load.sample, prompt.proc.type)
+   lst.dirs.raw, n.all.dirs, n.dirs.reg, patt, vars, indx.selected,
+   prompt.load.reg.list, prompt.load.sample, prompt.proc.type, tmp)
 
 message('ПОДГОТОВКА РАБОЧЕГО ПРОСТРАНСТВА ЗАВЕРШЕНА')

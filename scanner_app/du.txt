@@ -1,0 +1,8 @@
+Adygeja_Resp
+10014	./contracts
+932	./protocols
+1418	./notifications
+Altaj_Resp
+6329	./contracts
+1111	./protocols
+1536	./notifications
