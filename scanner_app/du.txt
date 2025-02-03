@@ -1,8 +1,360 @@
 Adygeja_Resp
-10014	./contracts
-932	./protocols
-1418	./notifications
+10025	./contracts
+937	./protocols
+1421	./notifications
 Altaj_Resp
-6329	./contracts
-1111	./protocols
-1536	./notifications
+6337	./contracts
+1115	./protocols
+1540	./notifications
+Altajskij_kraj
+42691	./contracts
+3578	./protocols
+4977	./notifications
+Amurskaja_obl
+11074	./contracts
+1685	./protocols
+2654	./notifications
+Arkhangelskaja_obl
+22324	./contracts
+2576	./protocols
+3569	./notifications
+Astrakhanskaja_obl
+16121	./contracts
+2218	./protocols
+3178	./notifications
+Bajkonur_g
+1230	./contracts
+312	./protocols
+603	./notifications
+Bashkortostan_Resp
+51258	./contracts
+7960	./protocols
+10621	./notifications
+Belgorodskaja_obl
+30316	./contracts
+2178	./protocols
+3482	./notifications
+Brjanskaja_obl
+19227	./contracts
+1966	./protocols
+2877	./notifications
+Burjatija_Resp
+11028	./contracts
+1865	./protocols
+2631	./notifications
+Chechenskaja_Resp
+8547	./contracts
+1041	./protocols
+1763	./notifications
+Cheljabinskaja_obl
+79455	./contracts
+6968	./protocols
+9887	./notifications
+Chukotskij_AO
+2450	./contracts
+548	./protocols
+972	./notifications
+Chuvashskaja_Resp
+23294	./contracts
+2358	./protocols
+3315	./notifications
+Dagestan_Resp
+8035	./contracts
+2471	./protocols
+4993	./notifications
+Donetskaya_NR
+597	./contracts
+49	./protocols
+50	./notifications
+Evrejskaja_Aobl
+3336	./contracts
+746	./protocols
+1205	./notifications
+Hersonskaya_obl
+92	./contracts
+50	./protocols
+48	./notifications
+Ingushetija_Resp
+1591	./contracts
+607	./protocols
+980	./notifications
+Irkutskaja_obl
+44022	./contracts
+4996	./protocols
+6905	./notifications
+Ivanovskaja_obl
+30273	./contracts
+2115	./protocols
+2849	./notifications
+Jamalo-Neneckij_AO
+20799	./contracts
+3336	./protocols
+4573	./notifications
+Jaroslavskaja_obl
+28709	./contracts
+2994	./protocols
+3934	./notifications
+Kabardino-Balkarskaja_Resp
+8000	./contracts
+1122	./protocols
+1761	./notifications
+Kaliningradskaja_obl
+16693	./contracts
+2677	./protocols
+3554	./notifications
+Kalmykija_Resp
+3165	./contracts
+711	./protocols
+1158	./notifications
+Kaluzhskaja_obl
+24934	./contracts
+2132	./protocols
+3291	./notifications
+Kamchatskij_kraj
+10820	./contracts
+1655	./protocols
+2535	./notifications
+Karachaevo-Cherkesskaja_Resp
+5899	./contracts
+825	./protocols
+1350	./notifications
+Karelija_Resp
+14228	./contracts
+2070	./protocols
+3071	./notifications
+Kemerovskaja_obl
+41634	./contracts
+4794	./protocols
+6744	./notifications
+Khabarovskij_kraj
+37988	./contracts
+4885	./protocols
+6482	./notifications
+Khakasija_Resp
+17671	./contracts
+1691	./protocols
+2592	./notifications
+Khanty-Mansijskij_AO-Jugra_AO
+52323	./contracts
+6412	./protocols
+8213	./notifications
+Kirovskaja_obl
+27588	./contracts
+3481	./protocols
+4431	./notifications
+Komi_Resp
+21029	./contracts
+3069	./protocols
+4312	./notifications
+Kostromskaja_obl
+15522	./contracts
+1653	./protocols
+2472	./notifications
+Krasnodarskij_kraj
+108546	./contracts
+10755	./protocols
+14782	./notifications
+Krasnojarskij_kraj
+85574	./contracts
+7688	./protocols
+9937	./notifications
+Krim_Resp
+29539	./contracts
+3068	./protocols
+4351	./notifications
+Kurganskaja_obl
+18985	./contracts
+2137	./protocols
+3082	./notifications
+Kurskaja_obl
+12448	./contracts
+2364	./protocols
+3164	./notifications
+Leningradskaja_obl
+24617	./contracts
+3443	./protocols
+4495	./notifications
+Lipeckaja_obl
+45267	./contracts
+2920	./protocols
+3769	./notifications
+Luganskaya_NR
+313	./contracts
+46	./protocols
+47	./notifications
+Magadanskaja_obl
+4109	./contracts
+932	./protocols
+1518	./notifications
+Marij_El_Resp
+15969	./contracts
+1514	./protocols
+2241	./notifications
+Mordovija_Resp
+11144	./contracts
+1361	./protocols
+2025	./notifications
+Moskovskaja_obl
+121530	./contracts
+12141	./protocols
+17352	./notifications
+Moskva
+186982	./contracts
+25907	./protocols
+32088	./notifications
+Murmanskaja_obl
+20267	./contracts
+1933	./protocols
+2929	./notifications
+Neneckij_AO
+3299	./contracts
+534	./protocols
+929	./notifications
+Nizhegorodskaja_obl
+39766	./contracts
+4890	./protocols
+5931	./notifications
+Novgorodskaja_obl
+7674	./contracts
+1234	./protocols
+1899	./notifications
+Novosibirskaja_obl
+62473	./contracts
+8846	./protocols
+10882	./notifications
+Omskaja_obl
+32893	./contracts
+4251	./protocols
+5474	./notifications
+Orenburgskaja_obl
+25040	./contracts
+3037	./protocols
+4929	./notifications
+Orlovskaja_obl
+20477	./contracts
+2334	./protocols
+2997	./notifications
+Penzenskaja_obl
+19104	./contracts
+1778	./protocols
+2562	./notifications
+Permskij_kraj
+37376	./contracts
+5697	./protocols
+7649	./notifications
+Primorskij_kraj
+35132	./contracts
+3894	./protocols
+5719	./notifications
+Pskovskaja_obl
+17106	./contracts
+1999	./protocols
+3001	./notifications
+Rjazanskaja_obl
+23333	./contracts
+2712	./protocols
+4024	./notifications
+Rostovskaja_obl
+83323	./contracts
+7303	./protocols
+11449	./notifications
+Sakha_Jakutija_Resp
+17163	./contracts
+4027	./protocols
+5538	./notifications
+Sakhalinskaja_obl
+19175	./contracts
+2764	./protocols
+3991	./notifications
+Samarskaja_obl
+48964	./contracts
+5714	./protocols
+7177	./notifications
+Sankt-Peterburg
+173777	./contracts
+16709	./protocols
+22175	./notifications
+Saratovskaja_obl
+36696	./contracts
+5186	./protocols
+7435	./notifications
+Sevastopol_g
+6058	./contracts
+1190	./protocols
+1666	./notifications
+Severnaja_Osetija-Alanija_Resp
+4362	./contracts
+941	./protocols
+1445	./notifications
+Smolenskaja_obl
+15565	./contracts
+2319	./protocols
+3112	./notifications
+Stavropolskij_kraj
+50721	./contracts
+5130	./protocols
+7225	./notifications
+Sverdlovskaja_obl
+52463	./contracts
+6471	./protocols
+10170	./notifications
+Tambovskaja_obl
+16781	./contracts
+1949	./protocols
+2671	./notifications
+Tatarstan_Resp
+46224	./contracts
+8033	./protocols
+7398	./notifications
+Tjumenskaja_obl
+22535	./contracts
+2505	./protocols
+3186	./notifications
+Tomskaja_obl
+19032	./contracts
+2263	./protocols
+3251	./notifications
+Tulskaja_obl
+44865	./contracts
+2780	./protocols
+4218	./notifications
+Tverskaja_obl
+26326	./contracts
+2410	./protocols
+3761	./notifications
+Tyva_Resp
+4218	./contracts
+1158	./protocols
+1612	./notifications
+Udmurtskaja_Resp
+27562	./contracts
+3399	./protocols
+4466	./notifications
+Uljanovskaja_obl
+15731	./contracts
+2499	./protocols
+3221	./notifications
+Vladimirskaja_obl
+25909	./contracts
+3776	./protocols
+5042	./notifications
+Volgogradskaja_obl
+30724	./contracts
+3580	./protocols
+4316	./notifications
+Vologodskaja_obl
+17258	./contracts
+2458	./protocols
+3552	./notifications
+Voronezhskaja_obl
+49222	./contracts
+3938	./protocols
+5241	./notifications
+Zabajkalskij_kraj
+11986	./contracts
+2488	./protocols
+3223	./notifications
+Zaporozhskaya_obl
+154	./contracts
+59	./protocols
+49	./notifications

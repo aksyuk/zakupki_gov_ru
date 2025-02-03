@@ -262,13 +262,13 @@ prompt.proc.type <- 1
 # /////////////////////КОНЕЦ ВВОДА ДАННЫХ В КОНСОЛЬ/////////////////////////////
 
 # процедура, с которой будем работать
-tmp.selected <- unique(all.proc.types$procedureCode)[as.numeric(prompt.proc.type)]
-lstProcedureType <- list(name = tmp.selected, label = '', prefix = '')
+tmp <- unique(all.proc.types$procedureCode)[as.numeric(prompt.proc.type)]
+lstProcedureType <- list(name = tmp, label = '', prefix = '')
 lstProcedureType$label <- all.proc.types %>% 
-    filter(procedureCode == tmp.selected) %>% select('procedureType') %>%
+    filter(procedureCode == tmp) %>% select('procedureType') %>%
     unname %>% unlist %>% unique
 lstProcedureType$prefix <- all.proc.types %>% 
-    filter(procedureCode == tmp.selected) %>% select('noticeFileName') %>%
+    filter(procedureCode == tmp) %>% select('noticeFileName') %>%
     unname %>% unlist
 
 cat(yellow(paste0('Выбрано: ', prompt.proc.type, '. ', 
@@ -405,8 +405,8 @@ if (!dir.exists(drnm)) {
 # папка с csv-файлами по текущему типу процедур
 sOutPath <- paste0(sRawCSVPath, lstProcedureType$name, '/')
 
-rm(tmp.selected, srch.reg, msg, dirs, drnm, all.proc.types, indx.region,
+rm(tmp, srch.reg, msg, dirs, drnm, all.proc.types, indx.region,
    lst.dirs.raw, n.all.dirs, n.dirs.reg, patt, vars, indx.selected,
-   prompt.load.reg.list, prompt.load.sample, prompt.proc.type, tmp)
+   prompt.load.reg.list, prompt.load.sample, prompt.proc.type)
 
 message('ПОДГОТОВКА РАБОЧЕГО ПРОСТРАНСТВА ЗАВЕРШЕНА')
